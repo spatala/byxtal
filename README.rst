@@ -2,7 +2,7 @@
 byxtal
 ======
 
-![Cookiecutter](https://github.com/leilakhalili87/byxtal/blob/master/docs/source/_static/logo.png)
+/home/leila/Leila_sndhard/codes/byxtal/byxtal/docs/source/_static/logo.png
 
 .. image:: https://img.shields.io/travis/leilakhalili87/byxtal.svg
         :target: https://travis-ci.org/leilakhalili87/byxtal
