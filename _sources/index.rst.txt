@@ -7,7 +7,7 @@
         :target: https://travis-ci.org/leilakhalili87/byxtal
 
 
-Welcome to byxtal package. This package helps you create a grain boundary!
+Welcome to byxtal package.
 
 Basics
 --------------------
@@ -19,3 +19,4 @@ Basics
    release-history
    min_versions
    Tutorials/index
+   Modules
