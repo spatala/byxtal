@@ -2,7 +2,7 @@
 byxtal
 ======
 
-# <img alt="byxtal" src="docs/source/_static/logo.png" width="350">
+![Cookiecutter](https://github.com/leilakhalili87/byxtal/blob/master/docs/source/_static/logo.png)
 
 .. image:: https://img.shields.io/travis/leilakhalili87/byxtal.svg
         :target: https://travis-ci.org/leilakhalili87/byxtal
