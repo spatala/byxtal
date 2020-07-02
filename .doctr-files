@@ -1,3 +1,14 @@
+./Tutorials/1st.html
+./Tutorials/1st.ipynb
+./Tutorials/2nd.html
+./Tutorials/2nd.ipynb
+./Tutorials/3rd.html
+./Tutorials/3rd.ipynb
+./Tutorials/index.html
+./_sources/Tutorials/1st.ipynb.txt
+./_sources/Tutorials/2nd.ipynb.txt
+./_sources/Tutorials/3rd.ipynb.txt
+./_sources/Tutorials/index.rst.txt
 ./_sources/index.rst.txt
 ./_sources/installation.rst.txt
 ./_sources/min_versions.rst.txt
@@ -85,7 +96,6 @@
 ./_static/js/modernizr.min.js
 ./_static/js/theme.js
 ./_static/language_data.js
-./_static/logo.png
 ./_static/minus.png
 ./_static/plus.png
 ./_static/pygments.css
