@@ -13,7 +13,7 @@
 Python package for doing science.
 
 * Free software: 3-clause BSD license
-* Documentation: (COMING SOON!) https://leilakhalili87.github.io/byxtal.
+* Documentation: https://leilakhalili87.github.io/byxtal.
 
 Features
 --------
