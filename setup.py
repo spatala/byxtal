@@ -55,7 +55,7 @@ setup(
             # When adding files here, remember to update MANIFEST.in as well,
             # or else they will not be included in the distribution on PyPI!
             # 'path/to/data_file',
-            byxtal/data_files/*.pkl
+            'byxtal/data_files/*.pkl'
         ]
     },
     install_requires=requirements,
