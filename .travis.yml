@@ -6,6 +6,11 @@ cache:
     - $HOME/.cache/pip
     - $HOME/.ccache  # https://github.com/travis-ci/travis-ci/issues/5853
 
+
+env:
+  global:
+    # Doctr deploy key for leilakhalili87/gbmc_v0
+    - secure: "n4UwHf9RGHxni6/3AhFHKSUkJ0r+NnI5pZz5dEH/mEURopq3odu8No7Z94HFn6r8BxRPzR46+sw/ckcSduxuZNHYvZ3bLyb1ik4naqw0MLds6Ev1btFTQ4YFVagBghhN1x60BE8ShIKSsUXCm6lloBpljgLHV43NuO9gNcK/G5Ieot3SVjRTjXt48vv59VaJp/LRbmMwR7D+d1iXijeMMvCVAV9gwtfZEMietUNPTFsgySHjQvNi5YZwu7xuTWK4VkkEJTf/IC1tRZVL0dLL6XqVS6OA5OLQxJbIC3ol/cnUm64aoZH6q9zDoXAAZFpg2aeF3OGZnBPLW83MYeP5tJnchiHcvoy9Jvg4Lx6GcKfzDpZNE2RMIvvLz6vsKdQMw2nt1cGQkEMqsSslk/PflkHeWflZ7RO2DEuXFwEoUv1MRNuKvv9QB2KNnRsLF1SWyjIQL+R/EUUrrZVlVs9FTNwSkrGNZ+dHyJ5J2nFJ28ffXL2i63Xd1zhIKQua8btswAGD8BSp5eGFHLSJxqmh32QB+5KQUVlaixaCGQhDym+aQGALFxRDZEUhx4ni76y+yAIQZCGDsO4ZJ+k7ic/dE//INFwxaJXx+sViV+f6deBqjJOYulpZ3DAaVySBfXlko0IFhK6nIRQMp2VetoAaHiHfh0uk2YmVRZeeJp51NoE="
 install:
   # Install this package and the packages listed in requirements.txt.
   - pip install .
@@ -16,5 +21,8 @@ script:
   - coverage run -m pytest  # Run the tests and check for test coverage.
   - coverage report -m  # Generate test coverage report.
   - codecov  # Upload the report to codecov.
-  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
+  # - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
+  - set -e
   - make -C docs html  # Build the documentation.
+  - pip install doctr
+  - doctr deploy --built-docs docs/build/html .
