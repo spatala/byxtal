@@ -2,6 +2,8 @@
 byxtal
 ======
 
+# <img alt="byxtal" src="docs/source/_static/logo.png" width="350">
+
 .. image:: https://img.shields.io/travis/leilakhalili87/byxtal.svg
         :target: https://travis-ci.org/leilakhalili87/byxtal
 
