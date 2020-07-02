@@ -8,31 +8,28 @@ def disorient_symm_props(mis_quat_fz, lat_pt_grp, x_tol=1e-04):
 
     Parameters
     -----------
-    mis_quat_fz: misorientation quaternion
-    * A quaternion array with size (5 x 1)
-    * The quaternion is created from the misorientation of the sigma value for the grain boundary.
-    * The misorientation is defined in the orthogonal reference frame of lower crystal 1 (po1).
-
-    lat_pt_grp: The point group symmetry of the crystal.
-    * string with allowed value 'Oh'
-
-    x_tol : tolerance value to check various conditions in the function
-    * float, default value == 1e-04
+        mis_quat_fz: misorientation quaternion
+        * A quaternion array with size (5 x 1)
+        * The quaternion is created from the misorientation of the sigma value for the grain boundary.
+        * The misorientation is defined in the orthogonal reference frame of lower crystal 1 (po1).
+        lat_pt_grp: The point group symmetry of the crystal.
+        * string with allowed value 'Oh'
+        x_tol : tolerance value to check various conditions in the function
+        * float, default value == 1e-04
 
     Returns
     --------
-    bp_symm_grp: The point group symmetry of bicrystal.
-    * python string with allowed values 'Cs', 'C2h', 'D3d', 'D2h', 'D4h', 'D6h', 'D8h' and 'Oh'
-
-    x_g, y_g, z_g: Principle axes for the fundamental zone of the bicrystal.
-    * 1-D numpy arrays of size 3
+        bp_symm_grp: The point group symmetry of bicrystal.
+        * python string with allowed values 'Cs', 'C2h', 'D3d', 'D2h', 'D4h', 'D6h', 'D8h' and 'Oh'
+        x_g, y_g, z_g: Principle axes for the fundamental zone of the bicrystal.
+        * 1-D numpy arrays of size 3
 
     Notes
     ------
-    * This method takes only one value for lat_pt_grp == 'O_h', i.e. the function is written for bcc and fcc
-    crystals only.
-    * Based on the location of the mis_quat_fz in the quaternion hypersphere (4-D), the point group symmetry of the
-    bicrystal is determined.
+        * This method takes only one value for lat_pt_grp == 'O_h', i.e. the function is written for bcc and fcc
+        crystals only.
+        * Based on the location of the mis_quat_fz in the quaternion hypersphere (4-D), the point group symmetry of the
+        bicrystal is determined.
     """
     q0 = mis_quat_fz[0][0]
     q1 = mis_quat_fz[1][0]
