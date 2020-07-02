@@ -399,7 +399,7 @@ def smith_normal_form(A, compute_unimod = True):
             # in the sub-matrix S[f:, f:].
             indices = ((i, j) for j in range(f, n) for i in range(f, m))
             key_val_pairs = ((index, abs(S[index])) for index in indices
-                             if abs(S[index]) != 0)
+                                if abs(S[index]) != 0)
             (i, j), min_val = min(key_val_pairs, key=lambda k: k[1])
 
             # Permute S to move the minimal element to the pivot location
