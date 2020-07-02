@@ -2,7 +2,6 @@
 byxtal
 ======
 
-/home/leila/Leila_sndhard/codes/byxtal/byxtal/docs/source/_static/logo.png
 
 .. image:: https://img.shields.io/travis/leilakhalili87/byxtal.svg
         :target: https://travis-ci.org/leilakhalili87/byxtal
