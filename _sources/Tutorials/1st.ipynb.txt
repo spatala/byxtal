@@ -4,8 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "1.How to find the 2D Basis of a Plane using GBpy!\n",
-    "-----------------------------------------------------------------------"
+    "# How to find the 2D Basis of a Plane using GBpy!"
    ]
   },
   {
@@ -17,20 +16,20 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 8,
    "metadata": {},
    "outputs": [],
    "source": [
     "import byxtal as bxt\n",
-    "import numpy as np"
+    "import numpy as np\n",
+    "from sympy.matrices import Matrix, eye, zeros;"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "1.1Miller Indices and Common Conventions:\n",
-    "-----------------------------------------------------------------------\n",
+    "## Miller Indices and Common Conventions:\n",
     "\n",
     "Miller Indices are often used to refer to a given crystallograohic plane in crystals. However various conventions are commonly used in determining the Miller Indices that can completely change the plane of reference. For this reason we would like to declare our conventions in defining the Miller Indices to avoid any confusions. By definition Miller Indices are defined as the reciprocal of intercepts of a crystallographic plane with the Unit Cell Basis Vectors. The confusion is often caused by the definition of the Unit Cell. In f.c.c and b.c.c lattices primitive basis vectors are non-orthogonal while the supercell basis vectors are orthogonal. Most importantly since the reciprocal and direct lattices are the identical in f.c.c and b.c.c, the Miller Indices (defined in supercell unit cell) are the same as the plane normal indices. This unique property and convenience of using an orthogonal set of basis vectors is the root cause of the bipartisan approach to defining the Miller Indices. The downfall of such an approach is the fact that it does not have much utility in other types of lattices e.g. hcp. Therefore in GBpy whenever we use the term Miller Indices, we are referring to the reciprocals of intercepts of a crystallographic plane with the primitive Basis Vectors.\n",
     "\n",
@@ -49,20 +48,18 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "1.2 Problem Definition:\n",
-    "-----------------------------------------------------------------------\n",
+    "## Problem Definition:\n",
     "\n",
     "In this tutorial we would like to find the planar basis of a plane with $[2 3 1]$ normal vector defined in supercell f.c.c basis .\n",
     "\n",
-    "Since the normal vector to the plane is provided in the orthogonal f.c.c basis (supercell basis), first we need to obtain the Miller Indices of the plane to be able to use the byxtal package.\n"
+    "Since the normal vector to the plane is provided in the orthogonal f.c.c basis (supercell basis), first we need to obtain the Miller Indices of the plane to be able to use the byxtal package."
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "1.3 Finding Miller Indices:\n",
-    "-----------------------------------------------------------------------\n",
+    "## Finding Miller Indices:\n",
     "\n",
     "A vector in the space can be expressed in any basis, of course with varying components. Vector $\\vec{v}$ in basis A can be expressed as:\n",
     "\n",
@@ -76,12 +73,12 @@
     "\n",
     "where:\n",
     "\n",
-    "$\\Lambda_p_{po}$ is a 3x3 matrix with its columns being the components of basis vectors of po in p basis."
+    "$\\Lambda_p^{po}$ is a 3x3 matrix with its columns being the components of basis vectors of po in p basis."
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -92,7 +89,7 @@
        "       [0.5, 0.5, 0. ]])"
       ]
      },
-     "execution_count": 3,
+     "execution_count": 4,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -111,19 +108,47 @@
   },
   {
    "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/latex": [
+       "$\\displaystyle \\left[\\begin{matrix}-1.0 & 1.0 & 1.0\\\\1.0 & -1.0 & 1.0\\\\1.0 & 1.0 & -1.0\\end{matrix}\\right]$"
+      ],
+      "text/plain": [
+       "Matrix([\n",
+       "[-1.0,  1.0,  1.0],\n",
+       "[ 1.0, -1.0,  1.0],\n",
+       "[ 1.0,  1.0, -1.0]])"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import byxtal.find_csl_dsc as fcd\n",
+    "l_rp_po = fcd.reciprocal_mat(l_p_po)\n",
+    "l_rp_po"
+   ]
+  },
+  {
+   "cell_type": "code",
    "execution_count": null,
    "metadata": {},
    "outputs": [],
    "source": [
-    "import byxtal.find_csl_dsc"
+    "l_po_rp = (l_rp_po)\n",
+    "l_po_rp"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "1.4 Finding the Planar Basis:\n",
-    "-----------------------------------------------------------------------"
+    "## Finding the Planar Basis:"
    ]
   },
   {

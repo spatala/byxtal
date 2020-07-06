@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post34+gaea0eeb documentation</title>
+  <title>How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post35+g2b88bf9 documentation</title>
   
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.post34+gaea0eeb
+                0.post35+g2b88bf9
               </div>
             
           
@@ -98,11 +98,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../min_versions.html">Minimum Version of Python and NumPy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1.How to find the 2D Basis of a Plane using GBpy!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#1.1Miller-Indices-and-Common-Conventions:">1.1Miller Indices and Common Conventions:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#1.2-Problem-Definition:">1.2 Problem Definition:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#1.3-Finding-Miller-Indices:">1.3 Finding Miller Indices:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#1.4-Finding-the-Planar-Basis:">1.4 Finding the Planar Basis:</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to find the 2D Basis of a Plane using GBpy!</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Miller-Indices-and-Common-Conventions:">Miller Indices and Common Conventions:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Problem-Definition:">Problem Definition:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Finding-Miller-Indices:">Finding Miller Indices:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Finding-the-Planar-Basis:">Finding the Planar Basis:</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="2nd.html">2.How to find a reduced planar basis for a Grain Boundary using GBpy!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3rd.html">3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!</a></li>
 </ul>
@@ -156,7 +158,7 @@
         
           <li><a href="index.html">Tutorials</a> &raquo;</li>
         
-      <li>1.How to find the 2D Basis of a Plane using GBpy!</li>
+      <li>How to find the 2D Basis of a Plane using GBpy!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -430,22 +432,22 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="1.How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!">
-<h1>1.How to find the 2D Basis of a Plane using GBpy!<a class="headerlink" href="#1.How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!">
+<h1>How to find the 2D Basis of a Plane using GBpy!<a class="headerlink" href="#How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!" title="Permalink to this headline">¶</a></h1>
 <p>Follow the installation manual to receive the byxtal package and import all the required packages that we need for completing this tutorial.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">byxtal</span> <span class="k">as</span> <span class="nn">bxt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sympy.matrices</span> <span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">eye</span><span class="p">,</span> <span class="n">zeros</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="1.1Miller-Indices-and-Common-Conventions:">
-<h1>1.1Miller Indices and Common Conventions:<a class="headerlink" href="#1.1Miller-Indices-and-Common-Conventions:" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Miller-Indices-and-Common-Conventions:">
+<h2>Miller Indices and Common Conventions:<a class="headerlink" href="#Miller-Indices-and-Common-Conventions:" title="Permalink to this headline">¶</a></h2>
 <p>Miller Indices are often used to refer to a given crystallograohic plane in crystals. However various conventions are commonly used in determining the Miller Indices that can completely change the plane of reference. For this reason we would like to declare our conventions in defining the Miller Indices to avoid any confusions. By definition Miller Indices are defined as the reciprocal of intercepts of a crystallographic plane with the Unit Cell Basis Vectors. The confusion is often caused by
 the definition of the Unit Cell. In f.c.c and b.c.c lattices primitive basis vectors are non-orthogonal while the supercell basis vectors are orthogonal. Most importantly since the reciprocal and direct lattices are the identical in f.c.c and b.c.c, the Miller Indices (defined in supercell unit cell) are the same as the plane normal indices. This unique property and convenience of using an orthogonal set of basis vectors is the root cause of the bipartisan approach to defining the Miller
 Indices. The downfall of such an approach is the fact that it does not have much utility in other types of lattices e.g. hcp. Therefore in GBpy whenever we use the term Miller Indices, we are referring to the reciprocals of intercepts of a crystallographic plane with the primitive Basis Vectors.</p>
@@ -455,22 +457,22 @@ Indices. The downfall of such an approach is the fact that it does not have much
 <p>The above interchangeable definitions are consistently used in GBpy for referring to Miller Indices. Other conventions in defining the Miller Indices are ultimately converted to the above definition.</p>
 <p>In the present tutorial we manually extract various Indices and demonstrate how they can be fed to the GBpy. In practice such conversions are not necessary as long as the user is consistent with the definitions of GBpy, and can be used for verifying the answer.</p>
 </div>
-<div class="section" id="1.2-Problem-Definition:">
-<h1>1.2 Problem Definition:<a class="headerlink" href="#1.2-Problem-Definition:" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Problem-Definition:">
+<h2>Problem Definition:<a class="headerlink" href="#Problem-Definition:" title="Permalink to this headline">¶</a></h2>
 <p>In this tutorial we would like to find the planar basis of a plane with <span class="math notranslate nohighlight">\([2 3 1]\)</span> normal vector defined in supercell f.c.c basis .</p>
 <p>Since the normal vector to the plane is provided in the orthogonal f.c.c basis (supercell basis), first we need to obtain the Miller Indices of the plane to be able to use the byxtal package.</p>
 </div>
-<div class="section" id="1.3-Finding-Miller-Indices:">
-<h1>1.3 Finding Miller Indices:<a class="headerlink" href="#1.3-Finding-Miller-Indices:" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Finding-Miller-Indices:">
+<h2>Finding Miller Indices:<a class="headerlink" href="#Finding-Miller-Indices:" title="Permalink to this headline">¶</a></h2>
 <p>A vector in the space can be expressed in any basis, of course with varying components. Vector <span class="math notranslate nohighlight">\(\vec{v}\)</span> in basis A can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[\vec{v} = \mathcal{B}_A v_A\]</div>
 <p>Similarly we can define the plane normal <span class="math notranslate nohighlight">\(\vec{n}\)</span> in any basis. For instance we can define <span class="math notranslate nohighlight">\(\vec{n}\)</span> in supercell f.c.c basis (<span class="math notranslate nohighlight">\(\mathcal{B}_{po}\)</span>) or in primitive f.c.c basis $:nbsphinx-math:<cite>left`( :nbsphinx-math:</cite>mathcal{B}`_p <span class="math">\right</span>) $; we can write:</p>
 <p>We can express the right hand side of the (2) as:</p>
 <p>where:</p>
-<p><span class="math notranslate nohighlight">\(\Lambda_p_{po}\)</span> is a 3x3 matrix with its columns being the components of basis vectors of po in p basis.</p>
+<p><span class="math notranslate nohighlight">\(\Lambda_p^{po}\)</span> is a 3x3 matrix with its columns being the components of basis vectors of po in p basis.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -480,7 +482,7 @@ Indices. The downfall of such an approach is the fact that it does not have much
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -491,18 +493,38 @@ array([[0. , 0.5, 0.5],
 </pre></div></div>
 </div>
 <p>From (6) we need to find the reciprocal of the <span class="math notranslate nohighlight">\(\Lambda_{p}_{po}\)</span>. To do so use the <code class="docutils literal notranslate"><span class="pre">bxt.find_csl_dsc.reciprocal_mat()</span></code>. For the sake of convenience we abbreviate the imported function <code class="docutils literal notranslate"><span class="pre">bxt.find_csl_dsc</span></code> as <code class="docutils literal notranslate"><span class="pre">fcd</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">byxtal.find_csl_dsc</span> <span class="k">as</span> <span class="nn">fcd</span>
+<span class="n">l_rp_po</span> <span class="o">=</span> <span class="n">fcd</span><span class="o">.</span><span class="n">reciprocal_mat</span><span class="p">(</span><span class="n">l_p_po</span><span class="p">)</span>
+<span class="n">l_rp_po</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="math notranslate nohighlight">
+$\displaystyle \left[\begin{matrix}-1.0 &amp; 1.0 &amp; 1.0\\1.0 &amp; -1.0 &amp; 1.0\\1.0 &amp; 1.0 &amp; -1.0\end{matrix}\right]$</div></div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">byxtal.find_csl_dsc</span>
+<span></span><span class="n">l_po_rp</span> <span class="o">=</span> <span class="p">(</span><span class="n">l_rp_po</span><span class="p">)</span>
+<span class="n">l_po_rp</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="1.4-Finding-the-Planar-Basis:">
-<h1>1.4 Finding the Planar Basis:<a class="headerlink" href="#1.4-Finding-the-Planar-Basis:" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Finding-the-Planar-Basis:">
+<h2>Finding the Planar Basis:<a class="headerlink" href="#Finding-the-Planar-Basis:" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -510,6 +532,7 @@ array([[0. , 0.5, 0.5],
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
