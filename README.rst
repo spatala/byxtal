@@ -1,4 +1,4 @@
-.. image:: https://user-images.githubusercontent.com/33406434/86791642-c0498780-c037-11ea-9fa4-b72afd7a2f1a.png
+.. image:: https://user-images.githubusercontent.com/33406434/86793778-cb051c00-c039-11ea-8b62-401896d533f8.png
         :target: https://travis-ci.org/leilakhalili87/byxtal
 -------------------------------------------------------------------------
 
