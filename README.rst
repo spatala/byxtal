@@ -1,4 +1,4 @@
-.. image:: https://user-images.githubusercontent.com/33406434/86795181-4fa46a00-c03b-11ea-9065-139214369b62.png
+.. image:: https://user-images.githubusercontent.com/33406434/86795321-6fd42900-c03b-11ea-883a-68139f7cb521.png
         :target: https://travis-ci.org/leilakhalili87/byxtal
 
 .. image:: https://img.shields.io/travis/leilakhalili87/byxtal.svg
