@@ -1,6 +1,5 @@
 .. image:: https://user-images.githubusercontent.com/33406434/86793778-cb051c00-c039-11ea-8b62-401896d533f8.png
         :target: https://travis-ci.org/leilakhalili87/byxtal
--------------------------------------------------------------------------
 
 .. image:: https://img.shields.io/travis/leilakhalili87/byxtal.svg
         :target: https://travis-ci.org/leilakhalili87/byxtal
