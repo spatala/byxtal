@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1.How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post50+gb5ea07a documentation</title>
+  <title># 1.How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post50+gf9b51cc documentation</title>
   
 
   
@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. How to find a reduced planar basis for a Grain Boundary using byxtal!" href="2nd.html" />
+    <link rel="next" title="# 2. How to find a reduced planar basis for a Grain Boundary using byxtal!" href="2nd.html" />
     <link rel="prev" title="Tutorials" href="index.html" /> 
 </head>
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.post50+gb5ea07a
+                0.post50+gf9b51cc
               </div>
             
           
@@ -98,16 +98,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../min_versions.html">Minimum Version of Python and NumPy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1.How to find the 2D Basis of a Plane using GBpy!</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Problem-Definition:">Problem Definition:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Finding-Miller-Indices:">Finding Miller Indices:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Finding-the-Planar-Basis:">Finding the Planar Basis:</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="2nd.html">2. How to find a reduced planar basis for a Grain Boundary using byxtal!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2nd.html#Inputs:">Inputs:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2nd.html#Outputs:">Outputs:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3rd.html">3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"># 1.How to find the 2D Basis of a Plane using GBpy!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Problem-Definition:">Problem Definition:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Finding-Miller-Indices:">Finding Miller Indices:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Finding-the-Planar-Basis:">Finding the Planar Basis:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2nd.html"># 2. How to find a reduced planar basis for a Grain Boundary using byxtal!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2nd.html#2.1-Miller-Indices:">2.1 Miller Indices:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2nd.html#2.2-Problem-Definition:">2.2 Problem Definition:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2nd.html#2.3-Extracting-the-Misorientation-Operator">2.3 Extracting the Misorientation Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2nd.html#2.4-Finding-the-GB-Planar-Basis-(2D-CSL-Basis):">2.4 Finding the GB Planar Basis (2D CSL Basis):</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3rd.html"># 3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3rd.html#3.1.-Finding-the-Σ-rotations">3.1. Finding the Σ-rotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3rd.html#3.2.-Changing-the-Basis-of-a-Transformation-Matrix">3.2. Changing the Basis of a Transformation Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3rd.html#3.3.-Finding-the-CSL-and-DSC-Lattices-of-a-Σ3-rotation:">3.3. Finding the CSL and DSC Lattices of a Σ3 rotation:</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Modules.html">Modules</a></li>
@@ -159,7 +162,7 @@
         
           <li><a href="index.html">Tutorials</a> &raquo;</li>
         
-      <li>1.How to find the 2D Basis of a Plane using GBpy!</li>
+      <li># 1.How to find the 2D Basis of a Plane using GBpy!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -433,8 +436,8 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="1.How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!">
-<h1>1.How to find the 2D Basis of a Plane using GBpy!<a class="headerlink" href="#1.How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="#-1.How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!">
+<h1># 1.How to find the 2D Basis of a Plane using GBpy!<a class="headerlink" href="##-1.How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!" title="Permalink to this headline">¶</a></h1>
 <p>Follow the installation manual to receive the byxtal package and import all the required packages that we need for completing this tutorial.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -456,13 +459,14 @@ Indices. The downfall of such an approach is the fact that it does not have much
 <p>Miller Indices: normal vector indices of the plane defined in primitive reciprocal lattice</p>
 <p>The above interchangeable definitions are consistently used in GBpy for referring to Miller Indices. Other conventions in defining the Miller Indices are ultimately converted to the above definition.</p>
 <p>In the present tutorial we manually extract various Indices and demonstrate how they can be fed to the GBpy. In practice such conversions are not necessary as long as the user is consistent with the definitions of GBpy, and can be used for verifying the answer.</p>
+</div>
 <div class="section" id="Problem-Definition:">
-<h2>Problem Definition:<a class="headerlink" href="#Problem-Definition:" title="Permalink to this headline">¶</a></h2>
+<h1>Problem Definition:<a class="headerlink" href="#Problem-Definition:" title="Permalink to this headline">¶</a></h1>
 <p>In this tutorial we would like to find the planar basis of a plane with <span class="math notranslate nohighlight">\([2 3 1]\)</span> normal vector defined in supercell f.c.c basis .</p>
 <p>Since the normal vector to the plane is provided in the orthogonal f.c.c basis (supercell basis), first we need to obtain the Miller Indices of the plane to be able to use the byxtal package.</p>
 </div>
 <div class="section" id="Finding-Miller-Indices:">
-<h2>Finding Miller Indices:<a class="headerlink" href="#Finding-Miller-Indices:" title="Permalink to this headline">¶</a></h2>
+<h1>Finding Miller Indices:<a class="headerlink" href="#Finding-Miller-Indices:" title="Permalink to this headline">¶</a></h1>
 <p>A vector in the space can be expressed in any basis, of course with varying components. Vector <span class="math notranslate nohighlight">\(\vec{v}\)</span> in basis A can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[\vec{v} = \mathcal{B}_A v_A\]</div>
@@ -566,7 +570,7 @@ $\displaystyle \left[\begin{matrix}4\\3\\5\end{matrix}\right]$</div></div>
 </div>
 </div>
 <div class="section" id="Finding-the-Planar-Basis:">
-<h2>Finding the Planar Basis:<a class="headerlink" href="#Finding-the-Planar-Basis:" title="Permalink to this headline">¶</a></h2>
+<h1>Finding the Planar Basis:<a class="headerlink" href="#Finding-the-Planar-Basis:" title="Permalink to this headline">¶</a></h1>
 <p>From the previous section we found the Miller Indices of an f.c.c plane with the normal along <span class="math notranslate nohighlight">\([2 3 1]\)</span> to be <span class="math notranslate nohighlight">\((4 3 5)\)</span>. Now all we have to do is to pass the obtained indices to <code class="docutils literal notranslate"><span class="pre">bp_basis</span></code>, which is a function that gets the Miller Indices as the input and returns a <span class="math notranslate nohighlight">\(3 \times 2\)</span> matrix, where each column is one of the two planar basis vectors. Note that the output of the <code class="docutils literal notranslate"><span class="pre">bp_basis</span></code> is always expressed in the primitive lattice basis. Also the obtained vectors are in the
 reduced form, meaning that the length of the obtained basis vectors are as close as possible. You can find the bp_basis function in the following path: <code class="docutils literal notranslate"><span class="pre">byxtal.bp_basis.bp_basis()</span></code>.</p>
 <p>To find the basis vector of a plane with the Miller Indices of <span class="math notranslate nohighlight">\((4 3 5)\)</span> use the following syntax:</p>
@@ -614,7 +618,6 @@ $\displaystyle \left[\begin{matrix}-1.0 &amp; 0\\0.5 &amp; -0.5\\0.5 &amp; 1.5\e
 reduced form, it is going to have the smallest skewness, hence ideal for constructing a periodic simulation box.</p>
 <p>The above process is frquently repeated for simulation of grain boundaries. Therefore, we have developed a set of functions that make the conversion of indices more convenient and will accept various conventions for the Miller Indices. Please refer to the grain boundary 2D-CSL tutorial for how to use these functions.</p>
 </div>
-</div>
 
 
            </div>
@@ -624,7 +627,7 @@ reduced form, it is going to have the smallest skewness, hence ideal for constru
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="2nd.html" class="btn btn-neutral float-right" title="2. How to find a reduced planar basis for a Grain Boundary using byxtal!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="2nd.html" class="btn btn-neutral float-right" title="# 2. How to find a reduced planar basis for a Grain Boundary using byxtal!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

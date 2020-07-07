@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. How to find a reduced planar basis for a Grain Boundary using byxtal! &mdash; byxtal 0.post50+gb5ea07a documentation</title>
+  <title># 2. How to find a reduced planar basis for a Grain Boundary using byxtal! &mdash; byxtal 0.post50+gf9b51cc documentation</title>
   
 
   
@@ -42,8 +42,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!" href="3rd.html" />
-    <link rel="prev" title="1.How to find the 2D Basis of a Plane using GBpy!" href="1st.html" /> 
+    <link rel="next" title="# 3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!" href="3rd.html" />
+    <link rel="prev" title="# 1.How to find the 2D Basis of a Plane using GBpy!" href="1st.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.post50+gb5ea07a
+                0.post50+gf9b51cc
               </div>
             
           
@@ -98,17 +98,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../min_versions.html">Minimum Version of Python and NumPy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="1st.html">1.How to find the 2D Basis of a Plane using GBpy!</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2. How to find a reduced planar basis for a Grain Boundary using byxtal!</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#2.1-Miller-Indices:">2.1 Miller Indices:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#2.2-Problem-Definition:">2.2 Problem Definition:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#2.3-Extracting-the-Misorientation-Operator">2.3 Extracting the Misorientation Operator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#2.4-Finding-the-GB-Planar-Basis-(2D-CSL-Basis):">2.4 Finding the GB Planar Basis (2D CSL Basis):</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1st.html"># 1.How to find the 2D Basis of a Plane using GBpy!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1st.html#Problem-Definition:">Problem Definition:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1st.html#Finding-Miller-Indices:">Finding Miller Indices:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1st.html#Finding-the-Planar-Basis:">Finding the Planar Basis:</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"># 2. How to find a reduced planar basis for a Grain Boundary using byxtal!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.1-Miller-Indices:">2.1 Miller Indices:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.2-Problem-Definition:">2.2 Problem Definition:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.3-Extracting-the-Misorientation-Operator">2.3 Extracting the Misorientation Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.4-Finding-the-GB-Planar-Basis-(2D-CSL-Basis):">2.4 Finding the GB Planar Basis (2D CSL Basis):</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Inputs:">Inputs:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Outputs:">Outputs:</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Inputs:">Inputs:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Outputs:">Outputs:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3rd.html">3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3rd.html"># 3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3rd.html#3.1.-Finding-the-Σ-rotations">3.1. Finding the Σ-rotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3rd.html#3.2.-Changing-the-Basis-of-a-Transformation-Matrix">3.2. Changing the Basis of a Transformation Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3rd.html#3.3.-Finding-the-CSL-and-DSC-Lattices-of-a-Σ3-rotation:">3.3. Finding the CSL and DSC Lattices of a Σ3 rotation:</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Modules.html">Modules</a></li>
@@ -160,7 +166,7 @@
         
           <li><a href="index.html">Tutorials</a> &raquo;</li>
         
-      <li>2. How to find a reduced planar basis for a Grain Boundary using byxtal!</li>
+      <li># 2. How to find a reduced planar basis for a Grain Boundary using byxtal!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -434,8 +440,8 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="2.-How-to-find-a-reduced-planar-basis-for-a-Grain-Boundary-using-byxtal!">
-<h1>2. How to find a reduced planar basis for a Grain Boundary using byxtal!<a class="headerlink" href="#2.-How-to-find-a-reduced-planar-basis-for-a-Grain-Boundary-using-byxtal!" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="#-2.-How-to-find-a-reduced-planar-basis-for-a-Grain-Boundary-using-byxtal!">
+<h1># 2. How to find a reduced planar basis for a Grain Boundary using byxtal!<a class="headerlink" href="##-2.-How-to-find-a-reduced-planar-basis-for-a-Grain-Boundary-using-byxtal!" title="Permalink to this headline">¶</a></h1>
 <p>Follow the installation manual to receive the byxtal package and import all the required packages that we need for completing this tutorial.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
@@ -451,22 +457,23 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="2.1-Miller-Indices:">
-<h2>2.1 Miller Indices:<a class="headerlink" href="#2.1-Miller-Indices:" title="Permalink to this headline">¶</a></h2>
+<h1>2.1 Miller Indices:<a class="headerlink" href="#2.1-Miller-Indices:" title="Permalink to this headline">¶</a></h1>
 <p>Please refer to first notebook <a class="reference internal" href="1st.html"><span class="doc">How to find the 2D Basis of a Plane using byxtal!</span></a>of the tutorial for a comprehensive discussion about Miller Indices and common conventions. In byxtal whenever we use the term Miller Indices, we are referring to the reciprocals of intercepts of a crystallographic plane with the primitive Basis Vectors.</p>
 <p><strong>Miller Indices: reciprocal of intercepts of a crystallographic plane with the primitive Basis Vectors</strong></p>
 <p>Other conventions in defining the Miller Indices are ultimately converted to the above definition in byxtal.</p>
 <p>n the present tutorial we manually extract various Indices and demonstrate how they can be fed to the byxtal. In practice such conversions are not necessary as long as the user is consistent with the definitions of byxtal, and can be used for verifying the answer.</p>
 </div>
 <div class="section" id="2.2-Problem-Definition:">
-<h2>2.2 Problem Definition:<a class="headerlink" href="#2.2-Problem-Definition:" title="Permalink to this headline">¶</a></h2>
+<h1>2.2 Problem Definition:<a class="headerlink" href="#2.2-Problem-Definition:" title="Permalink to this headline">¶</a></h1>
 <p>In this tutorial we would like to find a <strong>reduced planar basis</strong> for a Σ3 Grain Boundary(GB) plane with the normal vector [2 3 1]. Note that the normal is defined in the orthogonal reference frame (supercell f.c.c) of the lower crystal (Crystal 1).</p>
 <p>Note that whenever we are working with a plane in byxtal we need to be careful with the reference in which the planes are defined and what the Miller Indices of that plane are. For GBs however there is a rich set of functions that perform all the conversions. The user only needs to be consistent with the GBpy’s conventions.</p>
 <p>In the following tutorial we demonstrate the features of the <strong>gb_2d_csl</strong> function.</p>
 <hr class="docutils" />
 </div>
 <div class="section" id="2.3-Extracting-the-Misorientation-Operator">
-<h2>2.3 Extracting the Misorientation Operator<a class="headerlink" href="#2.3-Extracting-the-Misorientation-Operator" title="Permalink to this headline">¶</a></h2>
+<h1>2.3 Extracting the Misorientation Operator<a class="headerlink" href="#2.3-Extracting-the-Misorientation-Operator" title="Permalink to this headline">¶</a></h1>
 <p>In Tutorial 3 <a class="reference internal" href="3rd.html"><span class="doc">How to find the CSL/DSC lattices of a Σ-rotation using byxtal!</span></a> we have extensively discussed the structure of the database of misorientations that ships with GBpy. In this tutorial we first extract the transformation matrix associated with Σ3 misorientation that can be found in “cF_Id_csl_common_rotations.pkl”.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
@@ -527,14 +534,12 @@ array([[0. , 0.5, 0.5],
 <p>At this point we have all we need to find a reduced basis for the GB plane.</p>
 </div>
 <div class="section" id="2.4-Finding-the-GB-Planar-Basis-(2D-CSL-Basis):">
-<h2>2.4 Finding the GB Planar Basis (2D CSL Basis):<a class="headerlink" href="#2.4-Finding-the-GB-Planar-Basis-(2D-CSL-Basis):" title="Permalink to this headline">¶</a></h2>
+<h1>2.4 Finding the GB Planar Basis (2D CSL Basis):<a class="headerlink" href="#2.4-Finding-the-GB-Planar-Basis-(2D-CSL-Basis):" title="Permalink to this headline">¶</a></h1>
 <p>The function specifically developed for this task is named <strong>gb_2d_csl()</strong> that can be accessed from <strong>byxtal.bp_basis.gb_2d_csl()</strong>.</p>
 <p>Let’s go over all the inputs, outputs and the options that are available for gb_2d_csl.</p>
 <p><span class="math notranslate nohighlight">\(\mathcal{Λ^{p1}_{2D CSL}}\)</span>,<span class="math notranslate nohighlight">\(\mathcal{Λ^{p1}_{Crystal1}}\)</span>, <span class="math notranslate nohighlight">\(\mathcal{Λ^{p1}_{Crystal2}}\)</span> = <strong>gb_2d_csl</strong> (<strong>indices</strong>, <span class="math notranslate nohighlight">\(\mathcal{T^{ref}}\)</span>, <span class="math notranslate nohighlight">\(\mathcal{Λ^{po}_{p}}\)</span>, <strong>index_type</strong>, <strong>:math:`mathcal{T_{reference}}`</strong>)</p>
-</div>
-</div>
 <div class="section" id="Inputs:">
-<h1>Inputs:<a class="headerlink" href="#Inputs:" title="Permalink to this headline">¶</a></h1>
+<h2>Inputs:<a class="headerlink" href="#Inputs:" title="Permalink to this headline">¶</a></h2>
 <p>The function accepts 5 inputs.</p>
 <p>1.<strong>indices</strong>: plane indices. 2. <strong>:math:`mathcal{T^{ref}}`</strong>: 3x3 Misorientation Matrix defined in T_reference. 3. <strong>:math:`mathcal{Λ^{po}_{p}}`</strong>: 3x3 components of a primitive f.c.c in supercell reference frame. 4. <strong>index_type</strong>: is a string that defines the type of indices that has been passed for the plane normal. There are 3 options. ‘miller_index’, ‘normal_go’, ‘normal_g’. The default value is ‘miller_index’ meaning that if you don’t specify any value for this field, GBpy
 assumes that your indices are defined as Miller Indices. If you choose the ‘normal_go’ option, it means that your indices are defined in the orthogonal basis, and finally ‘normal_g’ means that the indicies are defined in primitive basis of the underlying lattice. 5. <strong>T_reference</strong>: is a string that specifies the reference frame in which the misorientation matrix, i.e. Tref is expressed. There are 2 options. ‘g1’, ‘go1’. The default value is ‘g1’ meaning that if you don’t specify any value
@@ -542,7 +547,7 @@ for this field, GBpy assumes that your transormation matrix is defined with resp
 <p><strong>* Note that for the input types that are supposed to be strings you need to provide the exact same words.</strong></p>
 </div>
 <div class="section" id="Outputs:">
-<h1>Outputs:<a class="headerlink" href="#Outputs:" title="Permalink to this headline">¶</a></h1>
+<h2>Outputs:<a class="headerlink" href="#Outputs:" title="Permalink to this headline">¶</a></h2>
 <p>The function generates 3 outputs: 1. <strong>:math:`mathcal{Λ^{p1}_{2D CSL}}`</strong>: 3x2 matrix; A reduced 2D basis for the GB plane (2D CSL) expressed in the primitive basis of the crystal 1(lower crystal). Each column contains one of the basis vectors. 2. <strong>:math:`mathcal{Λ^{p1}_{Crystal1}}`</strong>: 3x2 matrix; A reduced 2D basis for the specified plane in crystal 1 (lower crystal) expressed in the primitive basis of the crystal 1(lower crystal). Each column contains one of the basis vectors. 3.
 <strong>:math:`mathcal{Λ^{p1}_{Crystal2}}`</strong>: 3x2 matrix; A reduced 2D basis for the specified plane in crystal 2 (upper crystal) expressed in the primitive basis of the crystal 1(lower crystal). Each column contains one of the basis vectors.</p>
 <p><strong>* Note the reference frame for all the bases are expressed with respect to the primitive basis of the crystal 1(lower crystal).</strong></p>
@@ -637,6 +642,7 @@ default variables and no overwriting is necessary.</p>
 </div>
 </div>
 </div>
+</div>
 
 
            </div>
@@ -646,10 +652,10 @@ default variables and no overwriting is necessary.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="3rd.html" class="btn btn-neutral float-right" title="3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="3rd.html" class="btn btn-neutral float-right" title="# 3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="1st.html" class="btn btn-neutral float-left" title="1.How to find the 2D Basis of a Plane using GBpy!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="1st.html" class="btn btn-neutral float-left" title="# 1.How to find the 2D Basis of a Plane using GBpy!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
