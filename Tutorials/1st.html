@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post35+g2b88bf9 documentation</title>
+  <title>How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post36+g8199d48 documentation</title>
   
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.post35+g2b88bf9
+                0.post36+g8199d48
               </div>
             
           
@@ -472,27 +472,24 @@ Indices. The downfall of such an approach is the fact that it does not have much
 <p>where:</p>
 <p><span class="math notranslate nohighlight">\(\Lambda_p^{po}\)</span> is a 3x3 matrix with its columns being the components of basis vectors of po in p basis.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">l_p_po</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.</span><span class="p">]])</span>
+<span></span><span class="n">l_p_po</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.</span><span class="p">]])</span>
 <span class="n">l_p_po</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-array([[0. , 0.5, 0.5],
-       [0.5, 0. , 0.5],
-       [0.5, 0.5, 0. ]])
-</pre></div></div>
+<div class="math notranslate nohighlight">
+$\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\\0.5 &amp; 0.5 &amp; 0\end{matrix}\right]$</div></div>
 </div>
-<p>From (6) we need to find the reciprocal of the <span class="math notranslate nohighlight">\(\Lambda_{p}_{po}\)</span>. To do so use the <code class="docutils literal notranslate"><span class="pre">bxt.find_csl_dsc.reciprocal_mat()</span></code>. For the sake of convenience we abbreviate the imported function <code class="docutils literal notranslate"><span class="pre">bxt.find_csl_dsc</span></code> as <code class="docutils literal notranslate"><span class="pre">fcd</span></code>:</p>
+<p>From (6) we need to find the reciprocal of the <span class="math notranslate nohighlight">\(\Lambda_{p}^{po}\)</span>. To do so use the <code class="docutils literal notranslate"><span class="pre">bxt.find_csl_dsc.reciprocal_mat()</span></code>. For the sake of convenience we abbreviate the imported function <code class="docutils literal notranslate"><span class="pre">bxt.find_csl_dsc</span></code> as <code class="docutils literal notranslate"><span class="pre">fcd</span></code>:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
@@ -512,19 +509,111 @@ array([[0. , 0.5, 0.5],
 <div class="math notranslate nohighlight">
 $\displaystyle \left[\begin{matrix}-1.0 &amp; 1.0 &amp; 1.0\\1.0 &amp; -1.0 &amp; 1.0\\1.0 &amp; 1.0 &amp; -1.0\end{matrix}\right]$</div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">l_po_rp</span> <span class="o">=</span> <span class="p">(</span><span class="n">l_rp_po</span><span class="p">)</span>
+<span></span><span class="n">l_po_rp</span> <span class="o">=</span> <span class="p">(</span><span class="n">l_rp_po</span><span class="p">)</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>
 <span class="n">l_po_rp</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="math notranslate nohighlight">
+$\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\\0.5 &amp; 0.5 &amp; 0\end{matrix}\right]$</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">n_po</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">n_rp</span> <span class="o">=</span> <span class="n">l_po_rp</span><span class="o">*</span><span class="n">n_po</span>
+<span class="n">n_rp</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="math notranslate nohighlight">
+$\displaystyle \left[\begin{matrix}2.0\\1.5\\2.5\end{matrix}\right]$</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">byxtal.integer_manipulations</span> <span class="k">as</span> <span class="nn">iman</span>
+<span class="n">ni_rp</span> <span class="o">=</span> <span class="n">iman</span><span class="o">.</span><span class="n">int_finder</span><span class="p">(</span><span class="n">n_rp</span><span class="p">)</span>
+<span class="n">ni_rp</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="math notranslate nohighlight">
+$\displaystyle \left[\begin{matrix}4\\3\\5\end{matrix}\right]$</div></div>
+</div>
 </div>
 <div class="section" id="Finding-the-Planar-Basis:">
 <h2>Finding the Planar Basis:<a class="headerlink" href="#Finding-the-Planar-Basis:" title="Permalink to this headline">¶</a></h2>
+<p>From the previous section we found the Miller Indices of an f.c.c plane with the normal along <span class="math notranslate nohighlight">\([2 3 1]\)</span> to be <span class="math notranslate nohighlight">\((4 3 5)\)</span>. Now all we have to do is to pass the obtained indices to <code class="docutils literal notranslate"><span class="pre">bp_basis</span></code>, which is a function that gets the Miller Indices as the input and returns a <span class="math notranslate nohighlight">\(3 \times 2\)</span> matrix, where each column is one of the two planar basis vectors. Note that the output of the <code class="docutils literal notranslate"><span class="pre">bp_basis</span></code> is always expressed in the primitive lattice basis. Also the obtained vectors are in the
+reduced form, meaning that the length of the obtained basis vectors are as close as possible. You can find the bp_basis function in the following path: <code class="docutils literal notranslate"><span class="pre">byxtal.bp_basis.bp_basis()</span></code>.</p>
+<p>To find the basis vector of a plane with the Miller Indices of <span class="math notranslate nohighlight">\((4 3 5)\)</span> use the following syntax:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">byxtal.bp_basis</span> <span class="k">as</span> <span class="nn">bpb</span>
+<span class="n">l_2D_p</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">bpb</span><span class="o">.</span><span class="n">bp_basis</span><span class="p">(</span><span class="n">ni_rp</span><span class="p">))</span>
+<span class="n">l_2D_p</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="math notranslate nohighlight">
+$\displaystyle \left[\begin{matrix}2.0 &amp; 1.0\\-1.0 &amp; 2.0\\-1.0 &amp; -2.0\end{matrix}\right]$</div></div>
+</div>
+<p>To express the obtained basis in the orthogonal basis (i.e. supercell f.c.c) one needs to perform the following conversion of bases:</p>
+<div class="math notranslate nohighlight">
+\[\Lambda_{2D}^{po} = \Lambda_{p}^{po} \times \Lambda_{2D}^{p}\]</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">l_2D_po</span> <span class="o">=</span> <span class="n">l_p_po</span><span class="o">*</span><span class="n">l_2D_p</span>
+<span class="n">l_2D_po</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="math notranslate nohighlight">
+$\displaystyle \left[\begin{matrix}-1.0 &amp; 0\\0.5 &amp; -0.5\\0.5 &amp; 1.5\end{matrix}\right]$</div></div>
+</div>
+<p>At the interface of a bicrystal, the <span class="math notranslate nohighlight">\(\Lambda_{2D}^{po}\)</span> provides a basis for the interface. If the two crystals are related to each other by a <span class="math notranslate nohighlight">\(\Sigma\)</span>-rotation, the obtained <span class="math notranslate nohighlight">\(\Lambda_{2D}^{po}\)</span> is the two-dimensional basis for the two-dimensional coincidence site lattice at the interface. Therefore, the bicrystal conserves its periodicity in the obtained 2D-basis. In other words the obtained basis is in fact the basis for the unit cell of the bicrystal and since it is in the
+reduced form, it is going to have the smallest skewness, hence ideal for constructing a periodic simulation box.</p>
+<p>The above process is frquently repeated for simulation of grain boundaries. Therefore, we have developed a set of functions that make the conversion of indices more convenient and will accept various conventions for the Miller Indices. Please refer to the grain boundary 2D-CSL tutorial for how to use these functions.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
