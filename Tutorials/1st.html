@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post50+gbf849fb documentation</title>
+  <title>1.How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post50+gb5ea07a documentation</title>
   
 
   
@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.How to find a reduced planar basis for a Grain Boundary using GBpy!" href="2nd.html" />
+    <link rel="next" title="2. How to find a reduced planar basis for a Grain Boundary using byxtal!" href="2nd.html" />
     <link rel="prev" title="Tutorials" href="index.html" /> 
 </head>
 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.post50+gbf849fb
+                0.post50+gb5ea07a
               </div>
             
           
@@ -98,14 +98,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../min_versions.html">Minimum Version of Python and NumPy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">How to find the 2D Basis of a Plane using GBpy!</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Miller-Indices-and-Common-Conventions:">Miller Indices and Common Conventions:</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.How to find the 2D Basis of a Plane using GBpy!</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Problem-Definition:">Problem Definition:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Finding-Miller-Indices:">Finding Miller Indices:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Finding-the-Planar-Basis:">Finding the Planar Basis:</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="2nd.html">2.How to find a reduced planar basis for a Grain Boundary using GBpy!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2nd.html">2. How to find a reduced planar basis for a Grain Boundary using byxtal!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2nd.html#Inputs:">Inputs:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2nd.html#Outputs:">Outputs:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3rd.html">3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy!</a></li>
 </ul>
 </li>
@@ -158,7 +159,7 @@
         
           <li><a href="index.html">Tutorials</a> &raquo;</li>
         
-      <li>How to find the 2D Basis of a Plane using GBpy!</li>
+      <li>1.How to find the 2D Basis of a Plane using GBpy!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -432,8 +433,8 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!">
-<h1>How to find the 2D Basis of a Plane using GBpy!<a class="headerlink" href="#How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="1.How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!">
+<h1>1.How to find the 2D Basis of a Plane using GBpy!<a class="headerlink" href="#1.How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!" title="Permalink to this headline">¶</a></h1>
 <p>Follow the installation manual to receive the byxtal package and import all the required packages that we need for completing this tutorial.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -446,8 +447,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="section" id="Miller-Indices-and-Common-Conventions:">
-<h2>Miller Indices and Common Conventions:<a class="headerlink" href="#Miller-Indices-and-Common-Conventions:" title="Permalink to this headline">¶</a></h2>
+<p>1.1 ## Miller Indices and Common Conventions:</p>
 <p>Miller Indices are often used to refer to a given crystallograohic plane in crystals. However various conventions are commonly used in determining the Miller Indices that can completely change the plane of reference. For this reason we would like to declare our conventions in defining the Miller Indices to avoid any confusions. By definition Miller Indices are defined as the reciprocal of intercepts of a crystallographic plane with the Unit Cell Basis Vectors. The confusion is often caused by
 the definition of the Unit Cell. In f.c.c and b.c.c lattices primitive basis vectors are non-orthogonal while the supercell basis vectors are orthogonal. Most importantly since the reciprocal and direct lattices are the identical in f.c.c and b.c.c, the Miller Indices (defined in supercell unit cell) are the same as the plane normal indices. This unique property and convenience of using an orthogonal set of basis vectors is the root cause of the bipartisan approach to defining the Miller
 Indices. The downfall of such an approach is the fact that it does not have much utility in other types of lattices e.g. hcp. Therefore in GBpy whenever we use the term Miller Indices, we are referring to the reciprocals of intercepts of a crystallographic plane with the primitive Basis Vectors.</p>
@@ -456,7 +456,6 @@ Indices. The downfall of such an approach is the fact that it does not have much
 <p>Miller Indices: normal vector indices of the plane defined in primitive reciprocal lattice</p>
 <p>The above interchangeable definitions are consistently used in GBpy for referring to Miller Indices. Other conventions in defining the Miller Indices are ultimately converted to the above definition.</p>
 <p>In the present tutorial we manually extract various Indices and demonstrate how they can be fed to the GBpy. In practice such conversions are not necessary as long as the user is consistent with the definitions of GBpy, and can be used for verifying the answer.</p>
-</div>
 <div class="section" id="Problem-Definition:">
 <h2>Problem Definition:<a class="headerlink" href="#Problem-Definition:" title="Permalink to this headline">¶</a></h2>
 <p>In this tutorial we would like to find the planar basis of a plane with <span class="math notranslate nohighlight">\([2 3 1]\)</span> normal vector defined in supercell f.c.c basis .</p>
@@ -614,15 +613,6 @@ $\displaystyle \left[\begin{matrix}-1.0 &amp; 0\\0.5 &amp; -0.5\\0.5 &amp; 1.5\e
 <p>At the interface of a bicrystal, the <span class="math notranslate nohighlight">\(\Lambda_{2D}^{po}\)</span> provides a basis for the interface. If the two crystals are related to each other by a <span class="math notranslate nohighlight">\(\Sigma\)</span>-rotation, the obtained <span class="math notranslate nohighlight">\(\Lambda_{2D}^{po}\)</span> is the two-dimensional basis for the two-dimensional coincidence site lattice at the interface. Therefore, the bicrystal conserves its periodicity in the obtained 2D-basis. In other words the obtained basis is in fact the basis for the unit cell of the bicrystal and since it is in the
 reduced form, it is going to have the smallest skewness, hence ideal for constructing a periodic simulation box.</p>
 <p>The above process is frquently repeated for simulation of grain boundaries. Therefore, we have developed a set of functions that make the conversion of indices more convenient and will accept various conventions for the Miller Indices. Please refer to the grain boundary 2D-CSL tutorial for how to use these functions.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 
@@ -634,7 +624,7 @@ reduced form, it is going to have the smallest skewness, hence ideal for constru
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="2nd.html" class="btn btn-neutral float-right" title="2.How to find a reduced planar basis for a Grain Boundary using GBpy!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="2nd.html" class="btn btn-neutral float-right" title="2. How to find a reduced planar basis for a Grain Boundary using byxtal!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
