@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title># 1.How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post50+g15e1549 documentation</title>
+  <title># 1.How to find the 2D Basis of a Plane using GBpy! &mdash; byxtal 0.post50+g63ba7e0 documentation</title>
   
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.post50+g15e1549
+                0.post50+g63ba7e0
               </div>
             
           
@@ -440,7 +440,7 @@ div.rendered_html tbody tr:hover {
 <h1># 1.How to find the 2D Basis of a Plane using GBpy!<a class="headerlink" href="##-1.How-to-find-the-2D-Basis-of-a-Plane-using-GBpy!" title="Permalink to this headline">¶</a></h1>
 <p>Follow the installation manual to receive the byxtal package and import all the required packages that we need for completing this tutorial.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -469,13 +469,14 @@ Indices. The downfall of such an approach is the fact that it does not have much
 <h1>Finding Miller Indices:<a class="headerlink" href="#Finding-Miller-Indices:" title="Permalink to this headline">¶</a></h1>
 <p>A vector in the space can be expressed in any basis, of course with varying components. Vector <span class="math notranslate nohighlight">\(\vec{v}\)</span> in basis A can be expressed as:</p>
 <div class="math notranslate nohighlight">
-\[\vec{v} = \mathcal{B}_A v_A\]</div>
-<p>Similarly we can define the plane normal <span class="math notranslate nohighlight">\(\vec{n}\)</span> in any basis. For instance we can define <span class="math notranslate nohighlight">\(\vec{n}\)</span> in supercell f.c.c basis (<span class="math notranslate nohighlight">\(\mathcal{B}_{po}\)</span>) or in primitive f.c.c basis <span class="math notranslate nohighlight">\(\mathcal{B}_p\)</span>; we can write:</p>
+\begin{equation}
+\vec{v} = \mathcal{B}_A v_A
+\end{equation}</div><p>Similarly we can define the plane normal <span class="math notranslate nohighlight">\(\vec{n}\)</span> in any basis. For instance we can define <span class="math notranslate nohighlight">\(\vec{n}\)</span> in supercell f.c.c basis (<span class="math notranslate nohighlight">\(\mathcal{B}_{po}\)</span>) or in primitive f.c.c basis <span class="math notranslate nohighlight">\(\mathcal{B}_p\)</span>; we can write:</p>
 <p>We can express the right hand side of the (2) as:</p>
 <p>where:</p>
 <p><span class="math notranslate nohighlight">\(\Lambda_p^{po}\)</span> is a 3x3 matrix with its columns being the components of basis vectors of po in p basis.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -485,7 +486,7 @@ Indices. The downfall of such an approach is the fact that it does not have much
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -494,7 +495,7 @@ $\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\
 </div>
 <p>From (6) we need to find the reciprocal of the <span class="math notranslate nohighlight">\(\Lambda_{p}^{po}\)</span>. To do so use the <code class="docutils literal notranslate"><span class="pre">bxt.find_csl_dsc.reciprocal_mat()</span></code>. For the sake of convenience we abbreviate the imported function <code class="docutils literal notranslate"><span class="pre">bxt.find_csl_dsc</span></code> as <code class="docutils literal notranslate"><span class="pre">fcd</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -505,7 +506,7 @@ $\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -513,7 +514,7 @@ $\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\
 $\displaystyle \left[\begin{matrix}-1.0 &amp; 1.0 &amp; 1.0\\1.0 &amp; -1.0 &amp; 1.0\\1.0 &amp; 1.0 &amp; -1.0\end{matrix}\right]$</div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -523,7 +524,7 @@ $\displaystyle \left[\begin{matrix}-1.0 &amp; 1.0 &amp; 1.0\\1.0 &amp; -1.0 &amp
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -531,7 +532,7 @@ $\displaystyle \left[\begin{matrix}-1.0 &amp; 1.0 &amp; 1.0\\1.0 &amp; -1.0 &amp
 $\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\\0.5 &amp; 0.5 &amp; 0\end{matrix}\right]$</div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -542,7 +543,7 @@ $\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -550,7 +551,7 @@ $\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\
 $\displaystyle \left[\begin{matrix}2.0\\1.5\\2.5\end{matrix}\right]$</div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -561,7 +562,7 @@ $\displaystyle \left[\begin{matrix}2.0\\1.5\\2.5\end{matrix}\right]$</div></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -575,7 +576,7 @@ $\displaystyle \left[\begin{matrix}4\\3\\5\end{matrix}\right]$</div></div>
 reduced form, meaning that the length of the obtained basis vectors are as close as possible. You can find the bp_basis function in the following path: <code class="docutils literal notranslate"><span class="pre">byxtal.bp_basis.bp_basis()</span></code>.</p>
 <p>To find the basis vector of a plane with the Miller Indices of <span class="math notranslate nohighlight">\((4 3 5)\)</span> use the following syntax:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -586,7 +587,7 @@ reduced form, meaning that the length of the obtained basis vectors are as close
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -595,9 +596,10 @@ $\displaystyle \left[\begin{matrix}2.0 &amp; 1.0\\-1.0 &amp; 2.0\\-1.0 &amp; -2.
 </div>
 <p>To express the obtained basis in the orthogonal basis (i.e. supercell f.c.c) one needs to perform the following conversion of bases:</p>
 <div class="math notranslate nohighlight">
-\[\Lambda_{2D}^{po} = \Lambda_{p}^{po} \times \Lambda_{2D}^{p}\]</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+\begin{equation}
+\Lambda_{2D}^{po} = \Lambda_{p}^{po} \times \Lambda_{2D}^{p}
+\end{equation}</div><div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -607,7 +609,7 @@ $\displaystyle \left[\begin{matrix}2.0 &amp; 1.0\\-1.0 &amp; 2.0\\-1.0 &amp; -2.
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
