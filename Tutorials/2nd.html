@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title># 2. How to find a reduced planar basis for a Grain Boundary using byxtal! &mdash; byxtal 0.post50+g63ba7e0 documentation</title>
+  <title># 2. How to find a reduced planar basis for a Grain Boundary using byxtal! &mdash; byxtal 0.post50+ga127336 documentation</title>
   
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.post50+g63ba7e0
+                0.post50+ga127336
               </div>
             
           
@@ -537,8 +537,11 @@ array([[0. , 0.5, 0.5],
 <h1>2.4 Finding the GB Planar Basis (2D CSL Basis):<a class="headerlink" href="#2.4-Finding-the-GB-Planar-Basis-(2D-CSL-Basis):" title="Permalink to this headline">¶</a></h1>
 <p>The function specifically developed for this task is named <strong>gb_2d_csl()</strong> that can be accessed from <strong>byxtal.bp_basis.gb_2d_csl()</strong>.</p>
 <p>Let’s go over all the inputs, outputs and the options that are available for gb_2d_csl.</p>
-<p><span class="math notranslate nohighlight">\(\mathcal{Λ^{p1}_{2D CSL}}\)</span>,<span class="math notranslate nohighlight">\(\mathcal{Λ^{p1}_{Crystal1}}\)</span>, <span class="math notranslate nohighlight">\(\mathcal{Λ^{p1}_{Crystal2}}\)</span> = <strong>gb_2d_csl</strong> (<strong>indices</strong>, <span class="math notranslate nohighlight">\(\mathcal{T^{ref}}\)</span>, <span class="math notranslate nohighlight">\(\mathcal{Λ^{po}_{p}}\)</span>, <strong>index_type</strong>, <strong>:math:`mathcal{T_{reference}}`</strong>)</p>
-<div class="section" id="Inputs:">
+<div class="math notranslate nohighlight">
+\begin{equation}
+\mathcal{Λ^{p1}_{2D CSL}}, \mathcal{Λ^{p1}_{Crystal1}}, \mathcal{Λ^{p1}_{Crystal2}} =
+\mathbf{gb\_2d\_csl}(\mathbf{indices}, \mathcal{T^{ref}}, \mathcal{Λ^{po}_{p}}, \mathbf{index\_type}, \mathcal{T_{reference}})
+\end{equation}</div><div class="section" id="Inputs:">
 <h2>Inputs:<a class="headerlink" href="#Inputs:" title="Permalink to this headline">¶</a></h2>
 <p>The function accepts 5 inputs.</p>
 <p>1.<strong>indices</strong>: plane indices. 2. <strong>:math:`mathcal{T^{ref}}`</strong>: 3x3 Misorientation Matrix defined in T_reference. 3. <strong>:math:`mathcal{Λ^{po}_{p}}`</strong>: 3x3 components of a primitive f.c.c in supercell reference frame. 4. <strong>index_type</strong>: is a string that defines the type of indices that has been passed for the plane normal. There are 3 options. ‘miller_index’, ‘normal_go’, ‘normal_g’. The default value is ‘miller_index’ meaning that if you don’t specify any value for this field, GBpy
