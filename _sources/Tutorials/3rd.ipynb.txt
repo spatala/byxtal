@@ -268,7 +268,10 @@
     "\n",
     "and can be found using the similarity transformation as:\n",
     "\n",
-    "$\\mathcal{T^{po}_{p1→p2}=Λ^{po}_{p} × T^{p}_{p1→p2} × Λ^{p}_{po}}$\n",
+    "\\begin{equation}\n",
+    "\\mathcal{T^{po}_{p1→p2}=Λ^{po}_{p} × T^{p}_{p1→p2} × Λ^{p}_{po}}\n",
+    "\\end{equation}\n",
+    "\n",
     "\n",
     "where $\\mathcal{Λ^{po}_{p}}$ is a 3x3 matrix which defines the components of the basis of the primitve lattice in an orthogonal reference frame attached to the same lattice. Therefore, Λpop is a constant for each lattice. Λpop for various lattices can be obtained from the lattice class in byxtal. For example, the components of a primitive f.c.c. lattice with lattice parameter a=1.0Å, $\\mathcal{Λ^{po}_{p}}$, is defined as:"
    ]
@@ -378,7 +381,9 @@
     "\n",
     "__find_csl_dsc__ needs two inputs and provides the CSL and DSC lattices in primitive basis. The syntax is as follows:\n",
     "\n",
-    "$\\mathcal{Λ^{p1}_{CSL}, Λ^{p1}_{DSC}}$ = __find_csl_dsc__ ($\\mathcal{Λ^{po}_p, T^p_{p1→p2}})$\n",
+    "\\begin{equation}\n",
+    "\\mathcal{Λ^{p1}_{CSL}, Λ^{p1}_{DSC}} = \\mathbf{find\\_csl\\_dsc}(\\mathcal{Λ^{po}_p, T^p_{p1→p2}})\n",
+    "\\end{equation}\n",
     "\n",
     "\n",
     "Follow the steps below to obtain the CSL and DSC lattices using __byxtal__:\n",
@@ -434,7 +439,9 @@
    "source": [
     "To find the $\\mathcal{Λ^{po1}_{CSL}}$ and $\\mathcal{Λ^{po1}_{DSC}}$ , one must change the reference frame to the orthogonal basis as follows:\n",
     "\n",
-    "$\\mathcal{Λ^{po1}_{CSL}}$= $\\mathcal{Λ^{po}_{p}}$ × $\\mathcal{Λ^{po1}_{DSC}}$\n",
+    "\\begin{equation}\n",
+    "\\mathcal{Λ^{po1}_{CSL}}$= \\mathcal{Λ^{po}_{p}}$ \\times \\mathcal{Λ^{po1}_{DSC}}\n",
+    "\\end{equation}\n",
     "\n",
     "Hence we can obtain the $\\mathcal{Λ^{po1}_{CSL}}$ as:"
    ]
@@ -455,7 +462,10 @@
    "source": [
     "Also we have:\n",
     "\n",
-    "$\\mathcal{Λ^{po1}_{DSC}}$ = $\\mathcal{Λ^{po}_{p}}$ × $\\mathcal{Λ^{p1}_{DSC}}$\n",
+    "\\begin{equation}\n",
+    "\\mathcal{Λ^{po1}_{DSC}} = \\mathcal{Λ^{po}_{p}} \\times \\mathcal{Λ^{p1}_{DSC}}\n",
+    "\\end{equation}\n",
+    "\n",
     "\n",
     "Therefore we can obtain the $\\mathcal{Λ^{po1}_{DSC}}$ as:"
    ]

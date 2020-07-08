@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title># 3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy! &mdash; byxtal 0.post50+ga127336 documentation</title>
+  <title># 3.How to find the CSL/DSC lattices of a Σ-rotation using GBpy! &mdash; byxtal 0.post50+g7d87287 documentation</title>
   
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.post50+ga127336
+                0.post50+g7d87287
               </div>
             
           
@@ -661,8 +661,10 @@ your system. The following steps will help you navigate through the byxtal packa
 <p>By convention we use the <strong>p</strong> for primitive basis and <strong>po</strong> for orthogonal basis of a lattice.</p>
 <p>If we define the transformation matrix of the Σ 3 (that transforms crystal p1 to p2) in the primitive basis as Tpp1→p2, same transformation in orthogonal basis of the lattice (e.g. supercell lattice) will be defined as Tpop1→p2</p>
 <p>and can be found using the similarity transformation as:</p>
-<p><span class="math notranslate nohighlight">\(\mathcal{T^{po}_{p1→p2}=Λ^{po}_{p} × T^{p}_{p1→p2} × Λ^{p}_{po}}\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(\mathcal{Λ^{po}_{p}}\)</span> is a 3x3 matrix which defines the components of the basis of the primitve lattice in an orthogonal reference frame attached to the same lattice. Therefore, Λpop is a constant for each lattice. Λpop for various lattices can be obtained from the lattice class in byxtal. For example, the components of a primitive f.c.c. lattice with lattice parameter a=1.0Å, <span class="math notranslate nohighlight">\(\mathcal{Λ^{po}_{p}}\)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\mathcal{T^{po}_{p1→p2}=Λ^{po}_{p} × T^{p}_{p1→p2} × Λ^{p}_{po}}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(\mathcal{Λ^{po}_{p}}\)</span> is a 3x3 matrix which defines the components of the basis of the primitve lattice in an orthogonal reference frame attached to the same lattice. Therefore, Λpop is a constant for each lattice. Λpop for various lattices can be obtained from the lattice class in byxtal. For example, the components of a primitive f.c.c. lattice with lattice parameter a=1.0Å, <span class="math notranslate nohighlight">\(\mathcal{Λ^{po}_{p}}\)</span>, is defined as:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -734,8 +736,10 @@ your system. The following steps will help you navigate through the byxtal packa
 </div>
 <p>To find the CSL and DSC lattices the user should use the function <strong>find_csl_dsc</strong>. This function is available in a file with the same name. To use this function first you must import byxtal as a package or directly import the function from the file.</p>
 <p><strong>find_csl_dsc</strong> needs two inputs and provides the CSL and DSC lattices in primitive basis. The syntax is as follows:</p>
-<p><span class="math notranslate nohighlight">\(\mathcal{Λ^{p1}_{CSL}, Λ^{p1}_{DSC}}\)</span> = <strong>find_csl_dsc</strong> (<span class="math notranslate nohighlight">\(\mathcal{Λ^{po}_p, T^p_{p1→p2}})\)</span></p>
-<p>Follow the steps below to obtain the CSL and DSC lattices using <strong>byxtal</strong>:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\mathcal{Λ^{p1}_{CSL}, Λ^{p1}_{DSC}} = \mathbf{find\_csl\_dsc}(\mathcal{Λ^{po}_p, T^p_{p1→p2}})
+\end{equation}</div><p>Follow the steps below to obtain the CSL and DSC lattices using <strong>byxtal</strong>:</p>
 <p>First import the appropriate module from <strong>byxtal</strong>. Next call the <strong>find_csl_dsc</strong> function with the following syntax:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -768,8 +772,10 @@ your system. The following steps will help you navigate through the byxtal packa
 </div>
 </div>
 <p>To find the <span class="math notranslate nohighlight">\(\mathcal{Λ^{po1}_{CSL}}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{Λ^{po1}_{DSC}}\)</span> , one must change the reference frame to the orthogonal basis as follows:</p>
-<p><span class="math notranslate nohighlight">\(\mathcal{Λ^{po1}_{CSL}}\)</span>= <span class="math notranslate nohighlight">\(\mathcal{Λ^{po}_{p}}\)</span> × <span class="math notranslate nohighlight">\(\mathcal{Λ^{po1}_{DSC}}\)</span></p>
-<p>Hence we can obtain the <span class="math notranslate nohighlight">\(\mathcal{Λ^{po1}_{CSL}}\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\mathcal{Λ^{po1}_{CSL}}$= \mathcal{Λ^{po}_{p}}$ \times \mathcal{Λ^{po1}_{DSC}}
+\end{equation}</div><p>Hence we can obtain the <span class="math notranslate nohighlight">\(\mathcal{Λ^{po1}_{CSL}}\)</span> as:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -781,8 +787,10 @@ your system. The following steps will help you navigate through the byxtal packa
 </div>
 </div>
 <p>Also we have:</p>
-<p><span class="math notranslate nohighlight">\(\mathcal{Λ^{po1}_{DSC}}\)</span> = <span class="math notranslate nohighlight">\(\mathcal{Λ^{po}_{p}}\)</span> × <span class="math notranslate nohighlight">\(\mathcal{Λ^{p1}_{DSC}}\)</span></p>
-<p>Therefore we can obtain the <span class="math notranslate nohighlight">\(\mathcal{Λ^{po1}_{DSC}}\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\mathcal{Λ^{po1}_{DSC}} = \mathcal{Λ^{po}_{p}} \times \mathcal{Λ^{p1}_{DSC}}
+\end{equation}</div><p>Therefore we can obtain the <span class="math notranslate nohighlight">\(\mathcal{Λ^{po1}_{DSC}}\)</span> as:</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
