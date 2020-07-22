@@ -8,10 +8,10 @@
         :target: https://pypi.python.org/pypi/byxtal
 
 
-Python package for doing science.
+Python package for bicrystallographic computations.
 
 * Free software: 3-clause BSD license
-* Documentation: https://leilakhalili87.github.io/byxtal.
+* Documentation: https://spatala.github.io/byxtal.
 
 Features
 --------
