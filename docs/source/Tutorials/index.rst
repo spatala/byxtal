@@ -7,6 +7,6 @@ Tutorials
 
 .. toctree::
 
-    1st
-    2nd
-    3rd
+    Conventions-Notations
+    enumerate_byxtal
+    Basis_2D_Plane
