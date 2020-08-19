@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 .. image:: https://user-images.githubusercontent.com/33406434/86373689-aaac1a80-bc51-11ea-8bd4-8000d63eb87c.png
-        :target: https://travis-ci.org/leilakhalili87/byxtal
+        :target: https://travis-ci.org/spatala/byxtal
 
 
 Welcome to byxtal package.
