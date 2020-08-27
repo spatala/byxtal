@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Computing the bicrystallographic aspects of Misorientations (FCC lattice) &mdash; byxtal 0.post65+ge34f2ed documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Determine the 2D Basis of a Plane" href="Basis_2D_Plane.html" />
+    <link rel="prev" title="Conventions and Notations used in byxtal" href="Conventions-Notations.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> byxtal
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.post65+ge34f2ed
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release-history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../min_versions.html">Minimum Version of Python and NumPy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Conventions-Notations.html">Conventions and Notations used in <strong>byxtal</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Computing the bicrystallographic aspects of Misorientations (FCC lattice)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Basis_2D_Plane.html">Determine the 2D Basis of a Plane</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Modules.html">Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">byxtal</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Computing the bicrystallographic aspects of Misorientations (FCC lattice)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Tutorials/enumerate_byxtal.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Computing-the-bicrystallographic-aspects-of-Misorientations-(FCC-lattice)">
+<h1>Computing the bicrystallographic aspects of Misorientations (FCC lattice)<a class="headerlink" href="#Computing-the-bicrystallographic-aspects-of-Misorientations-(FCC-lattice)" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">byxtal.lattice</span> <span class="k">as</span> <span class="nn">gbl</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">byxtal.csl_utility_functions</span> <span class="k">as</span> <span class="nn">cuf</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">byxtal.find_csl_dsc</span> <span class="k">as</span> <span class="nn">fcd</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">byxtal.tools</span> <span class="k">as</span> <span class="nn">bxt</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">byxtal.misorient_fz</span> <span class="k">as</span> <span class="nn">mfz</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">byxtal.disorient_symm_props</span> <span class="k">as</span> <span class="nn">dsp</span><span class="p">;</span>
+<span class="kn">from</span> <span class="nn">sympy.matrices</span> <span class="kn">import</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">eye</span><span class="p">,</span> <span class="n">zeros</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>Define the lattice: Here we use the <code class="docutils literal notranslate"><span class="pre">lattice</span></code> module and use the default option. The default option will initialize a cubic lattice with <span class="math notranslate nohighlight">\(a = 1\)</span>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">l1</span> <span class="o">=</span> <span class="n">gbl</span><span class="o">.</span><span class="n">Lattice</span><span class="p">()</span>
+<span class="n">sig_type</span> <span class="o">=</span> <span class="s1">&#39;common&#39;</span>
+<span class="n">l_p_po</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">(</span><span class="n">l1</span><span class="o">.</span><span class="n">l_p_po</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>First, initialize the <span class="math notranslate nohighlight">\(\Sigma\)</span> number of interest. Note that for cubic crystals, CSL rotations exist only for odd-values of <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sig_num</span> <span class="o">=</span> <span class="mi">39</span>
+</pre></div>
+</div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">csl_rotations</span></code> in the module <code class="docutils literal notranslate"><span class="pre">byxtal.csl_utility_functions</span></code>, will compute the <span class="math notranslate nohighlight">\(\Sigma\)</span> rotation (a misorientation) in the reference frame of the primitive cell.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">cuf</span><span class="o">.</span><span class="n">csl_rotations</span><span class="p">(</span><span class="n">sig_num</span><span class="p">,</span> <span class="n">sig_type</span><span class="p">,</span> <span class="n">l1</span><span class="p">);</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;N&#39;: array([[[ 21., -24.,  12.],
+        [ 31.,  37.,   1.],
+        [-14.,  16.,  31.]],
+
+       [[ 35., -10.,  14.],
+        [ 14.,  35., -10.],
+        [-10.,  14.,  35.]]]), &#39;D&#39;: array([[[39., 39., 39.],
+        [39., 39., 39.],
+        [39., 39., 39.]],
+
+       [[39., 39., 39.],
+        [39., 39., 39.],
+        [39., 39., 39.]]])}
+</pre></div></div>
+</div>
+<p>As can be obsrved from the output above, there exist multiple rotations that correspond to a given <span class="math notranslate nohighlight">\(\Sigma\)</span> number. This is usually the case when <span class="math notranslate nohighlight">\(\Sigma\)</span> is large. In the following, we will compute the bycrystallography properties for one of the misorientations (e.g. corresponding to the second rotation in the array). The bycrystallography properties of interest are as follows: + The Coincidence Site Lattice (CSL). For more details, refer to this
+<a class="reference external" href="https://www.tf.uni-kiel.de/matwis/amat/def_en/kap_7/backbone/r7_1_2.html">tutorial</a>. + The DSC lattice that defines the <strong>D</strong>isplacements that are <strong>S</strong>ymmetry <strong>C</strong>onserving (also referred to as the <strong>D</strong>isplacement <strong>S</strong>hift <strong>C</strong>omplete). For more details, refer to this <a class="reference external" href="https://www.tf.uni-kiel.de/matwis/amat/def_en/kap_7/backbone/r7_1_3.html">tutorial</a> + The boundary-plane symmetry group, and the symmetry axes. For more details refer to the following article: -
+<a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/14786435.2012.722700?casa_token=4nDY3LLK9vQAAAAA%3AgECePf6JCdOPx6K_7cfxrJATdUAwMOSe3-F5NIdpjuI26uAPQfkkSTa61np1AWoDGQ3wcJrh3SS9">**Symmetries in the representation of grain boundary-plane distributions**</a>. Patala, S., &amp; Schuh, C. A. (2013). . Philosophical Magazine, 93(5), 524-573.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ct1</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">sig_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sig_num</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ct1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sig_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+39_2
+</pre></div></div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(\Sigma\)</span>-misorientation is a rotation operation that is defined in the <span class="math notranslate nohighlight">\(P\)</span> lattice reference frame and is computed as shown in the code snippet below. We use the variable <code class="docutils literal notranslate"><span class="pre">T_p1top2_p1</span></code> denote the <strong>T</strong>ransformation (<code class="docutils literal notranslate"><span class="pre">T</span></code>) from the <span class="math notranslate nohighlight">\(P1\)</span> lattice to the <span class="math notranslate nohighlight">\(P2\)</span> lattice (<code class="docutils literal notranslate"><span class="pre">p1top2</span></code>) expressed in the <span class="math notranslate nohighlight">\(P1\)</span> reference frame (<code class="docutils literal notranslate"><span class="pre">p1</span></code>).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">T_p1top2_p1</span> <span class="o">=</span> <span class="n">s1</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">][</span><span class="n">ct1</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">s1</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">][</span><span class="n">ct1</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">T_p1top2_p1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 0.8974359  -0.25641026  0.35897436]
+ [ 0.35897436  0.8974359  -0.25641026]
+ [-0.25641026  0.35897436  0.8974359 ]]
+</pre></div></div>
+</div>
+<p>The <strong>CSL</strong> and the <strong>DSC</strong> lattice are determined using the <code class="docutils literal notranslate"><span class="pre">find_csl_dsc</span></code> function in the <code class="docutils literal notranslate"><span class="pre">byxtal.find_csl_dsc</span></code> module. The lattices are expressed using the basis vectors of the primitive cell <span class="math notranslate nohighlight">\((P1)\)</span>. The following varibales are used: + <code class="docutils literal notranslate"><span class="pre">l_csl_p</span></code>: The lattice (<code class="docutils literal notranslate"><span class="pre">l</span></code>) of the CSL (<code class="docutils literal notranslate"><span class="pre">csl</span></code>) expressed in the primitive reference frame (<code class="docutils literal notranslate"><span class="pre">p</span></code>). + <code class="docutils literal notranslate"><span class="pre">l_dsc_p</span></code>: The lattice (<code class="docutils literal notranslate"><span class="pre">l</span></code>) of the DSC (<code class="docutils literal notranslate"><span class="pre">dsc</span></code>) expressed in the primitive reference frame (<code class="docutils literal notranslate"><span class="pre">p</span></code>).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">l_csl_p</span><span class="p">,</span> <span class="n">l_dsc_p</span> <span class="o">=</span> <span class="n">fcd</span><span class="o">.</span><span class="n">find_csl_dsc</span><span class="p">(</span><span class="n">l_p_po</span><span class="p">,</span> <span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+l_csl_po is defined in the l_p1_po lattice
+l_csl_po is defined in the l_p2_po lattice
+V(csl_po)/V(p1_po) = Sigma =  39
++++++++++++++++++++++++++++++++++++
+l_p1_po is defined in the l_dsc_po lattice
+l_dsc_po is defined in the l_dsc_po lattice
+l_csl_po is defined in the l_dsc_po lattice
+l_dsc_po*Sigma is an integer matrix
+V(p1_po)/V(dsc_po) = Sigma =  39
+[True, True]
+</pre></div></div>
+</div>
+<p>Now, we will determine the boundary-plane symmetry group (and the axes) for the <span class="math notranslate nohighlight">\(\Sigma\)</span> misorientation. The following steps are followed: + First, we need to cnvert the rotation in the <span class="math notranslate nohighlight">\(P\)</span> reference frame (<code class="docutils literal notranslate"><span class="pre">T_p1top2_p1</span></code>) to <span class="math notranslate nohighlight">\(PO\)</span> reference frame (<code class="docutils literal notranslate"><span class="pre">T_p1top2_po1</span></code>). + The misorientation is converted to a quaternion using the <code class="docutils literal notranslate"><span class="pre">mat2quat</span></code> function in the <code class="docutils literal notranslate"><span class="pre">byxtal.tools</span></code> module. + The disorientation is obtained using the <code class="docutils literal notranslate"><span class="pre">misorient_fz</span></code> function in the <code class="docutils literal notranslate"><span class="pre">byxtal.misorient_fz</span></code>
+module. + The bicrystallography symmetry properties are computed using <code class="docutils literal notranslate"><span class="pre">disorient_symm_props</span></code> function in the <code class="docutils literal notranslate"><span class="pre">byxtal.disorient_symm_props</span></code> module. The outputs are stored in the following variables: - <code class="docutils literal notranslate"><span class="pre">bp_symm_grp</span></code>: The point group symmetry corresponding to the given misorientation. - <code class="docutils literal notranslate"><span class="pre">symm_grp_ax</span></code>: The axes of the symmetry point group are stored in a <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix. The columns correspond to the <span class="math notranslate nohighlight">\(\hat{e}_x\)</span>, <span class="math notranslate nohighlight">\(\hat{e}_y\)</span>, <span class="math notranslate nohighlight">\(\hat{e}_z\)</span> axes of the symmetry
+point group.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">l_p_po</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">l_p_po</span>
+<span class="n">l_po_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">l_p_po</span><span class="p">)</span>
+<span class="n">T_p1top2_po1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_p_po</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="n">l_po_p</span><span class="p">))</span>
+<span class="n">quat1</span> <span class="o">=</span> <span class="n">bxt</span><span class="o">.</span><span class="n">mat2quat</span><span class="p">(</span><span class="n">T_p1top2_po1</span><span class="p">)</span>
+<span class="n">dis_quat1</span> <span class="o">=</span> <span class="n">mfz</span><span class="o">.</span><span class="n">misorient_fz</span><span class="p">(</span><span class="n">quat1</span><span class="p">,</span> <span class="n">l1</span><span class="o">.</span><span class="n">cryst_ptgrp</span><span class="p">)</span>
+<span class="n">x_g</span><span class="p">,</span> <span class="n">y_g</span><span class="p">,</span> <span class="n">z_g</span><span class="p">,</span> <span class="n">bp_symm_grp</span> <span class="o">=</span> <span class="n">dsp</span><span class="o">.</span><span class="n">disorient_symm_props</span><span class="p">(</span><span class="n">dis_quat1</span><span class="p">,</span> <span class="n">l1</span><span class="o">.</span><span class="n">cryst_ptgrp</span><span class="p">)</span>
+<span class="n">symm_grp_ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">x_g</span><span class="p">,</span> <span class="n">y_g</span><span class="p">,</span> <span class="n">z_g</span><span class="p">)))</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bp_symm_grp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">symm_grp_ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+D3d
+[[ 0.79259392  0.19611614  0.57735027]
+ [-0.56613852  0.58834841  0.57735027]
+ [-0.22645541 -0.78446454  0.57735027]]
+</pre></div></div>
+</div>
+<p>One could compute the bycrystallography properties of a large number of <span class="math notranslate nohighlight">\(\Sigma\)</span> rotation by using the code snippets discussed above and putting all of them together in a for-loop. This is shown in the code below.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">n1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">n2</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span> <span class="n">sig_nums</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+
+<span class="n">num_sigs</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">sig_mats</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">csl_mats</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">dsc_mats</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">csl_bp_props</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="k">for</span> <span class="n">sig_num</span> <span class="ow">in</span> <span class="n">sig_nums</span><span class="p">:</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">cuf</span><span class="o">.</span><span class="n">csl_rotations</span><span class="p">(</span><span class="n">sig_num</span><span class="p">,</span> <span class="n">sig_type</span><span class="p">,</span> <span class="n">l1</span><span class="p">);</span>
+    <span class="k">for</span> <span class="n">ct1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">s1</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">bp_symm_grp_props</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="n">sig_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">sig_num</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">ct1</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sig_id</span><span class="p">)</span>
+        <span class="c1">#### Store the sigma-misorientation (in &#39;p&#39; reference frame)</span>
+        <span class="n">T_p1top2_p1</span> <span class="o">=</span> <span class="n">s1</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">][</span><span class="n">ct1</span><span class="p">]</span><span class="o">/</span><span class="n">s1</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">][</span><span class="n">ct1</span><span class="p">];</span>
+        <span class="n">sig_mats</span><span class="p">[</span><span class="n">sig_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_p1top2_p1</span><span class="p">;</span>
+
+        <span class="n">l_csl_p</span><span class="p">,</span> <span class="n">l_dsc_p</span> <span class="o">=</span> <span class="n">fcd</span><span class="o">.</span><span class="n">find_csl_dsc</span><span class="p">(</span><span class="n">l_p_po</span><span class="p">,</span> <span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+        <span class="n">csl_mats</span><span class="p">[</span><span class="n">sig_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">l_csl_p</span><span class="p">;</span> <span class="n">dsc_mats</span><span class="p">[</span><span class="n">sig_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">l_dsc_p</span><span class="p">;</span>
+
+        <span class="c1">#### Generate boundary-planpe orientations</span>
+        <span class="n">l_p_po</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">l_p_po</span><span class="p">;</span> <span class="n">l_po_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">l_p_po</span><span class="p">);</span>
+        <span class="n">T_p1top2_po1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_p_po</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="n">l_po_p</span><span class="p">));</span>
+
+        <span class="c1">## Find the corresponding disorientation</span>
+        <span class="n">quat1</span> <span class="o">=</span> <span class="n">bxt</span><span class="o">.</span><span class="n">mat2quat</span><span class="p">(</span><span class="n">T_p1top2_po1</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">quat1</span><span class="p">);</span>
+        <span class="n">dis_quat1</span> <span class="o">=</span> <span class="n">mfz</span><span class="o">.</span><span class="n">misorient_fz</span><span class="p">(</span><span class="n">quat1</span><span class="p">,</span> <span class="n">l1</span><span class="o">.</span><span class="n">cryst_ptgrp</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">dis_quat1</span><span class="p">);</span>
+        <span class="n">x_g</span><span class="p">,</span> <span class="n">y_g</span><span class="p">,</span> <span class="n">z_g</span><span class="p">,</span> <span class="n">bp_symm_grp</span> <span class="o">=</span> <span class="n">dsp</span><span class="o">.</span><span class="n">disorient_symm_props</span><span class="p">(</span><span class="n">dis_quat1</span><span class="p">,</span> <span class="n">l1</span><span class="o">.</span><span class="n">cryst_ptgrp</span><span class="p">)</span>
+        <span class="n">symm_grp_ax</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">x_g</span><span class="p">,</span> <span class="n">y_g</span><span class="p">,</span> <span class="n">z_g</span><span class="p">)))</span><span class="o">.</span><span class="n">transpose</span><span class="p">();</span>
+        <span class="n">bp_symm_grp_props</span><span class="p">[</span><span class="s1">&#39;symm_grp_ax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">symm_grp_ax</span><span class="p">;</span>
+        <span class="n">bp_symm_grp_props</span><span class="p">[</span><span class="s1">&#39;bp_symm_grp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bp_symm_grp</span><span class="p">;</span>
+        <span class="n">csl_bp_props</span><span class="p">[</span><span class="n">sig_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">bp_symm_grp_props</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">pickle</span> <span class="k">as</span> <span class="nn">pkl</span><span class="p">;</span>
+<span class="n">pkl_name</span> <span class="o">=</span> <span class="s1">&#39;cF_Id_csl_common_rotations.pkl&#39;</span><span class="p">;</span>
+<span class="n">csl_props</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">csl_props</span><span class="p">[</span><span class="s1">&#39;sig_mats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sig_mats</span><span class="p">;</span>
+<span class="n">csl_props</span><span class="p">[</span><span class="s1">&#39;csl_mats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">csl_mats</span><span class="p">;</span>
+<span class="n">csl_props</span><span class="p">[</span><span class="s1">&#39;dsc_mats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dsc_mats</span><span class="p">;</span>
+<span class="n">csl_props</span><span class="p">[</span><span class="s1">&#39;csl_bp_props&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">csl_bp_props</span><span class="p">;</span>
+
+<span class="n">jar</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">pkl_name</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">);</span>
+<span class="n">pkl</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">csl_props</span><span class="p">,</span> <span class="n">jar</span><span class="p">);</span>
+<span class="n">jar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Basis_2D_Plane.html" class="btn btn-neutral float-right" title="Determine the 2D Basis of a Plane" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Conventions-Notations.html" class="btn btn-neutral float-left" title="Conventions and Notations used in byxtal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Leila Khalili
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

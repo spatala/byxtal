@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorials &mdash; byxtal 0.post65+ge34f2ed documentation</title>
+  <title>Conventions and Notations used in byxtal &mdash; byxtal 0.post65+ge34f2ed documentation</title>
   
 
   
@@ -42,8 +42,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Conventions and Notations used in byxtal" href="Conventions-Notations.html" />
-    <link rel="prev" title="Minimum Version of Python and NumPy" href="../min_versions.html" /> 
+    <link rel="next" title="Computing the bicrystallographic aspects of Misorientations (FCC lattice)" href="enumerate_byxtal.html" />
+    <link rel="prev" title="Tutorials" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,8 +97,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../min_versions.html">Minimum Version of Python and NumPy</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Conventions-Notations.html">Conventions and Notations used in <strong>byxtal</strong></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Conventions and Notations used in <strong>byxtal</strong></a></li>
 <li class="toctree-l2"><a class="reference internal" href="enumerate_byxtal.html">Computing the bicrystallographic aspects of Misorientations (FCC lattice)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Basis_2D_Plane.html">Determine the 2D Basis of a Plane</a></li>
 </ul>
@@ -150,13 +150,15 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Tutorials</li>
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Conventions and Notations used in <strong>byxtal</strong></li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/Tutorials/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/Tutorials/Conventions-Notations.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -193,25 +195,44 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="tutorials">
-<h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
-<a class="reference external image-reference" href="https://travis-ci.org/spatala/byxtal"><img alt="https://user-images.githubusercontent.com/33406434/86396651-5bc1ad80-bc70-11ea-916c-22f884ccb9cb.png" src="https://user-images.githubusercontent.com/33406434/86396651-5bc1ad80-bc70-11ea-916c-22f884ccb9cb.png" /></a>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Conventions-Notations.html">Conventions and Notations used in <strong>byxtal</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="enumerate_byxtal.html">Computing the bicrystallographic aspects of Misorientations (FCC lattice)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Basis_2D_Plane.html">Determine the 2D Basis of a Plane</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Basis_2D_Plane.html#Miller-Indices-and-Conventions:">Miller Indices and Conventions:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Basis_2D_Plane.html#Problem-Definition:">Problem Definition:</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Basis_2D_Plane.html#Finding-Miller-Indices:">Finding Miller Indices:</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Basis_2D_Plane.html#Finding-the-Planar-Basis:">Finding the Planar Basis:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Basis_2D_Plane.html#Summary">Summary</a></li>
-</ul>
-</li>
-</ul>
-</div>
+<div class="section" id="Conventions-and-Notations-used-in-byxtal">
+<h1>Conventions and Notations used in <strong>byxtal</strong><a class="headerlink" href="#Conventions-and-Notations-used-in-byxtal" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li><p>A fixed <strong>global</strong> orthogonal Cartesian coordinate frame is denoted by a row of basis-vectors as:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\mathcal{B}_{GO} = \left[ \hat{e}_x, \hat{e}_y, \hat{e}_z \right]
+\end{equation}</div><p>The subscript <strong>GO</strong> refers to the fact that the reference is global (<strong>G</strong>) and orthogonal (<strong>O</strong>).</p>
+<ol class="arabic simple" start="2">
+<li><p>A vector is expressed as the product of a row of basis vectors and a column comprising the components of this vector along the basis vectors. For example, the vector <span class="math notranslate nohighlight">\(\vec{a}\)</span> in the Cartesian frame is expressed as:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    \label{eq:vec}
+  \vec{a} = \left[ \hat{e}_x, \hat{e}_y, \hat{e}_z \right]
+ \begin{bmatrix}
+ a_x \\ a_y \\ a_z
+ \end{bmatrix}
+  = \mathcal{B}_{GO}
+ \begin{bmatrix}
+ a_x \\ a_y \\ a_z
+ \end{bmatrix}
+ = \mathcal{B}_{GO} a_{GO}
+  \end{equation}</div><p>Here, $ a_{GO}$ refers to the column vector of components of <span class="math notranslate nohighlight">\(\vec{a}\)</span> expressed in the global orthogonal Cartesian coordinate reference frame (<span class="math notranslate nohighlight">\(GO\)</span>).</p>
+<ol class="arabic simple" start="3">
+<li><p>A Bravais lattice, with Pearson symbol <span class="math notranslate nohighlight">\(P\)</span>, is denoted as <span class="math notranslate nohighlight">\(\mathcal{B}_{P}\)</span> and is defined by the basis vectors spanning the <strong>primitive unit cell</strong>, i.e.,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\mathcal{B}_{P}= [\vec{a} ,\, \vec{b} ,\, \vec{c}]
+\end{equation}</div><ol class="arabic simple" start="4">
+<li><p>If one were to use the components of the vectors in the <span class="math notranslate nohighlight">\(GO\)</span> reference frame, then:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\mathcal{B}_{P}= \mathcal{B}_{GO} [ a_{GO}, \, b_{GO}, \, c_{GO}] = \mathcal{B}_{GO} \Lambda_{P}^{GO}
+\end{equation}</div><p>where <span class="math notranslate nohighlight">\(\Lambda_{P}^{GO}\)</span> is a <span class="math notranslate nohighlight">\(3 \times 3\)</span> matrix of components of the basis vectors in the <span class="math notranslate nohighlight">\(GO\)</span> reference frame.</p>
 </div>
 
 
@@ -222,10 +243,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Conventions-Notations.html" class="btn btn-neutral float-right" title="Conventions and Notations used in byxtal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="enumerate_byxtal.html" class="btn btn-neutral float-right" title="Computing the bicrystallographic aspects of Misorientations (FCC lattice)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../min_versions.html" class="btn btn-neutral float-left" title="Minimum Version of Python and NumPy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
