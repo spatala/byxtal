@@ -1,0 +1,337 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# 2. How to find a reduced planar basis for a Grain Boundary using byxtal!\n",
+    "----------------------------------------------------------------------------"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Follow the installation manual to receive the byxtal package and import all the required packages that we need for completing this tutorial."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# import byxtal\n",
+    "import numpy as np\n",
+    "import os\n",
+    "import inspect\n",
+    "import pickle\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2.1 Miller Indices:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Please refer to first notebook [How to find the 2D Basis of a Plane using byxtal!](1st.ipynb)of the tutorial for a comprehensive discussion about Miller Indices and common conventions. In byxtal whenever we use the term Miller Indices, we are referring to the reciprocals of intercepts of a crystallographic plane with the primitive Basis Vectors.\n",
+    "\n",
+    "__Miller Indices: reciprocal of intercepts of a crystallographic plane with the primitive Basis Vectors__\n",
+    "\n",
+    "Other conventions in defining the Miller Indices are ultimately converted to the above definition in byxtal.\n",
+    "\n",
+    "n the present tutorial we manually extract various Indices and demonstrate how they can be fed to the byxtal. In practice such conversions are not necessary as long as the user is consistent with the definitions of byxtal, and can be used for verifying the answer."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2.2 Problem Definition:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this tutorial we would like to find a __reduced planar basis__ for a Σ3 Grain Boundary(GB) plane with the normal vector [2 3 1]. Note that the normal is defined in the orthogonal reference frame (supercell f.c.c) of the lower crystal (Crystal 1).\n",
+    "\n",
+    "Note that whenever we are working with a plane in byxtal we need to be careful with the reference in which the planes are defined and what the Miller Indices of that plane are. For GBs however there is a rich set of functions that perform all the conversions. The user only needs to be consistent with the GBpy's conventions.\n",
+    "\n",
+    "In the following tutorial we demonstrate the features of the __gb_2d_csl__ function."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "-------------------------------------------------------------"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2.3 Extracting the Misorientation Operator"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In Tutorial 3 [How to find the CSL/DSC lattices of a Σ-rotation using byxtal!](3rd.ipynb) we have extensively discussed the structure of the database of misorientations that ships with GBpy. In this tutorial we first extract the transformation matrix associated with Σ3 misorientation that can be found in \"cF_Id_csl_common_rotations.pkl\"."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'GBpy' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-18-e3be023bbee1>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mgbpy_dir\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mos\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpath\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdirname\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0minspect\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgetfile\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mGBpy\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0mpkl_dir\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mgbpy_dir\u001b[0m \u001b[0;34m+\u001b[0m \u001b[0;34m'/pkl_files'\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0mpkl_file\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpkl_dir\u001b[0m \u001b[0;34m+\u001b[0m \u001b[0;34m'/cF_Id_csl_common_rotations.pkl'\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0mpkl_content\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpickle\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mload\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mopen\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mpkl_file\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0mN3\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpkl_content\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'3'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'N'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mNameError\u001b[0m: name 'GBpy' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "gbpy_dir = os.path.dirname((inspect.getfile(GBpy)))\n",
+    "pkl_dir = gbpy_dir + '/pkl_files'\n",
+    "pkl_file = pkl_dir + '/cF_Id_csl_common_rotations.pkl'\n",
+    "pkl_content = pickle.load(open(pkl_file))\n",
+    "N3 = pkl_content['3']['N'][0]\n",
+    "D3 = pkl_content['3']['D'][0]\n",
+    "Sigma3 = N3/D3\n",
+    "print(Sigma3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Also, from Tutorial 1 [How to find the 2D Basis of a Plane using byxtal!](1st.ipynb) we know the components of a primitive f.c.c in supercell reference frame, i.e. Λpop, is defined as:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[0. , 0.5, 0.5],\n",
+       "       [0.5, 0. , 0.5],\n",
+       "       [0.5, 0.5, 0. ]])"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "L_p_po = 1.0*np.array([[0.,0.5,0.5],[0.5,0.,0.5],[0.5,0.5,0.]])\n",
+    "L_p_po"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "At this point we have all we need to find a reduced basis for the GB plane."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2.4 Finding the GB Planar Basis (2D CSL Basis):"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The function specifically developed for this task is named __gb_2d_csl()__ that can be accessed from __byxtal.bp_basis.gb_2d_csl()__.\n",
+    "\n",
+    "Let's go over all the inputs, outputs and the options that are available for gb_2d_csl.\n",
+    "\n",
+    "\\begin{equation}\n",
+    "\\mathcal{Λ^{p1}_{2D CSL}}, \\mathcal{Λ^{p1}_{Crystal1}}, \\mathcal{Λ^{p1}_{Crystal2}} = \n",
+    "\\mathbf{gb\\_2d\\_csl}(\\mathbf{indices}, \\mathcal{T^{ref}}, \\mathcal{Λ^{po}_{p}}, \\mathbf{index\\_type}, \\mathcal{T_{reference}})\n",
+    "\\end{equation}\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Inputs:\n",
+    "\n",
+    "The function accepts 5 inputs.\n",
+    "\n",
+    "1.__indices__: plane indices.\n",
+    "2. __$\\mathcal{T^{ref}}$__: 3x3 Misorientation Matrix defined in T_reference.\n",
+    "3. __$\\mathcal{Λ^{po}_{p}}$__: 3x3 components of a primitive f.c.c in supercell reference frame.\n",
+    "4. __index_type__: is a string that defines the type of indices that has been passed for the plane normal. There are 3 options. 'miller_index', 'normal_go', 'normal_g'. The default value is 'miller_index' meaning that if you don't specify any value for this field, GBpy assumes that your indices are defined as Miller Indices. If you choose the 'normal_go' option, it means that your indices are defined in the orthogonal basis, and finally 'normal_g' means that the indicies are defined in primitive basis of the underlying lattice.\n",
+    "5. __T_reference__: is a string that specifies the reference frame in which the misorientation matrix, i.e. Tref is expressed. There are 2 options. 'g1', 'go1'. The default value is 'g1' meaning that if you don't specify any value for this field, GBpy assumes that your transormation matrix is defined with respect to the primitive basis vectors of the crystal 1(lower crystal). If you use the supplied pickle files, this is always the case and default value is correct. In case your misorientation matrix is defined in orthogonal reference frame then you should choose the string 'go1'.\n",
+    "\n",
+    "__* Note that for the input types that are supposed to be strings you need to provide the exact same words.__"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Outputs:\n",
+    "\n",
+    "The function generates 3 outputs:\n",
+    "1. __$\\mathcal{Λ^{p1}_{2D CSL}}$__: 3x2 matrix; A reduced 2D basis for the GB plane (2D CSL) expressed in the primitive basis of the crystal 1(lower crystal). Each column contains one of the basis vectors.\n",
+    "2. __$\\mathcal{Λ^{p1}_{Crystal1}}$__: 3x2 matrix; A reduced 2D basis for the specified plane in crystal 1 (lower crystal) expressed in the primitive basis of the crystal 1(lower crystal). Each column contains one of the basis vectors.\n",
+    "3. __$\\mathcal{Λ^{p1}_{Crystal2}}$__: 3x2 matrix; A reduced 2D basis for the specified plane in crystal 2 (upper crystal) expressed in the primitive basis of the crystal 1(lower crystal). Each column contains one of the basis vectors.\n",
+    "\n",
+    "__* Note the reference frame for all the bases are expressed with respect to the primitive basis of the crystal 1(lower crystal).__\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "--------------------------------------------------------------------------------"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this example our indices are provided in the orthogonal basis therefore we have to overwrite the default value of the __index_type__ and change it to __normal_go__. The default value of the __T_reference__, i.e. '__g1__' is a correct choice as we are using the supplied misorintation data from the database. Let's import the appropriate package and abbreviate it for the sake of simplicity."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "Missing parentheses in call to 'print'. Did you mean print('L_2d_csl_p1:\\n', L_2d_csl_p1, '\\n-------')? (<ipython-input-20-c5bac2edcbca>, line 9)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-20-c5bac2edcbca>\"\u001b[0;36m, line \u001b[0;32m9\u001b[0m\n\u001b[0;31m    print 'L_2d_csl_p1:\\n', L_2d_csl_p1, '\\n-------'\u001b[0m\n\u001b[0m                         ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m Missing parentheses in call to 'print'. Did you mean print('L_2d_csl_p1:\\n', L_2d_csl_p1, '\\n-------')?\n"
+     ]
+    }
+   ],
+   "source": [
+    "import GBpy.bp_basis as plb\n",
+    "inds = np.array([2, 3, 1])\n",
+    "t_mat = Sigma3\n",
+    "index_type  = 'normal_go'\n",
+    "T_reference = 'g1'\n",
+    "\n",
+    "L_2d_csl_p1, L_pl1_p1, L_pl2_p1 = plb.gb_2d_csl(inds, t_mat, L_p_po, index_type, T_reference)\n",
+    "\n",
+    "print 'L_2d_csl_p1:\\n', L_2d_csl_p1, '\\n-------'\n",
+    "print 'L_pl1_p1:\\n', L_pl1_p1, '\\n-------'\n",
+    "print 'L_pl2_p1:\\n', L_pl2_p1, '\\n-------'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Note in the above naming of variables L_2d_csl_p1, L_pl1_p1 and L_pl2_p1 are respectively __$\\mathcal{Λ^{p1}_{2D}}$__ CSL,$\\mathcal{Λ^{p1}_{Crystal1}}$ and $\\mathcal{Λ^{p1}_{Crystal2}}$.\n",
+    "\n",
+    "From the Tutorial 1 [How to find the 2D Basis of a Plane using byxtal!](1st.ipynb) we found out that the Miller Indices associated with the normal vector $[2 3 1]$ (defined in orthogonal reference frame) is going to be $(4 3 5)$. So Let's experiment with the input type and pass the Miller Indices as the index. Accordingly we need to change the index_type varibale to the 'miller_index' which is the default value. In other words both index_type and T_reference will have the default variables and no overwriting is necessary."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "Missing parentheses in call to 'print'. Did you mean print('L_2d_csl_p1:\\n', L_2d_csl_p1, '\\n-------')? (<ipython-input-22-def4fd45586a>, line 8)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;36m  File \u001b[0;32m\"<ipython-input-22-def4fd45586a>\"\u001b[0;36m, line \u001b[0;32m8\u001b[0m\n\u001b[0;31m    print 'L_2d_csl_p1:\\n', L_2d_csl_p1, '\\n-------'\u001b[0m\n\u001b[0m                         ^\u001b[0m\n\u001b[0;31mSyntaxError\u001b[0m\u001b[0;31m:\u001b[0m Missing parentheses in call to 'print'. Did you mean print('L_2d_csl_p1:\\n', L_2d_csl_p1, '\\n-------')?\n"
+     ]
+    }
+   ],
+   "source": [
+    "inds = np.array([4, 3, 5])\n",
+    "t_mat = Sigma3\n",
+    "index_type  = 'miller_index'\n",
+    "T_reference = 'g1'\n",
+    "\n",
+    "L_2d_csl_p1, L_pl1_p1, L_pl2_p1 = plb.gb_2d_csl(inds, t_mat, L_p_po, index_type, T_reference)\n",
+    "\n",
+    "print 'L_2d_csl_p1:\\n', L_2d_csl_p1, '\\n-------'\n",
+    "print 'L_pl1_p1:\\n', L_pl1_p1, '\\n-------'\n",
+    "print 'L_pl2_p1:\\n', L_pl2_p1, '\\n------'\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Evidently the results are the same; indicating that as long as user is consistent with the definitions GBpy can successfully process all the conventions and produce the correct result. In the end and as mentioned since the index_type and T_reference will have the default variables specifying them is not necessary and the results will be the same."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "\n",
+    "inds = np.array([4, 3, 5])\n",
+    "t_mat = Sigma3\n",
+    "index_type  = 'miller_index'\n",
+    "T_reference = 'g1'\n",
+    "\n",
+    "L_2d_csl_p1, L_pl1_p1, L_pl2_p1 = plb.gb_2d_csl(inds, t_mat, L_p_po)\n",
+    "\n",
+    "print 'L_2d_csl_p1:\\n', L_2d_csl_p1, '\\n-------'\n",
+    "print 'L_pl1_p1:\\n', L_pl1_p1, '\\n-------'\n",
+    "print 'L_pl2_p1:\\n', L_pl2_p1, '\\n------'\n",
+    "\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
