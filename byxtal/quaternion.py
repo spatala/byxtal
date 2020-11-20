@@ -7,11 +7,7 @@
 
 
 import numpy as np
-# import tools as tools
-# import tools as tools
 from . import tools as tools
-from . import geometry_tools as gmt
-# import geometry_tools as gmt
 
 
 ######################################################################
@@ -216,7 +212,7 @@ class Quaternion(np.ndarray):
                 raise Exception(err_str)
         ##############################################################
         elif nargs == 4:
-            if gmt.isnumeric(args[0]):
+            if isnumeric(args[0]):
                 if np.size(args[0]) == 1:
                     va = np.asarray(args[0]).reshape((np.size(args[0])))
                     vb = np.asarray(args[1]).reshape((np.size(args[1])))
@@ -236,7 +232,7 @@ class Quaternion(np.ndarray):
                 raise Exception('Wrong Input Types')
         ##############################################################
         elif nargs == 5:
-            if gmt.isnumeric(args[0]):
+            if isnumeric(args[0]):
                 if np.size(args[0]) == 1:
                     va = np.asarray(args[0]).reshape((np.size(args[0])))
                     vb = np.asarray(args[1]).reshape((np.size(args[1])))
@@ -1087,3 +1083,11 @@ def ctranspose(g):
 #     else:
 #         d[np.where(e2 != e1*np.ones(np.shape(e2)))] = np.NaN
 #         return float(d)
+
+# -----------------------------------------------------------------------------------------------------------
+def isnumeric(obj):
+    try:
+        obj + 0
+        return True
+    except TypeError:
+        return False

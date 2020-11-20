@@ -8,8 +8,6 @@
 
 
 import numpy as np
-# import os
-# import sys
 from .tools import vrrotvec2mat
 
 
@@ -392,4 +390,9 @@ class Lattice(object):
         str1 += self.cryst_ptgrp
         str1 += '\n'
         return str1
+
 # ------------------------------------------------------------------------------------------------------
+
+def approx_latmat(l1):
+    l_p_po = l.l_p_po
+    

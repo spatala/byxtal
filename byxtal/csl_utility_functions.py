@@ -8,12 +8,10 @@
 
 
 import numpy as np
-# import sys
-# import os
 from . import integer_manipulations as int_man
 from . import misorient_fz as mis_fz
 from . import tools as trans
-
+import numpy.linalg as nla
 
 def proper_ptgrp(cryst_ptgrp):
     """
@@ -109,7 +107,7 @@ def compute_inp_params(lattice, sig_type):
         c_alpha = np.cos(lat_params['alpha'])
         tau = c_alpha / (1 + 2 * c_alpha)
         if sig_type == 'specific':
-            [nu, mu] = int_man.rat(tau, 1e-8)
+            [nu, mu] = int_man.rat_approx(tau, 1e-8)
             rho = mu - 3 * nu
             kmax = 4 * mu * rho
         elif sig_type == 'common':
@@ -118,7 +116,7 @@ def compute_inp_params(lattice, sig_type):
     if cryst_ptgrp == 'D4':
         tau = (lat_params['a'] ** 2) / (lat_params['c'] ** 2)
         if sig_type == 'specific':
-            [nu, mu] = int_man.rat(tau, 1e-8)
+            [nu, mu] = int_man.rat_approx(tau, 1e-8)
             kmax = 4 * mu * nu
         if sig_type == 'common':
             kmax = []
@@ -126,7 +124,7 @@ def compute_inp_params(lattice, sig_type):
     if cryst_ptgrp == 'D6':
         tau = (lat_params['a'] ** 2) / (lat_params['c'] ** 2)
         if sig_type == 'specific':
-            [nu, mu] = int_man.rat(tau, 1e-8)
+            [nu, mu] = int_man.rat_approx(tau, 1e-8)
             if np.remainder(nu, 2) == 0:
                 if np.remainder(nu, 4) == 0:
                     kmax = 3 * mu * nu
@@ -988,21 +986,21 @@ def check_sigma_rots(r_g1tog2_g1, sigma):
     msz = np.shape(r_g1tog2_g1)[0]
     for i in range(msz):
         tmat = r_g1tog2_g1[i, :, :]
-        mult1 = int_man.int_mult(tmat, 1e-06)
-        if abs(mult1[0]-sigma) > 1e-06:
+        N1, mult1 = int_man.int_approx(tmat, 1e-06)
+        if abs(mult1-sigma) > 1e-06:
             t_check = 0
             tol_arr = np.array([1e-05, 1e-06, 1e-07,
-                                1e-08, 1e-09, 1e-10, 1e-4])
+                                1e-08, 1e-09, 1e-10, 1e-4, 1e-3])
             for tols in tol_arr:
-                mult1 = int_man.int_mult(tmat, tols)
-                if abs(mult1[0]-sigma) < 1e-04:
+                N1, mult1 = int_man.int_approx(tmat, tols)
+                if abs(mult1-sigma) < 1e-04:
                     t_check = 1
                     break
             if t_check == 0:
                 raise Exception('Not a sigma rotation')
 
-        rots_n[i, :, :] = mult1[1]
-        rots_d[i, :, :] = int(np.round(mult1[0]))*np.ones(np.shape(tmat))
+        rots_n[i, :, :] = N1
+        rots_d[i, :, :] = int(np.round(mult1))*np.ones(np.shape(tmat))
 
     if np.size(np.where(rots_d != sigma)[0]) > 0:
         raise Exception('Not a sigma rotation')
@@ -1070,7 +1068,7 @@ def csl_rotations(sigma, sig_type, lat_type):
 
     # Define Parameters
     [tau, kmax] = compute_inp_params(lat_type, sig_type)
-    [nu, mu] = int_man.rat(tau, 1e-8)
+    [nu, mu] = int_man.rat_approx(tau, 1e-8)
 
     if sig_type == 'specific':
         lat_args = {}
@@ -1121,3 +1119,31 @@ def csl_rotations(sigma, sig_type, lat_type):
         sig_rots = check_sigma_rots(r_g1tog2_g1, sigma)
         return sig_rots
 # -----------------------------------------------------------------------------------------------------------
+
+
+def check_csl(l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_val):
+    l_po_p = nla.inv(l_p_po)
+    l_csl_po = l_p_po.dot(l_csl_p)
+    cond1 = int_man.check_int_mat(l_po_p.dot(l_csl_po), 1e-10)
+
+    l_p2_p1 = np.copy(T_p1top2_p1)
+    l_p2_po = l_p_po.dot(l_p2_p1)
+    l_po_p2 = nla.inv(l_p2_po)
+    cond2 = int_man.check_int_mat(l_po_p2.dot(l_csl_po), 1e-10)
+
+    Sigma1 = np.abs(nla.det(l_csl_po) / nla.det(l_p_po))
+    cond3 = (np.abs(Sigma-Sigma1) < 1e-8)
+
+    if print_val:
+        if cond1:
+            Disp_str = 'l_csl_po is defined in the l_p1_po lattice'
+            print(Disp_str)
+        if cond2:
+            Disp_str = 'l_csl_po is defined in the l_p2_po lattice'
+            print(Disp_str)
+        if cond3:
+            Disp_str = ('V(csl_po)/V(p1_po) = Sigma =  ' + "%d" % (Sigma))
+            print(Disp_str)
+
+    return (cond1 and cond2 and cond3)
+

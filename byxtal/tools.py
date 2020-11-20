@@ -1,5 +1,4 @@
 import numpy as np
-# import integer_manipulations as int_man
 from . import integer_manipulations as int_man
 from . import quaternion as quat
 from math import pi
@@ -160,7 +159,7 @@ def message_display(CheckMatrix, Checknumber, Message, Precis):
     This function displays a Message (passed as input) and gives and error
     in case the matrix passed to it is not integral.`
     """
-    cond = int_man.int_check(CheckMatrix, Precis)
+    cond = int_man.check_int_mat(CheckMatrix, Precis)
     print(Checknumber, '.', Message, '-> ',)
     txt = Col()
     if cond.all():

@@ -11,13 +11,11 @@ from math import gcd
 from . import integer_manipulations as int_man
 from . import find_csl_dsc as fcd
 from . import lll_tools as lt
+from . import reduce_po_lat as rpl
 
-# from .tools import Col, smith_nf, extgcd
 from .tools import Col, extgcd
-# from sympy.matrices import Matrix, eye, zeros
-from sympy.matrices import Matrix, zeros
 from sympy import Rational
-
+import numpy.linalg as nla
 
 def check_2d_csl(l_pl1_g1, l_pl2_g1, l_csl_g1):
     """
@@ -153,9 +151,6 @@ def bp_basis(miller_ind):
     """
     # If *miller_inds* are not integers or if the gcd != 1
     # miller_ind = int_man.int_finder(miller_ind)
-    if isinstance(miller_ind, Matrix):
-        miller_ind = np.array(miller_ind, dtype='int64')
-
     if (np.ndim(miller_ind) == 2):
         Sz = np.shape(miller_ind)
         if ((Sz[0] == 1) or (Sz[1] == 1)):
@@ -165,6 +160,7 @@ def bp_basis(miller_ind):
     h = miller_ind[0]
     k = miller_ind[1]
     l = miller_ind[2]
+
     if h == 0 and k == 0 and l == 0:
         raise Exception('hkl indices cannot all be zero')
     else:
@@ -207,7 +203,8 @@ def bp_basis(miller_ind):
                                                [h / gc_f1_p], [1]])
 
     #  The reduced basis vectors for the plane
-    l_pl_g1 = lt.lll_reduction(np.column_stack([bv1_g1, bv2_g1]))
+    Tmat = np.array(np.column_stack([bv1_g1, bv2_g1]), dtype='int64')
+    l_pl_g1 = lt.lll_reduction(Tmat)
     return l_pl_g1
 
 
@@ -230,77 +227,15 @@ def pl_density(l_pl_g1, l_g1_go1):
         Planar density = (1/area covered by plane basis)
     """
     l_pl_go1 = np.dot(l_g1_go1, l_pl_g1)
-    planar_basis_area = np.linalg.norm(np.cross(l_pl_go1[:, 0],
+    planar_basis_area = nla.norm(np.cross(l_pl_go1[:, 0],
                                                 l_pl_go1[:, 1]))
     pd = 1.0/planar_basis_area
     return pd
 
-
-def csl_finder_2d(l_pl1_g1, l_pl2_g1):
+def gb_2d_csl(inds, t_mat, l_p_po, inds_type='miller_index', mat_ref='g1'):
     """
-    Given two plane bases, the 2D CSL bases are obtined by utilizing the
-    smith normal form of the transformation between the two bases
-
-    Parameters
-    ---------------
-    l_pl1_g1, l_pl2_g1: numpy array
-        Basis vectors of planes 1 and 2 expressed in g1 reference frame
-
-    Returns
-    ---------------
-    l_2d_csl_g1: numpy array
-        The basis vectors of the 2D CSL expressed in g1 reference frame
-    """
-
-    l_p1_g = Matrix(l_pl1_g1)
-    l_p2_g = Matrix(l_pl2_g1)
-    l1_linv = (((l_p1_g.T*l_p1_g).inv())*l_p1_g.T)
-    l_p2_p1 = l1_linv*l_p2_g
-
-    T_p1top2_p1 = Matrix(l_p2_p1)
-    tol1 = 1e-6
-    Sigma = fcd.sigma_calc(T_p1top2_p1, tol1)
-    TI_p1top2_p1 = T_p1top2_p1*Sigma
-    TI_p1top2_p1 = np.array(TI_p1top2_p1, dtype='double')
-    TI_p1top2_p1 = Matrix((np.around(TI_p1top2_p1)).astype(int))
-
-    l_csl_p1 = csl_finder_smith_2d(TI_p1top2_p1, Sigma)
-    l_csl_g1 = l_p1_g*l_csl_p1
-
-    if int_man.check_int_mat(l_csl_g1, 1e-10):
-        l_csl_g1 = np.around(np.array(l_csl_g1, dtype='double'))
-        l_2d_csl_g1 = Matrix(lt.lll_reduction(np.array(l_csl_g1, dtype='int64')))
-    else:
-        raise Exception('Wrong CSL computation')
-
-    if int_man.check_int_mat(l_2d_csl_g1, 1e-10):
-        l_2d_csl_g1 = np.around(np.array(l_2d_csl_g1, dtype='double'))
-        l_2d_csl_g1 = l_2d_csl_g1.astype(int)
-        l_2d_csl_g1 = Matrix(l_2d_csl_g1)
-    else:
-        raise Exception('Wrong CSL computation')
-
-    return l_2d_csl_g1
-
-
-def csl_finder_smith_2d(TI_p1top2_p1, Sigma):
-    A_mat = Matrix(TI_p1top2_p1)
-    # S = U*A_mat*V
-    U, S, V = lt.smith_normal_form(A_mat)
-    l_p1n_p1 = U.inv()
-    T0 = S/Sigma
-    # For 2X2 matrices
-    l_csl_p1 = zeros(2, 2)
-    l_csl_p1[:, 0] = l_p1n_p1[:, 0]
-    int_rat = (Rational(T0[1, 1]).limit_denominator())
-    l_csl_p1[:, 1] = int_rat.p*l_p1n_p1[:, 1]
-    return l_csl_p1
-
-
-def gb_2d_csl(inds, t_mat, l_g_go, inds_type='miller_index', mat_ref='g1'):
-    """
-    For a given boundary plane normal 'bp1_g1' and the misorientation
-    matrix 't_g1tog2_g1', the two-dimensional CSL lattice is computed
+    For a given boundary plane normal 'bp1_p1' and the misorientation
+    matrix 't_p1top2_p1', the two-dimensional CSL lattice is computed
 
     Parameters
     ------------------
@@ -311,63 +246,77 @@ def gb_2d_csl(inds, t_mat, l_g_go, inds_type='miller_index', mat_ref='g1'):
         {'miller_index', 'normal_go', 'normal_g'}
 
     t_mat: numpy array
-        Transformation matrix from g1 to g2 in 'mat_ref' reference frame
+        Transformation matrix from p1 to p2 in 'mat_ref' reference frame
 
     mat_ref: string
-        {'go1', 'g1'}
+        {'go1', 'p1'}
 
     Returns
     -----------
-    l_2d_csl_g1, l_pl1_g1, l_pl2_g1: numpy arrays
-        ``l_2d_csl_g1`` is the 2d CSL in g1 ref frame.\v
-        ``l_pl1_g1`` is the plane 1 basis in g1 ref frame.\v
-        ``l_pl2_g1`` is the plane 2 basis in g1 ref frame.\v
+    l_2d_csl_p1, l_pl1_p1, l_pl2_p1: numpy arrays
+        ``l_2d_csl_p1`` is the 2d CSL in p1 ref frame.\v
+        ``l_pl1_p1`` is the plane 1 basis in p1 ref frame.\v
+        ``l_pl2_p1`` is the plane 2 basis in p1 ref frame.\v
     """
-    l_g1_go1 = l_g_go
-    l_go1_g1 = l_g1_go1.inv()
-    l_rg1_go1 = fcd.reciprocal_mat(l_g1_go1)
-    l_go1_rg1 = l_rg1_go1.inv()
+    l_po_p = nla.inv(l_p_po)
+    l_pR_po = fcd.reciprocal_mat(l_p_po)
+    l_po_pR = nla.inv(l_pR_po)
 
     if inds_type == 'normal_go':
-        bp1_go1 = Matrix(inds)
-        miller1_ind = int_man.int_finder(l_go1_rg1*bp1_go1)
+        bp_po1 = np.array(inds)
     elif inds_type == 'miller_index':
-        miller1_ind = Matrix(inds)
+        bp_p1R = np.array(inds)
+        bp_po1 = l_pR_po.dot(bp_p1R)
     elif inds_type == 'normal_g':
-        bp1_g1 = Matrix(inds)
-        l_g1_rg1 = l_go1_rg1*l_g1_go1
-        miller1_ind = int_man.int_finder(l_g1_rg1*bp1_g1)
+        bp_p1 = np.array(inds)
+        bp_po1 = l_p_po.dot(bp_p1)
     else:
         raise Exception('Wrong index type')
 
-    t_mat = Matrix(t_mat)
+    ### Get the 2D planar basis for the surface plane in p1
+    bp_p1R = l_po_pR.dot(bp_po1)
+    miller1_ind, tm1 = int_man.int_approx(bp_p1R, 1e-6)
+
+    l_pl1_p1 = bp_basis(miller1_ind)
+    l_sig2_sig1 = rpl.reduce_po_lat(l_pl1_p1, l_p_po, 1e-6)
+    l_pl1_p1 = l_pl1_p1.dot(l_sig2_sig1)
+
     if mat_ref == 'go1':
-        # t_g1tog2_g1 = np.dot(l_go1_g1, np.dot(t_mat, l_g1_go1))
-        t_g1tog2_g1 = l_go1_g1*t_mat*l_g1_go1
+        l_po2_po1 = np.copy(tmat)
+        l_po1_po2 = nla.inv(l_po2_po1)
+        l_p2_p1 = np.dot(l_po_p, np.dot(l_po2_po1, l_p_po))
     elif mat_ref == 'g1':
-        t_g1tog2_g1 = t_mat
+        l_p2_p1 = np.copy(t_mat)
+        l_po2_po1 = l_p_po.dot(l_p2_p1.dot(l_po_p))
+        l_po1_po2 = nla.inv(l_po2_po1)
     else:
-        raise Exception('Wrong reference axis type')
+        raise Exception('Wrong reference axes')
 
-    bp1_go1 = int_man.int_finder(l_rg1_go1*miller1_ind)
-    l_g2_g1 = t_g1tog2_g1
-    l_g2_go1 = l_g1_go1*l_g2_g1
-    l_rg2_go1 = fcd.reciprocal_mat(l_g2_go1)
-    l_go1_rg2 = l_rg2_go1.inv()
-    # bp2_g2 = int_man.int_finder(np.dot(-l_go1_g2, bp1_go1))
-    miller2_ind = int_man.int_finder(-l_go1_rg2*bp1_go1)
+    ### Get the 2D planar basis for the surface plane in p2 and p1
+    bp_po2 = -l_po1_po2.dot(bp_po1)
+    bp_p2R = l_po_pR.dot(bp_po2)
+    miller2_ind, tm1 = int_man.int_approx(bp_p2R, 1e-6)
+    l_pl2_p2 = bp_basis(miller2_ind)
+    l_sig2_sig1 = rpl.reduce_po_lat(l_pl2_p2, l_p_po, 1e-6)
+    l_pl2_p2 = l_pl2_p2.dot(l_sig2_sig1)
+    l_pl2_p1 = l_p2_p1.dot(l_pl2_p2)
 
-    l_pl1_g1 = bp_basis(miller1_ind)
-    l_pl1_g1 = lt.reduce_po_lat(l_pl1_g1, l_g1_go1, 1e-6)
+    ### Get the 2D planar basis for the GB in csl basis
+    l_csl_p1 = fcd.csl_finder(t_mat, l_p_po, 1e-6)
+    l_csl_po1 = l_p_po.dot(l_csl_p1)
+    l_cslR_po1 = fcd.reciprocal_mat(l_csl_po1)
+    l_po1_cslR = nla.inv(l_cslR_po1)
+    n_cslR = l_po1_cslR.dot(bp_po1)
+    mind_cslR, tm1 = int_man.int_approx(n_cslR, 1e-6)
+    l_bpb_csl = bp_basis(mind_cslR)
 
-    l_pl2_g2 = bp_basis(miller2_ind)
-    l_pl2_g2 = lt.reduce_po_lat(l_pl2_g2, l_g1_go1, 1e-6)
-    l_pl2_g1 = l_g2_g1*l_pl2_g2
+    ### Covert the 2D planar basis for the GB to p1 reference frame
+    l_bpb_p1 = l_csl_p1.dot(l_bpb_csl)
+    l_sig2_sig1 = rpl.reduce_po_lat(l_bpb_p1, l_p_po, 1e-6)
+    l_2d_csl_p1 = l_bpb_p1.dot(l_sig2_sig1)
 
-    l_2d_csl_g1 = csl_finder_2d(l_pl1_g1, l_pl2_g1)
-    l_2d_csl_g1 = lt.reduce_po_lat(l_2d_csl_g1, l_g1_go1, 1e-6)
 
-    return l_2d_csl_g1, l_pl1_g1, l_pl2_g1
+    return l_2d_csl_p1, l_pl1_p1, l_pl2_p1
 
 
 def bicryst_planar_den(inds, t_mat, l_g_go, inds_type='miller_index',
@@ -400,17 +349,17 @@ def bicryst_planar_den(inds, t_mat, l_g_go, inds_type='miller_index',
     """
     l_g1_go1 = l_g_go
     l_rg1_go1 = fcd.reciprocal_mat(l_g1_go1)
-    l_go1_rg1 = np.linalg.inv(l_rg1_go1)
+    l_go1_rg1 = nla.inv(l_rg1_go1)
 
     if inds_type == 'normal_go':
         bp1_go1 = inds
-        miller1_inds = int_man.int_finder(np.dot(l_go1_rg1, bp1_go1))
+        miller1_inds, tm1 = int_man.int_approx(np.dot(l_go1_rg1, bp1_go1), 1e-6)
     elif inds_type == 'miller_index':
         miller1_inds = inds
     elif inds_type == 'normal_g':
         bp1_g1 = inds
         l_g1_rg1 = np.dot(l_go1_rg1, l_g1_go1)
-        miller1_inds = int_man.int_finder(np.dot(l_g1_rg1, bp1_g1))
+        miller1_inds, tm1 = int_man.int_approx(np.dot(l_g1_rg1, bp1_g1), 1e-6)
     else:
         raise Exception('Wrong index type')
 
