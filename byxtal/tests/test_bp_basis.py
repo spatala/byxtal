@@ -1,16 +1,16 @@
 import numpy as np
 import numpy.linalg as nla
-import byxtal1.bp_basis as bpb
-import byxtal1.lattice as gbl
-import byxtal1.integer_manipulations as int_man
-import byxtal1.reduce_po_lat as rpl
+import byxtal.bp_basis as bpb
+import byxtal.lattice as gbl
+import byxtal.integer_manipulations as int_man
+import byxtal.reduce_po_lat as rpl
 import pickle as pkl
-import byxtal1.find_csl_dsc as fcd
+import byxtal.find_csl_dsc as fcd
 
 import os
 import inspect
-import byxtal1
-byxtal_dir = os.path.dirname((inspect.getfile(byxtal1)))
+import byxtal
+byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
 
 ## Directory and file names
 pkl_dir = byxtal_dir+'/tests/pkl_files/'

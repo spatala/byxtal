@@ -1,11 +1,11 @@
-import byxtal1.integer_manipulations as iman;
+import byxtal.integer_manipulations as iman;
 import numpy as np
 import pickle as pkl
 
 import os
 import inspect
-import byxtal1
-byxtal_dir = os.path.dirname((inspect.getfile(byxtal1)))
+import byxtal
+byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
 
 ## Directory and file names
 pkl_dir = byxtal_dir+'/tests/pkl_files/'

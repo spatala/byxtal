@@ -1,14 +1,14 @@
-import byxtal1.lattice as gbl
-import byxtal1.integer_manipulations as iman
-import byxtal1.find_csl_dsc as fcd
+import byxtal.lattice as gbl
+import byxtal.integer_manipulations as iman
+import byxtal.find_csl_dsc as fcd
 import numpy as np
 import subprocess
 import numpy.linalg as nla
 
 import os
 import inspect
-import byxtal1
-byxtal_dir = os.path.dirname((inspect.getfile(byxtal1)))
+import byxtal
+byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
 import pickle as pkl
 
 ## Directory and file names

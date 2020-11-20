@@ -1,13 +1,13 @@
 import subprocess
 import os
 import inspect
-import byxtal1
+import byxtal
 import numpy as np
 import numpy.linalg as nla
 from . import integer_manipulations as iman
 
 def call_sage_math(exec_str, inp_args):
-    byxtal_dir = os.path.dirname((inspect.getfile(byxtal1)))
+    byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
     exec_str1 = byxtal_dir+exec_str
     run_lst = []
     run_lst.append(exec_str1)

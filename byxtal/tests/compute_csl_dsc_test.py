@@ -1,12 +1,12 @@
 import pickle as pkl
-import byxtal1.lattice as gbl;
+import byxtal.lattice as gbl;
 import numpy as np;
-import byxtal1.find_csl_dsc as fcd
+import byxtal.find_csl_dsc as fcd
 
 import os
 import inspect
-import byxtal1
-byxtal_dir = os.path.dirname((inspect.getfile(byxtal1)))
+import byxtal
+byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
 
 ## Directory and file names
 pkl_dir = byxtal_dir+'/tests/pkl_files/'

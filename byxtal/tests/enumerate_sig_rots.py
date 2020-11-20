@@ -1,5 +1,5 @@
-import byxtal1.lattice as gbl;
-import byxtal1.csl_utility_functions as cuf;
+import byxtal.lattice as gbl;
+import byxtal.csl_utility_functions as cuf;
 import numpy as np;
 from sympy.matrices import Matrix, eye, zeros;
 
