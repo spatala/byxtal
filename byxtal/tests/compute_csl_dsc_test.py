@@ -13,7 +13,7 @@ pkl_dir = byxtal_dir+'/tests/pkl_files/'
 ##############################################################
 
 
-l1 = gbl.Lattice('cP_Id')
+l1 = gbl.Lattice()
 pkl_name = pkl_dir+l1.elem_type+'_csl_common_rotations.pkl'
 jar = open(pkl_name, "rb" )
 lat_sig_attr = pkl.load(jar)

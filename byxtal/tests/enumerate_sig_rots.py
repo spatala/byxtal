@@ -3,13 +3,16 @@ import byxtal.csl_utility_functions as cuf;
 import numpy as np;
 from sympy.matrices import Matrix, eye, zeros;
 
-fsave = True
+########################################################
+#### Input Parameters
+fsave = False
 num = 10
+########################################################
 
 # l1 = gbl.Lattice('cP_Id')
 l1 = gbl.Lattice()
-
 # l1 = gbl.Lattice('hP_Id')
+
 sig_type = 'common'
 l_p_po = l1.l_p_po
 

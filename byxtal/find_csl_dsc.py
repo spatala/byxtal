@@ -32,10 +32,22 @@ def find_csl_dsc(l_p_po, T_p1top2_p1, tol1=1e-6, print_check=True):
     l_csl_g1, l_dsc_g1: numpy arrays
         The basis vectors of csl and dsc lattices in the g1 reference frame
     """
+    ########################################################################
+    ## Compute Sigma, and Sigma*T
+    T_p1top2_p1 = np.array(T_p1top2_p1, dtype='double')
+    Sigma = sigma_calc(T_p1top2_p1, tol1)
+    TI_p1top2_p1 = T_p1top2_p1*Sigma
+    cond1 = int_man.check_int_mat(TI_p1top2_p1, tol1)
+    if cond1:
+        TI_p1top2_p1 = (np.around(TI_p1top2_p1)).astype(int)
+    else:
+        raise Exception("TI_p1top2_p1 is not an integer matrix.")
+    ########################################################################
 
 
     ########################################################################
-    l_csl_p = csl_finder(T_p1top2_p1, Sigma, l_p_po, tol1)
+    # l_csl_p = csl_finder(T_p1top2_p1, Sigma, l_p_po, tol1)
+    l_csl_p = csl_finder(T_p1top2_p1, l_p_po, tol1)
     check_val1 = check_csl(l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
     ########################################################################
 
@@ -151,16 +163,16 @@ def dsc_finder(L_G2_G1, L_G1_GO1, tol1):
     # R_rG1TorG2_rG1 = L_rG2_G1*L_G1_rG1
     L_rG2_rG1 = L_GO1_rG1.dot(L_rG2_GO1)
     Sigma_star = sigma_calc(L_rG2_rG1, tol1)
-    # Check Sigma_star == Sigma
-    LI_rG2_rG1 = L_rG2_rG1*Sigma_star
-    if int_man.check_int_mat(LI_rG2_rG1, 1e-10):
-        LI_rG2_rG1 = np.around(np.array(LI_rG2_rG1, dtype='double'))
-        LI_rG2_rG1 = (np.array(LI_rG2_rG1, dtype='int64'))
-    else:
-        raise Exception("Not an integer matrix")
+    # # Check Sigma_star == Sigma
+    # LI_rG2_rG1 = L_rG2_rG1*Sigma_star
+    # if int_man.check_int_mat(LI_rG2_rG1, 1e-10):
+    #     LI_rG2_rG1 = np.around(np.array(LI_rG2_rG1, dtype='double'))
+    #     LI_rG2_rG1 = (np.array(LI_rG2_rG1, dtype='int64'))
+    # else:
+    #     raise Exception("Not an integer matrix")
 
     # CSL of the reciprocal lattices
-    L_rCSL_rG1 = csl_finder(LI_rG2_rG1, Sigma_star, L_rG1_GO1, tol1)
+    L_rCSL_rG1 = csl_finder(L_rG2_rG1, L_rG1_GO1, tol1)
     L_rCSL_GO1 = L_rG1_GO1.dot(L_rCSL_rG1)
 
     L_DSC_GO1 = reciprocal_mat(L_rCSL_GO1)

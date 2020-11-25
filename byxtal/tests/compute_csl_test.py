@@ -17,10 +17,9 @@ byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
 pkl_dir = byxtal_dir+'/tests/pkl_files/'
 ##############################################################
 
-
 sig_num = 19
 
-l1 = gbl.Lattice('cP_Id')
+l1 = gbl.Lattice()
 pkl_name = pkl_dir+l1.elem_type+'_csl_common_rotations.pkl'
 jar = open(pkl_name, "rb" )
 lat_sig_attr = pkl.load(jar)
@@ -44,15 +43,8 @@ for ct1 in range(sz1):
     T_p1top2_p1 = Nmat/Dmat
     tol1 = 1e-6
     Sigma = fcd.sigma_calc(T_p1top2_p1, tol1)
-    TI_p1top2_p1 = T_p1top2_p1*Sigma
-    cond1 = iman.check_int_mat(TI_p1top2_p1, tol1)
-    if cond1:
-        TI_p1top2_p1 = (np.around(TI_p1top2_p1)).astype(int)
-    else:
-        raise Exception("TI_p1top2_p1 is not an integer matrix.")
     ########################################################################
-    # l_csl_p, l_dsc_p = fcd.find_csl_dsc(l_p_po, T_p1top2_p1, tol1, True)
-    l_csl_p = fcd.csl_finder(TI_p1top2_p1, Sigma, l_p_po, tol1)
+    l_csl_p = fcd.csl_finder(T_p1top2_p1, l_p_po, tol1)
     print_check = True
     check_val1 = fcd.check_csl(l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
     ########################################################################
