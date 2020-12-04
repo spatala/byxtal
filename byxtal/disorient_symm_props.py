@@ -262,3 +262,208 @@ def disorient_symm_props(mis_quat_fz, lat_pt_grp, x_tol=1e-04):
         y_g = np.cross(z_g, x_g)
         bp_symm_grp = 'Cs'
         return x_g, y_g, z_g, bp_symm_grp
+    
+    #  This part is for hcp crystal structure
+    #  taken from table 17 from Dr. Patala's paper
+
+    if lat_pt_grp == 'D6h':
+        k = 2 - np.sqrt(3)
+        ########################### ID (1) from tbale 17############################
+        cond_0 = abs(q1 - np.sqrt(3) * q2) <= x_tol
+        cond_1 = abs(q2) >= x_tol
+        cond_2 = abs(q3) >= x_tol
+        s_ocde = cond_0 and cond_1 and cond_2 
+        if s_ocde:
+            z_g = np.array([(q0 + np.sqrt(3) * q3)/2, (q3 - np.sqrt(3) * q0) / 2, -2 * q1 / np.sqrt(3)])
+            x_g = np.array([q1, q2, q3])/math.sqrt(1-q0**2)
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'C2h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ########################### ID (2) from tbale 17############################
+        cond_0 = abs(q2) <= x_tol
+        cond_1 = abs(q1) >= x_tol
+        cond_2 = abs(q3) >= x_tol
+        s_oafe = cond_0 and cond_1 and cond_2
+        if s_oafe:
+            z_g = np.array([-q3, q0, q1])
+            x_g = np.array([q1, q2, q3])/math.sqrt(1-q0**2)
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'C2h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ########################### ID (3) from tbale 17############################
+        cond_0 = abs(q3) <= x_tol
+        cond_1 = abs(q1) >= x_tol
+        cond_2 = abs(q2) >= x_tol
+        s_ocba = cond_0 and cond_1 and cond_2
+        if s_ocba:
+            z_g = np.array([q2, -q1, q0])
+            x_g = np.array([q1, q2, q3])/math.sqrt(1-q0**2)
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'C2h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ########################### ID (4) from tbale 17############################
+        cond_0 = abs(q2 - q3) <= x_tol
+        cond_1 = abs(q2) <= x_tol
+        cond_2 = abs(q0 - 1) >= x_tol
+        cond_3 = abs(q1 - math.sin(np.pi/4)) >= x_tol
+
+        line_oa = cond_0 and cond_1 and cond_2 and cond_3
+        if line_oa:
+            z_g = np.array([1, 0, 0])
+            x_g = np.array([0, q0, q1])
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'D2h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ########################### ID (5) from tbale 17############################
+        cond_0 = abs(q1 - np.sqrt(3)*q2) <= x_tol
+        cond_1 = abs(q3) <= x_tol
+        cond_2 = abs(q2 - .5*math.sin(np.pi/4)) >= x_tol
+        cond_3 = abs(q0 - 1) >= x_tol
+
+        line_oc = cond_0 and cond_1 and cond_2 and cond_3
+        if line_oc:
+            z_g = np.array([np.sqrt(3)/2, .5, 0])
+            x_g = np.array([q1/np.sqrt(3), -q1, -q0])
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'D2h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ########################### ID (6) from tbale 17############################
+        cond_0 = abs(q1 - q2) <= x_tol
+        cond_1 = abs(q2) <= x_tol
+        cond_2 = abs(q3 - math.sin(np.pi/12)) >= x_tol
+        cond_3 = abs(q0 - 1) >= x_tol
+
+        line_oe = cond_0 and cond_1 and cond_2 and cond_3
+        if line_oe:
+            z_g = np.array([0, 0, 1])
+            x_g = np.array([q0, q3, 0])
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'D6h'
+            return x_g, y_g, z_g, bp_symm_grp
+
+        ###########ADD number 7 in tbale 17###############
+        cond_0 = abs(q1 - q0) <= x_tol
+        cond_1 = abs(q2 - q3) <= x_tol
+        cond_2 = abs(q2) >= x_tol
+        cond_3 = abs(q2 - k/np.sqrt(8*k)) >= x_tol
+        cond_4 = abs(np.sqrt(3)*q1 + q2 - 2*q0) <= x_tol
+        cond_5 = abs(2*q1 - q3 - np.sqrt(3)*q0) <= x_tol
+        line_ag = cond_0 and cond_1 and cond_2 and cond_3 and cond_4 and cond_5
+        if line_ag:
+            z_g = np.array([0, 0, 1])
+            x_g = np.array([q1, q2, q3])/math.sqrt(1-q0**2)
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'C2h'
+            return x_g, y_g, z_g, bp_symm_grp
+
+        ###########ADD number 8 in tbale 17###############
+        cond_0 = abs(q3) >= x_tol
+        cond_1 = abs(q3 - k/np.sqrt(8*k)) >= x_tol
+        line_cg = cond_0 and cond_1
+        if line_cg:
+            z_g = np.array([-.5, np.sqrt(3)/2, 0])
+            x_g = np.array([q1, q2, q3])/math.sqrt(1-q0**2)
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'C2h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ###########ADD number 9 in tbale 17###############
+        cond_0 = abs(q3 - k*q0) <= x_tol
+        cond_1 = abs(q2 - k*q1) <= x_tol
+        cond_2 = abs(q1) >= x_tol
+        cond_3 = abs(q1 - 1/np.sqrt(8*k)) >= x_tol
+
+        line_eg = cond_0 and cond_1 and cond_2 and cond_3
+        if line_eg:
+            z_g = np.array([np.sqrt(3)/2, 1/2, 0])
+            x_g = np.array([q1, q2, q3])/math.sqrt(1-q0**2)
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'C2h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ###########ADD number 10 in tbale 17###############      
+        cond_0 = abs(q0 - math.cos(np.pi/4)) <= x_tol
+        cond_1 = abs(q1 - math.sin(np.pi/4)) <= x_tol
+        cond_2 = abs(q2) <= x_tol
+        cond_3 = abs(q3) <= x_tol
+
+        p_a = cond_0 and cond_1 and cond_2 and cond_3
+        if p_a:
+            z_g = np.array([1, 0, 0])
+            x_g = np.array([0, 1, 0])
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'D4h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ########################### ID (11) from tbale 17############################
+        cond_0 = abs(q0 - math.cos(np.pi/4)) <= x_tol
+        cond_1 = abs(q1 - np.sqrt(3)*math.sin(np.pi/4)/4) <= x_tol
+        cond_2 = abs(q2 - .5*math.sin(np.pi/4)) <= x_tol
+        cond_3 = abs(q3) <= x_tol
+
+        p_c = cond_0 and cond_1 and cond_2 and cond_3
+        if p_c:
+            z_g = np.array([np.sqrt(3)/2, .5, 0])
+            x_g = np.array([0, 0, 1])
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'D4h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ########################### ID (12) from tbale 17############################
+        cond_0 = abs(q0 - math.cos(np.pi/12)) <= x_tol
+        cond_1 = abs(q1) <= x_tol
+        cond_2 = abs(q2) <= x_tol
+        cond_3 = abs(q3 - math.sin(np.pi/12)) <= x_tol
+
+        line_ed = cond_0 and cond_1 and cond_2 and cond_3
+        if line_ed:
+            z_g = np.array([0, 0, 1])
+            x_g = np.array([q0, q3, 0])
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'D12h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ########################### ID (13) from tbale 17############################
+        cond_0 = abs(q0 - q1) <= x_tol
+        cond_1 = abs(q1 - 1/(np.sqrt(8*k))) <= x_tol
+        cond_2 = abs(q2 - q3) <= x_tol
+        cond_3 = abs(q3 - k/np.sqrt(8*k)) <= x_tol
+        p_g = cond_0 and cond_1 and cond_2 and cond_3
+        if p_g:
+            z_g = np.array([0, 0, 1])
+            x_g = np.array([np.sqrt(3)/2, .5, 0])
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'D2h'
+            return x_g, y_g, z_g, bp_symm_grp
+        ########################### ID (14) from tbale 17############################
+        cond_0 = abs(q0 - 1) <= x_tol
+        p_o = cond_0 
+        if p_o:
+            z_g = np.array([0, 0, 1])
+            x_g = np.array([1, 0, 0])
+            z_g = z_g/np.linalg.norm(z_g)
+            x_g = x_g/np.linalg.norm(x_g)
+            y_g = np.cross(z_g, x_g)
+            bp_symm_grp = 'D6h'
+            return x_g, y_g, z_g, bp_symm_grp
