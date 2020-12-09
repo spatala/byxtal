@@ -96,9 +96,13 @@ def compute_inp_params(lattice, sig_type):
     -----------
     tau: float
         tau is a rational number :math:`= \\frac{\\nu}{\\mu}`
+        tau is equal to (a/c)^2
 
     kmax: float
         kmax is an integer that depends on :math:`\\mu \\ , \\nu`
+        for hcp: kmax equals to F/\Sigma. kmax is always a divisor of 12\mu\nu. 
+        F/\Sigma is a dicisor of 6\mu\nu if \nu is even and a divisor od 3\mu\nu
+        if \nu is a multiple of 4.
     """
     lat_params = lattice.lat_params
     cryst_ptgrp = proper_ptgrp(lattice.cryst_ptgrp)
@@ -1011,7 +1015,10 @@ def check_sigma_rots(r_g1tog2_g1, sigma):
 def csl_rotations(sigma, sig_type, lat_type):
     """
     The function computes the CSL rotation matrices r_g1tog2_g1 corresponding
-    to a give sigma and lattice
+    to a give sigma and lattice.  
+    Reference: Grimmer, Hans. "The generating function for coincidence site
+    lattices in the cubic system." Acta Crystallographica Section A: Foundations
+    of Crystallography 40.2 (1984): 108-112.
 
     Parameters
     ----------
