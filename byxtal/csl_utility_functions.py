@@ -81,6 +81,8 @@ def largest_odd_factor(var_arr):
 
 
 def compute_inp_params(lattice, sig_type):
+    # Leila: for the tolerance value for D6 I chose 1e-2
+    # to get the values of mu and nu in table 2 in grimmers paper.
     """
     tau and kmax necessary for possible integer quadruple combinations
     are computed
@@ -100,9 +102,9 @@ def compute_inp_params(lattice, sig_type):
 
     kmax: float
         kmax is an integer that depends on :math:`\\mu \\ , \\nu`
-        for hcp: kmax equals to F/\Sigma. kmax is always a divisor of 12\mu\nu. 
-        F/\Sigma is a dicisor of 6\mu\nu if \nu is even and a divisor od 3\mu\nu
-        if \nu is a multiple of 4.
+        for hcp: kmax equals to F/\Sigma. kmax is always a divisor of 12\\mu\\nu. 
+        F/\Sigma is a dicisor of 6\\mu\\nu if \\nu is even and a divisor od 3\\mu\\nu
+        if \\nu is a multiple of 4.
     """
     lat_params = lattice.lat_params
     cryst_ptgrp = proper_ptgrp(lattice.cryst_ptgrp)
@@ -128,7 +130,7 @@ def compute_inp_params(lattice, sig_type):
     if cryst_ptgrp == 'D6':
         tau = (lat_params['a'] ** 2) / (lat_params['c'] ** 2)
         if sig_type == 'specific':
-            [nu, mu] = int_man.rat_approx(tau, 1e-8)
+            [nu, mu] = int_man.rat_approx(tau, 1e-2)
             if np.remainder(nu, 2) == 0:
                 if np.remainder(nu, 4) == 0:
                     kmax = 3 * mu * nu
@@ -147,6 +149,12 @@ def compute_inp_params(lattice, sig_type):
 
 
 def mesh_muvw(cryst_ptgrp, sigma, sig_type, *args):
+    # Leila note, deleted the star and lines 208-210
+        # mu = args[0]['mu']
+        # nu = args[0]['nu']
+        # kmax = args[0]['kmax']
+    #delete lines 228-235
+    # uncomment lines 236-245
     """
     Compute max allowed values of [m,U,V,W] and generates an array
     of integer quadruples
@@ -329,6 +337,7 @@ def mesh_muvw_fz(quad_int, cryst_ptgrp, sig_type, *args):
             w = w[condfin]
 
         if cryst_ptgrp == 'D6':
+            # equation 14-18 grimmer paper
             mu = args[0]['mu']
             nu = args[0]['nu']
             cond0 = (u >= 2 * v)
@@ -1079,9 +1088,9 @@ def csl_rotations(sigma, sig_type, lat_type):
 
     if sig_type == 'specific':
         lat_args = {}
-        lat_args['mu'] = mu[0][0]
-        lat_args['nu'] = nu[0][0]
-        lat_args['kmax'] = kmax[0][0]
+        lat_args['mu'] = mu.tolist()
+        lat_args['nu'] = nu.tolist()
+        lat_args['kmax'] = kmax
         # Create Integer Quadruples
         quad_int = mesh_muvw(cryst_ptgrp, sigma, sig_type, lat_args)
         # Restrict to Fundamental Zone
