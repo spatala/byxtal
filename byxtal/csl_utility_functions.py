@@ -426,6 +426,7 @@ def check_fsig_int(quad_int, cryst_ptgrp, sigma, *args):
         fsig = ((mu * (3 * (m ** 2) + w ** 2) +
                  nu * (u ** 2 - u * v + v ** 2)) / sigma)
         cond1 = np.where(abs(fsig - np.round(fsig)) < 1e-06)[0]
+        cond1 = cond1[cond1!=0]
         cond2 = np.where(np.remainder(kmax, fsig[cond1]) == 0)[0]
         quad_int = quad_int[:, cond1[cond2]]
 
@@ -715,7 +716,7 @@ def check_sigma(quad_int, sigma, cryst_ptgrp, sig_type, *args):
             twos = 2*np.ones(np.shape(m))
             threes = 3*np.ones(np.shape(m))
 
-            f1 = gcd1d_arr(((u, v, m+w)))
+            f1 = gcd1d_arr(((twos, u, v, m+w)))
             f2 = gcd1d_arr(((threes, u+v, w)))
 
             cond1 = abs(twos / f1 - np.round(twos / f1)) < 1e-06
@@ -736,7 +737,7 @@ def check_sigma(quad_int, sigma, cryst_ptgrp, sig_type, *args):
 
             twos = 2*np.ones(np.shape(m))
             nus = nu*np.ones(np.shape(m))
-            f1 = gcd1d_arr(((u, v, m+w)))
+            f1 = gcd1d_arr(((twos, u, v, m+w)))
 
             f3 = gcd1d_arr(((twos / f1, nus, m+w)))
             cond0 = abs(nus / f3 - np.round(nus / f3)) < 1e-06
@@ -757,12 +758,12 @@ def check_sigma(quad_int, sigma, cryst_ptgrp, sig_type, *args):
             mus = mu*np.ones(np.shape(m))
 
             f = mu*(3*(m**2) + w**2) + nu*(u**2 - u*v + v**2)
-            f1 = gcd1d_arr((u, v, m+w))
+            f1 = gcd1d_arr((twos, u, v, m+w))
             f2 = gcd1d_arr((threes, u+v, w))
             f3 = gcd1d_arr((twos / f1, nus, m+w))
             f4 = gcd1d_arr((nus / f3, 2*w / (f1*f2), m+w))
             f5 = gcd1d_arr((mus, 3*u / (f1*f2), (u+v) / f1))
-            sig1 = f / (f1*f2*f3*f4*f5)
+            sig1 = f / (f1*f1*f2*f3*f4*f5)
 
             quad_int_out = quad_int[:, sig1 == sigma]
             return quad_int_out
