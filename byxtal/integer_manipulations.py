@@ -4,7 +4,7 @@ from sympy import Rational
 from sympy.matrices import Matrix, eye, zeros;
 from sympy import nsimplify
 import sympy as spy
-
+from fractions import Fraction
 import numpy.linalg as nla
 
 def gcd_vec(int_mat):
@@ -240,4 +240,177 @@ def mult_fac_err(Tmat, mult1, tol1):
 
     return int_mat1, t1_mult, err1
 
+def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
+    """
+    The function computes the scaling factor required to multiply the
+    given input array to obtain an integer array. The integer array is
+    returned.
+    Parameters
+    ----------
+    input1 : numpy array or list of real numbers
+    tol : floating point tolerance value
+        Default = 1e-06
+    order : {'rows', 'columns', 'col', 'all'}
+        Defualt = 'all'
+    tol1:
+    Returns
+    -------
+    output: numpy float array
+    An array of integers obtained by scaling input
+    See Also
+    --------
+    gcd_array
+    Notes
+    --------
+    * If order = **all**, the input array is flattened and then scaled
+    * If order = **rows**, elements in each row are scaled
+    * If order = **columns** or **cols**, elements in each column are scaled
+    """
 
+    input1 = np.array(input_v)
+    Sz = input1.shape
+    if np.ndim(input1) == 1:
+        input1 = np.reshape(input1, (1, input1.shape[0]))
+
+    if int_check(input1, 15).all():
+        input1 = np.around(input1)
+        # Divide by LCM (rows, cols, all) <--- To Do
+        tmult = gcd_array(input1.astype(dtype='int64'), order)
+        if (order == 'all'):
+            input1 = input1 / tmult
+        elif (order == 'rows'):
+            tmult = np.tile(tmult, (np.shape(input1[1])))
+            input1 = input1 / tmult
+        elif (order == 'col' or order == 'cols' or order == 'columns'):
+            tmult = np.tile(tmult, (np.shape(input1[0])[0], 1))
+            input1 = input1 / tmult
+        output_v = input1
+        if len(Sz) == 1:
+            output_v = np.reshape(output_v, (np.size(output_v), ))
+        return output_v
+    else:
+        #   By default it flattens the array (if nargin < 3)
+        if order.lower() == 'all':
+            if len(Sz) != 1:
+                input1.shape = (1, Sz[0]*Sz[1])
+        else:
+            Switch = 0
+            err_msg = "Not a valid input. For the third argument please"+ \
+                      " choose either \"rows\" or \"columns\" keys for this function."
+            order_options = ('rows', 'columns', 'col')
+            try:
+                Keys = (order_options.index(order.lower()))
+            except:
+                raise Exception(err_msg)
+
+            if (Keys == 1) or (Keys == 2):
+                if input1.shape[0] != 1:
+                    # Handling the case of asking a row vector
+                    # with the 'column' key by mistake.
+                    input1 = input1.T
+                    Switch = 1
+            # Handling the case of asking a column
+            # vector with the 'row' key by mistake.
+            if (Keys == 0) and (input1.shape[1] == 1):
+                input1 = input1.T
+                Switch = 1
+
+        if (abs(input1) < tol).all():
+            excep1 = 'All the input components cannot' \
+                     + 'be smaller than tolerance.'
+            raise Exception(excep1)
+
+        tmp = np.array((abs(input1) > tol1))
+        Vec = 2 * abs(input1[::]).max() * np.ones(
+            (input1.shape[0], input1.shape[1]))
+        Vec[tmp] = input1[tmp]
+        MIN = abs(Vec).min(axis=1)
+        # Transposing a row to a column
+        MIN.shape = (len(MIN), 1)
+        input1 = input1 / np.tile(MIN, (1, input1.shape[1]))
+        N, D = rat(input1, tol)
+        N[~tmp] = 0 # <---- added
+        D[~tmp] = 1 # <---- added
+        lcm_rows = lcm_array(D, 'rows')
+        lcm_mat = np.tile(lcm_rows, (1, input1.shape[1]))
+        Rounded = (N * lcm_mat) / D
+        output_v = Rounded
+
+        # --------------------------
+        if order.lower() == 'all':
+            if len(Sz) != 1:
+                output_v.shape = (Sz[0], Sz[1])
+        else:
+            if (Keys) == 1 or (Keys) == 2:
+                output_v = output_v.T
+            if Keys == 0 and Switch == 1:
+                output_v = output_v.T
+
+        if len(Sz) == 1:
+            output_v = np.reshape(output_v, (np.size(output_v), ))
+
+        return output_v
+
+
+def int_check(input, precis=6):
+    """
+    Checks whether the input variable (arrays) is an interger or not.
+    A precision value is specified and the integer check is performed
+    up to that decimal point.
+    Parameters
+    ----------
+    input : numpy array or list
+        Input n-D array of floats.
+    precis : Integer
+        Default = 6.
+        A value that specifies the precision to which the number is an
+        integer. **precis = 6** implies a precision of :math:`10^{-6}`.
+    Returns
+    -------
+    cond: Boolean
+        **True** if the element is an integer to a certain precision,
+        **False** otherwise
+    """
+
+    var = np.array(input)
+    tval = 10 ** -precis
+    t1 = abs(var)
+    cond = (abs(t1 - np.around(t1)) < tval)
+    return cond
+
+def rat(input, tol=1e-06):
+    """
+    The function returns a rational (p/q) approximation of a given
+    floating point array to a given precision
+    Parameters
+    ----------
+    input : numpy array or list of real numbers
+    tol : floating point tolerance value
+        Default = 1e-06
+    Returns
+    -------
+    N, D: Integer numpy arrays
+        N and D contain the numerators (p) and denominators (q) of the
+        rational approximations
+    Notes:
+    --------
+    """
+    input1 = np.array(input)
+    if np.ndim(input1) == 1:
+        input1 = np.reshape(input1, (1, input1.shape[0]))
+
+    ## Why is this case necessary?
+    if input1.ndim == 0:
+        input1 = np.reshape(input1, (1, 1))
+
+    Sz = input1.shape
+    N = np.zeros((Sz[0], Sz[1]), dtype='int64')
+    D = np.zeros((Sz[0], Sz[1]), dtype='int64')
+    nDec = int(1/tol)
+    for i in range(Sz[0]):
+        for j in range(Sz[1]):
+            N[i, j] = (Fraction.from_float(input1[i, j]).
+                       limit_denominator(nDec).numerator)
+            D[i, j] = (Fraction.from_float(input1[i, j]).
+                       limit_denominator(nDec).denominator)
+    return N, D
