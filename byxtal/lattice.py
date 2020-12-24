@@ -289,6 +289,43 @@ class Lattice(object):
 
             self.basis_atoms = np.array([[0., 0., 0.], [1./3, 2./3, 1./2]])
         # ------------------------------------------------------------------------------------------------------
+        if elem_type.lower() == 'mg_liu':
+            self.elem_type = 'Mg'
+            self.pearson = 'hP'
+
+            a = 3.1960022507932546; b = a; CAratio = 1.622997962828133; c = a*CAratio
+            a_ang = np.pi/2; b_ang = np.pi/2; g_ang = 2*np.pi/3;
+            self.lat_params = {'a': a, 'b': b, 'c': c, 'alpha': a_ang, 'beta': b_ang, 'gamma': g_ang}
+
+            self.cryst_ptgrp = 'D6h'
+            self.burgers_mag = a
+            self.eam_file = np.array(['fs', 'mg-al-set.eam.alloy'])
+
+            b1x = a*np.array([1., 0., 0.])
+            b1y = np.dot(vrrotvec2mat(np.array([0., 0., 1., g_ang])), b1x)
+            b1z = c*np.array([0., 0., 1.])
+            self.l_p_po = np.column_stack((b1x, b1y, b1z))
+
+            self.basis_atoms = np.array([[0., 0., 0.], [1./3, 2./3, 1./2]])
+        # ------------------------------------------------------------------------------------------------------
+        if elem_type.lower() == 'mg_sun':
+            self.elem_type = 'Mg'
+            self.pearson = 'hP'
+
+            a = 3.184214101623855; b = a; CAratio = 1.6281642535343206; c = a*CAratio
+            a_ang = np.pi/2; b_ang = np.pi/2; g_ang = 2*np.pi/3;
+            self.lat_params = {'a': a, 'b': b, 'c': c, 'alpha': a_ang, 'beta': b_ang, 'gamma': g_ang}
+
+            self.cryst_ptgrp = 'D6h'
+            self.burgers_mag = a
+            self.eam_file = np.array(['fs', 'Mg.eam.fs'])
+
+            b1x = a*np.array([1., 0., 0.])
+            b1y = np.dot(vrrotvec2mat(np.array([0., 0., 1., g_ang])), b1x)
+            b1z = c*np.array([0., 0., 1.])
+            self.l_p_po = np.column_stack((b1x, b1y, b1z))
+
+            self.basis_atoms = np.array([[0., 0., 0.], [1./3, 2./3, 1./2]])
 
         #### Tetragonal Lattices
         # ------------------------------------------------------------------------------------------------------
