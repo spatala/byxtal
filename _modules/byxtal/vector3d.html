@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>byxtal.vector3d &mdash; byxtal 0.post53+gb2922b3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> byxtal
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.post53+gb2922b3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release-history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../min_versions.html">Minimum Version of Python and NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Modules.html">Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">byxtal</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>byxtal.vector3d</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for byxtal.vector3d</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Authors: Arash Dehghan Banadaki &lt;adehgha@ncsu.edu&gt;, Srikanth Patala &lt;spatala@ncsu.edu&gt;</span>
+<span class="c1"># Copyright (c) 2015,  Arash Dehghan Banadaki and Srikanth Patala.</span>
+<span class="c1"># License: GNU-GPL Style.</span>
+<span class="c1"># How to cite GBpy:</span>
+<span class="c1"># Banadaki, A. D. &amp; Patala, S. &quot;An efficient algorithm for computing the primitive bases of a general lattice plane&quot;,</span>
+<span class="c1"># Journal of Applied Crystallography 48, 585-588 (2015). doi:10.1107/S1600576715004446</span>
+<span class="c1">#</span>
+<span class="c1"># This class is inspired by MTEX Toolbox (https://mtex-toolbox.github.io/index.html)</span>
+<span class="c1">#</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1"># import geometry_tools as gmt</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">geometry_tools</span> <span class="k">as</span> <span class="n">gmt</span>
+
+
+<div class="viewcode-block" id="vector3d"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.vector3d">[docs]</a><span class="k">class</span> <span class="nc">vector3d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">nargs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+        <span class="c1">##############################################################</span>
+        <span class="k">if</span> <span class="n">nargs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">vecarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vecarray</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+            <span class="c1"># obj = np.asarray(vecarray, dtype=dt).view(cls);</span>
+
+        <span class="c1">##############################################################</span>
+        <span class="k">elif</span> <span class="n">nargs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="n">vector3d</span><span class="p">:</span>
+                <span class="n">vecarray</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">vecarray</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">vecarray</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+                    <span class="n">obj</span> <span class="o">=</span> <span class="n">vecarray</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Wrong vector3d Type&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+                <span class="n">vshape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">vshape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                        <span class="n">vecarray</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Wrong Input type&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">vshape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                        <span class="n">vecarray</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">elif</span> <span class="n">vshape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                        <span class="n">vecarray</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Wrong Input type&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Wrong Input type&#39;</span><span class="p">)</span>
+                <span class="n">obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vecarray</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+                <span class="c1"># obj = np.asarray(args[0], dtype=dt).view(cls);</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">errstr1</span> <span class="o">=</span> <span class="s1">&#39;Wrong Input type: Must be a&#39;</span>
+                <span class="n">errstr2</span> <span class="o">=</span> <span class="s1">&#39;vector3d or numpy array&#39;</span>
+                <span class="n">errstr</span><span class="o">=</span><span class="n">errstr1</span><span class="o">+</span><span class="n">errstr2</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">errstr</span><span class="p">)</span>
+
+        <span class="c1">##############################################################</span>
+        <span class="k">elif</span> <span class="n">nargs</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;For spherical coordinates use sph2vec&#39;</span><span class="p">)</span>
+
+        <span class="c1">##############################################################</span>
+        <span class="k">elif</span> <span class="n">nargs</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">gmt</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="n">vx</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
+                <span class="n">vy</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])])</span>
+                <span class="n">vz</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">])])</span>
+                <span class="n">vecarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">vz</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vecarray</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+                <span class="c1"># obj = np.asarray(vecarray, dtype=dt).view(cls);</span>
+            <span class="k">elif</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;polar&#39;</span><span class="p">:</span>
+                <span class="c1">### sph2vec should returns numpy array</span>
+                <span class="n">vecarray</span> <span class="o">=</span> <span class="n">gmt</span><span class="o">.</span><span class="n">sph2vec</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                <span class="n">obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vecarray</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+                <span class="c1"># obj = np.asarray(vecarray, dtype=dt).view(cls);</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Wrong Number of Inputs&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="dot"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.dot">[docs]</a><span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">xx</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">zz</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">xx</span> <span class="o">+</span> <span class="n">yy</span> <span class="o">+</span> <span class="n">zz</span></div>
+
+
+<div class="viewcode-block" id="angle"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.angle">[docs]</a><span class="k">def</span> <span class="nf">angle</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">normalize</span><span class="p">(</span><span class="n">v1</span><span class="p">),</span> <span class="n">normalize</span><span class="p">(</span><span class="n">v2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">vec</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
+
+
+
+
+<div class="viewcode-block" id="cross"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.cross">[docs]</a><span class="k">def</span> <span class="nf">cross</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param v1:</span>
+<span class="sd">    :param v2:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vx</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">vy</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">vz</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">vector3d</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="n">vz</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="getx"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.getx">[docs]</a><span class="k">def</span> <span class="nf">getx</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span></div>
+
+
+<div class="viewcode-block" id="gety"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.gety">[docs]</a><span class="k">def</span> <span class="nf">gety</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span></div>
+
+
+<div class="viewcode-block" id="getz"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.getz">[docs]</a><span class="k">def</span> <span class="nf">getz</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">vec</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span></div>
+
+
+<div class="viewcode-block" id="get_size"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.get_size">[docs]</a><span class="k">def</span> <span class="nf">get_size</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span></div>
+
+<div class="viewcode-block" id="norm"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.norm">[docs]</a><span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">2</span><span class="p">,:],</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">n</span></div>
+
+<div class="viewcode-block" id="normalize"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.normalize">[docs]</a><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">vec</span><span class="o">/</span><span class="n">n</span></div>
+
+<span class="c1"># def angle_outer</span>
+<span class="c1"># def char(v,*args):</span>
+<span class="c1"># def check_option():</span>
+<span class="c1"># def contourf</span>
+<span class="c1"># def cross</span>
+<span class="c1"># def ctranspose</span>
+<span class="c1"># def delete_option</span>
+<span class="c1"># def display</span>
+<span class="c1"># def dot:</span>
+<span class="c1"># def dot_outer</span>
+<span class="c1"># def end</span>
+<span class="c1"># def eq</span>
+<span class="c1"># def extract_option</span>
+<span class="c1"># def find</span>
+<span class="c1"># def get</span>
+<span class="c1"># def horzcat</span>
+<span class="c1"># def kernelDensityEstimation</span>
+<span class="c1"># def length</span>
+<span class="c1"># def line</span>
+<span class="c1"># def mean</span>
+<span class="c1"># def minus</span>
+<span class="c1"># def mtimes</span>
+<span class="c1"># def ne</span>
+<span class="c1"># def norm</span>
+<span class="c1"># def numel</span>
+<span class="c1"># def orth</span>
+<span class="c1"># def pathPatala</span>
+<span class="c1"># def pcolor</span>
+<span class="c1"># def plot </span>
+<span class="c1"># def plus</span>
+<span class="c1"># def polar</span>
+<span class="c1"># def project2FundamentalRegion</span>
+<span class="c1"># def quiver</span>
+<span class="c1"># def rdivide</span>
+<span class="c1"># def repmat</span>
+<span class="c1"># def reshape</span>
+<span class="c1"># def rotate</span>
+<span class="c1"># def scatter</span>
+<span class="c1"># def SchmidTensor</span>
+<span class="c1"># def set</span>
+<span class="c1"># def set_option</span>
+<span class="c1"># def size</span>
+<span class="c1"># def smooth</span>
+<span class="c1"># def splitNorthSouth</span>
+<span class="c1"># def subsasgn</span>
+<span class="c1"># def subsref</span>
+<span class="c1"># def sum </span>
+<span class="c1"># def surf</span>
+<span class="c1"># def symmetrise</span>
+<span class="c1"># def text</span>
+<span class="c1"># def times</span>
+<span class="c1"># def transpose</span>
+<span class="c1"># def uminus</span>
+<span class="c1"># def unique</span>
+<span class="c1"># def vector3d</span>
+<span class="c1"># def vertcat</span>
+
+
+<span class="c1">######################################################################</span>
+<span class="c1"># # Test Cases</span>
+
+<span class="c1"># # # Args = 0</span>
+<span class="c1"># # c = vector3d();</span>
+
+
+<span class="c1"># # Args = 1, Type 1</span>
+<span class="c1"># P1 = np.random.rand(3,4); c = vector3d(P1); print c;</span>
+
+<span class="c1"># # Args = 1, Type 0</span>
+<span class="c1"># c1 = vector3d(c); print c1;</span>
+
+<span class="c1"># # # Args = 2</span>
+<span class="c1"># # P1 = np.random.rand(3,4);</span>
+<span class="c1"># # c2 = vector3d(np.random.rand(3,1),np.random.rand(3,1));</span>
+
+<span class="c1"># # Args = 3</span>
+<span class="c1"># c2 = vector3d(np.random.rand(1,4), np.random.rand(1,4), np.random.rand(1,4));</span>
+
+
+<span class="c1"># # c2 = vector3d(np.random.rand(1,12), np.random.rand(1,12), np.random.rand(1,12));</span>
+<span class="c1"># # print c2;</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Leila Khalili.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
