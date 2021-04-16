@@ -106,9 +106,9 @@ Misorientation Fundamental Zones
 
 Sage Utility Functions
 ----------------------------
-.. autofunction:: byxtal.sage_util_funcs.compute_csl_grimmer
+#.. autofunction:: byxtal.sage_util_funcs.compute_csl_grimmer
 
-.. autofunction:: byxtal.sage_util_funcs.compute_lll
+#.. autofunction:: byxtal.sage_util_funcs.compute_lll
 
 
 Generate Symmetry Operators
@@ -219,16 +219,16 @@ Quaternion
 
 .. autofunction:: byxtal.quaternion.inverse
 
-#.. autofunction:: byxtal.quaternion.mtimes
+.. autofunction:: byxtal.quaternion.mtimes
 
-#.. autofunction:: byxtal.quaternion.eq
+.. autofunction:: byxtal.quaternion.eq
 
-#.. autofunction:: byxtal.quaternion.quat2mat
+.. autofunction:: byxtal.quaternion.quat2mat
 
-#.. autofunction:: byxtal.quaternion.mat2quat
+.. autofunction:: byxtal.quaternion.mat2quat
 
-#.. autofunction:: byxtal.quaternion.ctranspose
+.. autofunction:: byxtal.quaternion.ctranspose
 
-#.. autofunction:: byxtal.quaternion.isnumeric
+.. autofunction:: byxtal.quaternion.isnumeric
 
 

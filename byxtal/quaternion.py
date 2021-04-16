@@ -538,7 +538,7 @@ def display(q, p_flag=True):
     quaternion.
 
     * p_flag == True prints and returns the display string
-    
+
     * p_flag == False returns the display string
 
     """
@@ -715,8 +715,10 @@ def mtimes(q1, q2):
     Notes
     -------
     * If size(q1) == size(q2), then each quaternion q1(i) is multiplied with q2(i)
+
     * If size(q1) > size(q2), then size(q2) must be equal to 1. Each quaternion q1(i)
     is multiplied with q2.
+
     * If size(q2) > size(q1), then size(q1) must be equal to 1. Each quaternion q2(i)
     is multiplied with q1.
 
@@ -775,8 +777,10 @@ def eq(q1, q2, tol=1e-04):
     Notes
     -------
     * If size(q1) == size(q2), then each quaternion q1(i) is checked against q2(i)
+
     * If size(q1) > size(q2), then size(q2) must be equal to 1. Each quaternion q1(i) is checked
     against q2
+
     * If size(q2) > size(q1), then size(q1) must be equal to 1. Each quaternion q2(i) is checked
     against q1
 
@@ -861,11 +865,14 @@ def mat2quat(mat, rot_type='proper'):
     -----------
     mat: rotation matrices, this input maybe given in the following two ways
     * numpy array of size (n x 3 x 3)
+
     * python list with n elements, each element is a rotation matrix with shape (3 x 3)
 
     rot_type: string with either of the following values, 'proper' or 'improper'
     * 'improper' if there is a possibility of having improper matrices in the input
+
     * 'proper' if all the rotation matrices in the input are of proper rotation type
+    
     * default value is 'proper'
 
     Returns
