@@ -22,6 +22,7 @@
 ./_modules/byxtal/quaternion.html
 ./_modules/byxtal/reduce_po_lat.html
 ./_modules/byxtal/tools.html
+./_modules/byxtal/vector3d.html
 ./_modules/index.html
 ./_sources/Modules.rst.txt
 ./_sources/Tutorials/Basis_2D_Plane.ipynb.txt
