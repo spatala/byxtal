@@ -8,6 +8,7 @@
 ./Tutorials/enumerate_byxtal_hcp.html
 ./Tutorials/enumerate_byxtal_hcp.ipynb
 ./Tutorials/index.html
+./_modules/byxtal/csl_utility_functions.html
 ./_modules/byxtal/geometry_tools.html
 ./_modules/byxtal/lattice.html
 ./_modules/index.html
