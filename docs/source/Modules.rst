@@ -15,7 +15,7 @@ Geometry Tools
 
 
 Integer Manipulations
----------------
+---------------------
 .. autofunction:: byxtal.integer_manipulations.gcd_vec
 
 .. autofunction:: byxtal.integer_manipulations.gcd_array
