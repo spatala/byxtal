@@ -10,6 +10,7 @@
 ./Tutorials/index.html
 ./_modules/byxtal/csl_utility_functions.html
 ./_modules/byxtal/geometry_tools.html
+./_modules/byxtal/integer_manipulations.html
 ./_modules/byxtal/lattice.html
 ./_modules/index.html
 ./_sources/Modules.rst.txt
