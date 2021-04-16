@@ -261,9 +261,6 @@ def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
     -------
     output: numpy.array
         An array of integers obtained by scaling input
-    See Also
-    --------
-    gcd_array
     """
 
     input1 = np.array(input_v)
