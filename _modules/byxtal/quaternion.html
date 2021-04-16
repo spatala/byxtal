@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.quaternion &mdash; byxtal 0.post52+g989352a documentation</title>
+  <title>byxtal.quaternion &mdash; byxtal 0.post53+g6f7ba06 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post52+g989352a
+                0.post53+g6f7ba06
               </div>
             
           
@@ -175,7 +175,7 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">tools</span> <span class="k">as</span> <span class="n">tools</span>
 
 
-<span class="k">class</span> <span class="nc">Quaternion</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<div class="viewcode-block" id="Quaternion"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.Quaternion">[docs]</a><span class="k">class</span> <span class="nc">Quaternion</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The Quaternion class is defined to represent the quaternion parameterization of rotation and their operations.</span>
 <span class="sd">    The object of this class is stored in form of a quaternion array, which inherits all the properties of</span>
@@ -519,7 +519,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># super(Quaternion, self).__init__(*args, **kwargs)</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
 
     <span class="c1"># def __str__(q):</span>
     <span class="c1">#     # super(Quaternion, q).__str__()</span>
@@ -571,8 +571,8 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    g : input quaternion array</span>
-<span class="sd">    * a quaternion array of size (5 x n)</span>
+<span class="sd">    g: numpy.array</span>
+<span class="sd">        a quaternion array of size (5 x n)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -590,8 +590,8 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    g : input quaternion array</span>
-<span class="sd">    * a quaternion array of size (5 x n)</span>
+<span class="sd">    g: numpy.array</span>
+<span class="sd">        a quaternion array of size (5 x n)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -609,8 +609,8 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    g : input quaternion array</span>
-<span class="sd">    * a quaternion array of size (5 x n)</span>
+<span class="sd">    g: numpy.array</span>
+<span class="sd">        a quaternion array of size (5 x n)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -628,8 +628,8 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    g : input quaternion array</span>
-<span class="sd">    * a quaternion array of size (5 x n)</span>
+<span class="sd">    g: numpy.array</span>
+<span class="sd">        a quaternion array of size (5 x n)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -647,14 +647,14 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    g : input quaternion array</span>
-<span class="sd">    * a quaternion array of size (5 x n)</span>
+<span class="sd">    g: numpy.array</span>
+<span class="sd">        a quaternion array of size (5 x n)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    integer values (either +1 or -1) stored in a 1-D numpy array of size n.</span>
-<span class="sd">    * +1 is returned for proper rotations</span>
-<span class="sd">    * -1 is returned for improper rotations</span>
+<span class="sd">        +1 is returned for proper rotations</span>
+<span class="sd">        -1 is returned for improper rotations</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">g</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
@@ -668,8 +668,8 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    g : input quaternion array</span>
-<span class="sd">    * a quaternion array of size (5 x n)</span>
+<span class="sd">    g: numpy.array</span>
+<span class="sd">        a quaternion array of size (5 x n)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -681,27 +681,27 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">g</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span></div>
 
 
-<span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">p_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="display"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.display">[docs]</a><span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">p_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a string which displays the input quaternion array in human readable format.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    g : input quaternion array</span>
-<span class="sd">    * a quaternion array of size (5 x n)</span>
-<span class="sd">    p_flag : flag to print the returned display string</span>
-<span class="sd">    * a boolean with default value == True</span>
+<span class="sd">        a quaternion array of size (5 x n)</span>
+<span class="sd">        p_flag : flag to print the returned display string</span>
+<span class="sd">        a boolean with default value == True</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    str1: quaternion array in a human readable format</span>
+<span class="sd">    str1: str</span>
+<span class="sd">        quaternion array in a human readable format</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    ------</span>
-<span class="sd">    * The 5 components of each quaternion stored in the array are displayed under 5 columns. Each row represents a</span>
-<span class="sd">    quaternion.</span>
-<span class="sd">    * p_flag == True prints and returns the display string</span>
-<span class="sd">    * p_flag == False returns the display string</span>
+<span class="sd">    The 5 components of each quaternion stored in the array are displayed under 5 columns. Each row represents a quaternion.</span>
+<span class="sd">    p_flag == True prints and returns the display string</span>
+<span class="sd">    p_flag == False returns the display string</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -717,7 +717,7 @@
                   <span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">ct1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">ct1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">ct1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="n">ct1</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="n">ct1</span><span class="p">]))</span>
     <span class="k">if</span> <span class="n">p_flag</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">str1</span>
+    <span class="k">return</span> <span class="n">str1</span></div>
 
 
 <div class="viewcode-block" id="antipodal"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.antipodal">[docs]</a><span class="k">def</span> <span class="nf">antipodal</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">):</span>
@@ -726,10 +726,11 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    q1 : input quaternion array</span>
-<span class="sd">    * a quaternion array of size (5 x n)</span>
-<span class="sd">    tol : tolerance to overcome floating point error</span>
-<span class="sd">    * a float, default value is 1e-08</span>
+<span class="sd">    q1 : numpy.array</span>
+<span class="sd">        a quaternion array of size (5 x n)</span>
+
+<span class="sd">    tol: float</span>
+<span class="sd">        tolerance to overcome floating point error, default value is 1e-08</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -737,12 +738,12 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    * Antipodal quaternion for quaternions representing Pi rotations (q0==0) are obtained with a convention.</span>
-<span class="sd">    * If q0 == 0, q3 &gt;0; if q0 == 0 and q3 == 0, q2 &gt;0; if q == 0, q3 == 0 and q2 == 0, q1 &gt; 0.</span>
+<span class="sd">    Antipodal quaternion for quaternions representing Pi rotations (q0==0) are obtained with a convention.</span>
+<span class="sd">    If q0 == 0, q3 &gt;0; if q0 == 0 and q3 == 0, q2 &gt;0; if q == 0, q3 == 0 and q2 == 0, q1 &gt; 0.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    getq0, getq1, getq2, getq3, get_type, get_size</span>
+<span class="sd">        getq0, getq1, getq2, getq3, get_type, get_size</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">a1</span> <span class="o">=</span> <span class="n">getq0</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
     <span class="n">b1</span> <span class="o">=</span> <span class="n">getq1</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
@@ -841,8 +842,8 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    q1 : input quaternion array</span>
-<span class="sd">    * a quaternion array of size (5 x n)</span>
+<span class="sd">    q1: numpy.array</span>
+<span class="sd">        a quaternion array of size (5 x n)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -861,14 +862,14 @@
     <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="o">-</span><span class="n">b1</span><span class="p">,</span> <span class="o">-</span><span class="n">c1</span><span class="p">,</span> <span class="o">-</span><span class="n">d1</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">mtimes</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">):</span>
+<div class="viewcode-block" id="mtimes"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.mtimes">[docs]</a><span class="k">def</span> <span class="nf">mtimes</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates the quaternion multiplication of two input quaternions.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    q1, q2 : Two quaternion arrays</span>
-<span class="sd">    * Allowed options: Either size(q1) == size(q2) or size(q1) == 1 or size(q2) == 1</span>
+<span class="sd">    q1, q2 : numpy.array</span>
+<span class="sd">        Allowed options: Either size(q1) == size(q2) or size(q1) == 1 or size(q2) == 1</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -876,10 +877,12 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -------</span>
-<span class="sd">    * If size(q1) == size(q2), then each quaternion q1(i) is multiplied with q2(i)</span>
-<span class="sd">    * If size(q1) &gt; size(q2), then size(q2) must be equal to 1. Each quaternion q1(i)</span>
+<span class="sd">    If size(q1) == size(q2), then each quaternion q1(i) is multiplied with q2(i)</span>
+
+<span class="sd">    If size(q1) &gt; size(q2), then size(q2) must be equal to 1. Each quaternion q1(i)</span>
 <span class="sd">    is multiplied with q2.</span>
-<span class="sd">    * If size(q2) &gt; size(q1), then size(q1) must be equal to 1. Each quaternion q2(i)</span>
+
+<span class="sd">    If size(q2) &gt; size(q1), then size(q1) must be equal to 1. Each quaternion q2(i)</span>
 <span class="sd">    is multiplied with q1.</span>
 
 <span class="sd">    See Also</span>
@@ -913,10 +916,10 @@
     <span class="n">d</span> <span class="o">=</span> <span class="n">a1</span><span class="o">*</span><span class="n">d2</span> <span class="o">+</span> <span class="n">d1</span><span class="o">*</span><span class="n">a2</span> <span class="o">+</span> <span class="n">b1</span><span class="o">*</span><span class="n">c2</span> <span class="o">-</span> <span class="n">c1</span><span class="o">*</span><span class="n">b2</span>
 
     <span class="n">quat1</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e1</span><span class="o">*</span><span class="n">e2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">antipodal</span><span class="p">(</span><span class="n">quat1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">antipodal</span><span class="p">(</span><span class="n">quat1</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">eq</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-04</span><span class="p">):</span>
+<div class="viewcode-block" id="eq"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.eq">[docs]</a><span class="k">def</span> <span class="nf">eq</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-04</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks whether the two input quaternions are equal or not.</span>
 <span class="sd">    Two quaternions quat1 and quat2 are equal if</span>
@@ -925,10 +928,11 @@
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    q1, q2: Two quaternion arrays</span>
-<span class="sd">    * Allowed options: Either size(q1) == size(q2) or size(q1) == 1 or size(q2) == 1</span>
+<span class="sd">    q1, q2: numpy.array</span>
+<span class="sd">        Allowed options: Either size(q1) == size(q2) or size(q1) == 1 or size(q2) == 1</span>
 <span class="sd">    </span>
-<span class="sd">    tol: The tolerance to check if two quaternions are equal</span>
+<span class="sd">    tol: float</span>
+<span class="sd">        The tolerance to check if two quaternions are equal</span>
 <span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -936,11 +940,9 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -------</span>
-<span class="sd">    * If size(q1) == size(q2), then each quaternion q1(i) is checked against q2(i)</span>
-<span class="sd">    * If size(q1) &gt; size(q2), then size(q2) must be equal to 1. Each quaternion q1(i) is checked</span>
-<span class="sd">    against q2</span>
-<span class="sd">    * If size(q2) &gt; size(q1), then size(q1) must be equal to 1. Each quaternion q2(i) is checked</span>
-<span class="sd">    against q1</span>
+<span class="sd">    If size(q1) == size(q2), then each quaternion q1(i) is checked against q2(i)</span>
+<span class="sd">    If size(q1) &gt; size(q2), then size(q2) must be equal to 1. Each quaternion q1(i) is checked against q2</span>
+<span class="sd">    If size(q2) &gt; size(q1), then size(q1) must be equal to 1. Each quaternion q2(i) is checked against q1</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -965,22 +967,22 @@
     <span class="c1"># print &quot;q3[0] cond = \n&quot; + str((abs(q3[0] -1) &lt; tol)); </span>
     <span class="c1"># print &quot;Type cond = \n&quot; + str((e1 - e2 == 0));</span>
 
-    <span class="k">return</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">q3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">e1</span> <span class="o">-</span> <span class="n">e2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">q3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">e1</span> <span class="o">-</span> <span class="n">e2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">quat2mat</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+<div class="viewcode-block" id="quat2mat"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.quat2mat">[docs]</a><span class="k">def</span> <span class="nf">quat2mat</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Converts the input quaternion array to a rotation matrix array.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    q: input quaternion</span>
-<span class="sd">    *  quaternion array of size (5 x n)</span>
+<span class="sd">    q: numpy.array</span>
+<span class="sd">        quaternion array of size (5 x n)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ----------</span>
-<span class="sd">    g: rotation matrix array</span>
-<span class="sd">    * numpy array of size (n x 3 x 3)</span>
+<span class="sd">    g: numpy.array</span>
+<span class="sd">        rotation matrix array with size (n x 3 x 3)</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -1012,28 +1014,29 @@
         <span class="n">inds1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">qt</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">g</span><span class="p">[</span><span class="n">inds1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="n">inds1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
 
-    <span class="k">return</span> <span class="n">g</span>
+    <span class="k">return</span> <span class="n">g</span></div>
 
 
-<span class="k">def</span> <span class="nf">mat2quat</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">rot_type</span><span class="o">=</span><span class="s1">&#39;proper&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="mat2quat"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.mat2quat">[docs]</a><span class="k">def</span> <span class="nf">mat2quat</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">rot_type</span><span class="o">=</span><span class="s1">&#39;proper&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Converts the input rotation matrix array or list, to a quaternion array.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
-<span class="sd">    mat: rotation matrices, this input maybe given in the following two ways</span>
-<span class="sd">    * numpy array of size (n x 3 x 3)</span>
-<span class="sd">    * python list with n elements, each element is a rotation matrix with shape (3 x 3)</span>
+<span class="sd">    mat: numpy.array</span>
+<span class="sd">    rotation matrices, this input maybe given in the following two ways with size (n x 3 x 3)</span>
+<span class="sd">    python list with n elements, each element is a rotation matrix with shape (3 x 3)</span>
 
-<span class="sd">    rot_type: string with either of the following values, &#39;proper&#39; or &#39;improper&#39;</span>
-<span class="sd">    * &#39;improper&#39; if there is a possibility of having improper matrices in the input</span>
-<span class="sd">    * &#39;proper&#39; if all the rotation matrices in the input are of proper rotation type</span>
-<span class="sd">    * default value is &#39;proper&#39;</span>
+<span class="sd">    rot_type: str</span>
+<span class="sd">        The string has values, &#39;proper&#39; or &#39;improper&#39;</span>
+<span class="sd">        &#39;improper&#39; if there is a possibility of having improper matrices in the input</span>
+<span class="sd">        &#39;proper&#39; if all the rotation matrices in the input are of proper rotation type</span>
+<span class="sd">        default value is &#39;proper&#39;</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    --------</span>
-<span class="sd">    q: quaternion</span>
-<span class="sd">    * quaternion array of size (5 x n)</span>
+<span class="sd">    q: numpy.array</span>
+<span class="sd">        quaternion array of size (5 x n)</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    ---------</span>
@@ -1056,9 +1059,9 @@
 
     <span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">q0</span><span class="p">,</span> <span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">q3</span><span class="p">,</span> <span class="n">qtype</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">q</span>
+    <span class="k">return</span> <span class="n">q</span></div>
 
-<span class="k">def</span> <span class="nf">ctranspose</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
+<div class="viewcode-block" id="ctranspose"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.ctranspose">[docs]</a><span class="k">def</span> <span class="nf">ctranspose</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -1069,7 +1072,7 @@
         <span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
         <span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
         <span class="n">g</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
-    <span class="k">return</span> <span class="n">g</span>
+    <span class="k">return</span> <span class="n">g</span></div>
 
 
 <span class="c1"># def angle(g1, *args):</span>
@@ -1249,14 +1252,14 @@
 <span class="c1">#         return float(d)</span>
 
 
-<span class="k">def</span> <span class="nf">isnumeric</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+<div class="viewcode-block" id="isnumeric"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.isnumeric">[docs]</a><span class="k">def</span> <span class="nf">isnumeric</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">obj</span> <span class="o">+</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 </pre></div>
 
            </div>
