@@ -242,6 +242,7 @@ def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
     The function computes the scaling factor required to multiply the
     given input array to obtain an integer array. The integer array is
     returned.
+
     Parameters
     ----------
     input1 : numpy array or list of real numbers
@@ -250,10 +251,12 @@ def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
     order : {'rows', 'columns', 'col', 'all'}
         Defualt = 'all'
     tol1:
+
     Returns
     -------
     output: numpy float array
     An array of integers obtained by scaling input
+
     See Also
     --------
     gcd_array
