@@ -10,6 +10,7 @@
 ./Tutorials/index.html
 ./_modules/byxtal/bp_basis.html
 ./_modules/byxtal/csl_utility_functions.html
+./_modules/byxtal/disorient_symm_props.html
 ./_modules/byxtal/find_csl_dsc.html
 ./_modules/byxtal/generate_symm_ops.html
 ./_modules/byxtal/geometry_tools.html
