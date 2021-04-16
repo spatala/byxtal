@@ -89,14 +89,9 @@ Boundary Plane Basis
 
 .. autofunction:: byxtal.bp_basis.pl_density
 
-.. autofunction:: byxtal.bp_basis.csl_finder_2d
-
-.. autofunction:: byxtal.bp_basis.csl_finder_smith_2d
-
 .. autofunction:: byxtal.bp_basis.gb_2d_csl
 
 .. autofunction:: byxtal.bp_basis.bicryst_planar_den
-
 
 
 Misorientation Fundamental Zones
