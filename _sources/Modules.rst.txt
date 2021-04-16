@@ -220,5 +220,4 @@ Quaternion
 
 #.. autofunction:: byxtal.quaternion.ctranspose
 
-3D Vector
----------
+
