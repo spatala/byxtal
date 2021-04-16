@@ -245,17 +245,20 @@ def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
 
     Parameters
     ----------
-    input1 : numpy array or list of real numbers
-    tol : floating point tolerance value
-        Default = 1e-06
-    order : {'rows', 'columns', 'col', 'all'}
+    input1 : numpy.array
+        input array
+    tol : float
+        tolerance with Default = 1e-06
+    order : str
         Defualt = 'all'
-    tol1:
+        choices are 'rows', 'columns', 'col', 'all'
+    tol1: float
+        tolerance with Default = 1e-06
 
     Returns
     -------
-    output: numpy float array
-    An array of integers obtained by scaling input
+    output: numpy.array
+        An array of integers obtained by scaling input
 
     See Also
     --------
