@@ -13,6 +13,7 @@ Geometry Tools
 
 .. autofunction:: byxtal.geometry_tools.idquaternion
 
+
 Integer Manipulations
 ---------------------
 .. autofunction:: byxtal.integer_manipulations.gcd_array
@@ -36,6 +37,7 @@ Integer Manipulations
 .. autofunction:: byxtal.integer_manipulations.int_check
 
 .. autofunction:: byxtal.integer_manipulations.rat
+
 
 CSL Utility Function
 --------------------
