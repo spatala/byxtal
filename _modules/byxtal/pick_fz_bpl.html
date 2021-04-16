@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.pick_fz_bpl &mdash; byxtal 0.post53+g283f2fe documentation</title>
+  <title>byxtal.pick_fz_bpl &mdash; byxtal 0.post53+g989352a documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post53+g283f2fe
+                0.post53+g989352a
               </div>
             
           
@@ -168,6 +168,7 @@
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 
+
 <div class="viewcode-block" id="pick_fz_bpl"><a class="viewcode-back" href="../../Modules.html#byxtal.pick_fz_bpl.pick_fz_bpl">[docs]</a><span class="k">def</span> <span class="nf">pick_fz_bpl</span><span class="p">(</span><span class="n">bp_norms_go1</span><span class="p">,</span> <span class="n">bp_symm_grp</span><span class="p">,</span> <span class="n">symm_grp_ax</span><span class="p">,</span> <span class="n">x_tol</span><span class="o">=</span><span class="mf">1e-04</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns an array of unit boundary plane normals lying in the fundamental zone of bicrystal</span>
@@ -198,13 +199,6 @@
 <span class="sd">    bp_fz_stereo : Fundamental zone boundary plane array.</span>
 <span class="sd">    * numpy array of size (n x 3)</span>
 <span class="sd">    *  The boundary plane vectors are rotated for steregraphic projection along z_axis (symm_grp_axes[:, 2].</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    ------</span>
-
-<span class="sd">    See Also</span>
-<span class="sd">    ---------</span>
-<span class="sd">    rot_symm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">x_g</span> <span class="o">=</span> <span class="p">(</span><span class="n">symm_grp_ax</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]);</span> <span class="n">y_g</span> <span class="o">=</span> <span class="n">symm_grp_ax</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">];</span> <span class="n">z_g</span> <span class="o">=</span> <span class="n">symm_grp_ax</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
 
@@ -289,6 +283,7 @@
     <span class="n">bp_fz_norms_go1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">rot_mat</span><span class="p">),</span> <span class="n">bp_fz_stereo</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">bp_fz_norms_go1</span><span class="p">,</span> <span class="n">bp_fz_stereo</span></div>
+
 
 <div class="viewcode-block" id="rot_symm"><a class="viewcode-back" href="../../Modules.html#byxtal.pick_fz_bpl.rot_symm">[docs]</a><span class="k">def</span> <span class="nf">rot_symm</span><span class="p">(</span><span class="n">symm_grp_ax</span><span class="p">,</span> <span class="n">bp_norms_go1</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

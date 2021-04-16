@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Modules &mdash; byxtal 0.post53+g283f2fe documentation</title>
+  <title>Modules &mdash; byxtal 0.post53+g989352a documentation</title>
   
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.post53+g283f2fe
+                0.post53+g989352a
               </div>
             
           
@@ -267,9 +267,19 @@ elem_type = ‘Mg’;</p>
 </table>
 </dd></dl>
 
+<dl class="py function">
+<dt id="byxtal.lattice.approx_latmat">
+<code class="sig-prename descclassname"><span class="pre">byxtal.lattice.</span></code><code class="sig-name descname"><span class="pre">approx_latmat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/lattice.html#approx_latmat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.lattice.approx_latmat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="geometry-tools">
 <h2>Geometry Tools<a class="headerlink" href="#geometry-tools" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="byxtal.geometry_tools.isnumeric">
+<code class="sig-prename descclassname"><span class="pre">byxtal.geometry_tools.</span></code><code class="sig-name descname"><span class="pre">isnumeric</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/geometry_tools.html#isnumeric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.geometry_tools.isnumeric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py function">
 <dt id="byxtal.geometry_tools.sph2vec">
 <code class="sig-prename descclassname"><span class="pre">byxtal.geometry_tools.</span></code><code class="sig-name descname"><span class="pre">sph2vec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/geometry_tools.html#sph2vec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.geometry_tools.sph2vec" title="Permalink to this definition">¶</a></dt>
@@ -1589,14 +1599,23 @@ input matrix with primitve basis vectors</p>
 </div>
 <div class="section" id="lll-reduction">
 <h2>lll-reduction<a class="headerlink" href="#lll-reduction" title="Permalink to this headline">¶</a></h2>
-<p>#.. autofunction:: byxtal.lll_tools.reduce_po_lat</p>
-<p>#.. autofunction:: byxtal.lll_tools.check_basis_equi</p>
-<p>#.. autofunction:: byxtal.lll_tools.check_basis_def</p>
-<p>#.. autofunction:: byxtal.lll_tools.lll_reduction</p>
-<p>#.. autofunction:: byxtal.lll_tools.mod</p>
-<p>#.. autofunction:: byxtal.lll_tools.hermite_normal_form</p>
-<p>#.. autofunction:: byxtal.lll_tools.smith_normal_form</p>
-<p>#.. autofunction:: byxtal.lll_tools.row_col_all_zero</p>
+<dl class="py function">
+<dt id="byxtal.lll_tools.check_basis_equi">
+<code class="sig-prename descclassname"><span class="pre">byxtal.lll_tools.</span></code><code class="sig-name descname"><span class="pre">check_basis_equi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/lll_tools.html#check_basis_equi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.lll_tools.check_basis_equi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.lll_tools.check_basis_def">
+<code class="sig-prename descclassname"><span class="pre">byxtal.lll_tools.</span></code><code class="sig-name descname"><span class="pre">check_basis_def</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/lll_tools.html#check_basis_def"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.lll_tools.check_basis_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>If l_p2 is defined in l_p1
+(l_p1.inv())*l_p2 is an integer matrix</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.lll_tools.lll_reduction">
+<code class="sig-prename descclassname"><span class="pre">byxtal.lll_tools.</span></code><code class="sig-name descname"><span class="pre">lll_reduction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int_mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/lll_tools.html#lll_reduction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.lll_tools.lll_reduction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="pick-fundumental-zone">
 <h2>Pick Fundumental Zone<a class="headerlink" href="#pick-fundumental-zone" title="Permalink to this headline">¶</a></h2>
@@ -1652,12 +1671,6 @@ symmetry for an input array containing unit boundary plane normals in po1 refere
 </ul>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#byxtal.pick_fz_bpl.rot_symm" title="byxtal.pick_fz_bpl.rot_symm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rot_symm</span></code></a></dt><dd></dd>
-</dl>
-</div>
 </dd></dl>
 
 <dl class="py function">

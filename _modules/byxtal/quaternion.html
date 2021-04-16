@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.quaternion &mdash; byxtal 0.post53+g283f2fe documentation</title>
+  <title>byxtal.quaternion &mdash; byxtal 0.post53+g989352a documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post53+g283f2fe
+                0.post53+g989352a
               </div>
             
           
@@ -175,7 +175,6 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">tools</span> <span class="k">as</span> <span class="n">tools</span>
 
 
-<span class="c1">######################################################################</span>
 <span class="k">class</span> <span class="nc">Quaternion</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The Quaternion class is defined to represent the quaternion parameterization of rotation and their operations.</span>
@@ -583,7 +582,7 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span></div>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <div class="viewcode-block" id="getq1"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.getq1">[docs]</a><span class="k">def</span> <span class="nf">getq1</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -602,7 +601,7 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span></div>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <div class="viewcode-block" id="getq2"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.getq2">[docs]</a><span class="k">def</span> <span class="nf">getq2</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -621,7 +620,7 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:])</span></div>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <div class="viewcode-block" id="getq3"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.getq3">[docs]</a><span class="k">def</span> <span class="nf">getq3</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -640,7 +639,7 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:])</span></div>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <div class="viewcode-block" id="get_type"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.get_type">[docs]</a><span class="k">def</span> <span class="nf">get_type</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -661,7 +660,7 @@
         <span class="k">return</span> <span class="n">g</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">g</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="p">:]</span></div>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <div class="viewcode-block" id="get_size"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.get_size">[docs]</a><span class="k">def</span> <span class="nf">get_size</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -680,7 +679,7 @@
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">g</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span></div>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">p_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -719,7 +718,7 @@
     <span class="k">if</span> <span class="n">p_flag</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">str1</span>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <div class="viewcode-block" id="antipodal"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.antipodal">[docs]</a><span class="k">def</span> <span class="nf">antipodal</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -834,7 +833,7 @@
     <span class="c1">#</span>
 
     <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span></div>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <div class="viewcode-block" id="inverse"><a class="viewcode-back" href="../../Modules.html#byxtal.quaternion.inverse">[docs]</a><span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="n">q1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -860,7 +859,7 @@
     <span class="n">e1</span> <span class="o">=</span> <span class="n">get_type</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="o">-</span><span class="n">b1</span><span class="p">,</span> <span class="o">-</span><span class="n">c1</span><span class="p">,</span> <span class="o">-</span><span class="n">d1</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span></div>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <span class="k">def</span> <span class="nf">mtimes</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -915,7 +914,7 @@
 
     <span class="n">quat1</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e1</span><span class="o">*</span><span class="n">e2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">antipodal</span><span class="p">(</span><span class="n">quat1</span><span class="p">)</span>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <span class="k">def</span> <span class="nf">eq</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-04</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -967,7 +966,7 @@
     <span class="c1"># print &quot;Type cond = \n&quot; + str((e1 - e2 == 0));</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">q3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">e1</span> <span class="o">-</span> <span class="n">e2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <span class="k">def</span> <span class="nf">quat2mat</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1014,7 +1013,7 @@
         <span class="n">g</span><span class="p">[</span><span class="n">inds1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="n">inds1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
 
     <span class="k">return</span> <span class="n">g</span>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 
 <span class="k">def</span> <span class="nf">mat2quat</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">rot_type</span><span class="o">=</span><span class="s1">&#39;proper&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1058,7 +1057,7 @@
     <span class="n">q</span> <span class="o">=</span> <span class="n">Quaternion</span><span class="p">(</span><span class="n">q0</span><span class="p">,</span> <span class="n">q1</span><span class="p">,</span> <span class="n">q2</span><span class="p">,</span> <span class="n">q3</span><span class="p">,</span> <span class="n">qtype</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">q</span>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+
 <span class="k">def</span> <span class="nf">ctranspose</span><span class="p">(</span><span class="n">g</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1249,8 +1248,10 @@
 <span class="c1">#         d[np.where(e2 != e1*np.ones(np.shape(e2)))] = np.NaN</span>
 <span class="c1">#         return float(d)</span>
 
-<span class="c1"># -----------------------------------------------------------------------------------------------------------</span>
+
 <span class="k">def</span> <span class="nf">isnumeric</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">obj</span> <span class="o">+</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="kc">True</span>

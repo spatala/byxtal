@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.geometry_tools &mdash; byxtal 0.post53+g283f2fe documentation</title>
+  <title>byxtal.geometry_tools &mdash; byxtal 0.post53+g989352a documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post53+g283f2fe
+                0.post53+g989352a
               </div>
             
           
@@ -177,16 +177,15 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">quaternion</span> <span class="k">as</span> <span class="n">quat</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">vector3d</span> <span class="k">as</span> <span class="n">vec3d</span>
 
-<span class="c1"># -----------------------------------------------------------------------------------------------------------</span>
 
-
-<span class="k">def</span> <span class="nf">isnumeric</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+<div class="viewcode-block" id="isnumeric"><a class="viewcode-back" href="../../Modules.html#byxtal.geometry_tools.isnumeric">[docs]</a><span class="k">def</span> <span class="nf">isnumeric</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">obj</span> <span class="o">+</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span>
-<span class="c1"># -----------------------------------------------------------------------------------------------------------</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="sph2vec"><a class="viewcode-back" href="../../Modules.html#byxtal.geometry_tools.sph2vec">[docs]</a><span class="k">def</span> <span class="nf">sph2vec</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -250,6 +249,8 @@
 
 
 <div class="viewcode-block" id="idquaternion"><a class="viewcode-back" href="../../Modules.html#byxtal.geometry_tools.idquaternion">[docs]</a><span class="k">def</span> <span class="nf">idquaternion</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">quat</span><span class="o">.</span><span class="n">Quaternion</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div>
 <span class="c1"># -----------------------------------------------------------------------------------------------------------</span>
 </pre></div>

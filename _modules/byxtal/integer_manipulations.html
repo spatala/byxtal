@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.integer_manipulations &mdash; byxtal 0.post53+g283f2fe documentation</title>
+  <title>byxtal.integer_manipulations &mdash; byxtal 0.post53+g989352a documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post53+g283f2fe
+                0.post53+g989352a
               </div>
             
           
@@ -171,6 +171,8 @@
 
 
 <div class="viewcode-block" id="gcd_vec"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.gcd_vec">[docs]</a><span class="k">def</span> <span class="nf">gcd_vec</span><span class="p">(</span><span class="n">int_mat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">input1</span> <span class="o">=</span> <span class="n">int_mat</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
     <span class="n">Sz</span> <span class="o">=</span> <span class="n">input1</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">gcd1</span> <span class="o">=</span> <span class="mi">0</span>
@@ -240,6 +242,8 @@
 
 
 <div class="viewcode-block" id="lcm_vec"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.lcm_vec">[docs]</a><span class="k">def</span> <span class="nf">lcm_vec</span><span class="p">(</span><span class="n">Dmat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">input1</span> <span class="o">=</span> <span class="n">Dmat</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
     <span class="n">Sz</span> <span class="o">=</span> <span class="n">input1</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">lcm1</span> <span class="o">=</span> <span class="mi">1</span>
@@ -309,6 +313,8 @@
 
 
 <div class="viewcode-block" id="check_int_mat"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.check_int_mat">[docs]</a><span class="k">def</span> <span class="nf">check_int_mat</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tol1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Matrix</span><span class="p">):</span>
         <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">T</span><span class="p">)))</span> <span class="o">&lt;</span> <span class="n">tol1</span><span class="p">)</span></div>
