@@ -282,7 +282,7 @@ def gb_2d_csl(inds, t_mat, l_p_po, inds_type='miller_index', mat_ref='g1'):
     l_pl1_p1 = l_pl1_p1.dot(l_sig2_sig1)
 
     if mat_ref == 'go1':
-        l_po2_po1 = np.copy(tmat)
+        l_po2_po1 = np.copy(t_mat)
         l_po1_po2 = nla.inv(l_po2_po1)
         l_p2_p1 = np.dot(l_po_p, np.dot(l_po2_po1, l_p_po))
     elif mat_ref == 'g1':

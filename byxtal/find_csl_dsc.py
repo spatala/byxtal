@@ -254,7 +254,10 @@ def dsc_finder(L_G2_G1, L_G1_GO1, tol1):
     L_DSC_G1 = make_right_handed(LLL_DSC_G1, L_G1_GO1)
     return L_DSC_G1
 
+
 def check_csl(l_csl_p, l_p1_po, T_p1top2_p1, Sigma, print_val):
+    """
+    """
     l_po_p1 = nla.inv(l_p1_po)
 
     l_csl_po = l_p1_po.dot(l_csl_p)
@@ -282,6 +285,8 @@ def check_csl(l_csl_p, l_p1_po, T_p1top2_p1, Sigma, print_val):
 
 
 def check_dsc(l_dsc_p1, l_csl_p1, l_p1_po, l_p2_p1, Sigma, print_val):
+    """
+    """
     l_csl_po = l_p1_po.dot(l_csl_p1)
     l_dsc_po = l_p1_po.dot(l_dsc_p1)
     l_p2_po = l_p1_po.dot(l_p2_p1)
@@ -364,6 +369,8 @@ def reciprocal_mat(l_g_go):
 
 
 def make_right_handed(l_csl_p1, l_p_po):
+    """
+    """
     l_csl_po1 = l_p_po.dot(l_csl_p1)
     t1_array = np.array(l_csl_p1, dtype='double')
     t2_array = np.array(l_csl_p1, dtype='double')
