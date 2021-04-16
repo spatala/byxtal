@@ -47,7 +47,6 @@ Integer Manipulations
 
 CSL Utility Function
 --------------------
-
 .. autofunction:: byxtal.csl_utility_functions.proper_ptgrp
 
 .. autofunction:: byxtal.csl_utility_functions.largest_odd_factor
@@ -80,9 +79,9 @@ CSL Utility Function
 
 .. autofunction:: byxtal.csl_utility_functions.check_csl
 
+
 Boundary Plane Basis
 --------------------
-
 .. autofunction:: byxtal.bp_basis.check_2d_csl
 
 .. autofunction:: byxtal.bp_basis.lbi_dioph_soln
@@ -100,7 +99,6 @@ Boundary Plane Basis
 
 Misorientation Fundamental Zones
 --------------------------------
-
 .. autofunction:: byxtal.misorient_fz.check_cond
 
 .. autofunction:: byxtal.misorient_fz.misorient_fz
@@ -115,7 +113,6 @@ Sage Utility Functions
 
 Generate Symmetry Operators
 ----------------------------
-
 .. autofunction:: byxtal.generate_symm_ops.generate_symm_mats
 
 .. autofunction:: byxtal.generate_symm_ops.generate_symm_quats
@@ -176,9 +173,9 @@ Find CSL and DSC
 
 .. autofunction:: byxtal.find_csl_dsc.make_right_handed
 
+
 lll-reduction
 -------------
-
 .. autofunction:: byxtal.lll_tools.check_basis_equi
 
 .. autofunction:: byxtal.lll_tools.check_basis_def
@@ -188,7 +185,6 @@ lll-reduction
 
 Pick Fundumental Zone
 ---------------------
-
 .. autofunction:: byxtal.pick_fz_bpl.pick_fz_bpl
 
 .. autofunction:: byxtal.pick_fz_bpl.rot_symm
@@ -199,6 +195,7 @@ Reduce Po Lattice
 .. autofunction:: byxtal.reduce_po_lat.call_sage_math
 
 .. autofunction:: byxtal.reduce_po_lat.reduce_po_lat
+
 
 Quaternion
 ----------
@@ -216,7 +213,7 @@ Quaternion
 
 .. autofunction:: byxtal.quaternion.get_type
 
-#.. autofunction:: byxtal.quaternion.display
+.. autofunction:: byxtal.quaternion.display
 
 .. autofunction:: byxtal.quaternion.antipodal
 

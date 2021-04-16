@@ -5,3 +5,4 @@ nbsphinx
 jupyter-client
 nbconvert
 pandoc
+sage

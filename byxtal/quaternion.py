@@ -525,6 +525,7 @@ def display(q, p_flag=True):
     g : input quaternion array
     * a quaternion array of size (5 x n)
     p_flag : flag to print the returned display string
+
     * a boolean with default value == True
 
     Returns
@@ -535,7 +536,9 @@ def display(q, p_flag=True):
     ------
     * The 5 components of each quaternion stored in the array are displayed under 5 columns. Each row represents a
     quaternion.
+
     * p_flag == True prints and returns the display string
+    
     * p_flag == False returns the display string
 
     """
