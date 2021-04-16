@@ -143,7 +143,7 @@ Tools
 
 Disorientation Symmetry Operation
 ----------------------------------
-#.. autofunction:: byxtal.disorient_symm_props.disorient_symm_props
+.. autofunction:: byxtal.disorient_symm_props.disorient_symm_props
 
 
 Find CSL and DSC
