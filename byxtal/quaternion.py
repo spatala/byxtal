@@ -406,8 +406,8 @@ def getq0(g):
 
     Parameters
     ----------
-    g : input quaternion array
-    * a quaternion array of size (5 x n)
+    g: numpy.array
+        a quaternion array of size (5 x n)
 
     Returns
     -------
@@ -425,8 +425,8 @@ def getq1(g):
 
     Parameters
     ----------
-    g : input quaternion array
-    * a quaternion array of size (5 x n)
+    g: numpy.array
+        a quaternion array of size (5 x n)
 
     Returns
     -------
@@ -444,8 +444,8 @@ def getq2(g):
 
     Parameters
     ----------
-    g : input quaternion array
-    * a quaternion array of size (5 x n)
+    g: numpy.array
+        a quaternion array of size (5 x n)
 
     Returns
     -------
@@ -463,8 +463,8 @@ def getq3(g):
 
     Parameters
     ----------
-    g : input quaternion array
-    * a quaternion array of size (5 x n)
+    g: numpy.array
+        a quaternion array of size (5 x n)
 
     Returns
     -------
@@ -482,14 +482,14 @@ def get_type(g):
 
     Parameters
     ----------
-    g : input quaternion array
-    * a quaternion array of size (5 x n)
+    g: numpy.array
+        a quaternion array of size (5 x n)
 
     Returns
     -------
     integer values (either +1 or -1) stored in a 1-D numpy array of size n.
-    * +1 is returned for proper rotations
-    * -1 is returned for improper rotations
+        +1 is returned for proper rotations
+        -1 is returned for improper rotations
     """
     if g.ndim == 1:
         return g[4]
@@ -503,8 +503,8 @@ def get_size(g):
 
     Parameters
     ----------
-    g : input quaternion array
-    * a quaternion array of size (5 x n)
+    g: numpy.array
+        a quaternion array of size (5 x n)
 
     Returns
     -------
@@ -523,24 +523,20 @@ def display(q, p_flag=True):
     Parameters
     ----------
     g : input quaternion array
-    * a quaternion array of size (5 x n)
-
-    p_flag : flag to print the returned display string
-
-    * a boolean with default value == True
+        a quaternion array of size (5 x n)
+        p_flag : flag to print the returned display string
+        a boolean with default value == True
 
     Returns
     -------
-    str1: quaternion array in a human readable format
+    str1: str
+        quaternion array in a human readable format
 
     Notes
     ------
-    * The 5 components of each quaternion stored in the array are displayed under 5 columns. Each row represents a
-    quaternion.
-
-    * p_flag == True prints and returns the display string
-
-    * p_flag == False returns the display string
+    The 5 components of each quaternion stored in the array are displayed under 5 columns. Each row represents a quaternion.
+    p_flag == True prints and returns the display string
+    p_flag == False returns the display string
 
     """
     if q.ndim == 1:
@@ -565,11 +561,11 @@ def antipodal(q1, tol=1e-12):
 
     Parameters
     ----------
-    q1 : input quaternion array
-    * a quaternion array of size (5 x n)
+    q1 : numpy.array
+        a quaternion array of size (5 x n)
 
-    tol : tolerance to overcome floating point error
-    * a float, default value is 1e-08
+    tol: float
+        tolerance to overcome floating point error, default value is 1e-08
 
     Returns
     -------
@@ -577,13 +573,12 @@ def antipodal(q1, tol=1e-12):
 
     Notes
     -----
-    * Antipodal quaternion for quaternions representing Pi rotations (q0==0) are obtained with a convention.
-
-    * If q0 == 0, q3 >0; if q0 == 0 and q3 == 0, q2 >0; if q == 0, q3 == 0 and q2 == 0, q1 > 0.
+    Antipodal quaternion for quaternions representing Pi rotations (q0==0) are obtained with a convention.
+    If q0 == 0, q3 >0; if q0 == 0 and q3 == 0, q2 >0; if q == 0, q3 == 0 and q2 == 0, q1 > 0.
 
     See Also
     --------
-    getq0, getq1, getq2, getq3, get_type, get_size
+        getq0, getq1, getq2, getq3, get_type, get_size
     """
     a1 = getq0(q1)
     b1 = getq1(q1)
@@ -682,8 +677,8 @@ def inverse(q1):
 
     Parameters
     ----------
-    q1 : input quaternion array
-    * a quaternion array of size (5 x n)
+    q1: numpy.array
+        a quaternion array of size (5 x n)
 
     Returns
     -------
@@ -708,8 +703,8 @@ def mtimes(q1, q2):
 
     Parameters
     ----------
-    q1, q2 : Two quaternion arrays
-    * Allowed options: Either size(q1) == size(q2) or size(q1) == 1 or size(q2) == 1
+    q1, q2 : numpy.array
+        Allowed options: Either size(q1) == size(q2) or size(q1) == 1 or size(q2) == 1
 
     Returns
     -------
@@ -717,12 +712,12 @@ def mtimes(q1, q2):
 
     Notes
     -------
-    * If size(q1) == size(q2), then each quaternion q1(i) is multiplied with q2(i)
+    If size(q1) == size(q2), then each quaternion q1(i) is multiplied with q2(i)
 
-    * If size(q1) > size(q2), then size(q2) must be equal to 1. Each quaternion q1(i)
+    If size(q1) > size(q2), then size(q2) must be equal to 1. Each quaternion q1(i)
     is multiplied with q2.
 
-    * If size(q2) > size(q1), then size(q1) must be equal to 1. Each quaternion q2(i)
+    If size(q2) > size(q1), then size(q1) must be equal to 1. Each quaternion q2(i)
     is multiplied with q1.
 
     See Also
@@ -768,10 +763,11 @@ def eq(q1, q2, tol=1e-04):
     
     Parameters
     ----------
-    q1, q2: Two quaternion arrays
-    * Allowed options: Either size(q1) == size(q2) or size(q1) == 1 or size(q2) == 1
+    q1, q2: numpy.array
+        Allowed options: Either size(q1) == size(q2) or size(q1) == 1 or size(q2) == 1
     
-    tol: The tolerance to check if two quaternions are equal
+    tol: float
+        The tolerance to check if two quaternions are equal
     
     Returns
     -------
@@ -779,11 +775,9 @@ def eq(q1, q2, tol=1e-04):
 
     Notes
     -------
-    * If size(q1) == size(q2), then each quaternion q1(i) is checked against q2(i)
-
-    * If size(q1) > size(q2), then size(q2) must be equal to 1. Each quaternion q1(i) is checked against q2
-
-    * If size(q2) > size(q1), then size(q1) must be equal to 1. Each quaternion q2(i) is checked against q1
+    If size(q1) == size(q2), then each quaternion q1(i) is checked against q2(i)
+    If size(q1) > size(q2), then size(q2) must be equal to 1. Each quaternion q1(i) is checked against q2
+    If size(q2) > size(q1), then size(q1) must be equal to 1. Each quaternion q2(i) is checked against q1
 
     See Also
     --------
@@ -817,13 +811,13 @@ def quat2mat(q):
 
     Parameters
     ----------
-    q: input quaternion
-    *  quaternion array of size (5 x n)
+    q: numpy.array
+        quaternion array of size (5 x n)
 
     Returns
     ----------
-    g: rotation matrix array
-    * numpy array of size (n x 3 x 3)
+    g: numpy.array
+        rotation matrix array with size (n x 3 x 3)
 
     See Also
     --------
@@ -864,22 +858,20 @@ def mat2quat(mat, rot_type='proper'):
 
     Parameters
     -----------
-    mat: rotation matrices, this input maybe given in the following two ways
-    * numpy array of size (n x 3 x 3)
+    mat: numpy.array
+    rotation matrices, this input maybe given in the following two ways with size (n x 3 x 3)
+    python list with n elements, each element is a rotation matrix with shape (3 x 3)
 
-    * python list with n elements, each element is a rotation matrix with shape (3 x 3)
-
-    rot_type: string with either of the following values, 'proper' or 'improper'
-    * 'improper' if there is a possibility of having improper matrices in the input
-
-    * 'proper' if all the rotation matrices in the input are of proper rotation type
-    
-    * default value is 'proper'
+    rot_type: str
+        The string has values, 'proper' or 'improper'
+        'improper' if there is a possibility of having improper matrices in the input
+        'proper' if all the rotation matrices in the input are of proper rotation type
+        default value is 'proper'
 
     Returns
     --------
-    q: quaternion
-    * quaternion array of size (5 x n)
+    q: numpy.array
+        quaternion array of size (5 x n)
 
     See Also
     ---------
