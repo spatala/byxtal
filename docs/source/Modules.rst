@@ -28,6 +28,18 @@ Integer Manipulations
 
 .. autofunction:: byxtal.integer_manipulations.rat_approx
 
+.. autofunction:: byxtal.integer_manipulations.int_approx
+
+.. autofunction:: byxtal.integer_manipulations.int_mult_approx
+
+.. autofunction:: byxtal.integer_manipulations.mult_fac_err
+
+.. autofunction:: byxtal.integer_manipulations.int_finder
+
+.. autofunction:: byxtal.integer_manipulations.int_check
+
+.. autofunction:: byxtal.integer_manipulations.rat
+
 
 CSL Utility Function
 --------------------
