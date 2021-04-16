@@ -111,7 +111,6 @@ def check_cond(g, cryst_ptgrp, tol):
             cond6 = q2 - (np.sqrt(2)+1)*q3 <= tol
         if cond1 and cond2 and cond3 and cond4 and cond5 and cond6:
             return True
-# ------------------------------------------------------------------------------------------------------
 
 
 def misorient_fz(misquats, cryst_ptgrp, tol=1e-12):
@@ -185,4 +184,3 @@ def misorient_fz(misquats, cryst_ptgrp, tol=1e-12):
         if tcheck == 0:
             raise Exception('FZ Quaternion not found')
     return disquats
-# ------------------------------------------------------------------------------------------------------

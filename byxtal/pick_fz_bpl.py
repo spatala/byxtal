@@ -3,6 +3,7 @@ import math
 import os
 import pickle
 
+
 def pick_fz_bpl(bp_norms_go1, bp_symm_grp, symm_grp_ax, x_tol=1e-04):
     """
     Returns an array of unit boundary plane normals lying in the fundamental zone of bicrystal
@@ -33,13 +34,6 @@ def pick_fz_bpl(bp_norms_go1, bp_symm_grp, symm_grp_ax, x_tol=1e-04):
     bp_fz_stereo : Fundamental zone boundary plane array.
     * numpy array of size (n x 3)
     *  The boundary plane vectors are rotated for steregraphic projection along z_axis (symm_grp_axes[:, 2].
-
-    Notes
-    ------
-
-    See Also
-    ---------
-    rot_symm
     """
     x_g = (symm_grp_ax[:, 0]); y_g = symm_grp_ax[:, 1]; z_g = symm_grp_ax[:, 2]
 
@@ -124,6 +118,7 @@ def pick_fz_bpl(bp_norms_go1, bp_symm_grp, symm_grp_ax, x_tol=1e-04):
     bp_fz_norms_go1 = np.dot(np.linalg.inv(rot_mat), bp_fz_stereo.transpose()).transpose()
 
     return bp_fz_norms_go1, bp_fz_stereo
+
 
 def rot_symm(symm_grp_ax, bp_norms_go1, file_path):
     """

@@ -171,21 +171,13 @@ Find CSL and DSC
 
 lll-reduction
 -------------
-#.. autofunction:: byxtal.lll_tools.reduce_po_lat
 
-#.. autofunction:: byxtal.lll_tools.check_basis_equi
+.. autofunction:: byxtal.lll_tools.check_basis_equi
 
-#.. autofunction:: byxtal.lll_tools.check_basis_def
+.. autofunction:: byxtal.lll_tools.check_basis_def
 
-#.. autofunction:: byxtal.lll_tools.lll_reduction
+.. autofunction:: byxtal.lll_tools.lll_reduction
 
-#.. autofunction:: byxtal.lll_tools.mod
-
-#.. autofunction:: byxtal.lll_tools.hermite_normal_form
-
-#.. autofunction:: byxtal.lll_tools.smith_normal_form
-
-#.. autofunction:: byxtal.lll_tools.row_col_all_zero
 
 Pick Fundumental Zone
 ---------------------

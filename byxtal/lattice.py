@@ -274,8 +274,13 @@ class Lattice(object):
             self.elem_type = 'Mg'
             self.pearson = 'hP'
 
-            a = 3.181269601; b = a; CAratio = 1.632993162; c = a*CAratio
-            a_ang = np.pi/2; b_ang = np.pi/2; g_ang = 2*np.pi/3;
+            a = 3.181269601
+            b = a
+            CAratio = 1.632993162
+            c = a*CAratio
+            a_ang = np.pi/2
+            b_ang = np.pi/2
+            g_ang = 2*np.pi/3
             self.lat_params = {'a': a, 'b': b, 'c': c, 'alpha': a_ang, 'beta': b_ang, 'gamma': g_ang}
 
             self.cryst_ptgrp = 'D6h'
@@ -293,8 +298,13 @@ class Lattice(object):
             self.elem_type = 'Mg'
             self.pearson = 'hP'
 
-            a = 3.1960022507932546; b = a; CAratio = 1.622997962828133; c = a*CAratio
-            a_ang = np.pi/2; b_ang = np.pi/2; g_ang = 2*np.pi/3;
+            a = 3.1960022507932546
+            b = a
+            CAratio = 1.622997962828133
+            c = a*CAratio
+            a_ang = np.pi/2
+            b_ang = np.pi/2
+            g_ang = 2*np.pi/3
             self.lat_params = {'a': a, 'b': b, 'c': c, 'alpha': a_ang, 'beta': b_ang, 'gamma': g_ang}
 
             self.cryst_ptgrp = 'D6h'
@@ -312,8 +322,13 @@ class Lattice(object):
             self.elem_type = 'Mg'
             self.pearson = 'hP'
 
-            a = 3.184214101623855; b = a; CAratio = 1.6281642535343206; c = a*CAratio
-            a_ang = np.pi/2; b_ang = np.pi/2; g_ang = 2*np.pi/3;
+            a = 3.184214101623855
+            b = a
+            CAratio = 1.6281642535343206
+            c = a*CAratio
+            a_ang = np.pi/2
+            b_ang = np.pi/2
+            g_ang = 2*np.pi/3
             self.lat_params = {'a': a, 'b': b, 'c': c, 'alpha': a_ang, 'beta': b_ang, 'gamma': g_ang}
 
             self.cryst_ptgrp = 'D6h'
@@ -332,8 +347,13 @@ class Lattice(object):
         if elem_type.lower() == 'tp_id':
             self.elem_type = 'tP_Id'
             self.pearson = 'tP'
-            a = 1.0; b = a; CAratio = 1.2; c = a*CAratio
-            a_ang = np.pi/2; b_ang = np.pi/2; g_ang = np.pi/2;
+            a = 1.0
+            b = a
+            CAratio = 1.2
+            c = a*CAratio
+            a_ang = np.pi/2
+            b_ang = np.pi/2
+            g_ang = np.pi/2
             self.lat_params = {'a': a, 'b': b, 'c': c, 'alpha': a_ang, 'beta': b_ang, 'gamma': g_ang}
 
             self.cryst_ptgrp = 'D4h'
@@ -352,8 +372,12 @@ class Lattice(object):
                     ca_ratio = args[1]
             self.pearson = 'tP'
 
-            a = 1.0; b = a; c = a*ca_ratio
-            a_ang = np.pi/2; b_ang = np.pi/2; g_ang = np.pi/2;
+            a = 1.0
+            b = a
+            c = a*ca_ratio
+            a_ang = np.pi/2
+            b_ang = np.pi/2
+            g_ang = np.pi/2
             self.lat_params = {'a': a, 'b': b, 'c': c, 'alpha': a_ang, 'beta': b_ang, 'gamma': g_ang}
 
             self.cryst_ptgrp = 'D4h'
@@ -373,8 +397,8 @@ class Lattice(object):
             a = 4.75
             c = 12.982
             ## Using the relation between hexagonal and rhombohedral lattices
-            tau = 1/3 - (a**2/c**2)/2;
-            cos_ang = tau/(1 - 2*tau);
+            tau = 1/3 - (a**2/c**2)/2
+            cos_ang = tau/(1 - 2*tau)
             a_ang = np.arccos(cos_ang)
             self.lat_params = {'a': a, 'b': a, 'c': a, 'alpha': a_ang, 'beta': a_ang, 'gamma': a_ang}
 
@@ -398,8 +422,8 @@ class Lattice(object):
             a = 1
             c = a*ca_ratio
             ## Using the relation between hexagonal and rhombohedral lattices
-            tau = 1./3. - (a**2/c**2)/2;
-            cos_ang = tau/(1 - 2*tau);
+            tau = 1./3. - (a**2/c**2)/2
+            cos_ang = tau/(1 - 2*tau)
             a_ang = np.arccos(cos_ang)
             self.lat_params = {'a': a, 'b': a, 'c': a, 'alpha': a_ang, 'beta': a_ang, 'gamma': a_ang}
 
@@ -431,6 +455,6 @@ class Lattice(object):
 
 def approx_latmat(l1):
     """
-    """"
+    """
     l_p_po = l.l_p_po
     
