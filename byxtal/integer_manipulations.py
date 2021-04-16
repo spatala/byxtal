@@ -353,6 +353,7 @@ def int_check(input, precis=6):
     Checks whether the input variable (arrays) is an interger or not.
     A precision value is specified and the integer check is performed
     up to that decimal point.
+
     Parameters
     ----------
     input : numpy array or list
@@ -361,11 +362,12 @@ def int_check(input, precis=6):
         Default = 6.
         A value that specifies the precision to which the number is an
         integer. **precis = 6** implies a precision of :math:`10^{-6}`.
+
     Returns
     -------
     cond: Boolean
-        **True** if the element is an integer to a certain precision,
-        **False** otherwise
+        'True' if the element is an integer to a certain precision,
+        'False' otherwise
     """
 
     var = np.array(input)
@@ -379,18 +381,18 @@ def rat(input, tol=1e-06):
     """
     The function returns a rational (p/q) approximation of a given
     floating point array to a given precision
+
     Parameters
     ----------
     input : numpy array or list of real numbers
     tol : floating point tolerance value
         Default = 1e-06
+
     Returns
     -------
     N, D: Integer numpy arrays
         N and D contain the numerators (p) and denominators (q) of the
         rational approximations
-    Notes:
-    --------
     """
     input1 = np.array(input)
     if np.ndim(input1) == 1:
