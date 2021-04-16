@@ -250,8 +250,10 @@ def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
     tol : float
         tolerance with Default = 1e-06
     order : str
-        Defualt = 'all'
-        choices are 'rows', 'columns', 'col', 'all'
+        choices are 'rows', 'columns', 'col', 'all'.
+        If order = 'all', the input array is flattened and then scaled. This is default value.
+        If order = 'rows', elements in each row are scaled
+        If order = 'columns' or 'cols'', elements in each column are scaled
     tol1: float
         tolerance with Default = 1e-06
 
@@ -263,11 +265,6 @@ def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
     See Also
     --------
     gcd_array
-    Notes
-    --------
-    * If order = **all**, the input array is flattened and then scaled
-    * If order = **rows**, elements in each row are scaled
-    * If order = **columns** or **cols**, elements in each column are scaled
     """
 
     input1 = np.array(input_v)
