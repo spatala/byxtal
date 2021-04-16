@@ -14,6 +14,21 @@ Geometry Tools
 .. autofunction:: byxtal.geometry_tools.idquaternion
 
 
+Integer Manipulations
+---------------
+.. autofunction:: byxtal.integer_manipulations.gcd_vec
+
+.. autofunction:: byxtal.integer_manipulations.gcd_array
+
+.. autofunction:: byxtal.integer_manipulations.lcm_vec
+
+.. autofunction:: byxtal.integer_manipulations.lcm_array
+
+.. autofunction:: byxtal.integer_manipulations.check_int_mat
+
+.. autofunction:: byxtal.integer_manipulations.rat_approx
+
+
 CSL Utility Function
 --------------------
 
