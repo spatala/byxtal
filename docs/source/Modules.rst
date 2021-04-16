@@ -23,8 +23,6 @@ Integer Manipulations
 
 .. autofunction:: byxtal.integer_manipulations.lcm_array
 
-.. autofunction:: byxtal.integer_manipulations.int_mult
-
 .. autofunction:: byxtal.integer_manipulations.float_mult
 
 .. autofunction:: byxtal.integer_manipulations.rat_approx
