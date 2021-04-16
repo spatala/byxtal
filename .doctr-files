@@ -8,10 +8,17 @@
 ./Tutorials/enumerate_byxtal_hcp.html
 ./Tutorials/enumerate_byxtal_hcp.ipynb
 ./Tutorials/index.html
+./_modules/byxtal/bp_basis.html
 ./_modules/byxtal/csl_utility_functions.html
+./_modules/byxtal/find_csl_dsc.html
+./_modules/byxtal/generate_symm_ops.html
 ./_modules/byxtal/geometry_tools.html
 ./_modules/byxtal/integer_manipulations.html
 ./_modules/byxtal/lattice.html
+./_modules/byxtal/misorient_fz.html
+./_modules/byxtal/pick_fz_bpl.html
+./_modules/byxtal/quaternion.html
+./_modules/byxtal/tools.html
 ./_modules/index.html
 ./_sources/Modules.rst.txt
 ./_sources/Tutorials/Basis_2D_Plane.ipynb.txt

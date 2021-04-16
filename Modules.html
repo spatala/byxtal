@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Modules &mdash; byxtal 0.post59+g6f320a0 documentation</title>
+  <title>Modules &mdash; byxtal 0.post57+gdfda683 documentation</title>
   
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.post59+g6f320a0
+                0.post57+gdfda683
               </div>
             
           
@@ -104,6 +104,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#geometry-tools">Geometry Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#integer-manipulations">Integer Manipulations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#csl-utility-function">CSL Utility Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boundary-plane-basis">Boundary Plane Basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#misorientation-fundamental-zones">Misorientation Fundamental Zones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-symmetry-operators">Generate Symmetry Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tools">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disorientation-symmetry-operation">Disorientation Symmetry Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#find-csl-and-dsc">Find CSL and DSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lll-reduction">lll-reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pick-fundumental-zone">Pick Fundumental Zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quaternion">Quaternion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#d-vector">3D Vector</a></li>
 </ul>
 </li>
 </ul>
@@ -873,6 +883,976 @@ rotation and returns them as numerator and denominator matrices</p></li>
 <code class="sig-prename descclassname"><span class="pre">byxtal.csl_utility_functions.</span></code><code class="sig-name descname"><span class="pre">check_csl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_csl_p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p_po</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_p1top2_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/csl_utility_functions.html#check_csl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.csl_utility_functions.check_csl" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</div>
+<div class="section" id="boundary-plane-basis">
+<h2>Boundary Plane Basis<a class="headerlink" href="#boundary-plane-basis" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="byxtal.bp_basis.check_2d_csl">
+<code class="sig-prename descclassname"><span class="pre">byxtal.bp_basis.</span></code><code class="sig-name descname"><span class="pre">check_2d_csl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_pl1_g1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_pl2_g1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_csl_g1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/bp_basis.html#check_2d_csl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.bp_basis.check_2d_csl" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function checks whether or not the CSL basis may be expressed
+as a linear integer combination of the plane bases of planes 1 and 2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l_pl1_g1, l_pl2_g1: numpy arrays of basis vectors for plane 1 and 2</strong></dt><dd></dd>
+<dt><strong>in the g1 reference frame</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.bp_basis.lbi_dioph_soln">
+<code class="sig-prename descclassname"><span class="pre">byxtal.bp_basis.</span></code><code class="sig-name descname"><span class="pre">lbi_dioph_soln</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/bp_basis.html#lbi_dioph_soln"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.bp_basis.lbi_dioph_soln" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the diophantaine solution for the equation ax + by = c</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.bp_basis.compute_basis_vec">
+<code class="sig-prename descclassname"><span class="pre">byxtal.bp_basis.</span></code><code class="sig-name descname"><span class="pre">compute_basis_vec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_eq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/bp_basis.html#compute_basis_vec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.bp_basis.compute_basis_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function computes y1, y2, y3 such that h(y1) + k(y2) + l(y3) = 0
+and modulus of y1 is a minimum</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>d_eq: numpy array or list of size 3 and dimension 1</strong></dt><dd><p>h = d_eq[0], k = d_eq[1], l = d_eq[2]</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.array([y1, y2, y3])</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.bp_basis.bp_basis">
+<code class="sig-prename descclassname"><span class="pre">byxtal.bp_basis.</span></code><code class="sig-name descname"><span class="pre">bp_basis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">miller_ind</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/bp_basis.html#bp_basis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.bp_basis.bp_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function computes the primitve basis of the plane if the
+boundary plane indices are specified</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>miller_ind: numpy array</strong></dt><dd><p>Miller indices of the plane (h k l)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>l_pl_g1: numpy array</dt><dd><p>The primitive basis of the plane in ‘g1’ reference frame</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.bp_basis.pl_density">
+<code class="sig-prename descclassname"><span class="pre">byxtal.bp_basis.</span></code><code class="sig-name descname"><span class="pre">pl_density</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_pl_g1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_g1_go1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/bp_basis.html#pl_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.bp_basis.pl_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a given two-dimensional plane basis, the planar density is
+computed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l_pl_g1: numpy array</strong></dt><dd></dd>
+<dt><strong>l_g1_go1: numpy array</strong></dt><dd><p>Basis vectors of the underlying lattice with respect to the
+orthogonal reference frame ‘go1’</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>pd: float</dt><dd><p>Planar density = (1/area covered by plane basis)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.bp_basis.gb_2d_csl">
+<code class="sig-prename descclassname"><span class="pre">byxtal.bp_basis.</span></code><code class="sig-name descname"><span class="pre">gb_2d_csl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p_po</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inds_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'miller_index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g1'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/bp_basis.html#gb_2d_csl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.bp_basis.gb_2d_csl" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a given boundary plane normal ‘bp1_p1’ and the misorientation
+matrix ‘t_p1top2_p1’, the two-dimensional CSL lattice is computed</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inds: numpy array</strong></dt><dd><p>The boundary plane indices</p>
+</dd>
+<dt><strong>inds_type: string</strong></dt><dd><p>{‘miller_index’, ‘normal_go’, ‘normal_g’}</p>
+</dd>
+<dt><strong>t_mat: numpy array</strong></dt><dd><p>Transformation matrix from p1 to p2 in ‘mat_ref’ reference frame</p>
+</dd>
+<dt><strong>mat_ref: string</strong></dt><dd><p>{‘go1’, ‘p1’}</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt>l_2d_csl_p1, l_pl1_p1, l_pl2_p1: numpy arrays</dt><dd><p><code class="docutils literal notranslate"><span class="pre">l_2d_csl_p1</span></code> is the 2d CSL in p1 ref frame.</p>
+<p><code class="docutils literal notranslate"><span class="pre">l_pl1_p1</span></code> is the plane 1 basis in p1 ref frame.</p>
+<p><code class="docutils literal notranslate"><span class="pre">l_pl2_p1</span></code> is the plane 2 basis in p1 ref frame.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.bp_basis.bicryst_planar_den">
+<code class="sig-prename descclassname"><span class="pre">byxtal.bp_basis.</span></code><code class="sig-name descname"><span class="pre">bicryst_planar_den</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_g_go</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inds_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'miller_index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_ref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'go1'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/bp_basis.html#bicryst_planar_den"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.bp_basis.bicryst_planar_den" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function computes the planar densities of the planes
+1 and 2 and the two-dimensional CSL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inds: numpy array</strong></dt><dd><p>The boundary plane indices.</p>
+</dd>
+<dt><strong>inds_type: string</strong></dt><dd><p>{‘miller_index’, ‘normal_go’, ‘normal_g’}</p>
+</dd>
+<dt><strong>t_mat: numpy array</strong></dt><dd><p>Transformation matrix from g1 to g2 in go1 (or g1) reference frame.</p>
+</dd>
+<dt><strong>mat_ref: string</strong></dt><dd><p>{‘go1’, ‘g1’}</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>pl_den_pl1, pl_den_pl2: numpy array</dt><dd><p>The planar density of planes 1 and 2.</p>
+</dd>
+<dt>pl_den_csl: numpy array</dt><dd><p>The planare density of the two-dimensional CSL.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="misorientation-fundamental-zones">
+<h2>Misorientation Fundamental Zones<a class="headerlink" href="#misorientation-fundamental-zones" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="byxtal.misorient_fz.check_cond">
+<code class="sig-prename descclassname"><span class="pre">byxtal.misorient_fz.</span></code><code class="sig-name descname"><span class="pre">check_cond</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cryst_ptgrp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/misorient_fz.html#check_cond"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.misorient_fz.check_cond" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>g: quaternion object</strong></dt><dd><p>Misorientation</p>
+</dd>
+<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Crystallogrphic point group in Schoenflies notation</p>
+</dd>
+<dt><strong>tol: float</strong></dt><dd><p>Tolerance for the misorientation to belong in the fundamental zone</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>True or False: Boolean</dt><dd><p>Depending on whether or not the misorientation is a disorientation</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.misorient_fz.misorient_fz">
+<code class="sig-prename descclassname"><span class="pre">byxtal.misorient_fz.</span></code><code class="sig-name descname"><span class="pre">misorient_fz</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">misquats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cryst_ptgrp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/misorient_fz.html#misorient_fz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.misorient_fz.misorient_fz" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function takes as input the misorientations and the corresponding
+crystallographic point group. It converts them using symmetry operations
+and returns the disorientations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>misquats: Quaternion class</strong></dt><dd><p>Quaternion misorientations</p>
+</dd>
+<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Crystallogrphic point group in Schoenflies notation</p>
+</dd>
+<dt><strong>tol: float</strong></dt><dd><p>Tolerance for the disorientation to belong in the fundamental zone</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>disquats: quaternion class</dt><dd><p>Disorientations for the given misorientations</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="generate-symmetry-operators">
+<h2>Generate Symmetry Operators<a class="headerlink" href="#generate-symmetry-operators" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="byxtal.generate_symm_ops.generate_symm_mats">
+<code class="sig-prename descclassname"><span class="pre">byxtal.generate_symm_ops.</span></code><code class="sig-name descname"><span class="pre">generate_symm_mats</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cryst_ptgrp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/generate_symm_ops.html#generate_symm_mats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.generate_symm_ops.generate_symm_mats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give crystallographic point group, this function generates all the symmetry
+operations (as matrices) that belong to the point group using ‘generators’</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Crystallogrphic point group in Schoenflies notation</p>
+</dd>
+<dt><strong>tol: float</strong></dt><dd><p>The tolerance used to check if two matrices are the same</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt>symm_mat: numpy array</dt><dd><p>Size: n x 3 x3</p>
+<p>Symmetry operations as matrices for the corresponding point group</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.generate_symm_ops.generate_symm_quats">
+<code class="sig-prename descclassname"><span class="pre">byxtal.generate_symm_ops.</span></code><code class="sig-name descname"><span class="pre">generate_symm_quats</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cryst_ptgrp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/generate_symm_ops.html#generate_symm_quats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.generate_symm_ops.generate_symm_quats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give crystallographic point group, this function generates all the symmetry
+operations (as quaternions) that belong to the point group
+using ‘generators’</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Crystallogrphic point group in Schoenflies notation</p>
+</dd>
+<dt><strong>tol: float</strong></dt><dd><p>The tolerance used to check if two matrices are the same</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt>symm_quat: quaternion array</dt><dd><p>Size: n x 5</p>
+<p>Symmetry operations as matrices for the corresponding point group</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.generate_symm_ops.save_symm_pkl">
+<code class="sig-prename descclassname"><span class="pre">byxtal.generate_symm_ops.</span></code><code class="sig-name descname"><span class="pre">save_symm_pkl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cryst_ptgrp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/generate_symm_ops.html#save_symm_pkl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.generate_symm_ops.save_symm_pkl" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pkl file with the symmetry operations of op_type (matrices or
+quaternions) are created and stored in the ‘pkl_files’ directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Crystallogrphic point group in Schoenflies notation</p>
+</dd>
+<dt><strong>op_type: {‘matrices’, ‘quats’}</strong></dt><dd><p>Creates matrices or quaternion symmetry operations depending on op_type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="byxtal.tools.unique_rows_tol">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">unique_rows_tol</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#unique_rows_tol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.unique_rows_tol" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns the unique rows of the input matrix within that are within the
+specified tolerance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data: numpy array (m x n)</strong></dt><dd></dd>
+<dt><strong>tol: double</strong></dt><dd><p>tolerance of comparison for each rows
+Default: 1e-12</p>
+</dd>
+<dt><strong>return_index: Boolean</strong></dt><dd><p>flag to return the index of unique rows based on the indices of the output</p>
+</dd>
+<dt><strong>return_inverse: Boolean</strong></dt><dd><p>flag to return the index of unique rows based on the indices of the input</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>unique_rows: numpy array (m’ x n)</dt><dd></dd>
+<dt>ia: numpy array, integer (m’ x 1)</dt><dd><p>unique rows based on the indices of the output</p>
+</dd>
+<dt>ic: numpy array, integer (m x 1)</dt><dd><p>unique rows based on the indices of the input</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique</span></code></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.eq">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">eq</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#eq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.eq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the two rotation matrices are the same</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.message_display">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">message_display</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CheckMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Checknumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Precis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#message_display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.message_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function displays a Message (passed as input) and gives and error
+in case the matrix passed to it is not integral.`</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.extgcd">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">extgcd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#extgcd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.extgcd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple (u, v, d); they are the greatest common divisor d
+of two integers x and y and u, v such that d = x * u + y * v.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.ehermite">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">ehermite</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#ehermite"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.ehermite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elementary Hermite tranformation.
+For integers a and b, E = ehermite(a,b) returns
+an integer matrix with determinant 1 such that E * [a;b] = [g;0],
+where g is the gcd of a and b.
+E = ehermite(a,b)
+This function is in some ways analogous to GIVENS.
+John Gilbert, 415-812-4487, December 1993
+<a class="reference external" href="mailto:gilbert&#37;&#52;&#48;parc&#46;xerox&#46;com">gilbert<span>&#64;</span>parc<span>&#46;</span>xerox<span>&#46;</span>com</a>
+Xerox Palo Alto Research Center</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a, b: integers</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>E: numpy array 3x3</dt><dd><p>integer matrix with determinant 1 such that E * [a;b] = [g;0],
+where g is the gcd of a and b.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.left_matrix_division">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">left_matrix_division</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#left_matrix_division"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.left_matrix_division" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.smith_nf">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">smith_nf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#smith_nf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.smith_nf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smith normal form of an integer matrix.
+[U,S,V] = smith(A) returns integer matrices U, S, and V such that
+A = U*S*V’,
+S is diagonal and nonnegative, S(i,i) divides S(i+1,i+1) for all i,
+det U =+-1, and det V =+-1.
+s = smith(A) just returns diag(S).
+Uses function ehermite.
+[U,S,V] = smith(A);</p>
+<p>This function is in some ways analogous to SVD.
+Originally implemented by: John Gilbert, 415-812-4487, December 1993
+<a class="reference external" href="mailto:gilbert&#37;&#52;&#48;parc&#46;xerox&#46;com">gilbert<span>&#64;</span>parc<span>&#46;</span>xerox<span>&#46;</span>com</a>
+Xerox Palo Alto Research Center</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>matrix: numpy array</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>S: numpy array</dt><dd><p>S is diagonal and nonnegative, S(i,i) divides S(i+1,i+1) for all i</p>
+</dd>
+<dt>U: numpy array</dt><dd><p>det(U) =+-1</p>
+</dd>
+<dt>V: numpy array</dt><dd><p>det(V) =+-1</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.vrrotvec2mat">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">vrrotvec2mat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_ang</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#vrrotvec2mat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.vrrotvec2mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Rotation Matrix from Axis-Angle vector:</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>``ax_ang``: numpy 5xn array</strong></dt><dd><p>The 3D rotation axis and angle (ax_ang)</p>
+<p>5 entries:</p>
+<p>First 3: axis</p>
+<p>4: angle</p>
+<p>5: 1 for proper and -1 for improper</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>mtx: nx3x3 numpy array</dt><dd><p>3x3 rotation matrices</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#byxtal.tools.mat2quat" title="byxtal.tools.mat2quat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat2quat</span></code></a>, <a class="reference internal" href="#byxtal.tools.axang2quat" title="byxtal.tools.axang2quat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axang2quat</span></code></a>, <a class="reference internal" href="#byxtal.tools.vrrotmat2vec" title="byxtal.tools.vrrotmat2vec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vrrotmat2vec</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.vrrotmat2vec">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">vrrotmat2vec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rot_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'proper'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#vrrotmat2vec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.vrrotmat2vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an axis-angle np.array from Rotation Matrix:</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>mat1: nx3x3 numpy array</strong></dt><dd><p>The nx3x3 rotation matrices to convert</p>
+</dd>
+<dt><strong>rot_type: string (‘proper’ or ‘improper’)</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">improper</span></code> if there is a possibility of
+having improper matrices in the input,
+<code class="docutils literal notranslate"><span class="pre">proper</span></code> otherwise.</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">proper</span></code></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">ax_ang</span></code>: numpy 5xn array</dt><dd><p>The 3D rotation axis and angle (ax_ang)</p>
+<p>5 entries:</p>
+<p>First 3: axis</p>
+<p>4: angle</p>
+<p>5: 1 for proper and -1 for improper</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#byxtal.tools.mat2quat" title="byxtal.tools.mat2quat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat2quat</span></code></a>, <a class="reference internal" href="#byxtal.tools.axang2quat" title="byxtal.tools.axang2quat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axang2quat</span></code></a>, <a class="reference internal" href="#byxtal.tools.vrrotvec2mat" title="byxtal.tools.vrrotvec2mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vrrotvec2mat</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.quat2mat">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">quat2mat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#quat2mat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.quat2mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert Quaternion Arrays to Rotation Matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>q: numpy array (5 x 1)</strong></dt><dd><p>quaternion</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>g: numpy array (3 x 3)</dt><dd><p>rotation matrix</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#byxtal.tools.mat2quat" title="byxtal.tools.mat2quat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat2quat</span></code></a>, <a class="reference internal" href="#byxtal.tools.axang2quat" title="byxtal.tools.axang2quat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axang2quat</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.mat2quat">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">mat2quat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rot_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'proper'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#mat2quat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.mat2quat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert Rotation Matrices to Quaternions</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>mat: numpy array or a list of (3 x 3)</strong></dt><dd><p>rotation matrix</p>
+</dd>
+<dt><strong>rot_type: string (‘proper’ or ‘improper’)</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">improper</span></code> if there is a possibility of
+having improper matrices in the input,
+<code class="docutils literal notranslate"><span class="pre">proper</span></code> otherwise.</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">proper</span></code></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>quaternion_rep: numpy array (5 x 1)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#byxtal.tools.quat2mat" title="byxtal.tools.quat2mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quat2mat</span></code></a>, <a class="reference internal" href="#byxtal.tools.axang2quat" title="byxtal.tools.axang2quat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axang2quat</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.tools.axang2quat">
+<code class="sig-prename descclassname"><span class="pre">byxtal.tools.</span></code><code class="sig-name descname"><span class="pre">axang2quat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax_ang</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/tools.html#axang2quat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.tools.axang2quat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a quaternion corresponding to the rotation specified by an axis and an angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax_ang: numpy array or a list of (5 x 1)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>quaternion_rep: numpy array (5 x 1)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="disorientation-symmetry-operation">
+<h2>Disorientation Symmetry Operation<a class="headerlink" href="#disorientation-symmetry-operation" title="Permalink to this headline">¶</a></h2>
+<p>#.. autofunction:: byxtal.disorient_symm_props.disorient_symm_props</p>
+</div>
+<div class="section" id="find-csl-and-dsc">
+<h2>Find CSL and DSC<a class="headerlink" href="#find-csl-and-dsc" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="byxtal.find_csl_dsc.find_csl_dsc">
+<code class="sig-prename descclassname"><span class="pre">byxtal.find_csl_dsc.</span></code><code class="sig-name descname"><span class="pre">find_csl_dsc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_p_po</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_p1top2_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/find_csl_dsc.html#find_csl_dsc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.find_csl_dsc.find_csl_dsc" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls the csl_finder and dsc_finder and returns
+the CSL and DSC basis vectors in ‘g1’ reference frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>L_G1_GO1: numpy array</strong></dt><dd><p>The three basis vectors for the primitive unit cell
+(as columns) are given with respect to the GO1 reference
+frame.</p>
+</dd>
+<dt><strong>R_G1ToG2_G1: 3X3 numpy array</strong></dt><dd><p>The rotation matrix defining the
+transformation in ‘G1’ reference frame. The subscript ‘G1’ refers
+to the primitive unit cell of G lattice.</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>l_csl_g1, l_dsc_g1: numpy arrays</strong></dt><dd><p>The basis vectors of csl and dsc lattices in the g1 reference frame</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.find_csl_dsc.csl_finder">
+<code class="sig-prename descclassname"><span class="pre">byxtal.find_csl_dsc.</span></code><code class="sig-name descname"><span class="pre">csl_finder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T_p1top2_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p_po</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/find_csl_dsc.html#csl_finder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.find_csl_dsc.csl_finder" title="Permalink to this definition">¶</a></dt>
+<dd><p>The CSL is computed for the bi-crystal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>TI_p1top2_p1: numpy array</strong></dt><dd><p>Sigma*(transformation matrix)</p>
+</dd>
+<dt><strong>l_p_po: numpy array</strong></dt><dd><p>basis vectors (as columns) of the underlying lattice expressed in the
+orthogonal ‘po’ reference frame</p>
+</dd>
+<dt><strong>tol1: int</strong></dt><dd><p>Tolerance to use to compute the reduced LLL lattice</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>l_csl_p: numpy array</dt><dd><p>The CSL basis vectors (as columns) expressed in the primitive reference</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The “Reduced” refer to the use of LLL algorithm to compute a
+basis that is as close to orthogonal as possible.
+(Refer to <a class="reference external" href="http://en.wikipedia.org/wiki/Lattice_reduction">http://en.wikipedia.org/wiki/Lattice_reduction</a>) for further
+detials on the concept of Lattice Reduction</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.find_csl_dsc.dsc_finder">
+<code class="sig-prename descclassname"><span class="pre">byxtal.find_csl_dsc.</span></code><code class="sig-name descname"><span class="pre">dsc_finder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L_G2_G1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L_G1_GO1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/find_csl_dsc.html#dsc_finder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.find_csl_dsc.dsc_finder" title="Permalink to this definition">¶</a></dt>
+<dd><p>The DSC lattice is computed for the bi-crystal, if the transformation
+matrix l_g2_g1 is given and the basis vectors of the underlying crystal
+l_g_go (in the orthogonal reference go frame) are known. The following
+relationship is used: <strong>The reciprocal of the coincidence site lattice of
+the reciprocal lattices is the DSC lattice</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l_g2_g1: numpy array</strong></dt><dd><p>transformation matrix (r_g1tog2_g1)</p>
+</dd>
+<dt><strong>l_g1_go1: numpy array</strong></dt><dd><p>basis vectors (as columns) of the underlying lattice expressed in the
+orthogonal ‘go’ reference frame</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>l_dsc_g1: numpy array</dt><dd><p>The dsc lattice basis vectors (as columns) expressed in the g1 reference</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The “Reduced” refer to the use of LLL algorithm to compute a
+basis that is as close to orthogonal as possible.
+(Refer to <a class="reference external" href="http://en.wikipedia.org/wiki/Lattice_reduction">http://en.wikipedia.org/wiki/Lattice_reduction</a>) for further
+detials on the concept of Lattice Reduction</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.find_csl_dsc.check_csl">
+<code class="sig-prename descclassname"><span class="pre">byxtal.find_csl_dsc.</span></code><code class="sig-name descname"><span class="pre">check_csl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_csl_p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p1_po</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_p1top2_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/find_csl_dsc.html#check_csl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.find_csl_dsc.check_csl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.find_csl_dsc.check_dsc">
+<code class="sig-prename descclassname"><span class="pre">byxtal.find_csl_dsc.</span></code><code class="sig-name descname"><span class="pre">check_dsc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_dsc_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_csl_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p1_po</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p2_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/find_csl_dsc.html#check_dsc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.find_csl_dsc.check_dsc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.find_csl_dsc.sigma_calc">
+<code class="sig-prename descclassname"><span class="pre">byxtal.find_csl_dsc.</span></code><code class="sig-name descname"><span class="pre">sigma_calc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_g1tog2_g1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/find_csl_dsc.html#sigma_calc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.find_csl_dsc.sigma_calc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the sigma of the transformation matrix (t_g1tog2_g1)</p>
+<ul class="simple">
+<li><p>Suppose T = t_g1tog2_g1</p></li>
+<li><p>if det(T) = det(T^{-1}) then sigma1 = sigma2 is returned (homophase)</p></li>
+<li><p>if det(T) neq det(T^{-1}) then max(sigma1, sigma2) is returned (heterophase)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.find_csl_dsc.reciprocal_mat">
+<code class="sig-prename descclassname"><span class="pre">byxtal.find_csl_dsc.</span></code><code class="sig-name descname"><span class="pre">reciprocal_mat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_g_go</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/find_csl_dsc.html#reciprocal_mat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.find_csl_dsc.reciprocal_mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>The reciprocal matrix with reciprocal basis vectors is computed for the
+input matrix with primitve basis vectors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l_g_go: numpy array</strong></dt><dd><p>The primitive basis vectors b1x, b1y, b1z</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>rl_g_go: numpy array</dt><dd><p>The primitve reciprocal basis vectors</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.find_csl_dsc.make_right_handed">
+<code class="sig-prename descclassname"><span class="pre">byxtal.find_csl_dsc.</span></code><code class="sig-name descname"><span class="pre">make_right_handed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_csl_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p_po</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/find_csl_dsc.html#make_right_handed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.find_csl_dsc.make_right_handed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="lll-reduction">
+<h2>lll-reduction<a class="headerlink" href="#lll-reduction" title="Permalink to this headline">¶</a></h2>
+<p>#.. autofunction:: byxtal.lll_tools.reduce_po_lat</p>
+<p>#.. autofunction:: byxtal.lll_tools.check_basis_equi</p>
+<p>#.. autofunction:: byxtal.lll_tools.check_basis_def</p>
+<p>#.. autofunction:: byxtal.lll_tools.lll_reduction</p>
+<p>#.. autofunction:: byxtal.lll_tools.mod</p>
+<p>#.. autofunction:: byxtal.lll_tools.hermite_normal_form</p>
+<p>#.. autofunction:: byxtal.lll_tools.smith_normal_form</p>
+<p>#.. autofunction:: byxtal.lll_tools.row_col_all_zero</p>
+</div>
+<div class="section" id="pick-fundumental-zone">
+<h2>Pick Fundumental Zone<a class="headerlink" href="#pick-fundumental-zone" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="byxtal.pick_fz_bpl.pick_fz_bpl">
+<code class="sig-prename descclassname"><span class="pre">byxtal.pick_fz_bpl.</span></code><code class="sig-name descname"><span class="pre">pick_fz_bpl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bp_norms_go1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bp_symm_grp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symm_grp_ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/pick_fz_bpl.html#pick_fz_bpl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.pick_fz_bpl.pick_fz_bpl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an array of unit boundary plane normals lying in the fundamental zone of bicrystal
+symmetry for an input array containing unit boundary plane normals in po1 reference frame.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>bp_norms_go1: An array of unit boundary plane vectors in the reference frame of lower crystal 1 (po1).</strong></dt><dd></dd>
+<dt><strong>* numpy array of size (n x 3)</strong></dt><dd></dd>
+<dt><strong>bp_symm_grp: The point group symmetry of the underlying bicrystal.</strong></dt><dd></dd>
+<dt><strong>* python string with allowed values ‘C_s’, ‘C_2h’, ‘D_3d’, ‘D_2h’, ‘D_4h’, ‘D_6h’, ‘D_8h’ and ‘O_h’</strong></dt><dd></dd>
+<dt><strong>symm_grp_ax: The principal axes of bicrystal symmetry group in orthogonal reference frame of crystal 1 (po1).</strong></dt><dd></dd>
+<dt><strong>* numpy array of size (3 x 3)</strong></dt><dd></dd>
+<dt><strong>* x_axis == symm_grp_axes[:, 0]; y_axis == symm_grp_axes[:, 1]; z_axis == symm_grp_axes[:, 2]</strong></dt><dd></dd>
+<dt><strong>x_tol</strong><span class="classifier">tolerance value to find points in the bicrystal fundamental zone</span></dt><dd></dd>
+<dt><strong>* float, default value == 1e-04</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>bp_fz_norms_go1: Fundamental zone boundary plane array.</dt><dd></dd>
+</dl>
+<ul class="simple">
+<li><dl class="simple">
+<dt>numpy array of size (n x 3)</dt><dd></dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Each row is a unit boundary plane vector in the bicrystal fundamental zone.</dt><dd></dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>For each vector the components are expressed in orthogonal reference frame of crystal 1 (po1).</dt><dd></dd>
+</dl>
+</li>
+</ul>
+<dl class="simple">
+<dt><strong>bp_fz_stereo</strong><span class="classifier">Fundamental zone boundary plane array.</span></dt><dd></dd>
+</dl>
+<ul class="simple">
+<li><dl class="simple">
+<dt>numpy array of size (n x 3)</dt><dd></dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>The boundary plane vectors are rotated for steregraphic projection along z_axis (symm_grp_axes[:, 2].</dt><dd></dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#byxtal.pick_fz_bpl.rot_symm" title="byxtal.pick_fz_bpl.rot_symm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rot_symm</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.pick_fz_bpl.rot_symm">
+<code class="sig-prename descclassname"><span class="pre">byxtal.pick_fz_bpl.</span></code><code class="sig-name descname"><span class="pre">rot_symm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symm_grp_ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bp_norms_go1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/pick_fz_bpl.html#rot_symm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.pick_fz_bpl.rot_symm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the symmetrically equivalent boundary plane normals using the symmetry operations of bicrystal point
+group symmetry.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>symm_grp_ax: The principal axes of bicrystal symmetry group in orthogonal reference frame of crystal 1 (po1).</strong></dt><dd></dd>
+<dt><strong>* numpy array of size (3 x 3)</strong></dt><dd></dd>
+<dt><strong>* x_axis == symm_grp_axes[:, 0]; y_axis == symm_grp_axes[:, 1]; z_axis == symm_grp_axes[:, 2]</strong></dt><dd></dd>
+<dt><strong>bp_norms_go1: normalized boundary plane normals in the po1 reference frame</strong></dt><dd></dd>
+<dt><strong>* numpy array of size (n x 3)</strong></dt><dd></dd>
+<dt><strong>file_path: path to the relevant symmetry operations containing pickle file</strong></dt><dd></dd>
+<dt><strong>* python string</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>symm_bpn_go1: symmetrically equivalent boundary plane normals in the po1 reference frame</dt><dd></dd>
+</dl>
+<ul class="simple">
+<li><dl class="simple">
+<dt>numpy array of size (m x n x 3); m == order of bicrystal point group symmetry group</dt><dd></dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="quaternion">
+<h2>Quaternion<a class="headerlink" href="#quaternion" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="byxtal.quaternion.getq0">
+<code class="sig-prename descclassname"><span class="pre">byxtal.quaternion.</span></code><code class="sig-name descname"><span class="pre">getq0</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/quaternion.html#getq0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.quaternion.getq0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the q0 component for each quaternion present in the input quaternion array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>g</strong><span class="classifier">input quaternion array</span></dt><dd></dd>
+<dt><strong>* a quaternion array of size (5 x n)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>q0 components stored in a 1-D numpy array of size n.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.quaternion.getq1">
+<code class="sig-prename descclassname"><span class="pre">byxtal.quaternion.</span></code><code class="sig-name descname"><span class="pre">getq1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/quaternion.html#getq1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.quaternion.getq1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the q1 component for each quaternion present in the input quaternion array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>g</strong><span class="classifier">input quaternion array</span></dt><dd></dd>
+<dt><strong>* a quaternion array of size (5 x n)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>q1 components stored in a 1-D numpy array of size n.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.quaternion.getq2">
+<code class="sig-prename descclassname"><span class="pre">byxtal.quaternion.</span></code><code class="sig-name descname"><span class="pre">getq2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/quaternion.html#getq2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.quaternion.getq2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the q2 component for each quaternion present in the input quaternion array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>g</strong><span class="classifier">input quaternion array</span></dt><dd></dd>
+<dt><strong>* a quaternion array of size (5 x n)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>q2 components stored in a 1-D numpy array of size n.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.quaternion.getq3">
+<code class="sig-prename descclassname"><span class="pre">byxtal.quaternion.</span></code><code class="sig-name descname"><span class="pre">getq3</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/quaternion.html#getq3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.quaternion.getq3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the q3 component for each quaternion present in the input quaternion array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>g</strong><span class="classifier">input quaternion array</span></dt><dd></dd>
+<dt><strong>* a quaternion array of size (5 x n)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>q3 components stored in a 1-D numpy array of size n.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.quaternion.get_size">
+<code class="sig-prename descclassname"><span class="pre">byxtal.quaternion.</span></code><code class="sig-name descname"><span class="pre">get_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/quaternion.html#get_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.quaternion.get_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the size of input quaternion array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>g</strong><span class="classifier">input quaternion array</span></dt><dd></dd>
+<dt><strong>* a quaternion array of size (5 x n)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The size of the input quaternion array, n.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.quaternion.get_type">
+<code class="sig-prename descclassname"><span class="pre">byxtal.quaternion.</span></code><code class="sig-name descname"><span class="pre">get_type</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/quaternion.html#get_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.quaternion.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the rotation type of each quaternion present in the input quaternion array.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>g</strong><span class="classifier">input quaternion array</span></dt><dd></dd>
+<dt><strong>* a quaternion array of size (5 x n)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>integer values (either +1 or -1) stored in a 1-D numpy array of size n.</dt><dd></dd>
+</dl>
+<ul class="simple">
+<li><dl class="simple">
+<dt>+1 is returned for proper rotations</dt><dd></dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>-1 is returned for improper rotations</dt><dd></dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>#.. autofunction:: byxtal.quaternion.display</p>
+<dl class="py function">
+<dt id="byxtal.quaternion.antipodal">
+<code class="sig-prename descclassname"><span class="pre">byxtal.quaternion.</span></code><code class="sig-name descname"><span class="pre">antipodal</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/quaternion.html#antipodal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.quaternion.antipodal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the antipodal (or equivalent) quaternions such that q0 component is positive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>q1</strong><span class="classifier">input quaternion array</span></dt><dd></dd>
+<dt><strong>* a quaternion array of size (5 x n)</strong></dt><dd></dd>
+<dt><strong>tol</strong><span class="classifier">tolerance to overcome floating point error</span></dt><dd></dd>
+<dt><strong>* a float, default value is 1e-08</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A quaternion array of size (5 x n)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#byxtal.quaternion.getq0" title="byxtal.quaternion.getq0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getq0</span></code></a>, <a class="reference internal" href="#byxtal.quaternion.getq1" title="byxtal.quaternion.getq1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getq1</span></code></a>, <a class="reference internal" href="#byxtal.quaternion.getq2" title="byxtal.quaternion.getq2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getq2</span></code></a>, <a class="reference internal" href="#byxtal.quaternion.getq3" title="byxtal.quaternion.getq3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getq3</span></code></a>, <a class="reference internal" href="#byxtal.quaternion.get_type" title="byxtal.quaternion.get_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code></a>, <a class="reference internal" href="#byxtal.quaternion.get_size" title="byxtal.quaternion.get_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_size</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Antipodal quaternion for quaternions representing Pi rotations (q0==0) are obtained with a convention.</p></li>
+<li><p>If q0 == 0, q3 &gt;0; if q0 == 0 and q3 == 0, q2 &gt;0; if q == 0, q3 == 0 and q2 == 0, q1 &gt; 0.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt id="byxtal.quaternion.inverse">
+<code class="sig-prename descclassname"><span class="pre">byxtal.quaternion.</span></code><code class="sig-name descname"><span class="pre">inverse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/quaternion.html#inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.quaternion.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the inverse quaternions for a given input quaternion array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>q1</strong><span class="classifier">input quaternion array</span></dt><dd></dd>
+<dt><strong>* a quaternion array of size (5 x n)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>A quaternion array of size (5 x n)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#byxtal.quaternion.getq0" title="byxtal.quaternion.getq0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getq0</span></code></a>, <a class="reference internal" href="#byxtal.quaternion.getq1" title="byxtal.quaternion.getq1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getq1</span></code></a>, <a class="reference internal" href="#byxtal.quaternion.getq2" title="byxtal.quaternion.getq2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getq2</span></code></a>, <a class="reference internal" href="#byxtal.quaternion.getq3" title="byxtal.quaternion.getq3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getq3</span></code></a>, <a class="reference internal" href="#byxtal.quaternion.get_type" title="byxtal.quaternion.get_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<p>#.. autofunction:: byxtal.quaternion.mtimes</p>
+<p>#.. autofunction:: byxtal.quaternion.eq</p>
+<p>#.. autofunction:: byxtal.quaternion.quat2mat</p>
+<p>#.. autofunction:: byxtal.quaternion.mat2quat</p>
+<p>#.. autofunction:: byxtal.quaternion.ctranspose</p>
+</div>
+<div class="section" id="d-vector">
+<h2>3D Vector<a class="headerlink" href="#d-vector" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
