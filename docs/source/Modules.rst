@@ -155,8 +155,6 @@ Find CSL and DSC
 
 .. autofunction:: byxtal.find_csl_dsc.dsc_finder
 
-.. autofunction:: byxtal.find_csl_dsc.csl_finder_smith
-
 .. autofunction:: byxtal.find_csl_dsc.check_csl
 
 .. autofunction:: byxtal.find_csl_dsc.check_dsc
