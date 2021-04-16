@@ -524,6 +524,7 @@ def display(q, p_flag=True):
     ----------
     g : input quaternion array
     * a quaternion array of size (5 x n)
+
     p_flag : flag to print the returned display string
 
     * a boolean with default value == True
@@ -566,6 +567,7 @@ def antipodal(q1, tol=1e-12):
     ----------
     q1 : input quaternion array
     * a quaternion array of size (5 x n)
+
     tol : tolerance to overcome floating point error
     * a float, default value is 1e-08
 
@@ -576,6 +578,7 @@ def antipodal(q1, tol=1e-12):
     Notes
     -----
     * Antipodal quaternion for quaternions representing Pi rotations (q0==0) are obtained with a convention.
+
     * If q0 == 0, q3 >0; if q0 == 0 and q3 == 0, q2 >0; if q == 0, q3 == 0 and q2 == 0, q1 > 0.
 
     See Also
@@ -778,11 +781,9 @@ def eq(q1, q2, tol=1e-04):
     -------
     * If size(q1) == size(q2), then each quaternion q1(i) is checked against q2(i)
 
-    * If size(q1) > size(q2), then size(q2) must be equal to 1. Each quaternion q1(i) is checked
-    against q2
+    * If size(q1) > size(q2), then size(q2) must be equal to 1. Each quaternion q1(i) is checked against q2
 
-    * If size(q2) > size(q1), then size(q1) must be equal to 1. Each quaternion q2(i) is checked
-    against q1
+    * If size(q2) > size(q1), then size(q1) must be equal to 1. Each quaternion q2(i) is checked against q1
 
     See Also
     --------

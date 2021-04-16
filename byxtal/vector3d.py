@@ -13,8 +13,10 @@ import numpy as np
 # import geometry_tools as gmt
 from . import geometry_tools as gmt
 
-######################################################################
+
 class vector3d(np.ndarray):
+    """
+    """
     def __new__(cls, *args):
         nargs = len(args)
 
@@ -84,10 +86,10 @@ class vector3d(np.ndarray):
     def __init__(self, *args, **kwargs):
         pass
 
-# def abs
-
 
 def dot(v1, v2):
+    """
+    """
     xx = v1[0, :]*v2[0, :]
     yy = v1[1, :]*v2[1, :]
     zz = v1[2, :]*v2[2, :]
@@ -96,11 +98,15 @@ def dot(v1, v2):
 
 
 def angle(v1, v2):
+    """
+    """
     a = dot(normalize(v1), normalize(v2))
     return np.acos(a)
 
 
 def double(vec):
+    """
+    """
     return vec.view(np.ndarray)
 
 
@@ -120,25 +126,37 @@ def cross(v1, v2):
 
 
 def getx(vec):
+    """
+    """
     return vec[0, :]
 
 
 def gety(vec):
+    """
+    """
     return vec[1, :]
 
 
 def getz(vec):
+    """
+    """
     return vec[2, :]
 
 
 def get_size(vec):
+    """
+    """
     return np.size(vec[0, :])
 
 def norm(vec):
+    """
+    """
     n = np.sqrt(np.power(vec[0,:],2) + np.power(vec[1,:],2) + np.power(vec[2,:],2))
     return n
 
 def normalize(vec):
+    """
+    """
     n = np.tile(norm(vec), (3, 1))
     return vec/n
 
