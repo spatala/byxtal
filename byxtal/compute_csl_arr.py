@@ -8,7 +8,10 @@ import pickle as pkl
 import sage_util_funcs as suf
 import integer_manipulations as iman
 
+
 def reduce_po_lat(l_csl_p, l_p_po, tol):
+    """
+    """
     l_p_po = np.array(l_p_po, dtype='double')
     l_csl_po = l_p_po.dot(l_csl_p)
     lInt_csl_po, m1 = iman.int_approx(l_csl_po, tol)

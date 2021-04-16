@@ -232,6 +232,7 @@ def pl_density(l_pl_g1, l_g1_go1):
     pd = 1.0/planar_basis_area
     return pd
 
+
 def gb_2d_csl(inds, t_mat, l_p_po, inds_type='miller_index', mat_ref='g1'):
     """
     For a given boundary plane normal 'bp1_p1' and the misorientation

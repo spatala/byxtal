@@ -1136,7 +1136,6 @@ def csl_rotations(sigma, sig_type, lat_type):
         # equal to $\Sigman$
         sig_rots = check_sigma_rots(r_g1tog2_g1, sigma)
         return sig_rots
-# -----------------------------------------------------------------------------------------------------------
 
 
 def check_csl(l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_val):

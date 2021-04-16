@@ -26,9 +26,9 @@ def disorient_symm_props(mis_quat_fz, lat_pt_grp, x_tol=1e-04):
 
     Notes
     ------
-        * This method takes only one value for lat_pt_grp == 'O_h', i.e. the function is written for bcc and fcc
+        This method takes only one value for lat_pt_grp == 'O_h', i.e. the function is written for bcc and fcc
         crystals only.
-        * Based on the location of the mis_quat_fz in the quaternion hypersphere (4-D), the point group symmetry of the
+        Based on the location of the mis_quat_fz in the quaternion hypersphere (4-D), the point group symmetry of the
         bicrystal is determined.
     """
     q0 = mis_quat_fz[0][0]
