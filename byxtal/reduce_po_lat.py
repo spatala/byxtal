@@ -6,7 +6,10 @@ import numpy as np
 import numpy.linalg as nla
 from . import integer_manipulations as iman
 
+
 def call_sage_math(exec_str, inp_args):
+    """
+    """
     byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
     exec_str1 = byxtal_dir+exec_str
     run_lst = []
@@ -40,7 +43,10 @@ def call_sage_math(exec_str, inp_args):
 
     return M_out
 
+
 def reduce_po_lat(l_csl_p, l_p_po, tol):
+    """
+    """
     l_p_po = np.array(l_p_po, dtype='double')
     l_csl_po = l_p_po.dot(l_csl_p)
     lInt_csl_po, m1 = iman.int_approx(l_csl_po, tol)

@@ -106,6 +106,12 @@ Misorientation Fundamental Zones
 .. autofunction:: byxtal.misorient_fz.misorient_fz
 
 
+Sage Utility Functions
+----------------------------
+.. autofunction:: byxtal.sage_util_funcs.compute_csl_grimmer
+
+.. autofunction:: byxtal.sage_util_funcs.compute_lll
+
 
 Generate Symmetry Operators
 ----------------------------
@@ -119,6 +125,7 @@ Generate Symmetry Operators
 
 Tools
 -----
+.. autofunction:: byxtal.tools.Col
 
 .. autofunction:: byxtal.tools.unique_rows_tol
 
@@ -186,8 +193,17 @@ Pick Fundumental Zone
 
 .. autofunction:: byxtal.pick_fz_bpl.rot_symm
 
+
+Reduce Po Lattice
+-----------------
+.. autofunction:: byxtal.reduce_po_lat.call_sage_math
+
+.. autofunction:: byxtal.reduce_po_lat.reduce_po_lat
+
 Quaternion
 ----------
+.. autofunction:: byxtal.quaternion.Quaternion
+
 .. autofunction:: byxtal.quaternion.getq0
 
 .. autofunction:: byxtal.quaternion.getq1
@@ -215,5 +231,7 @@ Quaternion
 #.. autofunction:: byxtal.quaternion.mat2quat
 
 #.. autofunction:: byxtal.quaternion.ctranspose
+
+#.. autofunction:: byxtal.quaternion.isnumeric
 
 

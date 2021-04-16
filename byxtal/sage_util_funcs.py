@@ -3,10 +3,12 @@
 import numpy as np
 import numpy.linalg as nla
 import subprocess
-
 from sage.all import *
 
+
 def compute_csl_grimmer(A, sig_num, sz):
+    """
+    """
     A = Matrix(np.array(A, dtype='int64'))
     D,U,V = A.smith_form()
     l_csl_p1 = 0*A
@@ -21,7 +23,10 @@ def compute_csl_grimmer(A, sig_num, sz):
     l_csl_p1 = compute_lll(l_csl_p1)
     return l_csl_p1
 
+
 def compute_lll(A):
+    """
+    """
     M0 = Matrix(np.array(A, dtype='int64'))
     M1 = M0.transpose()
     M2 = M1.LLL()
