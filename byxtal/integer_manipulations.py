@@ -1,11 +1,9 @@
 import numpy as np
-
 from sympy import Rational
-from sympy.matrices import Matrix, eye, zeros;
-from sympy import nsimplify
 import sympy as spy
 from fractions import Fraction
 import numpy.linalg as nla
+
 
 def gcd_vec(int_mat):
     input1 = int_mat.flatten()
@@ -15,6 +13,7 @@ def gcd_vec(int_mat):
         gcd1 = spy.gcd(gcd1, input1[ct1])
 
     return int(gcd1)
+
 
 def gcd_array(input, order='all'):
     """
@@ -61,18 +60,17 @@ def gcd_array(input, order='all'):
     if (Keys == 0):
         sz1 = np.shape(input)[0]
         sz2 = np.shape(input)[1]
-        Agcd = np.zeros((sz1,1))
+        Agcd = np.zeros((sz1, 1))
         for ct1 in range(sz1):
-            tmp_row = input[ct1,:]
+            tmp_row = input[ct1, :]
             Agcd[ct1] = gcd_vec(tmp_row)
     if ((Keys == 1) or (Keys == 2)):
         sz1 = np.shape(input)[0]
         sz2 = np.shape(input)[1]
-        Agcd = np.zeros((1,sz2))
+        Agcd = np.zeros((1, sz2))
         for ct1 in range(sz2):
             tmp_row = input[:, ct1]
-            Agcd[0,ct1] = gcd_vec(tmp_row)
-
+            Agcd[0, ct1] = gcd_vec(tmp_row)
     return Agcd
 
 
@@ -131,25 +129,24 @@ def lcm_array(input, order='all'):
     if (Keys == 0):
         sz1 = np.shape(input)[0]
         sz2 = np.shape(input)[1]
-        Alcm = np.zeros((sz1,1))
+        Alcm = np.zeros((sz1, 1))
         for ct1 in range(sz1):
-            tmp_row = input[ct1,:]
+            tmp_row = input[ct1, :]
             Alcm[ct1] = lcm_vec(tmp_row)
     if ((Keys == 1) or (Keys == 2)):
         sz1 = np.shape(input)[0]
         sz2 = np.shape(input)[1]
-        Alcm = np.zeros((1,sz2))
+        Alcm = np.zeros((1, sz2))
         for ct1 in range(sz2):
             tmp_row = input[:, ct1]
-            Alcm[0,ct1] = lcm_vec(tmp_row)
-
+            Alcm[0, ct1] = lcm_vec(tmp_row)
     return Alcm
 
 
 def check_int_mat(T, tol1):
     if isinstance(T, Matrix):
-        T = np.array(T, dtype='double');
-    return (np.max(np.abs(T - np.around(T))) < tol1);
+        T = np.array(T, dtype='double')
+    return (np.max(np.abs(T - np.around(T))) < tol1)
 
 
 def rat_approx(Tmat, tol1=0.01):
@@ -173,7 +170,7 @@ def rat_approx(Tmat, tol1=0.01):
     Nmat1 = np.array(Nmat1, dtype='int64')
     Dmat1 = np.array(Dmat1, dtype='int64')
 
-    return Nmat1, Dmat1;
+    return Nmat1, Dmat1
 
 
 def int_approx(Tmat, tol1=0.01):
@@ -185,8 +182,6 @@ def int_approx(Tmat, tol1=0.01):
 
     mult1 = 1/((tct1 + tct2)/2)
     mult2 = 1/np.max(np.abs(Tmat))
-
-    # print(Tmat)
 
     int_mat1, t1_mult, err1 = mult_fac_err(Tmat, mult1, tol1)
     int_mat2, t2_mult, err2 = mult_fac_err(Tmat, mult2, tol1)
@@ -239,10 +234,6 @@ def mult_fac_err(Tmat, mult1, tol1):
     int_mat1 = np.array(int_mat1, dtype='int64')
     t1_mult = mult1*lcm1/gcd1
     err1 = np.max(np.abs(Tmat - int_mat1/t1_mult))
-
-    # print(int_mat1)
-    # print('+++++++')
-
     return int_mat1, t1_mult, err1
 
 
@@ -292,7 +283,7 @@ def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
             input1 = input1 / tmult
         output_v = input1
         if len(Sz) == 1:
-            output_v = np.reshape(output_v, (np.size(output_v), ))
+            output_v = np.reshape(output_v, (np.size(output_v),))
         return output_v
     else:
         #   By default it flattens the array (if nargin < 3)
