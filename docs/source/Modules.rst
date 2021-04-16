@@ -6,9 +6,13 @@ Lattice Class
 -------------
 .. autofunction:: byxtal.lattice.Lattice
 
+.. autofunction:: byxtal.lattice.approx_latmat
+
 
 Geometry Tools
 ---------------
+.. autofunction:: byxtal.geometry_tools.isnumeric
+
 .. autofunction:: byxtal.geometry_tools.sph2vec
 
 .. autofunction:: byxtal.geometry_tools.idquaternion

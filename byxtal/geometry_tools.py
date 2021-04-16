@@ -12,16 +12,15 @@ import numpy as np
 from . import quaternion as quat
 from . import vector3d as vec3d
 
-# -----------------------------------------------------------------------------------------------------------
-
 
 def isnumeric(obj):
+    """
+    """
     try:
         obj + 0
         return True
     except TypeError:
         return False
-# -----------------------------------------------------------------------------------------------------------
 
 
 def sph2vec(theta, rho, *args):
@@ -85,5 +84,7 @@ def sph2vec(theta, rho, *args):
 
 
 def idquaternion():
+    """
+    """
     return quat.Quaternion(1, 0, 0, 0, 1)
 # -----------------------------------------------------------------------------------------------------------

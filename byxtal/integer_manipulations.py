@@ -6,6 +6,8 @@ import numpy.linalg as nla
 
 
 def gcd_vec(int_mat):
+    """
+    """
     input1 = int_mat.flatten()
     Sz = input1.shape
     gcd1 = 0
@@ -75,6 +77,8 @@ def gcd_array(input, order='all'):
 
 
 def lcm_vec(Dmat):
+    """
+    """
     input1 = Dmat.flatten()
     Sz = input1.shape
     lcm1 = 1
@@ -144,6 +148,8 @@ def lcm_array(input, order='all'):
 
 
 def check_int_mat(T, tol1):
+    """
+    """
     if isinstance(T, Matrix):
         T = np.array(T, dtype='double')
     return (np.max(np.abs(T - np.around(T))) < tol1)
