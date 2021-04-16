@@ -232,3 +232,24 @@ Quaternion
 .. autofunction:: byxtal.quaternion.isnumeric
 
 
+3D vector
+----------
+.. autofunction:: byxtal.vector3d.vector3d
+
+.. autofunction:: byxtal.vector3d.dot
+
+.. autofunction:: byxtal.vector3d.angle
+
+.. autofunction:: byxtal.vector3d.cross
+
+.. autofunction:: byxtal.vector3d.getx
+
+.. autofunction:: byxtal.vector3d.gety
+
+.. autofunction:: byxtal.vector3d.getz
+
+.. autofunction:: byxtal.vector3d.get_size
+
+.. autofunction:: byxtal.vector3d.norm
+
+.. autofunction:: byxtal.vector3d.normalize
