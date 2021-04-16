@@ -9,4 +9,6 @@ Tutorials
 
     Conventions-Notations
     enumerate_byxtal
+    enumerate_byxtal_fcc
+    enumerate_byxtal_hcp
     Basis_2D_Plane
