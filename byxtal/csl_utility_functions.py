@@ -13,6 +13,7 @@ from . import misorient_fz as mis_fz
 from . import tools as trans
 import numpy.linalg as nla
 
+
 def proper_ptgrp(cryst_ptgrp):
     """
     Returns the proper point group corresponding to a crystallographic point

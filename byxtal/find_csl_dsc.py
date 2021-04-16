@@ -11,6 +11,60 @@ from . import integer_manipulations as int_man
 import numpy.linalg as nla
 from . import reduce_po_lat as rpl
 
+# def find_csl_dsc(l_p_po, T_p1top2_p1, tol1=1e-6, print_check=True):
+#     """
+#     This function calls the csl_finder and dsc_finder and returns
+#     the CSL and DSC basis vectors in 'g1' reference frame.
+
+#     Parameters
+#     -----------------
+#     L_G1_GO1: numpy array
+#         The three basis vectors for the primitive unit cell
+#         (as columns) are given with respect to the GO1 reference
+#         frame.
+
+#     R_G1ToG2_G1: 3X3 numpy array
+#         The rotation matrix defining the
+#         transformation in 'G1' reference frame. The subscript 'G1' refers
+#         to the primitive unit cell of G lattice.
+
+#     Returns
+#     l_csl_g1, l_dsc_g1: numpy arrays
+#         The basis vectors of csl and dsc lattices in the g1 reference frame
+#     """
+#     ########################################################################
+#     ## Compute Sigma, and Sigma*T
+#     T_p1top2_p1 = np.array(T_p1top2_p1, dtype='double')
+#     Sigma = sigma_calc(T_p1top2_p1, tol1)
+#     TI_p1top2_p1 = T_p1top2_p1*Sigma
+#     cond1 = int_man.check_int_mat(TI_p1top2_p1, tol1)
+#     if cond1:
+#         TI_p1top2_p1 = (np.around(TI_p1top2_p1)).astype(int)
+#     else:
+#         raise Exception("TI_p1top2_p1 is not an integer matrix.")
+#     ########################################################################
+
+
+#     ########################################################################
+#     # l_csl_p = csl_finder(T_p1top2_p1, Sigma, l_p_po, tol1)
+#     l_csl_p = csl_finder(T_p1top2_p1, l_p_po, tol1)
+#     check_val1 = check_csl(l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
+#     ########################################################################
+
+#     ########################################################################
+#     l_dsc_p = dsc_finder(T_p1top2_p1, l_p_po, tol1)
+#     check_val2 = check_dsc(l_dsc_p, l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
+#     ########################################################################
+
+#     ########################################################################
+#     print([check_val1, check_val2])
+#     if (not(check_val1 and check_val2)):
+#         raise Exception("Error in Computing CSL or DSC Lattices.")
+#     ########################################################################
+
+#     return l_csl_p, l_dsc_p
+
+
 def find_csl_dsc(l_p_po, T_p1top2_p1, tol1=1e-6, print_check=True):
     """
     This function calls the csl_finder and dsc_finder and returns
@@ -52,17 +106,17 @@ def find_csl_dsc(l_p_po, T_p1top2_p1, tol1=1e-6, print_check=True):
     ########################################################################
 
     ########################################################################
-    l_dsc_p = dsc_finder(T_p1top2_p1, l_p_po, tol1)
-    check_val2 = check_dsc(l_dsc_p, l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
+    # l_dsc_p = dsc_finder(T_p1top2_p1, l_p_po, tol1)
+    # check_val2 = check_dsc(l_dsc_p, l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
     ########################################################################
 
     ########################################################################
-    print([check_val1, check_val2])
-    if (not(check_val1 and check_val2)):
+    print([check_val1])
+    if (not(check_val1)):
         raise Exception("Error in Computing CSL or DSC Lattices.")
     ########################################################################
 
-    return l_csl_p, l_dsc_p
+    return l_csl_p
 
 
 def csl_finder(T_p1top2_p1, l_p_po, tol1):

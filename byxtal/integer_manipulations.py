@@ -75,6 +75,7 @@ def gcd_array(input, order='all'):
 
     return Agcd
 
+
 def lcm_vec(Dmat):
     input1 = Dmat.flatten()
     Sz = input1.shape
@@ -83,6 +84,7 @@ def lcm_vec(Dmat):
         lcm1 = spy.lcm(lcm1, input1[ct1])
 
     return int(lcm1)
+
 
 def lcm_array(input, order='all'):
     """
@@ -143,10 +145,12 @@ def lcm_array(input, order='all'):
 
     return Alcm
 
+
 def check_int_mat(T, tol1):
     if isinstance(T, Matrix):
         T = np.array(T, dtype='double');
     return (np.max(np.abs(T - np.around(T))) < tol1);
+
 
 def rat_approx(Tmat, tol1=0.01):
     """
@@ -200,6 +204,7 @@ def int_approx(Tmat, tol1=0.01):
         else:
             return int_mat1, t1_mult
 
+
 def int_mult_approx(Tmat, tol1=0.01):
     """
     """
@@ -239,6 +244,7 @@ def mult_fac_err(Tmat, mult1, tol1):
     # print('+++++++')
 
     return int_mat1, t1_mult, err1
+
 
 def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
     """
@@ -377,6 +383,7 @@ def int_check(input, precis=6):
     t1 = abs(var)
     cond = (abs(t1 - np.around(t1)) < tval)
     return cond
+
 
 def rat(input, tol=1e-06):
     """
