@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Modules &mdash; byxtal 0.post52+g92ef8a4 documentation</title>
+  <title>Modules &mdash; byxtal 0.post50+gf2a75f4 documentation</title>
   
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.post52+g92ef8a4
+                0.post50+gf2a75f4
               </div>
             
           
@@ -512,13 +512,13 @@ group</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Crystallogrphic point group in Schoenflies notation</p>
+<dt><strong>cryst_ptgrp: str</strong></dt><dd><p>Crystallogrphic point group in Schoenflies notation</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>proper_ptgrp: string</dt><dd><p>Proper point group in Schoenflies notation</p>
+<dt>proper_ptgrp: str</dt><dd><p>Proper point group in Schoenflies notation</p>
 </dd>
 </dl>
 </dd>
@@ -532,13 +532,13 @@ group</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>var_arr: numpy array</strong></dt><dd><p>Array of integers whose largest odd factors needs to be computed</p>
+<dt><strong>var_arr: numpy.array</strong></dt><dd><p>Array of integers whose largest odd factors needs to be computed</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>odd_d: numpy array</dt><dd><p>Array of largest odd factors of each integer in var_arr</p>
+<dt>odd_d: numpy.array</dt><dd><p>Array of largest odd factors of each integer in var_arr</p>
 </dd>
 </dl>
 </dd>
@@ -553,7 +553,7 @@ are computed</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>lattice: Lattice class</strong></dt><dd><p>Attributes of the underlying lattice</p>
+<dt><strong>lattice: class</strong></dt><dd><p>Attributes of the underlying lattice class</p>
 </dd>
 <dt><strong>sig_type: {‘common’, ‘specific’}</strong></dt><dd></dd>
 </dl>
@@ -581,13 +581,13 @@ of integer quadruples</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Proper point group in Schoenflies notation</p>
+<dt><strong>cryst_ptgrp: str</strong></dt><dd><p>Proper point group in Schoenflies notation</p>
 </dd>
-<dt><strong>sigma: integer</strong></dt><dd><p>Sigma number</p>
+<dt><strong>sigma: int</strong></dt><dd><p>Sigma number</p>
 </dd>
 <dt><strong>sig_type: {‘common’, ‘specific’}</strong></dt><dd></dd>
-<dt><strong>args[0]: dictionary</strong></dt><dd></dd>
-<dt><strong>keys: ‘nu’, ‘mu’, ‘kmax’</strong></dt><dd></dd>
+<dt><strong>args[0]: dic</strong></dt><dd><p>keys: ‘nu’, ‘mu’, ‘kmax’</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -606,19 +606,20 @@ fundamental zone are separated out and retruned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>quad_int: numpy array</strong></dt><dd><p>Integer quadruples</p>
+<dt><strong>quad_int: numpy.array</strong></dt><dd><p>Integer quadruples</p>
 </dd>
-<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Proper point group in Schoenflies notation</p>
+<dt><strong>cryst_ptgrp: str</strong></dt><dd><p>Proper point group in Schoenflies notation</p>
 </dd>
 <dt><strong>sig_type: {‘common’, ‘specific’}</strong></dt><dd></dd>
-<dt><strong>args[0]: dictionary</strong></dt><dd></dd>
-<dt><strong>keys: ‘nu’, ‘mu’, ‘kmax’</strong></dt><dd></dd>
+<dt><strong>args[0]: dic</strong></dt><dd><p>keys: ‘nu’, ‘mu’, ‘kmax’</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>Integer quadruple numpy array belonging to the fundamental zone</dt><dd></dd>
-<dt>of the corresponding crystallographic point group</dt><dd></dd>
+<dt>np.vstack((m, u, v, w)): numpy.array</dt><dd><p>Integer quadruple numpy array belonging to the fundamental zone
+of the corresponding crystallographic point group</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -634,20 +635,20 @@ this condition are returned</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>quad_int: numpy array</strong></dt><dd><p>Integer quadruples</p>
+<dt><strong>quad_int: numpy.array</strong></dt><dd><p>Integer quadruples</p>
 </dd>
-<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Proper point group in Schoenflies notation</p>
+<dt><strong>cryst_ptgrp: str</strong></dt><dd><p>Proper point group in Schoenflies notation</p>
 </dd>
 <dt><strong>sigma: float</strong></dt><dd><p>sigma number</p>
 </dd>
-<dt><strong>args[0]: dictionary</strong></dt><dd></dd>
-<dt><strong>keys: ‘nu’, ‘mu’, ‘kmax’</strong></dt><dd></dd>
+<dt><strong>args[0]: dic</strong></dt><dd><p>keys: ‘nu’, ‘mu’, ‘kmax’</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>quad_int: numpy array</dt><dd></dd>
-<dt>Integer quadruple array that satisfy the above mentioned condition</dt><dd></dd>
+<dt>quad_int: numpy.array</dt><dd><p>Integer quadruple array that satisfy the above mentioned condition</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -658,6 +659,21 @@ this condition are returned</p>
 <code class="sig-prename descclassname"><span class="pre">byxtal.csl_utility_functions.</span></code><code class="sig-name descname"><span class="pre">eliminate_idrots</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quad_int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/csl_utility_functions.html#eliminate_idrots"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.csl_utility_functions.eliminate_idrots" title="Permalink to this definition">¶</a></dt>
 <dd><p>Eliminate the roations that belong to the identity matrix and return the
 integer quadruples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>quad_int: numpy.array</strong></dt><dd><p>Integer quadruple array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>quad_int: numpy.array</dt><dd><p>Integer quadruple array in which the rotations belong to the identity
+matrix are eliminated.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -671,16 +687,16 @@ appropriate set of the integer quadruples are returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>quad_int: numpy array</strong></dt><dd><p>Integer quadruples.</p>
+<dt><strong>quad_int: numpy.array</strong></dt><dd><p>Integer quadruples.</p>
 </dd>
-<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Proper point group in Schoenflies notation.</p>
+<dt><strong>cryst_ptgrp: str</strong></dt><dd><p>Proper point group in Schoenflies notation.</p>
 </dd>
 <dt><strong>sig_type: {‘common’, ‘specific’}</strong></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>quad_int: numpy array</dt><dd><p>Integer quadruple array that satisfy the above mentioned condition.</p>
+<dt>quad_int: numpy.array</dt><dd><p>Integer quadruple array that satisfy the above mentioned condition.</p>
 </dd>
 </dl>
 </dd>
@@ -692,6 +708,20 @@ appropriate set of the integer quadruples are returned.</p>
 <code class="sig-prename descclassname"><span class="pre">byxtal.csl_utility_functions.</span></code><code class="sig-name descname"><span class="pre">eliminate_mults</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quad_int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/csl_utility_functions.html#eliminate_mults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.csl_utility_functions.eliminate_mults" title="Permalink to this definition">¶</a></dt>
 <dd><p>Divide all the integer quadruples by their corresponding least common
 multiples and return the unique set of integer quadruples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>quad_int: numpy.array</strong></dt><dd><p>Integer quadruples.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>quad_int: numpy.array</dt><dd><p>Integer quadruple array that satisfy the above mentioned condition.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -705,18 +735,18 @@ specific) and the lattice type (crystallogrphic point group and mu, nu)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>quad_int: numpy array</strong></dt><dd><p>Integer quadruples.</p>
+<dt><strong>quad_int: numpy.array</strong></dt><dd><p>Integer quadruples.</p>
 </dd>
-<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Proper point group in Schoenflies notation.</p>
+<dt><strong>cryst_ptgrp: str</strong></dt><dd><p>Proper point group in Schoenflies notation.</p>
 </dd>
 <dt><strong>sig_type: {‘common’, ‘specific’}</strong></dt><dd></dd>
-<dt><strong>args[0]: dictionary</strong></dt><dd></dd>
-<dt><strong>keys: ‘nu’, ‘mu’, ‘kmax’</strong></dt><dd></dd>
+<dt><strong>args[0]: dic</strong></dt><dd><p>keys: ‘nu’, ‘mu’, ‘kmax’</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>quad_int: numpy array</dt><dd><p>Integer quadruple array that satisfy the above mentioned condition.</p>
+<dt>quad_int: numpy.array</dt><dd><p>Integer quadruple array that satisfy the above mentioned condition.</p>
 </dd>
 </dl>
 </dd>
@@ -758,17 +788,17 @@ crystallographic point group and tau = (nu/mu)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>quad_int: numpy array</strong></dt><dd><p>Integer quadruples.</p>
+<dt><strong>quad_int: numpy.array</strong></dt><dd><p>Integer quadruples.</p>
 </dd>
 <dt><strong>tau: float</strong></dt><dd><p><span class="math notranslate nohighlight">\(\frac{\nu}{\mu}\)</span></p>
 </dd>
-<dt><strong>lat_type: Lattice class</strong></dt><dd><p>Attributes of the underlying lattice</p>
+<dt><strong>lat_type: class</strong></dt><dd><p>Attributes of the underlying lattice class</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>g</strong><span class="classifier">numpy array</span></dt><dd><p>dimension = 3, n x 3 x  3 transformation matrices</p>
+<dt><strong>g</strong><span class="classifier">numpy.array</span></dt><dd><p>dimension = 3, n x 3 x  3 transformation matrices</p>
 </dd>
 </dl>
 </dd>
@@ -783,18 +813,19 @@ and the unique set is returned</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>r_g1tog2_g1: numpy array (n x 3 x 3)</strong></dt><dd><p>Transformation matrices in g1 reference frame</p>
+<dt><strong>r_g1tog2_g1: numpy.array</strong></dt><dd><p>Transformation matrices in g1 reference frame with size (n x 3 x 3)</p>
 </dd>
 <dt><strong>l_p_po: numpy array</strong></dt><dd><p>The primitive basis vectors of the underlying lattice in the orthogonal
 reference frame.</p>
 </dd>
-<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Proper point group in Schoenflies notation</p>
+<dt><strong>cryst_ptgrp: str</strong></dt><dd><p>Proper point group in Schoenflies notation</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>rots_g1tog2_g1: numpy array (n x 3 x 3)</dt><dd><p>Transformation matrices in g1 reference frame in the fundamental zone</p>
+<dt>rots_g1tog2_g1: numpy.array</dt><dd><p>Transformation matrices in g1 reference frame in the fundamental zone
+with size (n x 3 x 3)</p>
 </dd>
 </dl>
 </dd>
@@ -811,18 +842,18 @@ returned</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>r_g1tog2_g1: numpy array (n x 3 x 3)</strong></dt><dd><p>Transformation matrices in g1 reference frame</p>
+<dt><strong>r_g1tog2_g1: numpy.array</strong></dt><dd><p>Transformation matrices in g1 reference frame with size (n x 3 x 3)</p>
 </dd>
-<dt><strong>sigma: float</strong></dt><dd><p>sigma number</p>
+<dt><strong>sigma: float</strong></dt><dd><p>Sigma number</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>{‘N’: rots_n, ‘D’: rots_d}: dictionary</dt><dd></dd>
-<dt>rots_n: numpy array</dt><dd><p>numerator matrices n x 3 x3</p>
+<dt>{‘N’: rots_n, ‘D’: rots_d}: dic</dt><dd></dd>
+<dt>rots_n: numpy.array</dt><dd><p>Numerator matrices n x 3 x3</p>
 </dd>
-<dt>rots_d: numpy array</dt><dd><p>denominator matrices n x 3 x3</p>
+<dt>rots_d: numpy.array</dt><dd><p>Denominator matrices n x 3 x3</p>
 </dd>
 </dl>
 </dd>
@@ -845,15 +876,13 @@ of Crystallography 40.2 (1984): 108-112.</p>
 <dt><strong>sig_type: {‘common’, ‘specific’}</strong></dt><dd><p>If the sigma generating function depends on the lattice type, then
 sig_type is ‘specific’, otherwise it is ‘common’</p>
 </dd>
-<dt><strong>lat_type: Lattice class</strong></dt><dd><p>Attributes of the underlying lattice</p>
+<dt><strong>lat_type: class</strong></dt><dd><p>Attributes of the underlying lattice class</p>
 </dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>sig_rots: dictionary</dt><dd></dd>
-<dt>keys: ‘N’, ‘D’</dt><dd></dd>
-<dt>sig_rots[‘N’], sig_rots[‘D’]: Numerator and Integer matrices</dt><dd><p>The transformation matrix is N/D in the g1 reference frame
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>sig_rots: dic</strong></dt><dd></dd>
+<dt><strong>keys: ‘N’, ‘D’</strong></dt><dd></dd>
+<dt><strong>sig_rots[‘N’], sig_rots[‘D’]: Numerator and Integer matrices</strong></dt><dd><p>The transformation matrix is N/D in the g1 reference frame
 (i.e. r_g1tog2_g1)</p>
 </dd>
 </dl>
@@ -893,7 +922,29 @@ rotation and returns them as numerator and denominator matrices</p></li>
 <dl class="py function">
 <dt id="byxtal.csl_utility_functions.check_csl">
 <code class="sig-prename descclassname"><span class="pre">byxtal.csl_utility_functions.</span></code><code class="sig-name descname"><span class="pre">check_csl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_csl_p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p_po</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_p1top2_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sigma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/csl_utility_functions.html#check_csl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.csl_utility_functions.check_csl" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l_csl_p</strong><span class="classifier">numpy.array</span></dt><dd><p>The CSL basis vectors  in the primitive reference frame.</p>
+</dd>
+<dt><strong>l_p_po: numpy array</strong></dt><dd><p>The primitive basis vectors of the underlying lattice in the orthogonal
+reference frame.</p>
+</dd>
+<dt><strong>sigma: float</strong></dt><dd><p>sigma number</p>
+</dd>
+<dt><strong>print_val: str</strong></dt><dd><p>Print a message</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>(cond1 and cond2 and cond3): tuple</dt><dd><p>Print message</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="section" id="boundary-plane-basis">

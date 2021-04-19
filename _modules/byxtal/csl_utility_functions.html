@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.csl_utility_functions &mdash; byxtal 0.post52+g92ef8a4 documentation</title>
+  <title>byxtal.csl_utility_functions &mdash; byxtal 0.post50+gf2a75f4 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post52+g92ef8a4
+                0.post50+gf2a75f4
               </div>
             
           
@@ -186,12 +186,12 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    cryst_ptgrp: string</span>
+<span class="sd">    cryst_ptgrp: str</span>
 <span class="sd">        Crystallogrphic point group in Schoenflies notation</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ----------</span>
-<span class="sd">    proper_ptgrp: string</span>
+<span class="sd">    proper_ptgrp: str</span>
 <span class="sd">        Proper point group in Schoenflies notation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">cryst_ptgrp</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;D3&#39;</span><span class="p">,</span> <span class="s1">&#39;D3d&#39;</span><span class="p">]:</span>
@@ -222,12 +222,12 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------------</span>
-<span class="sd">    var_arr: numpy array</span>
+<span class="sd">    var_arr: numpy.array</span>
 <span class="sd">        Array of integers whose largest odd factors needs to be computed</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ------------</span>
-<span class="sd">    odd_d: numpy array</span>
+<span class="sd">    odd_d: numpy.array</span>
 <span class="sd">        Array of largest odd factors of each integer in var_arr</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">var_arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -255,8 +255,8 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    lattice: Lattice class</span>
-<span class="sd">        Attributes of the underlying lattice</span>
+<span class="sd">    lattice: class</span>
+<span class="sd">        Attributes of the underlying lattice class</span>
 
 <span class="sd">    sig_type: {&#39;common&#39;, &#39;specific&#39;}</span>
 
@@ -327,16 +327,13 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    cryst_ptgrp: string</span>
+<span class="sd">    cryst_ptgrp: str</span>
 <span class="sd">        Proper point group in Schoenflies notation</span>
-
-<span class="sd">    sigma: integer</span>
+<span class="sd">    sigma: int</span>
 <span class="sd">        Sigma number</span>
-
 <span class="sd">    sig_type: {&#39;common&#39;, &#39;specific&#39;}</span>
-
-<span class="sd">    args[0]: dictionary</span>
-<span class="sd">    keys: &#39;nu&#39;, &#39;mu&#39;, &#39;kmax&#39;</span>
+<span class="sd">    args[0]: dic</span>
+<span class="sd">        keys: &#39;nu&#39;, &#39;mu&#39;, &#39;kmax&#39;</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -----------</span>
@@ -439,21 +436,19 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    quad_int: numpy array</span>
+<span class="sd">    quad_int: numpy.array</span>
 <span class="sd">        Integer quadruples</span>
-
-<span class="sd">    cryst_ptgrp: string</span>
+<span class="sd">    cryst_ptgrp: str</span>
 <span class="sd">        Proper point group in Schoenflies notation</span>
-
 <span class="sd">    sig_type: {&#39;common&#39;, &#39;specific&#39;}</span>
-
-<span class="sd">    args[0]: dictionary</span>
-<span class="sd">    keys: &#39;nu&#39;, &#39;mu&#39;, &#39;kmax&#39;</span>
+<span class="sd">    args[0]: dic</span>
+<span class="sd">        keys: &#39;nu&#39;, &#39;mu&#39;, &#39;kmax&#39;</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -----------</span>
-<span class="sd">    Integer quadruple numpy array belonging to the fundamental zone</span>
-<span class="sd">    of the corresponding crystallographic point group</span>
+<span class="sd">    np.vstack((m, u, v, w)): numpy.array</span>
+<span class="sd">        Integer quadruple numpy array belonging to the fundamental zone</span>
+<span class="sd">        of the corresponding crystallographic point group</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">quad_int</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">u</span> <span class="o">=</span> <span class="n">quad_int</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
@@ -538,22 +533,19 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    quad_int: numpy array</span>
+<span class="sd">    quad_int: numpy.array</span>
 <span class="sd">        Integer quadruples</span>
-
-<span class="sd">    cryst_ptgrp: string</span>
+<span class="sd">    cryst_ptgrp: str</span>
 <span class="sd">        Proper point group in Schoenflies notation</span>
-
 <span class="sd">    sigma: float</span>
 <span class="sd">        sigma number</span>
-
-<span class="sd">    args[0]: dictionary</span>
-<span class="sd">    keys: &#39;nu&#39;, &#39;mu&#39;, &#39;kmax&#39;</span>
+<span class="sd">    args[0]: dic</span>
+<span class="sd">        keys: &#39;nu&#39;, &#39;mu&#39;, &#39;kmax&#39;</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -----------</span>
-<span class="sd">    quad_int: numpy array</span>
-<span class="sd">    Integer quadruple array that satisfy the above mentioned condition</span>
+<span class="sd">    quad_int: numpy.array</span>
+<span class="sd">        Integer quadruple array that satisfy the above mentioned condition</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">mu</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;mu&#39;</span><span class="p">]</span>
     <span class="n">nu</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;nu&#39;</span><span class="p">]</span>
@@ -603,6 +595,17 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Eliminate the roations that belong to the identity matrix and return the</span>
 <span class="sd">    integer quadruples</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    quad_int: numpy.array</span>
+<span class="sd">        Integer quadruple array.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------</span>
+<span class="sd">    quad_int: numpy.array</span>
+<span class="sd">        Integer quadruple array in which the rotations belong to the identity</span>
+<span class="sd">        matrix are eliminated.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">quad_int</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">u</span> <span class="o">=</span> <span class="n">quad_int</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
@@ -630,17 +633,15 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    quad_int: numpy array</span>
+<span class="sd">    quad_int: numpy.array</span>
 <span class="sd">        Integer quadruples.</span>
-
-<span class="sd">    cryst_ptgrp: string</span>
+<span class="sd">    cryst_ptgrp: str</span>
 <span class="sd">        Proper point group in Schoenflies notation.</span>
-
 <span class="sd">    sig_type: {&#39;common&#39;, &#39;specific&#39;}</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -----------</span>
-<span class="sd">    quad_int: numpy array</span>
+<span class="sd">    quad_int: numpy.array</span>
 <span class="sd">        Integer quadruple array that satisfy the above mentioned condition.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -673,6 +674,17 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Divide all the integer quadruples by their corresponding least common</span>
 <span class="sd">    multiples and return the unique set of integer quadruples</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    quad_int: numpy.array</span>
+<span class="sd">        Integer quadruples.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------</span>
+<span class="sd">    quad_int: numpy.array</span>
+<span class="sd">        Integer quadruple array that satisfy the above mentioned condition.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">quad_gcd</span> <span class="o">=</span> <span class="n">int_man</span><span class="o">.</span><span class="n">gcd_array</span><span class="p">(</span><span class="n">quad_int</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">),</span> <span class="s1">&#39;columns&#39;</span><span class="p">)</span>
     <span class="n">quad_gcd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">quad_gcd</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -697,20 +709,17 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    quad_int: numpy array</span>
+<span class="sd">    quad_int: numpy.array</span>
 <span class="sd">        Integer quadruples.</span>
-
-<span class="sd">    cryst_ptgrp: string</span>
+<span class="sd">    cryst_ptgrp: str</span>
 <span class="sd">        Proper point group in Schoenflies notation.</span>
-
 <span class="sd">    sig_type: {&#39;common&#39;, &#39;specific&#39;}</span>
-
-<span class="sd">    args[0]: dictionary</span>
-<span class="sd">    keys: &#39;nu&#39;, &#39;mu&#39;, &#39;kmax&#39;</span>
+<span class="sd">    args[0]: dic</span>
+<span class="sd">        keys: &#39;nu&#39;, &#39;mu&#39;, &#39;kmax&#39;</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -----------</span>
-<span class="sd">    quad_int: numpy array</span>
+<span class="sd">    quad_int: numpy.array</span>
 <span class="sd">        Integer quadruple array that satisfy the above mentioned condition.</span>
 
 <span class="sd">    See Also</span>
@@ -972,18 +981,16 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ------------------</span>
-<span class="sd">    quad_int: numpy array</span>
+<span class="sd">    quad_int: numpy.array</span>
 <span class="sd">        Integer quadruples.</span>
-
 <span class="sd">    tau: float</span>
 <span class="sd">        :math:`\\frac{\\nu}{\\mu}`</span>
-
-<span class="sd">    lat_type: Lattice class</span>
-<span class="sd">        Attributes of the underlying lattice</span>
+<span class="sd">    lat_type: class</span>
+<span class="sd">        Attributes of the underlying lattice class</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ----------</span>
-<span class="sd">    g : numpy array</span>
+<span class="sd">    g : numpy.array</span>
 <span class="sd">        dimension = 3, n x 3 x  3 transformation matrices</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">quad_int</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -1085,20 +1092,19 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    r_g1tog2_g1: numpy array (n x 3 x 3)</span>
-<span class="sd">        Transformation matrices in g1 reference frame</span>
-
+<span class="sd">    r_g1tog2_g1: numpy.array</span>
+<span class="sd">        Transformation matrices in g1 reference frame with size (n x 3 x 3)</span>
 <span class="sd">    l_p_po: numpy array</span>
 <span class="sd">        The primitive basis vectors of the underlying lattice in the orthogonal</span>
 <span class="sd">        reference frame.</span>
-
-<span class="sd">    cryst_ptgrp: string</span>
+<span class="sd">    cryst_ptgrp: str</span>
 <span class="sd">        Proper point group in Schoenflies notation</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ----------</span>
-<span class="sd">    rots_g1tog2_g1: numpy array (n x 3 x 3)</span>
+<span class="sd">    rots_g1tog2_g1: numpy.array</span>
 <span class="sd">        Transformation matrices in g1 reference frame in the fundamental zone</span>
+<span class="sd">        with size (n x 3 x 3)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">r_g1tog2_g1</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">r_g1tog2_g1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">r_g1tog2_g1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -1146,19 +1152,18 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    r_g1tog2_g1: numpy array (n x 3 x 3)</span>
-<span class="sd">        Transformation matrices in g1 reference frame</span>
-
+<span class="sd">    r_g1tog2_g1: numpy.array</span>
+<span class="sd">        Transformation matrices in g1 reference frame with size (n x 3 x 3)</span>
 <span class="sd">    sigma: float</span>
-<span class="sd">        sigma number</span>
+<span class="sd">        Sigma number</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ----------</span>
-<span class="sd">    {&#39;N&#39;: rots_n, &#39;D&#39;: rots_d}: dictionary</span>
-<span class="sd">    rots_n: numpy array</span>
-<span class="sd">        numerator matrices n x 3 x3</span>
-<span class="sd">    rots_d: numpy array</span>
-<span class="sd">        denominator matrices n x 3 x3</span>
+<span class="sd">    {&#39;N&#39;: rots_n, &#39;D&#39;: rots_d}: dic</span>
+<span class="sd">    rots_n: numpy.array</span>
+<span class="sd">        Numerator matrices n x 3 x3</span>
+<span class="sd">    rots_d: numpy.array</span>
+<span class="sd">        Denominator matrices n x 3 x3</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">rots_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">r_g1tog2_g1</span><span class="p">))</span>
     <span class="n">rots_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">r_g1tog2_g1</span><span class="p">))</span>
@@ -1200,17 +1205,14 @@
 <span class="sd">    ----------</span>
 <span class="sd">    sigma : int</span>
 <span class="sd">        Sigma corresponding to the transformation matrix</span>
-
 <span class="sd">    sig_type: {&#39;common&#39;, &#39;specific&#39;}</span>
 <span class="sd">        If the sigma generating function depends on the lattice type, then</span>
 <span class="sd">        sig_type is &#39;specific&#39;, otherwise it is &#39;common&#39;</span>
-
-<span class="sd">    lat_type: Lattice class</span>
-<span class="sd">        Attributes of the underlying lattice</span>
-
+<span class="sd">    lat_type: class</span>
+<span class="sd">        Attributes of the underlying lattice class</span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    sig_rots: dictionary</span>
+<span class="sd">    sig_rots: dic</span>
 <span class="sd">    keys: &#39;N&#39;, &#39;D&#39;</span>
 <span class="sd">    sig_rots[&#39;N&#39;], sig_rots[&#39;D&#39;]: Numerator and Integer matrices</span>
 <span class="sd">        The transformation matrix is N/D in the g1 reference frame</span>
@@ -1304,6 +1306,26 @@
 
 
 <div class="viewcode-block" id="check_csl"><a class="viewcode-back" href="../../Modules.html#byxtal.csl_utility_functions.check_csl">[docs]</a><span class="k">def</span> <span class="nf">check_csl</span><span class="p">(</span><span class="n">l_csl_p</span><span class="p">,</span> <span class="n">l_p_po</span><span class="p">,</span> <span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="n">Sigma</span><span class="p">,</span> <span class="n">print_val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    l_csl_p : numpy.array</span>
+<span class="sd">        The CSL basis vectors  in the primitive reference frame.</span>
+<span class="sd">    l_p_po: numpy array</span>
+<span class="sd">        The primitive basis vectors of the underlying lattice in the orthogonal</span>
+<span class="sd">        reference frame.</span>
+<span class="sd">    sigma: float</span>
+<span class="sd">        sigma number</span>
+<span class="sd">    print_val: str</span>
+<span class="sd">        Print a message</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    (cond1 and cond2 and cond3): tuple</span>
+<span class="sd">        Print message</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">l_po_p</span> <span class="o">=</span> <span class="n">nla</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">l_p_po</span><span class="p">)</span>
     <span class="n">l_csl_po</span> <span class="o">=</span> <span class="n">l_p_po</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_csl_p</span><span class="p">)</span>
     <span class="n">cond1</span> <span class="o">=</span> <span class="n">int_man</span><span class="o">.</span><span class="n">check_int_mat</span><span class="p">(</span><span class="n">l_po_p</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_csl_po</span><span class="p">),</span> <span class="mf">1e-10</span><span class="p">)</span>
