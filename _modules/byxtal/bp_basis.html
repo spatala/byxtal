@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.bp_basis &mdash; byxtal 0.post52+g6f7ba06 documentation</title>
+  <title>byxtal.bp_basis &mdash; byxtal 0.post53+g1def13e documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post52+g6f7ba06
+                0.post53+g1def13e
               </div>
             
           
@@ -177,10 +177,10 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">find_csl_dsc</span> <span class="k">as</span> <span class="n">fcd</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">lll_tools</span> <span class="k">as</span> <span class="n">lt</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">reduce_po_lat</span> <span class="k">as</span> <span class="n">rpl</span>
-
 <span class="kn">from</span> <span class="nn">.tools</span> <span class="kn">import</span> <span class="n">Col</span><span class="p">,</span> <span class="n">extgcd</span>
 <span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Rational</span>
 <span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">nla</span>
+
 
 <div class="viewcode-block" id="check_2d_csl"><a class="viewcode-back" href="../../Modules.html#byxtal.bp_basis.check_2d_csl">[docs]</a><span class="k">def</span> <span class="nf">check_2d_csl</span><span class="p">(</span><span class="n">l_pl1_g1</span><span class="p">,</span> <span class="n">l_pl2_g1</span><span class="p">,</span> <span class="n">l_csl_g1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -189,8 +189,15 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    l_pl1_g1, l_pl2_g1: numpy arrays of basis vectors for plane 1 and 2</span>
-<span class="sd">    in the g1 reference frame</span>
+<span class="sd">    l_pl1_g1: numpy.arrays </span>
+<span class="sd">        Basis vectors for plane 1 in the g1 reference frame</span>
+<span class="sd">    l_pl2_g1: numpy.arrays</span>
+<span class="sd">        Basis vectors for plane  2 in the g1 reference frame</span>
+<span class="sd">    l_csl_g1: numpy.array</span>
+<span class="sd">        CSL basis vector in the g1 reference frame</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">ct</span> <span class="o">=</span> <span class="mi">1</span>
@@ -223,6 +230,20 @@
 <div class="viewcode-block" id="lbi_dioph_soln"><a class="viewcode-back" href="../../Modules.html#byxtal.bp_basis.lbi_dioph_soln">[docs]</a><span class="k">def</span> <span class="nf">lbi_dioph_soln</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the diophantaine solution for the equation ax + by = c</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    a: int</span>
+<span class="sd">        Coefficient of x in equation x + by = c</span>
+<span class="sd">    b: int</span>
+<span class="sd">        Coefficient of y in equation x + by = c</span>
+<span class="sd">    c: int</span>
+<span class="sd">        Constant value in equation x + by = c</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    int_soln: int</span>
+<span class="sd">        Diophantaine solution for the equation ax + by = c</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">k</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">fmod</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
@@ -257,13 +278,14 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------------</span>
-<span class="sd">    d_eq: numpy array or list of size 3 and dimension 1</span>
+<span class="sd">    d_eq: numpy.array or list </span>
+<span class="sd">        The size is 3 and dimension 1</span>
 <span class="sd">        h = d_eq[0], k = d_eq[1], l = d_eq[2]</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ------------</span>
-<span class="sd">    np.array([y1, y2, y3])</span>
-
+<span class="sd">    np.array([y1, y2, y3]): numpy.array</span>
+<span class="sd">        Variable</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">hp</span> <span class="o">=</span> <span class="n">d_eq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">kp</span> <span class="o">=</span> <span class="n">d_eq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -306,12 +328,12 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ---------------</span>
-<span class="sd">    miller_ind: numpy array</span>
+<span class="sd">    miller_ind: numpy.array</span>
 <span class="sd">        Miller indices of the plane (h k l)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -----------</span>
-<span class="sd">    l_pl_g1: numpy array</span>
+<span class="sd">    l_pl_g1: numpy.array</span>
 <span class="sd">        The primitive basis of the plane in &#39;g1&#39; reference frame</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># If *miller_inds* are not integers or if the gcd != 1</span>
@@ -380,9 +402,10 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ---------------</span>
-<span class="sd">    l_pl_g1: numpy array</span>
-
-<span class="sd">    l_g1_go1: numpy array</span>
+<span class="sd">    l_pl_g1: numpy.array</span>
+<span class="sd">        Basis vectors of the underlying lattice with respect to the</span>
+<span class="sd">        primitive reference frame &#39;g1&#39;</span>
+<span class="sd">    l_g1_go1: numpy.array</span>
 <span class="sd">        Basis vectors of the underlying lattice with respect to the</span>
 <span class="sd">        orthogonal reference frame &#39;go1&#39;</span>
 
@@ -405,23 +428,25 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ------------------</span>
-<span class="sd">    inds: numpy array</span>
+<span class="sd">    inds: numpy.array</span>
 <span class="sd">        The boundary plane indices</span>
 
-<span class="sd">    inds_type: string</span>
+<span class="sd">    inds_type: str</span>
 <span class="sd">        {&#39;miller_index&#39;, &#39;normal_go&#39;, &#39;normal_g&#39;}</span>
 
-<span class="sd">    t_mat: numpy array</span>
+<span class="sd">    t_mat: numpy.array</span>
 <span class="sd">        Transformation matrix from p1 to p2 in &#39;mat_ref&#39; reference frame</span>
 
-<span class="sd">    mat_ref: string</span>
+<span class="sd">    mat_ref: str</span>
 <span class="sd">        {&#39;go1&#39;, &#39;p1&#39;}</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -----------</span>
-<span class="sd">    l_2d_csl_p1, l_pl1_p1, l_pl2_p1: numpy arrays</span>
+<span class="sd">    l_2d_csl_p1: numpy.arrays</span>
 <span class="sd">        ``l_2d_csl_p1`` is the 2d CSL in p1 ref frame.\v</span>
+<span class="sd">    l_pl1_p1: numpy.arrays</span>
 <span class="sd">        ``l_pl1_p1`` is the plane 1 basis in p1 ref frame.\v</span>
+<span class="sd">    l_pl2_p1: numpy.arrays</span>
 <span class="sd">        ``l_pl2_p1`` is the plane 2 basis in p1 ref frame.\v</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">l_po_p</span> <span class="o">=</span> <span class="n">nla</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">l_p_po</span><span class="p">)</span>
@@ -493,24 +518,25 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ---------------</span>
-<span class="sd">    inds: numpy array</span>
+<span class="sd">    inds: numpy.array</span>
 <span class="sd">        The boundary plane indices.</span>
 
-<span class="sd">    inds_type: string</span>
+<span class="sd">    inds_type: str</span>
 <span class="sd">        {&#39;miller_index&#39;, &#39;normal_go&#39;, &#39;normal_g&#39;}</span>
 
-<span class="sd">    t_mat: numpy array</span>
+<span class="sd">    t_mat: numpy.array</span>
 <span class="sd">        Transformation matrix from g1 to g2 in go1 (or g1) reference frame.</span>
 
-<span class="sd">    mat_ref: string</span>
+<span class="sd">    mat_ref: str</span>
 <span class="sd">        {&#39;go1&#39;, &#39;g1&#39;}</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -----------</span>
-<span class="sd">    pl_den_pl1, pl_den_pl2: numpy array</span>
-<span class="sd">        The planar density of planes 1 and 2.</span>
-
-<span class="sd">    pl_den_csl: numpy array</span>
+<span class="sd">    pl_den_pl1: numpy.array</span>
+<span class="sd">        The planar density of planes 1.</span>
+<span class="sd">    pl_den_pl1, pl_den_pl2: numpy.array</span>
+<span class="sd">        The planar density of planes 2.</span>
+<span class="sd">    pl_den_csl: numpy.array</span>
 <span class="sd">        The planare density of the two-dimensional CSL.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">l_g1_go1</span> <span class="o">=</span> <span class="n">l_g_go</span>
