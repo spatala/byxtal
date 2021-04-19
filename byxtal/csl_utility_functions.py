@@ -1142,7 +1142,7 @@ def csl_rotations(sigma, sig_type, lat_type):
 
 def check_csl(l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_val):
     """
-    The function 
+    The function checks CSL 
 
     Parameters
     ----------
@@ -1151,6 +1151,8 @@ def check_csl(l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_val):
     l_p_po: numpy array
         The primitive basis vectors of the underlying lattice in the orthogonal
         reference frame.
+    T_p1top2_p1: numpy.array
+        Sigma*(transformation matrix)
     sigma: float
         sigma number
     print_val: str
