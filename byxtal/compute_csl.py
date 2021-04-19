@@ -9,8 +9,8 @@ from sage.all import *
 import numpy as np
 import sage_util_funcs as suf
 
-#############################################
-### Get input from stdin
+
+# Get input from stdin
 args = len(sys.argv)
 
 Sz = np.zeros((2,), dtype='int64')
@@ -24,10 +24,8 @@ A_lst = []
 for ct1 in range(nsz):
    arg1 = int(sys.argv[ct1+4])
    A_lst.append(arg1)
-#############################################
 
-#############################################
-### Convert input list to matrix
+# Convert input list to matrix
 A = np.zeros((Sz[0], Sz[1]))
 
 ct1 = 0
@@ -37,7 +35,6 @@ for i1 in range(Sz[0]):
       ct1 = ct1 + 1
 
 A = Matrix(np.array(A, dtype='int64'))
-#############################################
 
 M3 = suf.compute_csl_grimmer(A, sig_num, Sz[0])
 
