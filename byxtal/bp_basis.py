@@ -13,7 +13,6 @@ from . import find_csl_dsc as fcd
 from . import lll_tools as lt
 from . import reduce_po_lat as rpl
 from .tools import Col, extgcd
-from sympy import Rational
 import numpy.linalg as nla
 
 
@@ -24,7 +23,7 @@ def check_2d_csl(l_pl1_g1, l_pl2_g1, l_csl_g1):
 
     Parameters
     ----------------
-    l_pl1_g1: numpy.arrays 
+    l_pl1_g1: numpy.arrays
         Basis vectors for plane 1 in the g1 reference frame
     l_pl2_g1: numpy.arrays
         Basis vectors for plane  2 in the g1 reference frame
@@ -113,7 +112,7 @@ def compute_basis_vec(d_eq):
 
     Parameters
     -----------------
-    d_eq: numpy.array or list 
+    d_eq: numpy.array or list
         The size is 3 and dimension 1
         h = d_eq[0], k = d_eq[1], l = d_eq[2]
 
@@ -190,7 +189,7 @@ def bp_basis(miller_ind):
             gc_f1_p = gcd(k, l)
             bv1_g1 = np.array([[0], [-l / gc_f1_p], [k / gc_f1_p]])
             bv2_g1 = compute_basis_vec([h, k, l])
-            bv2_g1 = bv2_g1.reshape(np.shape(bv2_g1)[0],1)
+            bv2_g1 = bv2_g1.reshape(np.shape(bv2_g1)[0], 1)
         else:
                 if h == 0:
                     if k == 0:
@@ -250,8 +249,7 @@ def pl_density(l_pl_g1, l_g1_go1):
         Planar density = (1/area covered by plane basis)
     """
     l_pl_go1 = np.dot(l_g1_go1, l_pl_g1)
-    planar_basis_area = nla.norm(np.cross(l_pl_go1[:, 0],
-                                                l_pl_go1[:, 1]))
+    planar_basis_area = nla.norm(np.cross(l_pl_go1[:, 0], l_pl_go1[:, 1]))
     pd = 1.0/planar_basis_area
     return pd
 
@@ -299,7 +297,7 @@ def gb_2d_csl(inds, t_mat, l_p_po, inds_type='miller_index', mat_ref='g1'):
     else:
         raise Exception('Wrong index type')
 
-    ### Get the 2D planar basis for the surface plane in p1
+    # Get the 2D planar basis for the surface plane in p1
     bp_p1R = l_po_pR.dot(bp_po1)
     miller1_ind, tm1 = int_man.int_approx(bp_p1R, 1e-6)
 
@@ -318,7 +316,7 @@ def gb_2d_csl(inds, t_mat, l_p_po, inds_type='miller_index', mat_ref='g1'):
     else:
         raise Exception('Wrong reference axes')
 
-    ### Get the 2D planar basis for the surface plane in p2 and p1
+    # Get the 2D planar basis for the surface plane in p2 and p1
     bp_po2 = -l_po1_po2.dot(bp_po1)
     bp_p2R = l_po_pR.dot(bp_po2)
     miller2_ind, tm1 = int_man.int_approx(bp_p2R, 1e-6)
@@ -327,7 +325,7 @@ def gb_2d_csl(inds, t_mat, l_p_po, inds_type='miller_index', mat_ref='g1'):
     l_pl2_p2 = l_pl2_p2.dot(l_sig2_sig1)
     l_pl2_p1 = l_p2_p1.dot(l_pl2_p2)
 
-    ### Get the 2D planar basis for the GB in csl basis
+    # Get the 2D planar basis for the GB in csl basis
     l_csl_p1 = fcd.csl_finder(t_mat, l_p_po, 1e-6)
     l_csl_po1 = l_p_po.dot(l_csl_p1)
     l_cslR_po1 = fcd.reciprocal_mat(l_csl_po1)
@@ -336,12 +334,10 @@ def gb_2d_csl(inds, t_mat, l_p_po, inds_type='miller_index', mat_ref='g1'):
     mind_cslR, tm1 = int_man.int_approx(n_cslR, 1e-6)
     l_bpb_csl = bp_basis(mind_cslR)
 
-    ### Covert the 2D planar basis for the GB to p1 reference frame
+    # Covert the 2D planar basis for the GB to p1 reference frame
     l_bpb_p1 = l_csl_p1.dot(l_bpb_csl)
     l_sig2_sig1 = rpl.reduce_po_lat(l_bpb_p1, l_p_po, 1e-6)
     l_2d_csl_p1 = l_bpb_p1.dot(l_sig2_sig1)
-
-
     return l_2d_csl_p1, l_pl1_p1, l_pl2_p1
 
 
