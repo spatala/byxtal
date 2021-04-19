@@ -19,29 +19,22 @@ class Lattice(object):
     class with the same attributes. The attributes of this class are:
     ...
 
-    Attributes
-    ----------
-    elem_type: string
+    Parameters
+    -----------
+    elem_type: str
         Element of Interest
-
-    pearson: string
+    pearson: str
         Pearson symbol for the lattice
-
-    lat_params: dictionary
+    lat_params: dic
         Lattice parameters ('a', 'b', 'c', 'alpha', 'beta', 'gamma')
-
-    l_p_po: numpy array
+    l_p_po: numpy.array
         Primitve basis of the lattice
-
-    basis_atoms:
+    basis_atoms: numpy.array
         Location of the basis atoms in the primitive lattice
-
-    cryst_ptgrp: string
+    cryst_ptgrp: str
         Crystallographic point group of the lattice
-
     burgers_mag: float
         The smallest burgers vector in the lattice
-
     eam_file:
         eam_file name for atomistic simulations
 
@@ -456,5 +449,4 @@ class Lattice(object):
 def approx_latmat(l1):
     """
     """
-    l_p_po = l.l_p_po
-    
+    l_p_po = l1.l_p_po
