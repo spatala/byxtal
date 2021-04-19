@@ -46,6 +46,18 @@ from . import reduce_po_lat as rpl
 
 def check_basis_equi(l_p1, l_p2, tol1 = 1e-10):
     """
+    Function 
+
+    Parameters
+    ----------------
+    l_p1: numpy.arrays
+    l_p2: numpy.arrays
+    tol1: float
+        Tolerance with default value 1e-10
+
+    Returns
+    ----------
+
     """
     sz = np.shape(l_p1)
     if sz[0] == sz[1]:
@@ -83,6 +95,18 @@ def check_basis_def(l_p1, l_p2, tol1 = 1e-10):
     """
     If l_p2 is defined in l_p1
     (l_p1.inv())*l_p2 is an integer matrix
+
+    Parameters
+    ----------------
+    l_p1: numpy.arrays
+       
+    l_p2: numpy.arrays
+    tol1: float
+        Tolerance with default value 1e-10
+
+    Returns
+    ----------
+    cond1:
     """
     sz = np.shape(l_p1)
 
@@ -100,6 +124,14 @@ def check_basis_def(l_p1, l_p2, tol1 = 1e-10):
 
 def lll_reduction(int_mat):
     """
+    Function calculated the lll reduction.
+    Parameters
+    ----------------
+    int_mat:
+
+    Returns
+    ----------
+    lll_int_mat:
     """
     exec_str = '/compute_lll.py'
     inp_args = {}

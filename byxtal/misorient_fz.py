@@ -16,14 +16,14 @@ from . import quaternion as quat
 
 def check_cond(g, cryst_ptgrp, tol):
     """
+    Function 
+
     Parameters
     ----------------
     g: quaternion object
         Misorientation
-
-    cryst_ptgrp: string
+    cryst_ptgrp: str
         Crystallogrphic point group in Schoenflies notation
-
     tol: float
         Tolerance for the misorientation to belong in the fundamental zone
 
@@ -123,10 +123,8 @@ def misorient_fz(misquats, cryst_ptgrp, tol=1e-12):
     ----------
     misquats: Quaternion class
         Quaternion misorientations
-
     cryst_ptgrp: string
         Crystallogrphic point group in Schoenflies notation
-
     tol: float
         Tolerance for the disorientation to belong in the fundamental zone
 

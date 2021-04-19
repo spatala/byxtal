@@ -6,16 +6,21 @@
 # Journal of Applied Crystallography 48, 585-588 (2015). doi:10.1107/S1600576715004446
 #
 # This class is inspired by MTEX Toolbox (https://mtex-toolbox.github.io/index.html)
-#
 
 
 import numpy as np
-# import geometry_tools as gmt
 from . import geometry_tools as gmt
 
 
 class vector3d(np.ndarray):
     """
+    This class contains
+
+    Parameters
+    -----------
+
+    Returns
+    -------
     """
     def __new__(cls, *args):
         nargs = len(args)
@@ -89,6 +94,18 @@ class vector3d(np.ndarray):
 
 def dot(v1, v2):
     """
+    Function calculates the dot product
+
+    Parameters
+    ----------------
+    v1: numpy.array
+        Input array
+    v2: numpy.array
+        Input array
+
+    Returns
+    ------------
+    The dot product of the two arrays
     """
     xx = v1[0, :]*v2[0, :]
     yy = v1[1, :]*v2[1, :]
@@ -99,6 +116,18 @@ def dot(v1, v2):
 
 def angle(v1, v2):
     """
+    Function calculates the angle between two arrays.
+
+    Parameters
+    ----------------
+    v1: numpy.array
+        Input array
+    v2: numpy.array
+        Input array
+
+    Returns
+    ------------
+    The angle between two vectors.
     """
     a = dot(normalize(v1), normalize(v2))
     return np.acos(a)
@@ -106,17 +135,34 @@ def angle(v1, v2):
 
 def double(vec):
     """
+    Function to get a new view of array with the same data.
+
+    Parameters
+    ----------------
+    vec: numpy.array
+        input vector
+
+    Returns
+    ------------
+    Vec with np.ndarray view
     """
     return vec.view(np.ndarray)
 
 
-
-
 def cross(v1, v2):
     """
-    :param v1:
-    :param v2:
-    :return:
+    Function calculates the cross product of two arrays.
+
+    Parameters
+    ----------------
+    v1: numpy.array
+        Input array
+    v2: numpy.array
+        Input array
+
+    Returns
+    ------------
+    Cross product of v1 and v2.
     """
     vx = v1[1, :]*v2[2, :]-v1[2, :]*v2[1, :]
     vy = v1[2, :]*v2[0, :]-v1[0, :]*v2[2, :]
@@ -127,12 +173,30 @@ def cross(v1, v2):
 
 def getx(vec):
     """
+    Function returns the x value.
+
+    Parameters
+    ----------------
+    vec: numpy.array
+
+    Returns
+    ------------
+    The first element corresponding to x value in the vec.
     """
     return vec[0, :]
 
 
 def gety(vec):
     """
+    Function returns the y value.
+
+    Parameters
+    ----------------
+    vec: numpy.array
+
+    Returns
+    ------------
+    The second element corresponding to x value in the vec.
     """
     return vec[1, :]
 
@@ -145,17 +209,46 @@ def getz(vec):
 
 def get_size(vec):
     """
+    Function returns the z value.
+
+    Parameters
+    ----------------
+    vec: numpy.array
+
+    Returns
+    ------------
+    The third element corresponding to x value in the vec.
     """
     return np.size(vec[0, :])
 
 def norm(vec):
     """
+    Function returns the norm of the input vector.
+
+    Parameters
+    ----------------
+    vec: numpy.array
+
+    Returns
+    ------------
+    n: float
+        The norm of the vector.
     """
     n = np.sqrt(np.power(vec[0,:],2) + np.power(vec[1,:],2) + np.power(vec[2,:],2))
     return n
 
 def normalize(vec):
     """
+    Function normalize the given vector.
+
+    Parameters
+    ----------------
+    vec: numpy.array
+
+    Returns
+    ------------
+    vec/n: numpy.array
+        The normalize of the vec.
     """
     n = np.tile(norm(vec), (3, 1))
     return vec/n
