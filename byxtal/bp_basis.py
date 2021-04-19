@@ -12,10 +12,10 @@ from . import integer_manipulations as int_man
 from . import find_csl_dsc as fcd
 from . import lll_tools as lt
 from . import reduce_po_lat as rpl
-
 from .tools import Col, extgcd
 from sympy import Rational
 import numpy.linalg as nla
+
 
 def check_2d_csl(l_pl1_g1, l_pl2_g1, l_csl_g1):
     """
@@ -24,8 +24,15 @@ def check_2d_csl(l_pl1_g1, l_pl2_g1, l_csl_g1):
 
     Parameters
     ----------------
-    l_pl1_g1, l_pl2_g1: numpy arrays of basis vectors for plane 1 and 2
-    in the g1 reference frame
+    l_pl1_g1: numpy.arrays 
+        Basis vectors for plane 1 in the g1 reference frame
+    l_pl2_g1: numpy.arrays
+        Basis vectors for plane  2 in the g1 reference frame
+    l_csl_g1: numpy.array
+        CSL basis vector in the g1 reference frame
+
+    Returns
+    ------------
     """
 
     ct = 1
@@ -58,6 +65,20 @@ def check_2d_csl(l_pl1_g1, l_pl2_g1, l_csl_g1):
 def lbi_dioph_soln(a, b, c):
     """
     Computes the diophantaine solution for the equation ax + by = c
+
+    Parameters
+    ----------------
+    a: int
+        Coefficient of x in equation x + by = c
+    b: int
+        Coefficient of y in equation x + by = c
+    c: int
+        Constant value in equation x + by = c
+
+    Returns
+    ------------
+    int_soln: int
+        Diophantaine solution for the equation ax + by = c
     """
     k = abs(gcd(a, b))
     if np.fmod(c, k) != 0.0:
@@ -92,13 +113,14 @@ def compute_basis_vec(d_eq):
 
     Parameters
     -----------------
-    d_eq: numpy array or list of size 3 and dimension 1
+    d_eq: numpy.array or list 
+        The size is 3 and dimension 1
         h = d_eq[0], k = d_eq[1], l = d_eq[2]
 
     Returns
     ------------
-    np.array([y1, y2, y3])
-
+    np.array([y1, y2, y3]): numpy.array
+        Variable
     """
     hp = d_eq[0]
     kp = d_eq[1]
@@ -141,12 +163,12 @@ def bp_basis(miller_ind):
 
     Parameters
     ---------------
-    miller_ind: numpy array
+    miller_ind: numpy.array
         Miller indices of the plane (h k l)
 
     Returns
     -----------
-    l_pl_g1: numpy array
+    l_pl_g1: numpy.array
         The primitive basis of the plane in 'g1' reference frame
     """
     # If *miller_inds* are not integers or if the gcd != 1
@@ -215,9 +237,10 @@ def pl_density(l_pl_g1, l_g1_go1):
 
     Parameters
     ---------------
-    l_pl_g1: numpy array
-
-    l_g1_go1: numpy array
+    l_pl_g1: numpy.array
+        Basis vectors of the underlying lattice with respect to the
+        primitive reference frame 'g1'
+    l_g1_go1: numpy.array
         Basis vectors of the underlying lattice with respect to the
         orthogonal reference frame 'go1'
 
@@ -240,23 +263,25 @@ def gb_2d_csl(inds, t_mat, l_p_po, inds_type='miller_index', mat_ref='g1'):
 
     Parameters
     ------------------
-    inds: numpy array
+    inds: numpy.array
         The boundary plane indices
 
-    inds_type: string
+    inds_type: str
         {'miller_index', 'normal_go', 'normal_g'}
 
-    t_mat: numpy array
+    t_mat: numpy.array
         Transformation matrix from p1 to p2 in 'mat_ref' reference frame
 
-    mat_ref: string
+    mat_ref: str
         {'go1', 'p1'}
 
     Returns
     -----------
-    l_2d_csl_p1, l_pl1_p1, l_pl2_p1: numpy arrays
+    l_2d_csl_p1: numpy.arrays
         ``l_2d_csl_p1`` is the 2d CSL in p1 ref frame.\v
+    l_pl1_p1: numpy.arrays
         ``l_pl1_p1`` is the plane 1 basis in p1 ref frame.\v
+    l_pl2_p1: numpy.arrays
         ``l_pl2_p1`` is the plane 2 basis in p1 ref frame.\v
     """
     l_po_p = nla.inv(l_p_po)
@@ -328,24 +353,25 @@ def bicryst_planar_den(inds, t_mat, l_g_go, inds_type='miller_index',
 
     Parameters
     ---------------
-    inds: numpy array
+    inds: numpy.array
         The boundary plane indices.
 
-    inds_type: string
+    inds_type: str
         {'miller_index', 'normal_go', 'normal_g'}
 
-    t_mat: numpy array
+    t_mat: numpy.array
         Transformation matrix from g1 to g2 in go1 (or g1) reference frame.
 
-    mat_ref: string
+    mat_ref: str
         {'go1', 'g1'}
 
     Returns
     -----------
-    pl_den_pl1, pl_den_pl2: numpy array
-        The planar density of planes 1 and 2.
-
-    pl_den_csl: numpy array
+    pl_den_pl1: numpy.array
+        The planar density of planes 1.
+    pl_den_pl1, pl_den_pl2: numpy.array
+        The planar density of planes 2.
+    pl_den_csl: numpy.array
         The planare density of the two-dimensional CSL.
     """
     l_g1_go1 = l_g_go
