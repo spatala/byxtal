@@ -7,6 +7,18 @@ import numpy.linalg as nla
 
 def gcd_vec(int_mat):
     """
+    The function computes the GCD of an integer number.
+
+    Parameters
+    ----------
+    int_mat: int
+        Input integer number
+
+    Returns
+    -------
+    gcd1: int
+        The  reatest common divisor of the input number.
+        
     """
     input1 = int_mat.flatten()
     Sz = input1.shape
@@ -45,8 +57,6 @@ def gcd_array(input, order='all'):
     """
 
     input = np.array(input)
-    # Only integer values are allowed
-    # if input.dtype.name != 'int64':
     if not np.issubdtype(input.dtype, np.integer):
         raise Exception("Inputs must be real integers.")
 
@@ -77,6 +87,17 @@ def gcd_array(input, order='all'):
 
 def lcm_vec(Dmat):
     """
+    The function computes the least common multiple (LCM).
+
+    Parameters
+    ----------
+    Dmat: int
+        The input number.
+
+    Returns
+    -------
+    lcm1: int
+        The least common multiple of the input number.
     """
     input1 = Dmat.flatten()
     Sz = input1.shape
@@ -93,14 +114,14 @@ def lcm_array(input, order='all'):
 
     Parameters
     ----------
-    input : numpy array or list of intgers
+    input : numpy.array or list of intgers
         Input n-D array of integers (most suitable for 1D and 2D arrays)
 
     order : {'rows', 'columns', 'cols', 'all'}, optional
 
     Returns
     -------
-    Alcm: numpy array
+    Alcm: numpy.array
         An array of least common multiples of the input
 
     Notes
@@ -112,7 +133,6 @@ def lcm_array(input, order='all'):
     See Also
     --------
     lcm_vec: from fractions module for computing gcd of two integers
-
     """
 
     input = np.array(input)
@@ -148,6 +168,19 @@ def lcm_array(input, order='all'):
 
 def check_int_mat(T, tol1):
     """
+    The function checks whether matrix is integer.
+
+    Parameters
+    ----------
+    T: numpy.array
+        Input matrix
+    tol1: float
+        Tolerance with default value 0.01
+    Returns
+    -------
+    Boolean
+        True: If the matrix has integer elements.
+        False: If the matrix does not have integer elements.
     """
     if isinstance(T, Matrix):
         T = np.array(T, dtype='double')
@@ -156,6 +189,20 @@ def check_int_mat(T, tol1):
 
 def rat_approx(Tmat, tol1=0.01):
     """
+    The function approximates the input with a rational number.
+
+    Parameters
+    ----------
+    Tmat: numpy.array
+        Input
+    tol1: float
+        Tolerance with default value 0.01
+    Returns
+    -------
+    Nmat1: int
+        The nominator of the approximated rational number.
+    Dmat1: int
+        The nominator of the approximated rational number.
     """
     Tmat = np.array(Tmat)
     input1 = Tmat.flatten()
@@ -180,6 +227,18 @@ def rat_approx(Tmat, tol1=0.01):
 
 def int_approx(Tmat, tol1=0.01):
     """
+    The function 
+
+    Parameters
+    ----------
+    Tmat: numpy.array
+        Transformation matrix
+    tol1: float
+        Tolerance with default value 0.01
+    Returns
+    -------
+    int_mat1:
+    t1_mult:
     """
     Tmat = np.array(Tmat)
     tct1 = np.max(np.abs(Tmat))
@@ -207,6 +266,18 @@ def int_approx(Tmat, tol1=0.01):
 
 def int_mult_approx(Tmat, tol1=0.01):
     """
+    The function 
+
+    Parameters
+    ----------
+    Tmat: numpy.array
+        Transformation matrix
+    tol1: float
+        Tolerance with default value 0.01
+    Returns
+    -------
+    int_mat1:
+    t1_mult:
     """
     Tmat = np.array(Tmat)
     int_mat1, t1_mult, err1 = mult_fac_err(Tmat, 1, tol1)
@@ -263,11 +334,11 @@ def int_finder(input_v, tol=1e-6, order='all', tol1=1e-6):
 
     Parameters
     ----------
-    input1 : numpy.array
+    input1: numpy.array
         input array
-    tol : float
+    tol: float
         tolerance with Default = 1e-06
-    order : str
+    order: str
         choices are 'rows', 'columns', 'col', 'all'.
         If order = 'all', the input array is flattened and then scaled. This is default value.
         If order = 'rows', elements in each row are scaled
