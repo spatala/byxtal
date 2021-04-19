@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.bp_basis &mdash; byxtal 0.post53+g1def13e documentation</title>
+  <title>byxtal.bp_basis &mdash; byxtal 0.post52+g92ef8a4 documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post53+g1def13e
+                0.post52+g92ef8a4
               </div>
             
           
@@ -178,7 +178,6 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">lll_tools</span> <span class="k">as</span> <span class="n">lt</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">reduce_po_lat</span> <span class="k">as</span> <span class="n">rpl</span>
 <span class="kn">from</span> <span class="nn">.tools</span> <span class="kn">import</span> <span class="n">Col</span><span class="p">,</span> <span class="n">extgcd</span>
-<span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">Rational</span>
 <span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">nla</span>
 
 
@@ -189,7 +188,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    l_pl1_g1: numpy.arrays </span>
+<span class="sd">    l_pl1_g1: numpy.arrays</span>
 <span class="sd">        Basis vectors for plane 1 in the g1 reference frame</span>
 <span class="sd">    l_pl2_g1: numpy.arrays</span>
 <span class="sd">        Basis vectors for plane  2 in the g1 reference frame</span>
@@ -278,7 +277,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------------</span>
-<span class="sd">    d_eq: numpy.array or list </span>
+<span class="sd">    d_eq: numpy.array or list</span>
 <span class="sd">        The size is 3 and dimension 1</span>
 <span class="sd">        h = d_eq[0], k = d_eq[1], l = d_eq[2]</span>
 
@@ -355,7 +354,7 @@
             <span class="n">gc_f1_p</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
             <span class="n">bv1_g1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span> <span class="o">/</span> <span class="n">gc_f1_p</span><span class="p">],</span> <span class="p">[</span><span class="n">k</span> <span class="o">/</span> <span class="n">gc_f1_p</span><span class="p">]])</span>
             <span class="n">bv2_g1</span> <span class="o">=</span> <span class="n">compute_basis_vec</span><span class="p">([</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">])</span>
-            <span class="n">bv2_g1</span> <span class="o">=</span> <span class="n">bv2_g1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">bv2_g1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">bv2_g1</span> <span class="o">=</span> <span class="n">bv2_g1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">bv2_g1</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">h</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -415,8 +414,7 @@
 <span class="sd">        Planar density = (1/area covered by plane basis)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">l_pl_go1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_g1_go1</span><span class="p">,</span> <span class="n">l_pl_g1</span><span class="p">)</span>
-    <span class="n">planar_basis_area</span> <span class="o">=</span> <span class="n">nla</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">l_pl_go1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
-                                                <span class="n">l_pl_go1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span>
+    <span class="n">planar_basis_area</span> <span class="o">=</span> <span class="n">nla</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">l_pl_go1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">l_pl_go1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))</span>
     <span class="n">pd</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">planar_basis_area</span>
     <span class="k">return</span> <span class="n">pd</span></div>
 
@@ -464,7 +462,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Wrong index type&#39;</span><span class="p">)</span>
 
-    <span class="c1">### Get the 2D planar basis for the surface plane in p1</span>
+    <span class="c1"># Get the 2D planar basis for the surface plane in p1</span>
     <span class="n">bp_p1R</span> <span class="o">=</span> <span class="n">l_po_pR</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bp_po1</span><span class="p">)</span>
     <span class="n">miller1_ind</span><span class="p">,</span> <span class="n">tm1</span> <span class="o">=</span> <span class="n">int_man</span><span class="o">.</span><span class="n">int_approx</span><span class="p">(</span><span class="n">bp_p1R</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
 
@@ -483,7 +481,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Wrong reference axes&#39;</span><span class="p">)</span>
 
-    <span class="c1">### Get the 2D planar basis for the surface plane in p2 and p1</span>
+    <span class="c1"># Get the 2D planar basis for the surface plane in p2 and p1</span>
     <span class="n">bp_po2</span> <span class="o">=</span> <span class="o">-</span><span class="n">l_po1_po2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bp_po1</span><span class="p">)</span>
     <span class="n">bp_p2R</span> <span class="o">=</span> <span class="n">l_po_pR</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bp_po2</span><span class="p">)</span>
     <span class="n">miller2_ind</span><span class="p">,</span> <span class="n">tm1</span> <span class="o">=</span> <span class="n">int_man</span><span class="o">.</span><span class="n">int_approx</span><span class="p">(</span><span class="n">bp_p2R</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
@@ -492,7 +490,7 @@
     <span class="n">l_pl2_p2</span> <span class="o">=</span> <span class="n">l_pl2_p2</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_sig2_sig1</span><span class="p">)</span>
     <span class="n">l_pl2_p1</span> <span class="o">=</span> <span class="n">l_p2_p1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_pl2_p2</span><span class="p">)</span>
 
-    <span class="c1">### Get the 2D planar basis for the GB in csl basis</span>
+    <span class="c1"># Get the 2D planar basis for the GB in csl basis</span>
     <span class="n">l_csl_p1</span> <span class="o">=</span> <span class="n">fcd</span><span class="o">.</span><span class="n">csl_finder</span><span class="p">(</span><span class="n">t_mat</span><span class="p">,</span> <span class="n">l_p_po</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
     <span class="n">l_csl_po1</span> <span class="o">=</span> <span class="n">l_p_po</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_csl_p1</span><span class="p">)</span>
     <span class="n">l_cslR_po1</span> <span class="o">=</span> <span class="n">fcd</span><span class="o">.</span><span class="n">reciprocal_mat</span><span class="p">(</span><span class="n">l_csl_po1</span><span class="p">)</span>
@@ -501,12 +499,10 @@
     <span class="n">mind_cslR</span><span class="p">,</span> <span class="n">tm1</span> <span class="o">=</span> <span class="n">int_man</span><span class="o">.</span><span class="n">int_approx</span><span class="p">(</span><span class="n">n_cslR</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
     <span class="n">l_bpb_csl</span> <span class="o">=</span> <span class="n">bp_basis</span><span class="p">(</span><span class="n">mind_cslR</span><span class="p">)</span>
 
-    <span class="c1">### Covert the 2D planar basis for the GB to p1 reference frame</span>
+    <span class="c1"># Covert the 2D planar basis for the GB to p1 reference frame</span>
     <span class="n">l_bpb_p1</span> <span class="o">=</span> <span class="n">l_csl_p1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_bpb_csl</span><span class="p">)</span>
     <span class="n">l_sig2_sig1</span> <span class="o">=</span> <span class="n">rpl</span><span class="o">.</span><span class="n">reduce_po_lat</span><span class="p">(</span><span class="n">l_bpb_p1</span><span class="p">,</span> <span class="n">l_p_po</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
     <span class="n">l_2d_csl_p1</span> <span class="o">=</span> <span class="n">l_bpb_p1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_sig2_sig1</span><span class="p">)</span>
-
-
     <span class="k">return</span> <span class="n">l_2d_csl_p1</span><span class="p">,</span> <span class="n">l_pl1_p1</span><span class="p">,</span> <span class="n">l_pl2_p1</span></div>
 
 
