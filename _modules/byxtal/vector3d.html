@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.vector3d &mdash; byxtal 0.post50+g1047fbc documentation</title>
+  <title>byxtal.vector3d &mdash; byxtal 0.post50+g50548ab documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post50+g1047fbc
+                0.post50+g50548ab
               </div>
             
           
@@ -171,16 +171,21 @@
 <span class="c1"># Journal of Applied Crystallography 48, 585-588 (2015). doi:10.1107/S1600576715004446</span>
 <span class="c1">#</span>
 <span class="c1"># This class is inspired by MTEX Toolbox (https://mtex-toolbox.github.io/index.html)</span>
-<span class="c1">#</span>
 
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1"># import geometry_tools as gmt</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">geometry_tools</span> <span class="k">as</span> <span class="n">gmt</span>
 
 
 <div class="viewcode-block" id="vector3d"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.vector3d">[docs]</a><span class="k">class</span> <span class="nc">vector3d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class contains</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="n">nargs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
@@ -254,6 +259,18 @@
 
 <div class="viewcode-block" id="dot"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.dot">[docs]</a><span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function calculates the dot product</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    v1: numpy.array</span>
+<span class="sd">        Input array</span>
+<span class="sd">    v2: numpy.array</span>
+<span class="sd">        Input array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    The dot product of the two arrays</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">xx</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">yy</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
@@ -264,6 +281,18 @@
 
 <div class="viewcode-block" id="angle"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.angle">[docs]</a><span class="k">def</span> <span class="nf">angle</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function calculates the angle between two arrays.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    v1: numpy.array</span>
+<span class="sd">        Input array</span>
+<span class="sd">    v2: numpy.array</span>
+<span class="sd">        Input array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    The angle between two vectors.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">normalize</span><span class="p">(</span><span class="n">v1</span><span class="p">),</span> <span class="n">normalize</span><span class="p">(</span><span class="n">v2</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></div>
@@ -271,17 +300,34 @@
 
 <span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to get a new view of array with the same data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    vec: numpy.array</span>
+<span class="sd">        input vector</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    Vec with np.ndarray view</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">vec</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>
 
 
-
-
 <div class="viewcode-block" id="cross"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.cross">[docs]</a><span class="k">def</span> <span class="nf">cross</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    :param v1:</span>
-<span class="sd">    :param v2:</span>
-<span class="sd">    :return:</span>
+<span class="sd">    Function calculates the cross product of two arrays.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    v1: numpy.array</span>
+<span class="sd">        Input array</span>
+<span class="sd">    v2: numpy.array</span>
+<span class="sd">        Input array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    Cross product of v1 and v2.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">vx</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">vy</span> <span class="o">=</span> <span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">v1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="n">v2</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
@@ -292,12 +338,30 @@
 
 <div class="viewcode-block" id="getx"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.getx">[docs]</a><span class="k">def</span> <span class="nf">getx</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function returns the x value.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    vec: numpy.array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    The first element corresponding to x value in the vec.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span></div>
 
 
 <div class="viewcode-block" id="gety"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.gety">[docs]</a><span class="k">def</span> <span class="nf">gety</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function returns the y value.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    vec: numpy.array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    The second element corresponding to x value in the vec.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span></div>
 
@@ -310,17 +374,46 @@
 
 <div class="viewcode-block" id="get_size"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.get_size">[docs]</a><span class="k">def</span> <span class="nf">get_size</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function returns the z value.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    vec: numpy.array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    The third element corresponding to x value in the vec.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span></div>
 
 <div class="viewcode-block" id="norm"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.norm">[docs]</a><span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function returns the norm of the input vector.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    vec: numpy.array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    n: float</span>
+<span class="sd">        The norm of the vector.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">vec</span><span class="p">[</span><span class="mi">2</span><span class="p">,:],</span><span class="mi">2</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">n</span></div>
 
 <div class="viewcode-block" id="normalize"><a class="viewcode-back" href="../../Modules.html#byxtal.vector3d.normalize">[docs]</a><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function normalize the given vector.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    vec: numpy.array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------------</span>
+<span class="sd">    vec/n: numpy.array</span>
+<span class="sd">        The normalize of the vec.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">vec</span><span class="o">/</span><span class="n">n</span></div>

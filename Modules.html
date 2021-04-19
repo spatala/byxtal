@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Modules &mdash; byxtal 0.post50+g1047fbc documentation</title>
+  <title>Modules &mdash; byxtal 0.post50+g50548ab documentation</title>
   
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.post50+g1047fbc
+                0.post50+g50548ab
               </div>
             
           
@@ -221,6 +221,28 @@ atom type. Currently there are only two pre-configured atoms available in
 class i.e. ‘Al’ and ‘Mg’. Up on need user can create a new instance of this
 class with the same attributes. The attributes of this class are:
 …</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>elem_type: str</strong></dt><dd><p>Element of Interest</p>
+</dd>
+<dt><strong>pearson: str</strong></dt><dd><p>Pearson symbol for the lattice</p>
+</dd>
+<dt><strong>lat_params: dic</strong></dt><dd><p>Lattice parameters (‘a’, ‘b’, ‘c’, ‘alpha’, ‘beta’, ‘gamma’)</p>
+</dd>
+<dt><strong>l_p_po: numpy.array</strong></dt><dd><p>Primitve basis of the lattice</p>
+</dd>
+<dt><strong>basis_atoms: numpy.array</strong></dt><dd><p>Location of the basis atoms in the primitive lattice</p>
+</dd>
+<dt><strong>cryst_ptgrp: str</strong></dt><dd><p>Crystallographic point group of the lattice</p>
+</dd>
+<dt><strong>burgers_mag: float</strong></dt><dd><p>The smallest burgers vector in the lattice</p>
+</dd>
+<dt><strong>eam_file:</strong></dt><dd><p>eam_file name for atomistic simulations</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Examples of elem_type
 elem_type = ‘Mg’;</p>
@@ -231,28 +253,6 @@ elem_type = ‘Mg’;</p>
 <p>elem_type = ‘cI_Id’;</p>
 <p>elem_type = ‘cP_Id’;</p>
 <p>elem_type = ‘hP_Id’;</p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>elem_type: string</strong></dt><dd><p>Element of Interest</p>
-</dd>
-<dt><strong>pearson: string</strong></dt><dd><p>Pearson symbol for the lattice</p>
-</dd>
-<dt><strong>lat_params: dictionary</strong></dt><dd><p>Lattice parameters (‘a’, ‘b’, ‘c’, ‘alpha’, ‘beta’, ‘gamma’)</p>
-</dd>
-<dt><strong>l_p_po: numpy array</strong></dt><dd><p>Primitve basis of the lattice</p>
-</dd>
-<dt><strong>basis_atoms:</strong></dt><dd><p>Location of the basis atoms in the primitive lattice</p>
-</dd>
-<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Crystallographic point group of the lattice</p>
-</dd>
-<dt><strong>burgers_mag: float</strong></dt><dd><p>The smallest burgers vector in the lattice</p>
-</dd>
-<dt><strong>eam_file:</strong></dt><dd><p>eam_file name for atomistic simulations</p>
-</dd>
-</dl>
-</dd>
-</dl>
 <p class="rubric">Methods</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1245,12 +1245,13 @@ matrix ‘t_p1top2_p1’, the two-dimensional CSL lattice is computed</p>
 <dl class="py function">
 <dt id="byxtal.misorient_fz.check_cond">
 <code class="sig-prename descclassname"><span class="pre">byxtal.misorient_fz.</span></code><code class="sig-name descname"><span class="pre">check_cond</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cryst_ptgrp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/misorient_fz.html#check_cond"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.misorient_fz.check_cond" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Function</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>g: quaternion object</strong></dt><dd><p>Misorientation</p>
 </dd>
-<dt><strong>cryst_ptgrp: string</strong></dt><dd><p>Crystallogrphic point group in Schoenflies notation</p>
+<dt><strong>cryst_ptgrp: str</strong></dt><dd><p>Crystallogrphic point group in Schoenflies notation</p>
 </dd>
 <dt><strong>tol: float</strong></dt><dd><p>Tolerance for the misorientation to belong in the fundamental zone</p>
 </dd>
@@ -1907,19 +1908,56 @@ reference frame.</p>
 <dl class="py function">
 <dt id="byxtal.lll_tools.check_basis_equi">
 <code class="sig-prename descclassname"><span class="pre">byxtal.lll_tools.</span></code><code class="sig-name descname"><span class="pre">check_basis_equi</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/lll_tools.html#check_basis_equi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.lll_tools.check_basis_equi" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l_p1: numpy.arrays</strong></dt><dd></dd>
+<dt><strong>l_p2: numpy.arrays</strong></dt><dd></dd>
+<dt><strong>tol1: float</strong></dt><dd><p>Tolerance with default value 1e-10</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.lll_tools.check_basis_def">
 <code class="sig-prename descclassname"><span class="pre">byxtal.lll_tools.</span></code><code class="sig-name descname"><span class="pre">check_basis_def</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l_p1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_p2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/lll_tools.html#check_basis_def"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.lll_tools.check_basis_def" title="Permalink to this definition">¶</a></dt>
 <dd><p>If l_p2 is defined in l_p1
 (l_p1.inv())*l_p2 is an integer matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l_p1: numpy.arrays</strong></dt><dd></dd>
+<dt><strong>l_p2: numpy.arrays</strong></dt><dd></dd>
+<dt><strong>tol1: float</strong></dt><dd><p>Tolerance with default value 1e-10</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>cond1:</dt><dd></dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.lll_tools.lll_reduction">
 <code class="sig-prename descclassname"><span class="pre">byxtal.lll_tools.</span></code><code class="sig-name descname"><span class="pre">lll_reduction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int_mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/lll_tools.html#lll_reduction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.lll_tools.lll_reduction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function calculated the lll reduction.
+Parameters
+—————-
+int_mat:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>lll_int_mat:</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="section" id="pick-fundumental-zone">
@@ -2545,30 +2583,68 @@ default value is ‘proper’</p>
 <dl class="py function">
 <dt id="byxtal.vector3d.vector3d">
 <code class="sig-prename descclassname"><span class="pre">byxtal.vector3d.</span></code><code class="sig-name descname"><span class="pre">vector3d</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/vector3d.html#vector3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.vector3d.vector3d" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This class contains</p>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.vector3d.dot">
 <code class="sig-prename descclassname"><span class="pre">byxtal.vector3d.</span></code><code class="sig-name descname"><span class="pre">dot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/vector3d.html#dot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.vector3d.dot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function calculates the dot product</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>v1: numpy.array</strong></dt><dd><p>Input array</p>
+</dd>
+<dt><strong>v2: numpy.array</strong></dt><dd><p>Input array</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The dot product of the two arrays</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.vector3d.angle">
 <code class="sig-prename descclassname"><span class="pre">byxtal.vector3d.</span></code><code class="sig-name descname"><span class="pre">angle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/vector3d.html#angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.vector3d.angle" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function calculates the angle between two arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>v1: numpy.array</strong></dt><dd><p>Input array</p>
+</dd>
+<dt><strong>v2: numpy.array</strong></dt><dd><p>Input array</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The angle between two vectors.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.vector3d.cross">
 <code class="sig-prename descclassname"><span class="pre">byxtal.vector3d.</span></code><code class="sig-name descname"><span class="pre">cross</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/vector3d.html#cross"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.vector3d.cross" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Function calculates the cross product of two arrays.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>v1</strong> – </p></li>
-<li><p><strong>v2</strong> – </p></li>
-</ul>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>v1: numpy.array</strong></dt><dd><p>Input array</p>
+</dd>
+<dt><strong>v2: numpy.array</strong></dt><dd><p>Input array</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><dl class="simple">
+<dt>Cross product of v1 and v2.</dt><dd></dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2576,12 +2652,38 @@ default value is ‘proper’</p>
 <dl class="py function">
 <dt id="byxtal.vector3d.getx">
 <code class="sig-prename descclassname"><span class="pre">byxtal.vector3d.</span></code><code class="sig-name descname"><span class="pre">getx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/vector3d.html#getx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.vector3d.getx" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function returns the x value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vec: numpy.array</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The first element corresponding to x value in the vec.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.vector3d.gety">
 <code class="sig-prename descclassname"><span class="pre">byxtal.vector3d.</span></code><code class="sig-name descname"><span class="pre">gety</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/vector3d.html#gety"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.vector3d.gety" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function returns the y value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vec: numpy.array</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The second element corresponding to x value in the vec.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.vector3d.getz">
@@ -2591,17 +2693,58 @@ default value is ‘proper’</p>
 <dl class="py function">
 <dt id="byxtal.vector3d.get_size">
 <code class="sig-prename descclassname"><span class="pre">byxtal.vector3d.</span></code><code class="sig-name descname"><span class="pre">get_size</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/vector3d.html#get_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.vector3d.get_size" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function returns the z value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vec: numpy.array</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>The third element corresponding to x value in the vec.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.vector3d.norm">
 <code class="sig-prename descclassname"><span class="pre">byxtal.vector3d.</span></code><code class="sig-name descname"><span class="pre">norm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/vector3d.html#norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.vector3d.norm" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function returns the norm of the input vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vec: numpy.array</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>n: float</dt><dd><p>The norm of the vector.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.vector3d.normalize">
 <code class="sig-prename descclassname"><span class="pre">byxtal.vector3d.</span></code><code class="sig-name descname"><span class="pre">normalize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/vector3d.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.vector3d.normalize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function normalize the given vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vec: numpy.array</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>vec/n: numpy.array</dt><dd><p>The normalize of the vec.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </div>

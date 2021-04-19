@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.lll_tools &mdash; byxtal 0.post50+g1047fbc documentation</title>
+  <title>byxtal.lll_tools &mdash; byxtal 0.post50+g50548ab documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post50+g1047fbc
+                0.post50+g50548ab
               </div>
             
           
@@ -211,6 +211,18 @@
 
 <div class="viewcode-block" id="check_basis_equi"><a class="viewcode-back" href="../../Modules.html#byxtal.lll_tools.check_basis_equi">[docs]</a><span class="k">def</span> <span class="nf">check_basis_equi</span><span class="p">(</span><span class="n">l_p1</span><span class="p">,</span> <span class="n">l_p2</span><span class="p">,</span> <span class="n">tol1</span> <span class="o">=</span> <span class="mf">1e-10</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    l_p1: numpy.arrays</span>
+<span class="sd">    l_p2: numpy.arrays</span>
+<span class="sd">    tol1: float</span>
+<span class="sd">        Tolerance with default value 1e-10</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">l_p1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">sz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">sz</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
@@ -248,6 +260,18 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    If l_p2 is defined in l_p1</span>
 <span class="sd">    (l_p1.inv())*l_p2 is an integer matrix</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    l_p1: numpy.arrays</span>
+<span class="sd">       </span>
+<span class="sd">    l_p2: numpy.arrays</span>
+<span class="sd">    tol1: float</span>
+<span class="sd">        Tolerance with default value 1e-10</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cond1:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">l_p1</span><span class="p">)</span>
 
@@ -265,6 +289,14 @@
 
 <div class="viewcode-block" id="lll_reduction"><a class="viewcode-back" href="../../Modules.html#byxtal.lll_tools.lll_reduction">[docs]</a><span class="k">def</span> <span class="nf">lll_reduction</span><span class="p">(</span><span class="n">int_mat</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function calculated the lll reduction.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    int_mat:</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    lll_int_mat:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">exec_str</span> <span class="o">=</span> <span class="s1">&#39;/compute_lll.py&#39;</span>
     <span class="n">inp_args</span> <span class="o">=</span> <span class="p">{}</span>

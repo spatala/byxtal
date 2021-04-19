@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.lattice &mdash; byxtal 0.post50+g1047fbc documentation</title>
+  <title>byxtal.lattice &mdash; byxtal 0.post50+g50548ab documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post50+g1047fbc
+                0.post50+g50548ab
               </div>
             
           
@@ -184,29 +184,22 @@
 <span class="sd">    class with the same attributes. The attributes of this class are:</span>
 <span class="sd">    ...</span>
 
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    elem_type: string</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    -----------</span>
+<span class="sd">    elem_type: str</span>
 <span class="sd">        Element of Interest</span>
-
-<span class="sd">    pearson: string</span>
+<span class="sd">    pearson: str</span>
 <span class="sd">        Pearson symbol for the lattice</span>
-
-<span class="sd">    lat_params: dictionary</span>
+<span class="sd">    lat_params: dic</span>
 <span class="sd">        Lattice parameters (&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;alpha&#39;, &#39;beta&#39;, &#39;gamma&#39;)</span>
-
-<span class="sd">    l_p_po: numpy array</span>
+<span class="sd">    l_p_po: numpy.array</span>
 <span class="sd">        Primitve basis of the lattice</span>
-
-<span class="sd">    basis_atoms:</span>
+<span class="sd">    basis_atoms: numpy.array</span>
 <span class="sd">        Location of the basis atoms in the primitive lattice</span>
-
-<span class="sd">    cryst_ptgrp: string</span>
+<span class="sd">    cryst_ptgrp: str</span>
 <span class="sd">        Crystallographic point group of the lattice</span>
-
 <span class="sd">    burgers_mag: float</span>
 <span class="sd">        The smallest burgers vector in the lattice</span>
-
 <span class="sd">    eam_file:</span>
 <span class="sd">        eam_file name for atomistic simulations</span>
 
@@ -621,8 +614,7 @@
 <div class="viewcode-block" id="approx_latmat"><a class="viewcode-back" href="../../Modules.html#byxtal.lattice.approx_latmat">[docs]</a><span class="k">def</span> <span class="nf">approx_latmat</span><span class="p">(</span><span class="n">l1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">l_p_po</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">l_p_po</span></div>
-    
+    <span class="n">l_p_po</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">l_p_po</span></div>
 </pre></div>
 
            </div>
