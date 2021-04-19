@@ -351,13 +351,10 @@ def bicryst_planar_den(inds, t_mat, l_g_go, inds_type='miller_index',
     ---------------
     inds: numpy.array
         The boundary plane indices.
-
     inds_type: str
         {'miller_index', 'normal_go', 'normal_g'}
-
     t_mat: numpy.array
         Transformation matrix from g1 to g2 in go1 (or g1) reference frame.
-
     mat_ref: str
         {'go1', 'g1'}
 
