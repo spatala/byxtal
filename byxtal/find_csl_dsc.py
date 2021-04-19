@@ -72,22 +72,22 @@ def find_csl_dsc(l_p_po, T_p1top2_p1, tol1=1e-6, print_check=True):
 
     Parameters
     -----------------
-    L_G1_GO1: numpy array
+    L_G1_GO1: numpy.array
         The three basis vectors for the primitive unit cell
         (as columns) are given with respect to the GO1 reference
         frame.
-
-    R_G1ToG2_G1: 3X3 numpy array
-        The rotation matrix defining the
+    R_G1ToG2_G1: numpy.array
+        The rotation matrix with size 3*3 defining the
         transformation in 'G1' reference frame. The subscript 'G1' refers
         to the primitive unit cell of G lattice.
 
     Returns
-    l_csl_g1, l_dsc_g1: numpy arrays
-        The basis vectors of csl and dsc lattices in the g1 reference frame
+    l_csl_g1: numpy.array
+        The basis vectors of csl lattices in the g1 reference frame
+    l_dsc_g1: numpy.array
+        The basis vectors of dsc lattices in the g1 reference frame
     """
-    ########################################################################
-    ## Compute Sigma, and Sigma*T
+    # Compute Sigma, and Sigma*T
     T_p1top2_p1 = np.array(T_p1top2_p1, dtype='double')
     Sigma = sigma_calc(T_p1top2_p1, tol1)
     TI_p1top2_p1 = T_p1top2_p1*Sigma
@@ -96,26 +96,17 @@ def find_csl_dsc(l_p_po, T_p1top2_p1, tol1=1e-6, print_check=True):
         TI_p1top2_p1 = (np.around(TI_p1top2_p1)).astype(int)
     else:
         raise Exception("TI_p1top2_p1 is not an integer matrix.")
-    ########################################################################
 
-
-    ########################################################################
     # l_csl_p = csl_finder(T_p1top2_p1, Sigma, l_p_po, tol1)
     l_csl_p = csl_finder(T_p1top2_p1, l_p_po, tol1)
     check_val1 = check_csl(l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
-    ########################################################################
 
-    ########################################################################
     # l_dsc_p = dsc_finder(T_p1top2_p1, l_p_po, tol1)
     # check_val2 = check_dsc(l_dsc_p, l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
-    ########################################################################
 
-    ########################################################################
     print([check_val1])
     if (not(check_val1)):
         raise Exception("Error in Computing CSL or DSC Lattices.")
-    ########################################################################
-
     return l_csl_p
 
 
@@ -125,19 +116,17 @@ def csl_finder(T_p1top2_p1, l_p_po, tol1):
 
     Parameters
     ----------------
-    TI_p1top2_p1: numpy array
+    TI_p1top2_p1: numpy.array
         Sigma*(transformation matrix)
-
-    l_p_po: numpy array
+    l_p_po: numpy.array
         basis vectors (as columns) of the underlying lattice expressed in the
         orthogonal 'po' reference frame
-
     tol1: int
         Tolerance to use to compute the reduced LLL lattice
 
     Returns
     ------------
-    l_csl_p: numpy array
+    l_csl_p: numpy.array
         The CSL basis vectors (as columns) expressed in the primitive reference
 
     Notes
@@ -183,16 +172,15 @@ def dsc_finder(L_G2_G1, L_G1_GO1, tol1):
 
     Parameters
     ----------------
-    l_g2_g1: numpy array
-        transformation matrix (r_g1tog2_g1)
-
-    l_g1_go1: numpy array
-        basis vectors (as columns) of the underlying lattice expressed in the
+    l_g2_g1: numpy.array
+        Transformation matrix (r_g1tog2_g1)
+    l_g1_go1: numpy.array
+        Basis vectors (as columns) of the underlying lattice expressed in the
         orthogonal 'go' reference frame
 
     Returns
     ------------
-    l_dsc_g1: numpy array
+    l_dsc_g1: numpy.array
         The dsc lattice basis vectors (as columns) expressed in the g1 reference
 
     Notes
@@ -257,6 +245,26 @@ def dsc_finder(L_G2_G1, L_G1_GO1, tol1):
 
 def check_csl(l_csl_p, l_p1_po, T_p1top2_p1, Sigma, print_val):
     """
+    The function checks CSL lattice
+
+    Parameters
+    ----------
+    l_csl_p : numpy.array
+        The CSL basis vectors  in the primitive reference frame.
+    l_p_po: numpy array
+        The primitive basis vectors of the underlying lattice in the orthogonal
+        reference frame.
+    T_p1top2_p1: numpy.array
+        Sigma*(transformation matrix)
+    sigma: float
+        Sigma number
+    print_val: str
+        Print a message
+
+    Returns
+    -------
+    (cond1 and cond2 and cond3): tuple
+        Print message
     """
     l_po_p1 = nla.inv(l_p1_po)
 
@@ -286,6 +294,27 @@ def check_csl(l_csl_p, l_p1_po, T_p1top2_p1, Sigma, print_val):
 
 def check_dsc(l_dsc_p1, l_csl_p1, l_p1_po, l_p2_p1, Sigma, print_val):
     """
+    The function checks DSC lattice
+
+    Parameters
+    ----------
+    l_dsc_p1 : numpy.array
+        The DSC basis vectors  in the primitive reference frame of crystal 1.
+    l_csl_p1 : numpy.array
+        The CSL basis vectors  in the primitive reference frame of crystal 1.
+    l_p1_po: numpy.array
+        The basis vector of p1 in the orthogonal primitive reference frame.
+    l_p2_p1: numpy.array
+        Transformation matrix
+    sigma: float
+        sigma number
+    print_val: str
+        Print a message
+
+    Returns
+    -------
+    (cond1 and cond2 and cond3): tuple
+        Print message
     """
     l_csl_po = l_p1_po.dot(l_csl_p1)
     l_dsc_po = l_p1_po.dot(l_dsc_p1)
@@ -329,6 +358,20 @@ def sigma_calc(t_g1tog2_g1, tol1):
     """
     Computes the sigma of the transformation matrix (t_g1tog2_g1)
 
+    Parameters
+    ----------------
+    t_g1tog2_g1: numpy.array
+        Transformation matrix
+    tol1: float
+        Tolerance
+
+    Returns
+    -----------
+    int(Sigma): int
+        Integer value of the calculated sigma number
+
+    Notes
+    ------
     * Suppose T = t_g1tog2_g1
     * if det(T) = det(T^{-1}) then sigma1 = sigma2 is returned (homophase)
     * if det(T) \\neq det(T^{-1}) then max(sigma1, sigma2) is returned (heterophase)
@@ -350,12 +393,12 @@ def reciprocal_mat(l_g_go):
 
     Parameters
     ----------------
-    l_g_go: numpy array
+    l_g_go: numpy.array
         The primitive basis vectors b1x, b1y, b1z
 
     Returns
     -----------
-    rl_g_go: numpy array
+    rl_g_go: numpy.array
         The primitve reciprocal basis vectors
     """
     InMat = np.copy(l_g_go)
@@ -370,6 +413,20 @@ def reciprocal_mat(l_g_go):
 
 def make_right_handed(l_csl_p1, l_p_po):
     """
+    The function makes l_csl_p1 right handed.
+
+    Parameters
+    ----------------
+    l_csl_p1: numpy.array
+        The CSL basis vectors  in the primitive reference frame of crystal 1.
+    l_p_po: numpy.array
+        The primitive basis vectors of the underlying lattice in the orthogonal
+        reference frame.
+
+    Returns
+    -----------
+    t1_array: numpy.array
+        Right handed array        
     """
     l_csl_po1 = l_p_po.dot(l_csl_p1)
     t1_array = np.array(l_csl_p1, dtype='double')
@@ -377,6 +434,5 @@ def make_right_handed(l_csl_p1, l_p_po):
     if (nla.det(l_csl_po1) < 0):
         t1_array[:, 0] = t2_array[:, 1]
         t1_array[:, 1] = t2_array[:, 0]
-
     return t1_array
 
