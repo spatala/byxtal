@@ -8,23 +8,26 @@ def disorient_symm_props(mis_quat_fz, lat_pt_grp, x_tol=1e-04):
 
     Parameters
     -----------
-        mis_quat_fz: misorientation quaternion
-        A quaternion array with size (5 x 1)
-        The quaternion is created from the misorientation of the sigma value for the grain boundary.
-        The misorientation is defined in the orthogonal reference frame of lower crystal 1 (po1).
-        lat_pt_grp: The point group symmetry of the crystal.
-        string with allowed value 'Oh'
-
+        mis_quat_fz: numpy.array
+            A quaternion array with size (5 x 1)
+            The quaternion is created from the misorientation of the sigma value for the grain boundary.
+            The misorientation is defined in the orthogonal reference frame of lower crystal 1 (po1).
+            lat_pt_grp: The point group symmetry of the crystal.
+            string with allowed value 'Oh'
         x_tol: float
-        tolerance value to check various conditions in the function, default value==1e-04
+            Tolerance value to check various conditions in the function, default value==1e-04
 
     Returns
     --------
-        bp_symm_grp: The point group symmetry of bicrystal.
-        python string with allowed values 'Cs', 'C2h', 'D3d', 'D2h', 'D4h', 'D6h', 'D8h' and 'Oh'
-        x_g, y_g, z_g: Principle axes for the fundamental zone of the bicrystal.
-        1-D numpy arrays of size 3
-
+        bp_symm_grp: str
+            The point group symmetry of bicrystal. python string with allowed
+            values 'Cs', 'C2h', 'D3d', 'D2h', 'D4h', 'D6h', 'D8h' and 'Oh'
+        x_g: int
+            First principle axes for the fundamental zone of the bicrystal.
+        y_g: int
+            Second principle axes for the fundamental zone of the bicrystal.
+        z_g: int
+            Third principle axes for the fundamental zone of the bicrystal.
     Notes
     ------
         This method takes only one value for lat_pt_grp == 'O_h', i.e. the function is written for bcc and fcc
@@ -263,9 +266,7 @@ def disorient_symm_props(mis_quat_fz, lat_pt_grp, x_tol=1e-04):
         y_g = np.cross(z_g, x_g)
         bp_symm_grp = 'Cs'
         return x_g, y_g, z_g, bp_symm_grp
-    
-    #  This part is for hcp crystal structure
-    #  taken from table 17 from Dr. Patala's paper
+
 
     if lat_pt_grp == 'D6h':
         k = 2 - np.sqrt(3)
