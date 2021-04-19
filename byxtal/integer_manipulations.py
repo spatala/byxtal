@@ -17,7 +17,7 @@ def gcd_vec(int_mat):
     Returns
     -------
     gcd1: int
-        The  reatest common divisor of the input number.
+        The reatest common divisor of the input number.
         
     """
     input1 = int_mat.flatten()
@@ -114,10 +114,9 @@ def lcm_array(input, order='all'):
 
     Parameters
     ----------
-    input : numpy.array or list of intgers
+    input: numpy.array or list of intgers
         Input n-D array of integers (most suitable for 1D and 2D arrays)
-
-    order : {'rows', 'columns', 'cols', 'all'}, optional
+    order: {'rows', 'columns', 'cols', 'all'}, optional
 
     Returns
     -------
@@ -286,8 +285,7 @@ def int_mult_approx(Tmat, tol1=0.01):
 
 def mult_fac_err(Tmat, mult1, tol1):
     """
-    The function raises an error when it can not find
-    an integer matrix
+    The function 
 
     Parameters
     ----------

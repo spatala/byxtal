@@ -1,3 +1,6 @@
+======
+byxtal
+======
 .. image:: https://user-images.githubusercontent.com/33406434/86795321-6fd42900-c03b-11ea-883a-68139f7cb521.png
         :target: https://travis-ci.org/spatala/byxtal
 
@@ -11,9 +14,48 @@
 Python package for bicrystallographic computations.
 
 * Free software: 3-clause BSD license
-* Documentation: https://spatala.github.io/byxtal.
+* Documentation: https://spatala.github.io/byxtal
+* GitHub: https://github.com/spatala/byxtal
+* PyPI: https://pypi.org/project/byxtal/
+* Tutorials: https://spatala.github.io/byxtal/Tutorials/index.html
 
-Features
---------
+How to Use This Package:
+========================
+1.  **To install the stable version of byxtal:**      
+    
+    .. code-block:: console
+                
+        $ pip install byxtal
+                
+Consult the `documentation <https://spatala.github.io/byxtal/>`__ for further details.
+        
+        
+Prerequisites:
+==============
+                
+1. install ``numpy`` from `here. <http://www.numpy.org/>`__
+                
+2. install ``scipy`` from `here. <http://www.scipy.org/>`__
 
-* TODO
+3. install ``pyhull`` from `here. <https://pythonhosted.org/pyhull/>`__
+
+4. install ``ovito`` from `here. <https://www.ovito.org/>`__
+
+5. install ``sympy`` from `here. <https://www.sympy.org/>`__
+
+                
+Cite GBpy:
+========================
+
+
+                
+Credits:
+========
+gbpy is written by:
+                
+* `Srikanth Patala <spatala@ncsu.edu>`__
+* `Leila Khalili <lkhalil@ncsu.edu>`__
+* `Arash Dehghan Banadaki <adehgha@ncsu.edu>`__
+* `Patala Research Group <http://research.mse.ncsu.edu/patala/>`__.
+        
+Copyright (c) 2015,  Leila Khalili and Srikanth Patala.
