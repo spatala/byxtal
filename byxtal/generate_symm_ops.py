@@ -23,7 +23,7 @@ def generate_symm_mats(cryst_ptgrp, tol=1e-10):
 
     Parameters
     -----------------
-    cryst_ptgrp: string
+    cryst_ptgrp: str
         Crystallogrphic point group in Schoenflies notation
 
     tol: float
@@ -31,7 +31,7 @@ def generate_symm_mats(cryst_ptgrp, tol=1e-10):
 
     Returns
     ------------
-    symm_mat: numpy array
+    symm_mat: numpy.array
         Size: n x 3 x3 \v
         Symmetry operations as matrices for the corresponding point group
     """
@@ -474,7 +474,7 @@ def generate_symm_quats(cryst_ptgrp, tol=1e-10):
 
     Parameters
     -----------------
-    cryst_ptgrp: string
+    cryst_ptgrp: str
         Crystallogrphic point group in Schoenflies notation
 
     tol: float
@@ -915,7 +915,7 @@ def save_symm_pkl(cryst_ptgrp, op_type):
 
     Parameters
     -----------------
-    cryst_ptgrp: string
+    cryst_ptgrp: str
         Crystallogrphic point group in Schoenflies notation
 
     op_type: {'matrices', 'quats'}
