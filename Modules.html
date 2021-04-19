@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Modules &mdash; byxtal 0.post50+g282608e documentation</title>
+  <title>Modules &mdash; byxtal 0.post50+gbab01aa documentation</title>
   
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.post50+g282608e
+                0.post50+gbab01aa
               </div>
             
           
@@ -329,14 +329,14 @@ v = sph2vec(theta,rho,r)
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>input</strong><span class="classifier">numpy array or list of intgers</span></dt><dd><p>Input n-D array of integers (most suitable for 1D and 2D arrays)</p>
+<dt><strong>input</strong><span class="classifier">numpy.array or list</span></dt><dd><p>Input n-D array of integers (most suitable for 1D and 2D arrays)</p>
 </dd>
 <dt><strong>order</strong><span class="classifier">{‘rows’, ‘columns’, ‘cols’, ‘all’}, optional</span></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>Agcd: numpy array</dt><dd><p>An array of greatest common divisors of the input</p>
+<dt>Agcd: numpy.array</dt><dd><p>An array of greatest common divisors of the input</p>
 </dd>
 </dl>
 </dd>
@@ -418,7 +418,25 @@ v = sph2vec(theta,rho,r)
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.mult_fac_err">
 <code class="sig-prename descclassname"><span class="pre">byxtal.integer_manipulations.</span></code><code class="sig-name descname"><span class="pre">mult_fac_err</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Tmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mult1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/integer_manipulations.html#mult_fac_err"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.integer_manipulations.mult_fac_err" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function raises an error when it can not find
+an integer matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Tmat: numpy.array</strong></dt><dd><p>Transformation matrix</p>
+</dd>
+<dt><strong>mult1:</strong></dt><dd></dd>
+<dt><strong>tol1: float</strong></dt><dd><p>Tolerance</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>int_mat1:</strong></dt><dd></dd>
+<dt><strong>t1_mult:</strong></dt><dd></dd>
+<dt><strong>err1:</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.int_finder">
@@ -460,9 +478,9 @@ up to that decimal point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>input</strong><span class="classifier">numpy array or list</span></dt><dd><p>Input n-D array of floats.</p>
+<dt><strong>input</strong><span class="classifier">numpy.array or list</span></dt><dd><p>Input n-D array of floats.</p>
 </dd>
-<dt><strong>precis</strong><span class="classifier">Integer</span></dt><dd><p>Default = 6.
+<dt><strong>precis</strong><span class="classifier">int</span></dt><dd><p>Default = 6.
 A value that specifies the precision to which the number is an
 integer. <strong>precis = 6</strong> implies a precision of <span class="math notranslate nohighlight">\(10^{-6}\)</span>.</p>
 </dd>
@@ -486,15 +504,19 @@ floating point array to a given precision</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>input</strong><span class="classifier">numpy array or list of real numbers</span></dt><dd></dd>
-<dt><strong>tol</strong><span class="classifier">floating point tolerance value</span></dt><dd><p>Default = 1e-06</p>
+<dt><strong>input</strong><span class="classifier">numpy.array or list</span></dt><dd><p>input which is real numbers.</p>
+</dd>
+<dt><strong>tol</strong><span class="classifier">float</span></dt><dd><p>Tolerance, Default = 1e-06</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>N, D: Integer numpy arrays</dt><dd><p>N and D contain the numerators (p) and denominators (q) of the
-rational approximations</p>
+<dt>N: numpy.array</dt><dd><p>N contain the numerators (p) and denominators (q) of the
+rational approximations.</p>
+</dd>
+<dt>D: numpy.array</dt><dd><p>D contain the numerators (p) and denominators (q) of the
+rational approximations.</p>
 </dd>
 </dl>
 </dd>

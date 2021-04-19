@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.integer_manipulations &mdash; byxtal 0.post50+g282608e documentation</title>
+  <title>byxtal.integer_manipulations &mdash; byxtal 0.post50+gbab01aa documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post50+g282608e
+                0.post50+gbab01aa
               </div>
             
           
@@ -188,14 +188,13 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    input : numpy array or list of intgers</span>
+<span class="sd">    input : numpy.array or list</span>
 <span class="sd">        Input n-D array of integers (most suitable for 1D and 2D arrays)</span>
-
 <span class="sd">    order : {&#39;rows&#39;, &#39;columns&#39;, &#39;cols&#39;, &#39;all&#39;}, optional</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    Agcd: numpy array</span>
+<span class="sd">    Agcd: numpy.array</span>
 <span class="sd">        An array of greatest common divisors of the input</span>
 
 <span class="sd">    Notes</span>
@@ -381,10 +380,23 @@
 
 <div class="viewcode-block" id="mult_fac_err"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.mult_fac_err">[docs]</a><span class="k">def</span> <span class="nf">mult_fac_err</span><span class="p">(</span><span class="n">Tmat</span><span class="p">,</span> <span class="n">mult1</span><span class="p">,</span> <span class="n">tol1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function raises an error when it can not find</span>
+<span class="sd">    an integer matrix</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Tmat: numpy.array</span>
+<span class="sd">        Transformation matrix</span>
+<span class="sd">    mult1:</span>
+<span class="sd">    tol1: float</span>
+<span class="sd">        Tolerance</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int_mat1:</span>
+<span class="sd">    t1_mult:</span>
+<span class="sd">    err1:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># print(mult1)</span>
     <span class="n">Tmat1</span> <span class="o">=</span> <span class="n">Tmat</span><span class="o">*</span><span class="n">mult1</span>
-    <span class="c1"># print(Tmat1)</span>
     <span class="n">N1</span><span class="p">,</span> <span class="n">D1</span> <span class="o">=</span> <span class="n">rat_approx</span><span class="p">(</span><span class="n">Tmat1</span><span class="p">,</span> <span class="n">tol1</span><span class="p">)</span>
 
     <span class="n">lcm1</span> <span class="o">=</span> <span class="n">lcm_array</span><span class="p">(</span><span class="n">D1</span><span class="p">)</span>
@@ -527,9 +539,9 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    input : numpy array or list</span>
+<span class="sd">    input : numpy.array or list</span>
 <span class="sd">        Input n-D array of floats.</span>
-<span class="sd">    precis : Integer</span>
+<span class="sd">    precis : int</span>
 <span class="sd">        Default = 6.</span>
 <span class="sd">        A value that specifies the precision to which the number is an</span>
 <span class="sd">        integer. **precis = 6** implies a precision of :math:`10^{-6}`.</span>
@@ -555,15 +567,19 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    input : numpy array or list of real numbers</span>
-<span class="sd">    tol : floating point tolerance value</span>
-<span class="sd">        Default = 1e-06</span>
+<span class="sd">    input : numpy.array or list</span>
+<span class="sd">        input which is real numbers.</span>
+<span class="sd">    tol : float</span>
+<span class="sd">        Tolerance, Default = 1e-06</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    N, D: Integer numpy arrays</span>
-<span class="sd">        N and D contain the numerators (p) and denominators (q) of the</span>
-<span class="sd">        rational approximations</span>
+<span class="sd">    N: numpy.array</span>
+<span class="sd">        N contain the numerators (p) and denominators (q) of the</span>
+<span class="sd">        rational approximations.</span>
+<span class="sd">    D: numpy.array</span>
+<span class="sd">        D contain the numerators (p) and denominators (q) of the</span>
+<span class="sd">        rational approximations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">input1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">ndim</span><span class="p">(</span><span class="n">input1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
