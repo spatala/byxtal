@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Modules &mdash; byxtal 0.post50+gbab01aa documentation</title>
+  <title>Modules &mdash; byxtal 0.post50+g1047fbc documentation</title>
   
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.post50+gbab01aa
+                0.post50+g1047fbc
               </div>
             
           
@@ -320,7 +320,22 @@ v = sph2vec(theta,rho,r)
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.gcd_vec">
 <code class="sig-prename descclassname"><span class="pre">byxtal.integer_manipulations.</span></code><code class="sig-name descname"><span class="pre">gcd_vec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">int_mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/integer_manipulations.html#gcd_vec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.integer_manipulations.gcd_vec" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function computes the GCD of an integer number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>int_mat: int</strong></dt><dd><p>Input integer number</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>gcd1: int</dt><dd><p>The  reatest common divisor of the input number.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.gcd_array">
@@ -359,7 +374,22 @@ v = sph2vec(theta,rho,r)
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.lcm_vec">
 <code class="sig-prename descclassname"><span class="pre">byxtal.integer_manipulations.</span></code><code class="sig-name descname"><span class="pre">lcm_vec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Dmat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/integer_manipulations.html#lcm_vec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.integer_manipulations.lcm_vec" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function computes the least common multiple (LCM).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Dmat: int</strong></dt><dd><p>The input number.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>lcm1: int</dt><dd><p>The least common multiple of the input number.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.lcm_array">
@@ -368,14 +398,14 @@ v = sph2vec(theta,rho,r)
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>input</strong><span class="classifier">numpy array or list of intgers</span></dt><dd><p>Input n-D array of integers (most suitable for 1D and 2D arrays)</p>
+<dt><strong>input</strong><span class="classifier">numpy.array or list of intgers</span></dt><dd><p>Input n-D array of integers (most suitable for 1D and 2D arrays)</p>
 </dd>
 <dt><strong>order</strong><span class="classifier">{‘rows’, ‘columns’, ‘cols’, ‘all’}, optional</span></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>Alcm: numpy array</dt><dd><p>An array of least common multiples of the input</p>
+<dt>Alcm: numpy.array</dt><dd><p>An array of least common multiples of the input</p>
 </dd>
 </dl>
 </dd>
@@ -398,22 +428,85 @@ v = sph2vec(theta,rho,r)
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.check_int_mat">
 <code class="sig-prename descclassname"><span class="pre">byxtal.integer_manipulations.</span></code><code class="sig-name descname"><span class="pre">check_int_mat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/integer_manipulations.html#check_int_mat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.integer_manipulations.check_int_mat" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function checks whether matrix is integer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>T: numpy.array</strong></dt><dd><p>Input matrix</p>
+</dd>
+<dt><strong>tol1: float</strong></dt><dd><p>Tolerance with default value 0.01</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>Boolean</strong></dt><dd><p>True: If the matrix has integer elements.
+False: If the matrix does not have integer elements.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.rat_approx">
 <code class="sig-prename descclassname"><span class="pre">byxtal.integer_manipulations.</span></code><code class="sig-name descname"><span class="pre">rat_approx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Tmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/integer_manipulations.html#rat_approx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.integer_manipulations.rat_approx" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function approximates the input with a rational number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Tmat: numpy.array</strong></dt><dd><p>Input</p>
+</dd>
+<dt><strong>tol1: float</strong></dt><dd><p>Tolerance with default value 0.01</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>Nmat1: int</strong></dt><dd><p>The nominator of the approximated rational number.</p>
+</dd>
+<dt><strong>Dmat1: int</strong></dt><dd><p>The nominator of the approximated rational number.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.int_approx">
 <code class="sig-prename descclassname"><span class="pre">byxtal.integer_manipulations.</span></code><code class="sig-name descname"><span class="pre">int_approx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Tmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/integer_manipulations.html#int_approx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.integer_manipulations.int_approx" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Tmat: numpy.array</strong></dt><dd><p>Transformation matrix</p>
+</dd>
+<dt><strong>tol1: float</strong></dt><dd><p>Tolerance with default value 0.01</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>int_mat1:</strong></dt><dd></dd>
+<dt><strong>t1_mult:</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.int_mult_approx">
 <code class="sig-prename descclassname"><span class="pre">byxtal.integer_manipulations.</span></code><code class="sig-name descname"><span class="pre">int_mult_approx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Tmat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/byxtal/integer_manipulations.html#int_mult_approx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#byxtal.integer_manipulations.int_mult_approx" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Tmat: numpy.array</strong></dt><dd><p>Transformation matrix</p>
+</dd>
+<dt><strong>tol1: float</strong></dt><dd><p>Tolerance with default value 0.01</p>
+</dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>int_mat1:</strong></dt><dd></dd>
+<dt><strong>t1_mult:</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="byxtal.integer_manipulations.mult_fac_err">
@@ -447,11 +540,11 @@ returned.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>input1</strong><span class="classifier">numpy.array</span></dt><dd><p>input array</p>
+<dt><strong>input1: numpy.array</strong></dt><dd><p>input array</p>
 </dd>
-<dt><strong>tol</strong><span class="classifier">float</span></dt><dd><p>tolerance with Default = 1e-06</p>
+<dt><strong>tol: float</strong></dt><dd><p>tolerance with Default = 1e-06</p>
 </dd>
-<dt><strong>order</strong><span class="classifier">str</span></dt><dd><p>choices are ‘rows’, ‘columns’, ‘col’, ‘all’.
+<dt><strong>order: str</strong></dt><dd><p>choices are ‘rows’, ‘columns’, ‘col’, ‘all’.
 If order = ‘all’, the input array is flattened and then scaled. This is default value.
 If order = ‘rows’, elements in each row are scaled
 If order = ‘columns’ or ‘cols’’, elements in each column are scaled</p>

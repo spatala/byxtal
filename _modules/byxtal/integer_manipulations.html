@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.integer_manipulations &mdash; byxtal 0.post50+gbab01aa documentation</title>
+  <title>byxtal.integer_manipulations &mdash; byxtal 0.post50+g1047fbc documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post50+gbab01aa
+                0.post50+g1047fbc
               </div>
             
           
@@ -172,6 +172,18 @@
 
 <div class="viewcode-block" id="gcd_vec"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.gcd_vec">[docs]</a><span class="k">def</span> <span class="nf">gcd_vec</span><span class="p">(</span><span class="n">int_mat</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function computes the GCD of an integer number.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    int_mat: int</span>
+<span class="sd">        Input integer number</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    gcd1: int</span>
+<span class="sd">        The  reatest common divisor of the input number.</span>
+<span class="sd">        </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">input1</span> <span class="o">=</span> <span class="n">int_mat</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
     <span class="n">Sz</span> <span class="o">=</span> <span class="n">input1</span><span class="o">.</span><span class="n">shape</span>
@@ -210,8 +222,6 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-    <span class="c1"># Only integer values are allowed</span>
-    <span class="c1"># if input.dtype.name != &#39;int64&#39;:</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Inputs must be real integers.&quot;</span><span class="p">)</span>
 
@@ -242,6 +252,17 @@
 
 <div class="viewcode-block" id="lcm_vec"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.lcm_vec">[docs]</a><span class="k">def</span> <span class="nf">lcm_vec</span><span class="p">(</span><span class="n">Dmat</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function computes the least common multiple (LCM).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Dmat: int</span>
+<span class="sd">        The input number.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    lcm1: int</span>
+<span class="sd">        The least common multiple of the input number.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">input1</span> <span class="o">=</span> <span class="n">Dmat</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
     <span class="n">Sz</span> <span class="o">=</span> <span class="n">input1</span><span class="o">.</span><span class="n">shape</span>
@@ -258,14 +279,14 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    input : numpy array or list of intgers</span>
+<span class="sd">    input : numpy.array or list of intgers</span>
 <span class="sd">        Input n-D array of integers (most suitable for 1D and 2D arrays)</span>
 
 <span class="sd">    order : {&#39;rows&#39;, &#39;columns&#39;, &#39;cols&#39;, &#39;all&#39;}, optional</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    Alcm: numpy array</span>
+<span class="sd">    Alcm: numpy.array</span>
 <span class="sd">        An array of least common multiples of the input</span>
 
 <span class="sd">    Notes</span>
@@ -277,7 +298,6 @@
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    lcm_vec: from fractions module for computing gcd of two integers</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
@@ -313,6 +333,19 @@
 
 <div class="viewcode-block" id="check_int_mat"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.check_int_mat">[docs]</a><span class="k">def</span> <span class="nf">check_int_mat</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tol1</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function checks whether matrix is integer.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    T: numpy.array</span>
+<span class="sd">        Input matrix</span>
+<span class="sd">    tol1: float</span>
+<span class="sd">        Tolerance with default value 0.01</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Boolean</span>
+<span class="sd">        True: If the matrix has integer elements.</span>
+<span class="sd">        False: If the matrix does not have integer elements.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Matrix</span><span class="p">):</span>
         <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
@@ -321,6 +354,20 @@
 
 <div class="viewcode-block" id="rat_approx"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.rat_approx">[docs]</a><span class="k">def</span> <span class="nf">rat_approx</span><span class="p">(</span><span class="n">Tmat</span><span class="p">,</span> <span class="n">tol1</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function approximates the input with a rational number.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Tmat: numpy.array</span>
+<span class="sd">        Input</span>
+<span class="sd">    tol1: float</span>
+<span class="sd">        Tolerance with default value 0.01</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Nmat1: int</span>
+<span class="sd">        The nominator of the approximated rational number.</span>
+<span class="sd">    Dmat1: int</span>
+<span class="sd">        The nominator of the approximated rational number.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">Tmat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Tmat</span><span class="p">)</span>
     <span class="n">input1</span> <span class="o">=</span> <span class="n">Tmat</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
@@ -345,6 +392,18 @@
 
 <div class="viewcode-block" id="int_approx"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.int_approx">[docs]</a><span class="k">def</span> <span class="nf">int_approx</span><span class="p">(</span><span class="n">Tmat</span><span class="p">,</span> <span class="n">tol1</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Tmat: numpy.array</span>
+<span class="sd">        Transformation matrix</span>
+<span class="sd">    tol1: float</span>
+<span class="sd">        Tolerance with default value 0.01</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int_mat1:</span>
+<span class="sd">    t1_mult:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">Tmat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Tmat</span><span class="p">)</span>
     <span class="n">tct1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Tmat</span><span class="p">))</span>
@@ -372,6 +431,18 @@
 
 <div class="viewcode-block" id="int_mult_approx"><a class="viewcode-back" href="../../Modules.html#byxtal.integer_manipulations.int_mult_approx">[docs]</a><span class="k">def</span> <span class="nf">int_mult_approx</span><span class="p">(</span><span class="n">Tmat</span><span class="p">,</span> <span class="n">tol1</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Tmat: numpy.array</span>
+<span class="sd">        Transformation matrix</span>
+<span class="sd">    tol1: float</span>
+<span class="sd">        Tolerance with default value 0.01</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int_mat1:</span>
+<span class="sd">    t1_mult:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">Tmat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Tmat</span><span class="p">)</span>
     <span class="n">int_mat1</span><span class="p">,</span> <span class="n">t1_mult</span><span class="p">,</span> <span class="n">err1</span> <span class="o">=</span> <span class="n">mult_fac_err</span><span class="p">(</span><span class="n">Tmat</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tol1</span><span class="p">)</span>
@@ -428,11 +499,11 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    input1 : numpy.array</span>
+<span class="sd">    input1: numpy.array</span>
 <span class="sd">        input array</span>
-<span class="sd">    tol : float</span>
+<span class="sd">    tol: float</span>
 <span class="sd">        tolerance with Default = 1e-06</span>
-<span class="sd">    order : str</span>
+<span class="sd">    order: str</span>
 <span class="sd">        choices are &#39;rows&#39;, &#39;columns&#39;, &#39;col&#39;, &#39;all&#39;.</span>
 <span class="sd">        If order = &#39;all&#39;, the input array is flattened and then scaled. This is default value.</span>
 <span class="sd">        If order = &#39;rows&#39;, elements in each row are scaled</span>
