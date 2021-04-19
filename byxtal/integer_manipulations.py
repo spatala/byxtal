@@ -23,14 +23,13 @@ def gcd_array(input, order='all'):
 
     Parameters
     ----------
-    input : numpy array or list of intgers
+    input : numpy.array or list
         Input n-D array of integers (most suitable for 1D and 2D arrays)
-
     order : {'rows', 'columns', 'cols', 'all'}, optional
 
     Returns
     -------
-    Agcd: numpy array
+    Agcd: numpy.array
         An array of greatest common divisors of the input
 
     Notes
@@ -216,10 +215,23 @@ def int_mult_approx(Tmat, tol1=0.01):
 
 def mult_fac_err(Tmat, mult1, tol1):
     """
+    The function raises an error when it can not find
+    an integer matrix
+
+    Parameters
+    ----------
+    Tmat: numpy.array
+        Transformation matrix
+    mult1:
+    tol1: float
+        Tolerance
+    Returns
+    -------
+    int_mat1:
+    t1_mult:
+    err1:
     """
-    # print(mult1)
     Tmat1 = Tmat*mult1
-    # print(Tmat1)
     N1, D1 = rat_approx(Tmat1, tol1)
 
     lcm1 = lcm_array(D1)
@@ -362,9 +374,9 @@ def int_check(input, precis=6):
 
     Parameters
     ----------
-    input : numpy array or list
+    input : numpy.array or list
         Input n-D array of floats.
-    precis : Integer
+    precis : int
         Default = 6.
         A value that specifies the precision to which the number is an
         integer. **precis = 6** implies a precision of :math:`10^{-6}`.
@@ -390,15 +402,19 @@ def rat(input, tol=1e-06):
 
     Parameters
     ----------
-    input : numpy array or list of real numbers
-    tol : floating point tolerance value
-        Default = 1e-06
+    input : numpy.array or list
+        input which is real numbers.
+    tol : float
+        Tolerance, Default = 1e-06
 
     Returns
     -------
-    N, D: Integer numpy arrays
-        N and D contain the numerators (p) and denominators (q) of the
-        rational approximations
+    N: numpy.array
+        N contain the numerators (p) and denominators (q) of the
+        rational approximations.
+    D: numpy.array
+        D contain the numerators (p) and denominators (q) of the
+        rational approximations.
     """
     input1 = np.array(input)
     if np.ndim(input1) == 1:
