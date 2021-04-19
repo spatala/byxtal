@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.find_csl_dsc &mdash; byxtal 0.post50+gf2a75f4 documentation</title>
+  <title>byxtal.find_csl_dsc &mdash; byxtal 0.post50+g282608e documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post50+gf2a75f4
+                0.post50+g282608e
               </div>
             
           
@@ -237,22 +237,22 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------------</span>
-<span class="sd">    L_G1_GO1: numpy array</span>
+<span class="sd">    L_G1_GO1: numpy.array</span>
 <span class="sd">        The three basis vectors for the primitive unit cell</span>
 <span class="sd">        (as columns) are given with respect to the GO1 reference</span>
 <span class="sd">        frame.</span>
-
-<span class="sd">    R_G1ToG2_G1: 3X3 numpy array</span>
-<span class="sd">        The rotation matrix defining the</span>
+<span class="sd">    R_G1ToG2_G1: numpy.array</span>
+<span class="sd">        The rotation matrix with size 3*3 defining the</span>
 <span class="sd">        transformation in &#39;G1&#39; reference frame. The subscript &#39;G1&#39; refers</span>
 <span class="sd">        to the primitive unit cell of G lattice.</span>
 
 <span class="sd">    Returns</span>
-<span class="sd">    l_csl_g1, l_dsc_g1: numpy arrays</span>
-<span class="sd">        The basis vectors of csl and dsc lattices in the g1 reference frame</span>
+<span class="sd">    l_csl_g1: numpy.array</span>
+<span class="sd">        The basis vectors of csl lattices in the g1 reference frame</span>
+<span class="sd">    l_dsc_g1: numpy.array</span>
+<span class="sd">        The basis vectors of dsc lattices in the g1 reference frame</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">########################################################################</span>
-    <span class="c1">## Compute Sigma, and Sigma*T</span>
+    <span class="c1"># Compute Sigma, and Sigma*T</span>
     <span class="n">T_p1top2_p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
     <span class="n">Sigma</span> <span class="o">=</span> <span class="n">sigma_calc</span><span class="p">(</span><span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="n">tol1</span><span class="p">)</span>
     <span class="n">TI_p1top2_p1</span> <span class="o">=</span> <span class="n">T_p1top2_p1</span><span class="o">*</span><span class="n">Sigma</span>
@@ -261,26 +261,17 @@
         <span class="n">TI_p1top2_p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">TI_p1top2_p1</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;TI_p1top2_p1 is not an integer matrix.&quot;</span><span class="p">)</span>
-    <span class="c1">########################################################################</span>
 
-
-    <span class="c1">########################################################################</span>
     <span class="c1"># l_csl_p = csl_finder(T_p1top2_p1, Sigma, l_p_po, tol1)</span>
     <span class="n">l_csl_p</span> <span class="o">=</span> <span class="n">csl_finder</span><span class="p">(</span><span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="n">l_p_po</span><span class="p">,</span> <span class="n">tol1</span><span class="p">)</span>
     <span class="n">check_val1</span> <span class="o">=</span> <span class="n">check_csl</span><span class="p">(</span><span class="n">l_csl_p</span><span class="p">,</span> <span class="n">l_p_po</span><span class="p">,</span> <span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="n">Sigma</span><span class="p">,</span> <span class="n">print_check</span><span class="p">)</span>
-    <span class="c1">########################################################################</span>
 
-    <span class="c1">########################################################################</span>
     <span class="c1"># l_dsc_p = dsc_finder(T_p1top2_p1, l_p_po, tol1)</span>
     <span class="c1"># check_val2 = check_dsc(l_dsc_p, l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)</span>
-    <span class="c1">########################################################################</span>
 
-    <span class="c1">########################################################################</span>
     <span class="nb">print</span><span class="p">([</span><span class="n">check_val1</span><span class="p">])</span>
     <span class="k">if</span> <span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">check_val1</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Error in Computing CSL or DSC Lattices.&quot;</span><span class="p">)</span>
-    <span class="c1">########################################################################</span>
-
     <span class="k">return</span> <span class="n">l_csl_p</span></div>
 
 
@@ -290,19 +281,17 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    TI_p1top2_p1: numpy array</span>
+<span class="sd">    TI_p1top2_p1: numpy.array</span>
 <span class="sd">        Sigma*(transformation matrix)</span>
-
-<span class="sd">    l_p_po: numpy array</span>
+<span class="sd">    l_p_po: numpy.array</span>
 <span class="sd">        basis vectors (as columns) of the underlying lattice expressed in the</span>
 <span class="sd">        orthogonal &#39;po&#39; reference frame</span>
-
 <span class="sd">    tol1: int</span>
 <span class="sd">        Tolerance to use to compute the reduced LLL lattice</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ------------</span>
-<span class="sd">    l_csl_p: numpy array</span>
+<span class="sd">    l_csl_p: numpy.array</span>
 <span class="sd">        The CSL basis vectors (as columns) expressed in the primitive reference</span>
 
 <span class="sd">    Notes</span>
@@ -348,16 +337,15 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    l_g2_g1: numpy array</span>
-<span class="sd">        transformation matrix (r_g1tog2_g1)</span>
-
-<span class="sd">    l_g1_go1: numpy array</span>
-<span class="sd">        basis vectors (as columns) of the underlying lattice expressed in the</span>
+<span class="sd">    l_g2_g1: numpy.array</span>
+<span class="sd">        Transformation matrix (r_g1tog2_g1)</span>
+<span class="sd">    l_g1_go1: numpy.array</span>
+<span class="sd">        Basis vectors (as columns) of the underlying lattice expressed in the</span>
 <span class="sd">        orthogonal &#39;go&#39; reference frame</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    ------------</span>
-<span class="sd">    l_dsc_g1: numpy array</span>
+<span class="sd">    l_dsc_g1: numpy.array</span>
 <span class="sd">        The dsc lattice basis vectors (as columns) expressed in the g1 reference</span>
 
 <span class="sd">    Notes</span>
@@ -422,6 +410,26 @@
 
 <div class="viewcode-block" id="check_csl"><a class="viewcode-back" href="../../Modules.html#byxtal.find_csl_dsc.check_csl">[docs]</a><span class="k">def</span> <span class="nf">check_csl</span><span class="p">(</span><span class="n">l_csl_p</span><span class="p">,</span> <span class="n">l_p1_po</span><span class="p">,</span> <span class="n">T_p1top2_p1</span><span class="p">,</span> <span class="n">Sigma</span><span class="p">,</span> <span class="n">print_val</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function checks CSL lattice</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    l_csl_p : numpy.array</span>
+<span class="sd">        The CSL basis vectors  in the primitive reference frame.</span>
+<span class="sd">    l_p_po: numpy array</span>
+<span class="sd">        The primitive basis vectors of the underlying lattice in the orthogonal</span>
+<span class="sd">        reference frame.</span>
+<span class="sd">    T_p1top2_p1: numpy.array</span>
+<span class="sd">        Sigma*(transformation matrix)</span>
+<span class="sd">    sigma: float</span>
+<span class="sd">        Sigma number</span>
+<span class="sd">    print_val: str</span>
+<span class="sd">        Print a message</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    (cond1 and cond2 and cond3): tuple</span>
+<span class="sd">        Print message</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">l_po_p1</span> <span class="o">=</span> <span class="n">nla</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">l_p1_po</span><span class="p">)</span>
 
@@ -451,6 +459,27 @@
 
 <div class="viewcode-block" id="check_dsc"><a class="viewcode-back" href="../../Modules.html#byxtal.find_csl_dsc.check_dsc">[docs]</a><span class="k">def</span> <span class="nf">check_dsc</span><span class="p">(</span><span class="n">l_dsc_p1</span><span class="p">,</span> <span class="n">l_csl_p1</span><span class="p">,</span> <span class="n">l_p1_po</span><span class="p">,</span> <span class="n">l_p2_p1</span><span class="p">,</span> <span class="n">Sigma</span><span class="p">,</span> <span class="n">print_val</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function checks DSC lattice</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    l_dsc_p1 : numpy.array</span>
+<span class="sd">        The DSC basis vectors  in the primitive reference frame of crystal 1.</span>
+<span class="sd">    l_csl_p1 : numpy.array</span>
+<span class="sd">        The CSL basis vectors  in the primitive reference frame of crystal 1.</span>
+<span class="sd">    l_p1_po: numpy.array</span>
+<span class="sd">        The basis vector of p1 in the orthogonal primitive reference frame.</span>
+<span class="sd">    l_p2_p1: numpy.array</span>
+<span class="sd">        Transformation matrix</span>
+<span class="sd">    sigma: float</span>
+<span class="sd">        sigma number</span>
+<span class="sd">    print_val: str</span>
+<span class="sd">        Print a message</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    (cond1 and cond2 and cond3): tuple</span>
+<span class="sd">        Print message</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">l_csl_po</span> <span class="o">=</span> <span class="n">l_p1_po</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_csl_p1</span><span class="p">)</span>
     <span class="n">l_dsc_po</span> <span class="o">=</span> <span class="n">l_p1_po</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_dsc_p1</span><span class="p">)</span>
@@ -494,6 +523,20 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the sigma of the transformation matrix (t_g1tog2_g1)</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    t_g1tog2_g1: numpy.array</span>
+<span class="sd">        Transformation matrix</span>
+<span class="sd">    tol1: float</span>
+<span class="sd">        Tolerance</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------</span>
+<span class="sd">    int(Sigma): int</span>
+<span class="sd">        Integer value of the calculated sigma number</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    ------</span>
 <span class="sd">    * Suppose T = t_g1tog2_g1</span>
 <span class="sd">    * if det(T) = det(T^{-1}) then sigma1 = sigma2 is returned (homophase)</span>
 <span class="sd">    * if det(T) \\neq det(T^{-1}) then max(sigma1, sigma2) is returned (heterophase)</span>
@@ -515,12 +558,12 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------------</span>
-<span class="sd">    l_g_go: numpy array</span>
+<span class="sd">    l_g_go: numpy.array</span>
 <span class="sd">        The primitive basis vectors b1x, b1y, b1z</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -----------</span>
-<span class="sd">    rl_g_go: numpy array</span>
+<span class="sd">    rl_g_go: numpy.array</span>
 <span class="sd">        The primitve reciprocal basis vectors</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">InMat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">l_g_go</span><span class="p">)</span>
@@ -535,6 +578,20 @@
 
 <div class="viewcode-block" id="make_right_handed"><a class="viewcode-back" href="../../Modules.html#byxtal.find_csl_dsc.make_right_handed">[docs]</a><span class="k">def</span> <span class="nf">make_right_handed</span><span class="p">(</span><span class="n">l_csl_p1</span><span class="p">,</span> <span class="n">l_p_po</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The function makes l_csl_p1 right handed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    l_csl_p1: numpy.array</span>
+<span class="sd">        The CSL basis vectors  in the primitive reference frame of crystal 1.</span>
+<span class="sd">    l_p_po: numpy.array</span>
+<span class="sd">        The primitive basis vectors of the underlying lattice in the orthogonal</span>
+<span class="sd">        reference frame.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -----------</span>
+<span class="sd">    t1_array: numpy.array</span>
+<span class="sd">        Right handed array        </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">l_csl_po1</span> <span class="o">=</span> <span class="n">l_p_po</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">l_csl_p1</span><span class="p">)</span>
     <span class="n">t1_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">l_csl_p1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;double&#39;</span><span class="p">)</span>
@@ -542,7 +599,6 @@
     <span class="k">if</span> <span class="p">(</span><span class="n">nla</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">l_csl_po1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
         <span class="n">t1_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">t2_array</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">t1_array</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t2_array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-
     <span class="k">return</span> <span class="n">t1_array</span></div>
 
 </pre></div>

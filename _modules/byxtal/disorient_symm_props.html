@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>byxtal.disorient_symm_props &mdash; byxtal 0.post50+gf2a75f4 documentation</title>
+  <title>byxtal.disorient_symm_props &mdash; byxtal 0.post50+g282608e documentation</title>
   
 
   
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                0.post50+gf2a75f4
+                0.post50+g282608e
               </div>
             
           
@@ -170,32 +170,34 @@
 <div class="viewcode-block" id="disorient_symm_props"><a class="viewcode-back" href="../../Modules.html#byxtal.disorient_symm_props.disorient_symm_props">[docs]</a><span class="k">def</span> <span class="nf">disorient_symm_props</span><span class="p">(</span><span class="n">mis_quat_fz</span><span class="p">,</span> <span class="n">lat_pt_grp</span><span class="p">,</span> <span class="n">x_tol</span><span class="o">=</span><span class="mf">1e-04</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the point group and the principle axes for fundamental zone of underlying bicrystal symmetry.</span>
+<span class="sd">    This method takes only one value for lat_pt_grp == &#39;O_h&#39;, i.e. the function is written for bcc and fcc</span>
+<span class="sd">    crystals only.</span>
+<span class="sd">    Based on the location of the mis_quat_fz in the quaternion hypersphere (4-D), the point group symmetry</span>
+<span class="sd">    of the bicrystal is determined.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    -----------</span>
-<span class="sd">        mis_quat_fz: misorientation quaternion</span>
+<span class="sd">    mis_quat_fz: numpy.array</span>
 <span class="sd">        A quaternion array with size (5 x 1)</span>
 <span class="sd">        The quaternion is created from the misorientation of the sigma value for the grain boundary.</span>
 <span class="sd">        The misorientation is defined in the orthogonal reference frame of lower crystal 1 (po1).</span>
 <span class="sd">        lat_pt_grp: The point group symmetry of the crystal.</span>
 <span class="sd">        string with allowed value &#39;Oh&#39;</span>
-
-<span class="sd">        x_tol: float</span>
-<span class="sd">        tolerance value to check various conditions in the function, default value==1e-04</span>
+<span class="sd">    x_tol: float</span>
+<span class="sd">        Tolerance value to check various conditions in the function, default value==1e-04</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    --------</span>
-<span class="sd">        bp_symm_grp: The point group symmetry of bicrystal.</span>
-<span class="sd">        python string with allowed values &#39;Cs&#39;, &#39;C2h&#39;, &#39;D3d&#39;, &#39;D2h&#39;, &#39;D4h&#39;, &#39;D6h&#39;, &#39;D8h&#39; and &#39;Oh&#39;</span>
-<span class="sd">        x_g, y_g, z_g: Principle axes for the fundamental zone of the bicrystal.</span>
-<span class="sd">        1-D numpy arrays of size 3</span>
+<span class="sd">    bp_symm_grp: str</span>
+<span class="sd">        The point group symmetry of bicrystal. python string with allowed</span>
+<span class="sd">        values &#39;Cs&#39;, &#39;C2h&#39;, &#39;D3d&#39;, &#39;D2h&#39;, &#39;D4h&#39;, &#39;D6h&#39;, &#39;D8h&#39; and &#39;Oh&#39;</span>
+<span class="sd">    x_g: int</span>
+<span class="sd">        First principle axes for the fundamental zone of the bicrystal.</span>
+<span class="sd">    y_g: int</span>
+<span class="sd">        Second principle axes for the fundamental zone of the bicrystal.</span>
+<span class="sd">    z_g: int</span>
+<span class="sd">        Third principle axes for the fundamental zone of the bicrystal.</span>
 
-<span class="sd">    Notes</span>
-<span class="sd">    ------</span>
-<span class="sd">        This method takes only one value for lat_pt_grp == &#39;O_h&#39;, i.e. the function is written for bcc and fcc</span>
-<span class="sd">        crystals only.</span>
-<span class="sd">        Based on the location of the mis_quat_fz in the quaternion hypersphere (4-D), the point group symmetry of the</span>
-<span class="sd">        bicrystal is determined.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">q0</span> <span class="o">=</span> <span class="n">mis_quat_fz</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">q1</span> <span class="o">=</span> <span class="n">mis_quat_fz</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -428,9 +430,7 @@
         <span class="n">y_g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">z_g</span><span class="p">,</span> <span class="n">x_g</span><span class="p">)</span>
         <span class="n">bp_symm_grp</span> <span class="o">=</span> <span class="s1">&#39;Cs&#39;</span>
         <span class="k">return</span> <span class="n">x_g</span><span class="p">,</span> <span class="n">y_g</span><span class="p">,</span> <span class="n">z_g</span><span class="p">,</span> <span class="n">bp_symm_grp</span>
-    
-    <span class="c1">#  This part is for hcp crystal structure</span>
-    <span class="c1">#  taken from table 17 from Dr. Patala&#39;s paper</span>
+
 
     <span class="k">if</span> <span class="n">lat_pt_grp</span> <span class="o">==</span> <span class="s1">&#39;D6h&#39;</span><span class="p">:</span>
         <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
