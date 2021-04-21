@@ -1,7 +1,7 @@
 ======
 byxtal
 ======
-.. image:: https://user-images.githubusercontent.com/33406434/86795321-6fd42900-c03b-11ea-883a-68139f7cb521.png
+.. image:: https://imgur.com/aGOIjVt
         :target: https://travis-ci.org/spatala/byxtal
 
 .. image:: https://img.shields.io/travis/spatala/byxtal.svg
