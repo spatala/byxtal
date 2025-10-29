@@ -10,6 +10,7 @@ import numpy as np
 from . import integer_manipulations as int_man
 import numpy.linalg as nla
 from . import reduce_po_lat as rpl
+from . import compute_csl as cCSL
 
 # def find_csl_dsc(l_p_po, T_p1top2_p1, tol1=1e-6, print_check=True):
 #     """
@@ -101,13 +102,13 @@ def find_csl_dsc(l_p_po, T_p1top2_p1, tol1=1e-6, print_check=True):
     l_csl_p = csl_finder(T_p1top2_p1, l_p_po, tol1)
     check_val1 = check_csl(l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
 
-    # l_dsc_p = dsc_finder(T_p1top2_p1, l_p_po, tol1)
-    # check_val2 = check_dsc(l_dsc_p, l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
+    l_dsc_p = dsc_finder(T_p1top2_p1, l_p_po, tol1)
+    check_val2 = check_dsc(l_dsc_p, l_csl_p, l_p_po, T_p1top2_p1, Sigma, print_check)
 
     print([check_val1])
     if (not(check_val1)):
         raise Exception("Error in Computing CSL or DSC Lattices.")
-    return l_csl_p
+    return l_csl_p, l_dsc_p
 
 
 def csl_finder(T_p1top2_p1, l_p_po, tol1):
@@ -149,11 +150,14 @@ def csl_finder(T_p1top2_p1, l_p_po, tol1):
         raise Exception("TI_p1top2_p1 is not an integer matrix.")
     ########################################################################
 
-    exec_str = '/compute_csl.py'
-    inp_args = {}
-    inp_args['mat'] = TI_p1top2_p1
-    inp_args['sig_num'] = Sigma
-    l_csl1_p = rpl.call_sage_math(exec_str, inp_args)
+    # exec_str = '/compute_csl.py'
+    # inp_args = {}
+    # inp_args['mat'] = TI_p1top2_p1
+    # inp_args['sig_num'] = Sigma
+    # l_csl1_p = rpl.call_sage_math(exec_str, inp_args)
+    sz = np.shape(TI_p1top2_p1)[0]
+    l_csl1_p = cCSL.compute_csl_grimmer(TI_p1top2_p1, Sigma, sz)
+    
 
     l_csl_csl1 = rpl.reduce_po_lat(l_csl1_p, l_p_po, tol1)
     l_csl_p = l_csl1_p.dot(l_csl_csl1)

@@ -181,7 +181,7 @@ def check_int_mat(T, tol1):
         True: If the matrix has integer elements.
         False: If the matrix does not have integer elements.
     """
-    if isinstance(T, Matrix):
+    if isinstance(T, spy.Matrix):
         T = np.array(T, dtype='double')
     return (np.max(np.abs(T - np.around(T))) < tol1)
 
