@@ -1,0 +1,12 @@
+[project]
+name = "byxtal"
+version = "0.1.0"
+description = "Python package for bicrystal computations"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ipython>=9.4.0",
+    "numpy",
+    "scipy",
+    "sympy",
+]

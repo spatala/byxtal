@@ -37,11 +37,7 @@ Prerequisites:
                 
 2. install ``scipy`` from `here. <http://www.scipy.org/>`__
 
-3. install ``pyhull`` from `here. <https://pythonhosted.org/pyhull/>`__
-
-4. install ``ovito`` from `here. <https://www.ovito.org/>`__
-
-5. install ``sympy`` from `here. <https://www.sympy.org/>`__
+3. install ``sympy`` from `here. <https://www.sympy.org/>`__
 
                 
 Cite GBpy:
@@ -56,6 +52,5 @@ gbpy is written by:
 * `Srikanth Patala <spatala@ncsu.edu>`__
 * `Leila Khalili <lkhalil@ncsu.edu>`__
 * `Arash Dehghan Banadaki <adehgha@ncsu.edu>`__
-* `Patala Research Group <http://research.mse.ncsu.edu/patala/>`__.
         
-Copyright (c) 2015,  Leila Khalili and Srikanth Patala.
+Copyright (c) 2015,  Arash Banadaki, Leila Khalili and Srikanth Patala.
