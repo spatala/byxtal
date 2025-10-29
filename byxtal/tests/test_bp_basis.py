@@ -7,17 +7,15 @@ import byxtal.reduce_po_lat as rpl
 import pickle as pkl
 import byxtal.find_csl_dsc as fcd
 
-import os
-import inspect
-import byxtal
-byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
-
 ## Directory and file names
-pkl_dir = byxtal_dir+'/tests/pkl_files/'
+import pathlib
+currDir = pathlib.Path().absolute()
+print(currDir)
+pkl_dir = currDir.joinpath('pkl_files')
 ##############################################################
 
 l1 = gbl.Lattice()
-pkl_name = pkl_dir+l1.elem_type+'_csl_common_rotations.pkl'
+pkl_name = pkl_dir.joinpath(l1.elem_type+'_csl_common_rotations.pkl')
 jar = open(pkl_name, "rb" )
 lat_sig_attr = pkl.load(jar)
 jar.close()
