@@ -16,12 +16,7 @@ def reduce_po_lat(l_csl_p, l_p_po, tol):
     l_csl_po = l_p_po.dot(l_csl_p)
     lInt_csl_po, m1 = iman.int_approx(l_csl_po, tol)
 
-    # inp_args={}
-    # inp_args['mat'] = lInt_csl_po
-    # lllInt_csl_po = call_sage_math('/compute_lll.py', inp_args)
     M = Matrix(lInt_csl_po)
-    # dM = DomainMatrix.from_Matrix(M)
-    # lll_reduced_dM = (dM.lll()).to_Matrix()
     lll_reduced_dM = (M.transpose().to_DM().lll().to_Matrix()).transpose()
     lllInt_csl_po = (np.array(lll_reduced_dM)).astype(int)
 

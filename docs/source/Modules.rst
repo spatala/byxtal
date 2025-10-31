@@ -192,8 +192,6 @@ Pick Fundumental Zone
 
 Reduce Po Lattice
 -----------------
-.. autofunction:: byxtal.reduce_po_lat.call_sage_math
-
 .. autofunction:: byxtal.reduce_po_lat.reduce_po_lat
 
 

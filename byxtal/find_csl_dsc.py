@@ -150,11 +150,6 @@ def csl_finder(T_p1top2_p1, l_p_po, tol1):
         raise Exception("TI_p1top2_p1 is not an integer matrix.")
     ########################################################################
 
-    # exec_str = '/compute_csl.py'
-    # inp_args = {}
-    # inp_args['mat'] = TI_p1top2_p1
-    # inp_args['sig_num'] = Sigma
-    # l_csl1_p = rpl.call_sage_math(exec_str, inp_args)
     sz = np.shape(TI_p1top2_p1)[0]
     l_csl1_p = cCSL.compute_csl_grimmer(TI_p1top2_p1, Sigma, sz)
     
