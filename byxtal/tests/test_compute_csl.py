@@ -8,11 +8,6 @@ import byxtal.lattice as gbl
 import byxtal.integer_manipulations as iman
 import byxtal.find_csl_dsc as fcd
 
-import os
-import inspect
-import byxtal
-byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
-
 ## Directory and file names
 # pkl_dir = byxtal_dir+'/tests/pkl_files/'
 import pathlib

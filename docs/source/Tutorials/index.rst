@@ -1,8 +1,8 @@
 =========
 Tutorials
 =========
-.. image:: https://i.imgur.com/Wwu01Zx.png
-        :target: https://travis-ci.org/spatala/byxtal
+.. .. image:: https://i.imgur.com/Wwu01Zx.png
+..         :target: https://travis-ci.org/spatala/byxtal
 
 
 .. toctree::

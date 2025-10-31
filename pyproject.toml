@@ -5,8 +5,16 @@ description = "Python package for bicrystal computations"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "ipykernel>=7.1.0",
     "ipython>=9.4.0",
+    "jupyterlab>=4.4.10",
+    "matplotlib>=3.10.7",
+    "nbsphinx>=0.9.6",
     "numpy",
+    "numpydoc>=1.9.0",
     "scipy",
+    "sphinx>=8.2.3",
+    "sphinx-copybutton>=0.5.2",
+    "sphinx-rtd-theme>=3.0.2",
     "sympy",
 ]

@@ -1,7 +1,0 @@
-# List required packages in this file, one per line.
-numpy
-sympy
-nbsphinx
-jupyter-client
-nbconvert
-pandoc

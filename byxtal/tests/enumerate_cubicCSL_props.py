@@ -12,13 +12,12 @@ import byxtal.tools as gbt
 import byxtal.misorient_fz as mfz
 import byxtal.disorient_symm_props as dsp
 
-import os
-import inspect
-import byxtal
-byxtal_dir = os.path.dirname((inspect.getfile(byxtal)))
-
 ## Directory and file names
-pkl_dir = byxtal_dir+'/tests/pkl_files/'
+# pkl_dir = byxtal_dir+'/tests/pkl_files/'
+import pathlib
+currDir = pathlib.Path().absolute()
+print(currDir)
+pkl_dir = currDir.joinpath('pkl_files')
 ##############################################################
 
 
@@ -67,7 +66,7 @@ for sig_num in sig_nums:
         csl_bp_props[sig_id] = bp_symm_grp_props
 
 import pickle as pkl;
-pkl_name = pkl_dir+l1.elem_type+'_csl_bp_props_common_rotations.pkl'
+pkl_name = pkl_dir.joinpath(l1.elem_type+'_csl_bp_props_common_rotations.pkl')
 csl_props = {}
 csl_props['sig_mats'] = sig_mats
 csl_props['csl_mats'] = csl_mats

@@ -5,7 +5,7 @@
 import numpy as np
 from sympy import Matrix, numer
 from sympy.polys.matrices import DomainMatrix
-import smith_normal_form as snf
+from . import smith_normal_form as snf
 
 def compute_csl_grimmer(A, sig_num, sz):
    """

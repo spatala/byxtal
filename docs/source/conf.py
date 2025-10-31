@@ -70,8 +70,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'byxtal'
-copyright = '2020, Leila Khalili'
-author = 'Leila Khalili'
+copyright = '2025, Srikanth Patala'
+author = 'Srikanth Patala'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
